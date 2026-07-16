@@ -1,0 +1,244 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Badge from "../components/ui/Badge.astro";
+import BtnPrimary from "../components/ui/BtnPrimary.astro";
+import BtnGhost from "../components/ui/BtnGhost.astro";
+import FaqAccordion from "../components/ui/FaqAccordion.astro";
+import { waLink, faqPageSchema, breadcrumbSchema } from "../data/schema";
+import { seoFaq } from "../data/faq/seo";
+
+const schema = [
+  faqPageSchema(seoFaq),
+  breadcrumbSchema([
+    { name: "Home", path: "/" },
+    { name: "SEO & GEO", path: "/seo" },
+  ]),
+];
+---
+
+<BaseLayout
+  title="SEO & GEO | Fórmula Mídia — Autoridade Técnica e Performance"
+  description="SEO técnico e GEO (otimização para IA) com sites Lighthouse 90+. A mesma disciplina que aplicamos em tráfego pago, agora em busca orgânica e nos buscadores de IA."
+  path="/seo"
+  schema={schema}
+>
+  <!-- HERO -->
+  <header class="relative overflow-hidden px-6 pb-24 pt-28 text-center">
+    <div class="pointer-events-none absolute -left-32 -top-40 h-[460px] w-[460px] rounded-full bg-[radial-gradient(circle,rgba(228,41,41,.25),transparent_70%)] blur-[70px]"></div>
+    <div class="pointer-events-none absolute -right-36 -top-20 h-[380px] w-[380px] rounded-full bg-[radial-gradient(circle,rgba(180,20,20,.20),transparent_70%)] blur-[70px]"></div>
+
+    <div class="relative z-[2] mx-auto max-w-[820px]">
+      <Badge label="SEO Técnico & GEO" />
+      <h1 class="mt-6 font-heading text-[clamp(32px,5.2vw,58px)] font-bold leading-[1.08] tracking-tight" data-in>
+        Tráfego pago é o nosso foco nº 1.<br />
+        <span class="text-red-hi">SEO e GEO são onde aplicamos o mesmo rigor.</span>
+      </h1>
+      <p class="mx-auto mt-6 max-w-[640px] text-[clamp(15px,1.6vw,18px)] leading-relaxed text-mid" data-in>
+        Somos extremamente experientes em performance — e trazemos essa disciplina técnica para SEO e para GEO
+        (otimização para buscadores de Inteligência Artificial). Construímos sites com Lighthouse 90+, muitos com
+        nota 100, usando stack moderna e IA de ponta como Claude Code.
+      </p>
+      <div class="mt-9 flex flex-wrap justify-center gap-3.5" data-in>
+        <BtnPrimary href={waLink("Olá, quero saber mais sobre SEO e GEO")} target="_blank" rel="noopener">
+          Falar com especialista →
+        </BtnPrimary>
+        <BtnGhost href="#oferta">Ver o que entregamos</BtnGhost>
+      </div>
+
+      <div class="mt-16 flex flex-wrap justify-center gap-x-16 gap-y-6" data-in>
+        <div class="text-center"><div class="font-heading text-[30px] font-bold tracking-tight text-red-hi">90+</div><div class="mt-1 text-[11.5px] uppercase tracking-[.06em] text-dim">Lighthouse médio</div></div>
+        <div class="text-center"><div class="font-heading text-[30px] font-bold tracking-tight text-red-hi">100</div><div class="mt-1 text-[11.5px] uppercase tracking-[.06em] text-dim">Em vários projetos</div></div>
+        <div class="text-center"><div class="font-heading text-[30px] font-bold tracking-tight text-red-hi">100+</div><div class="mt-1 text-[11.5px] uppercase tracking-[.06em] text-dim">Clientes atendidos</div></div>
+        <div class="text-center"><div class="font-heading text-[30px] font-bold tracking-tight text-red-hi">+10</div><div class="mt-1 text-[11.5px] uppercase tracking-[.06em] text-dim">Anos de mercado</div></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- O QUE MUDOU -->
+  <section class="px-6 py-22">
+    <div class="mx-auto max-w-[1080px]">
+      <span class="mb-3.5 block font-heading text-xs font-semibold uppercase tracking-[.16em] text-red-hi" data-in>O que mudou</span>
+      <h2 class="max-w-[680px] font-heading text-[clamp(26px,3.4vw,38px)] font-bold leading-[1.15] tracking-tight" data-in>
+        Buscar não é mais só "abrir o Google"
+      </h2>
+      <p class="mt-5 max-w-[680px] text-[16.5px] leading-[1.75] text-mid" data-in>
+        Uma parte crescente das buscas hoje acontece dentro de ferramentas de Inteligência Artificial —
+        ChatGPT, Perplexity, Gemini. Elas não mostram 10 links azuis: elas dão uma resposta só. Se a sua marca
+        não está estruturada para ser essa resposta, ela simplesmente não existe nessa conversa.
+      </p>
+
+      <div class="mt-12 grid gap-5 sm:grid-cols-2">
+        <div class="rounded-card border border-border bg-glass p-8" data-in>
+          <h3 class="mb-3 flex items-center gap-2.5 font-heading text-[19px] font-semibold">
+            <span class="rounded-md bg-blue-500/14 px-2.5 py-1 text-[11px] font-bold tracking-[.04em] text-blue-400">SEO</span>
+            Busca tradicional
+          </h3>
+          <p class="text-[14.5px] leading-[1.7] text-mid">
+            Otimização técnica e de conteúdo para ranquear bem no Google: velocidade, estrutura, palavras-chave,
+            autoridade de domínio e experiência de página. A base que sustenta tudo o que vem depois.
+          </p>
+        </div>
+        <div class="rounded-card border border-border bg-glass p-8" data-in>
+          <h3 class="mb-3 flex items-center gap-2.5 font-heading text-[19px] font-semibold">
+            <span class="rounded-md bg-purple-500/16 px-2.5 py-1 text-[11px] font-bold tracking-[.04em] text-purple-300">GEO</span>
+            Busca por IA
+          </h3>
+          <p class="text-[14.5px] leading-[1.7] text-mid">
+            Generative Engine Optimization: estruturar dados, conteúdo e autoridade para que modelos de IA
+            citem e recomendem sua marca diretamente nas respostas que eles geram. É SEO técnico aplicado a um
+            público novo — as próprias IAs.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIFERENCIAL -->
+  <section class="bg-bg-2 px-6 py-22">
+    <div class="mx-auto max-w-[1080px]">
+      <span class="mb-3.5 block font-heading text-xs font-semibold uppercase tracking-[.16em] text-red-hi" data-in>Nosso diferencial</span>
+      <h2 class="max-w-[680px] font-heading text-[clamp(26px,3.4vw,38px)] font-bold leading-[1.15] tracking-tight" data-in>
+        Performance não é discurso — é o que medimos
+      </h2>
+      <p class="mt-5 max-w-[680px] text-[16.5px] leading-[1.75] text-mid" data-in>
+        A maioria das agências fala em SEO só como conteúdo e palavra-chave. Nós também construímos a base técnica
+        — porque um site lento ou mal estruturado nunca vai ranquear bem, não importa quanto conteúdo se produza.
+      </p>
+
+      <div class="mt-12 grid gap-5 md:grid-cols-3">
+        <div class="rounded-card border border-border bg-glass p-7 transition-all hover:-translate-y-1 hover:border-red/30 hover:shadow-[0_16px_40px_rgba(228,41,41,0.10)]" data-in>
+          <div class="mb-4.5 flex h-12 w-12 items-center justify-center rounded-[13px] bg-red/8 text-[22px]">⚡</div>
+          <h3 class="mb-2.5 font-heading text-[17px] font-semibold">Lighthouse 90+ de verdade</h3>
+          <p class="text-sm leading-[1.65] text-mid">Sites auditados e otimizados nas 4 métricas do Google: Performance, Acessibilidade, Boas Práticas e SEO.</p>
+          <div class="mt-4.5 flex flex-wrap gap-2.5">
+            <span class="rounded-lg bg-emerald-500/14 px-3 py-1.5 font-heading text-xs font-bold text-emerald-400">Performance</span>
+            <span class="rounded-lg bg-emerald-500/14 px-3 py-1.5 font-heading text-xs font-bold text-emerald-400">Acessibilidade</span>
+            <span class="rounded-lg bg-emerald-500/14 px-3 py-1.5 font-heading text-xs font-bold text-emerald-400">SEO</span>
+          </div>
+        </div>
+        <div class="rounded-card border border-border bg-glass p-7 transition-all hover:-translate-y-1 hover:border-red/30 hover:shadow-[0_16px_40px_rgba(228,41,41,0.10)]" data-in>
+          <div class="mb-4.5 flex h-12 w-12 items-center justify-center rounded-[13px] bg-red/8 text-[22px]">🤖</div>
+          <h3 class="mb-2.5 font-heading text-[17px] font-semibold">Construção com IA de ponta</h3>
+          <p class="text-sm leading-[1.65] text-mid">Usamos ferramentas como Claude Code para desenvolver com qualidade de engenharia acima da média do mercado, em muito menos tempo.</p>
+        </div>
+        <div class="rounded-card border border-border bg-glass p-7 transition-all hover:-translate-y-1 hover:border-red/30 hover:shadow-[0_16px_40px_rgba(228,41,41,0.10)]" data-in>
+          <div class="mb-4.5 flex h-12 w-12 items-center justify-center rounded-[13px] bg-red/8 text-[22px]">🎯</div>
+          <h3 class="mb-2.5 font-heading text-[17px] font-semibold">Mentalidade de performance</h3>
+          <p class="text-sm leading-[1.65] text-mid">Vem de quem vive tráfego pago todos os dias: tudo é medido, testado e otimizado por dado — não por achismo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- METODOLOGIA -->
+  <section class="px-6 py-22">
+    <div class="mx-auto max-w-[1080px]">
+      <span class="mb-3.5 block font-heading text-xs font-semibold uppercase tracking-[.16em] text-red-hi" data-in>Como trabalhamos</span>
+      <h2 class="max-w-[680px] font-heading text-[clamp(26px,3.4vw,38px)] font-bold leading-[1.15] tracking-tight" data-in>
+        Metodologia estruturada, do técnico ao GEO
+      </h2>
+
+      <div class="mt-13 flex flex-col">
+        {[
+          { n: "1", t: "Auditoria Técnica", d: "Análise completa de performance, indexação, Core Web Vitals, estrutura e dados estruturados (schema.org)." },
+          { n: "2", t: "Correção e Otimização On-Page", d: "Ajustes técnicos, velocidade, arquitetura de conteúdo e experiência de página para atingir Lighthouse 90+." },
+          { n: "3", t: "Conteúdo Estratégico", d: "Conteúdo pensado para autoridade de tópico — o que Google e IAs generativas mais valorizam hoje." },
+          { n: "4", t: "GEO — Otimização para IA", d: "Estruturação de dados e conteúdo para que ferramentas como ChatGPT e Perplexity citem sua marca nas respostas." },
+          { n: "5", t: "Monitoramento e Escala", d: "Acompanhamento contínuo de posições, tráfego orgânico e visibilidade em buscadores de IA." },
+        ].map((step, i, arr) => (
+          <div class={`grid grid-cols-[56px_1fr] gap-5.5 border-t border-border py-6.5 ${i === arr.length - 1 ? "border-b" : ""}`} data-in>
+            <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-red to-red-lo font-heading text-base font-bold text-white">{step.n}</div>
+            <div>
+              <h3 class="mb-1.5 font-heading text-[17px] font-semibold">{step.t}</h3>
+              <p class="max-w-[560px] text-[14.5px] leading-[1.65] text-mid">{step.d}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CALC BANNER -->
+  <section class="px-6 py-11">
+    <div class="mx-auto max-w-[1080px]">
+      <div class="flex flex-wrap items-center justify-between gap-8 rounded-card border border-red/28 bg-gradient-to-br from-red/12 to-red-lo/6 p-10" data-in>
+        <div>
+          <span class="mb-2 block font-heading text-xs font-semibold uppercase tracking-[.16em] text-red-hi">Simulador</span>
+          <h3 class="mb-2 font-heading text-[22px] font-bold tracking-tight">Quer saber o escopo exato do seu projeto?</h3>
+          <p class="max-w-[460px] text-sm leading-relaxed text-mid">Escolha quantas landing pages, cidades e o objetivo de ranking — em 1 minuto você tem um resumo completo.</p>
+        </div>
+        <BtnPrimary href="/calculadora" class="shrink-0">Simular meu projeto →</BtnPrimary>
+      </div>
+    </div>
+  </section>
+
+  <!-- OFERTA -->
+  <section id="oferta" class="bg-bg-2 px-6 py-22">
+    <div class="mx-auto max-w-[1080px]">
+      <span class="mb-3.5 block font-heading text-xs font-semibold uppercase tracking-[.16em] text-red-hi" data-in>O que entregamos</span>
+      <h2 class="max-w-[680px] font-heading text-[clamp(26px,3.4vw,38px)] font-bold leading-[1.15] tracking-tight" data-in>Pacotes de SEO &amp; GEO</h2>
+      <p class="mt-5 max-w-[680px] text-[16.5px] leading-[1.75] text-mid" data-in>Cada projeto é dimensionado para o seu momento. Fale com a gente para desenhar o plano certo.</p>
+
+      <div class="mt-12 grid items-stretch gap-5.5 md:grid-cols-3">
+        <div class="flex flex-col rounded-card border border-border bg-glass p-8 transition-all hover:-translate-y-1 hover:border-red/30" data-in>
+          <h3 class="mb-2.5 font-heading text-xl font-bold">SEO Técnico</h3>
+          <p class="mb-5.5 text-sm leading-relaxed text-mid">Base para qualquer estratégia de busca funcionar.</p>
+          <ul class="mb-6.5 flex flex-1 flex-col gap-2.5">
+            {["Auditoria técnica completa", "Correção de Core Web Vitals", "Dados estruturados (schema.org)", "Otimização de indexação e sitemap", "Meta tags e Open Graph organizados"].map((f) => (
+              <li class="flex gap-2.5 text-[13.5px] leading-snug"><span class="shrink-0 font-bold text-red-hi">✓</span>{f}</li>
+            ))}
+          </ul>
+          <a href={waLink("Olá, quero saber mais sobre SEO Técnico")} target="_blank" rel="noopener" class="flex items-center justify-center gap-2 rounded-full border border-border-hi bg-glass-hi px-4.5 py-3.5 font-heading text-sm font-semibold no-underline transition-colors hover:border-red hover:bg-red">
+            Falar sobre este pacote
+          </a>
+        </div>
+
+        <div class="flex flex-col rounded-card border border-red/40 bg-gradient-to-b from-red/7 to-glass p-8 transition-all hover:-translate-y-1" data-in>
+          <span class="mb-4 self-start rounded-full bg-red px-3 py-1.5 font-heading text-[11px] font-bold tracking-wide text-white">Mais Completo</span>
+          <h3 class="mb-2.5 font-heading text-xl font-bold">SEO de Conteúdo &amp; GEO</h3>
+          <p class="mb-5.5 text-sm leading-relaxed text-mid">Tudo do SEO Técnico, mais autoridade e presença em buscadores de IA.</p>
+          <ul class="mb-6.5 flex flex-1 flex-col gap-2.5">
+            {["Tudo do SEO Técnico", "Estratégia de conteúdo por tópico", "Otimização para GEO (ChatGPT, Perplexity, Gemini)", "Estruturação de autoridade de marca", "Relatórios de posição e visibilidade"].map((f) => (
+              <li class="flex gap-2.5 text-[13.5px] leading-snug"><span class="shrink-0 font-bold text-red-hi">✓</span>{f}</li>
+            ))}
+          </ul>
+          <a href={waLink("Olá, quero saber mais sobre SEO de Conteúdo e GEO")} target="_blank" rel="noopener" class="flex items-center justify-center gap-2 rounded-full bg-red px-4.5 py-3.5 font-heading text-sm font-semibold text-white no-underline">
+            Falar sobre este pacote
+          </a>
+        </div>
+
+        <div class="flex flex-col rounded-card border border-border bg-glass p-8 transition-all hover:-translate-y-1 hover:border-red/30" data-in>
+          <h3 class="mb-2.5 font-heading text-xl font-bold">Site de Alta Performance</h3>
+          <p class="mb-5.5 text-sm leading-relaxed text-mid">Site ou landing page novo, construído já com SEO e GEO no DNA.</p>
+          <ul class="mb-6.5 flex flex-1 flex-col gap-2.5">
+            {["Construção com stack moderna e IA", "Lighthouse 90+ desde o lançamento", "SEO técnico e GEO aplicados desde a raiz", "Design alinhado à sua marca"].map((f) => (
+              <li class="flex gap-2.5 text-[13.5px] leading-snug"><span class="shrink-0 font-bold text-red-hi">✓</span>{f}</li>
+            ))}
+          </ul>
+          <a href={waLink("Olá, quero um site de alta performance")} target="_blank" rel="noopener" class="flex items-center justify-center gap-2 rounded-full border border-border-hi bg-glass-hi px-4.5 py-3.5 font-heading text-sm font-semibold no-underline transition-colors hover:border-red hover:bg-red">
+            Falar sobre este pacote
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="px-6 py-22">
+    <div class="mx-auto max-w-[1080px]">
+      <span class="mb-3.5 block font-heading text-xs font-semibold uppercase tracking-[.16em] text-red-hi" data-in>Dúvidas comuns</span>
+      <h2 class="max-w-[680px] font-heading text-[clamp(26px,3.4vw,38px)] font-bold leading-[1.15] tracking-tight" data-in>Perguntas frequentes</h2>
+      <FaqAccordion items={seoFaq} />
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="relative px-6 py-24 text-center">
+    <div class="pointer-events-none absolute bottom-[-200px] left-1/2 h-[460px] w-[460px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(228,41,41,.25),transparent_70%)] blur-[70px]"></div>
+    <div class="relative z-[2]">
+      <h2 class="font-heading text-[clamp(26px,4vw,40px)] font-bold tracking-tight" data-in>Vamos estruturar seu SEO e GEO?</h2>
+      <p class="mx-auto mt-4.5 mb-9 max-w-[520px] text-base text-mid" data-in>Fale com a gente e desenhamos o plano certo para o seu momento.</p>
+      <BtnPrimary href={waLink("Olá, quero saber mais sobre SEO e GEO")} target="_blank" rel="noopener">Falar com especialista →</BtnPrimary>
+    </div>
+  </section>
+</BaseLayout>

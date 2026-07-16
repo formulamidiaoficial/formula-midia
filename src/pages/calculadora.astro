@@ -1,0 +1,39 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Badge from "../components/ui/Badge.astro";
+import Calculator from "../components/islands/Calculator.tsx";
+import { breadcrumbSchema } from "../data/schema";
+
+const schema = breadcrumbSchema([
+  { name: "Home", path: "/" },
+  { name: "SEO & GEO", path: "/seo" },
+  { name: "Calculadora", path: "/calculadora" },
+]);
+---
+
+<BaseLayout
+  title="Calculadora de Projeto SEO & GEO | Fórmula Mídia"
+  description="Simule seu projeto de SEO e GEO: escolha landing pages, páginas de cidade e objetivo de ranking, e receba um resumo pronto para conversar com a gente."
+  path="/calculadora"
+  schema={schema}
+>
+  <header class="relative overflow-hidden px-6 pb-6 pt-16 text-center">
+    <div class="pointer-events-none absolute -left-24 -top-44 h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,rgba(228,41,41,.22),transparent_70%)] blur-[80px]"></div>
+    <div class="pointer-events-none absolute -right-28 -top-24 h-[380px] w-[380px] rounded-full bg-[radial-gradient(circle,rgba(180,20,20,.18),transparent_70%)] blur-[80px]"></div>
+
+    <div class="relative z-[2] mx-auto max-w-[680px]">
+      <a href="/seo" class="mb-6 inline-flex items-center gap-1.5 font-heading text-[13px] font-semibold text-mid no-underline hover:text-ink">← Voltar para SEO &amp; GEO</a>
+      <div class="mb-6"><Badge label="Simulador de Projeto" /></div>
+      <h1 class="font-heading text-[clamp(28px,4.4vw,44px)] font-bold leading-[1.12] tracking-tight">
+        Monte o escopo do <span class="text-red-hi">seu projeto de SEO &amp; GEO</span>
+      </h1>
+      <p class="mx-auto mt-4 max-w-[520px] text-base leading-relaxed text-mid">
+        Ajuste as opções abaixo e veja o resumo do seu projeto em tempo real. No final, fale com a gente já com tudo definido.
+      </p>
+    </div>
+  </header>
+
+  <div class="mx-auto max-w-[1140px] px-6 pb-24">
+    <Calculator client:load />
+  </div>
+</BaseLayout>
