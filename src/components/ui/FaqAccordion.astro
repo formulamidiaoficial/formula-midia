@@ -1,0 +1,20 @@
+---
+import type { FaqItem } from "../../data/schema";
+
+interface Props {
+  items: FaqItem[];
+}
+const { items } = Astro.props;
+---
+
+<div class="mt-11 flex flex-col gap-3">
+  {items.map((item) => (
+    <details class="group rounded-2xl border border-border bg-glass [&_summary::-webkit-details-marker]:hidden">
+      <summary class="flex cursor-pointer list-none items-center justify-between gap-4 px-6 py-5 font-heading text-[15px] font-semibold">
+        {item.question}
+        <span class="shrink-0 text-xl text-red-hi transition-transform group-open:rotate-45">+</span>
+      </summary>
+      <p class="px-6 pb-6 text-sm leading-relaxed text-mid">{item.answer}</p>
+    </details>
+  ))}
+</div>

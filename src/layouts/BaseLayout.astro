@@ -1,0 +1,58 @@
+---
+import "../styles/global.css";
+import Meta from "../components/seo/Meta.astro";
+import Schema from "../components/seo/Schema.astro";
+import Nav from "../components/nav/Nav.astro";
+import Footer from "../components/nav/Footer.astro";
+import { organizationSchema } from "../data/schema";
+
+interface Props {
+  title: string;
+  description: string;
+  path?: string;
+  image?: string;
+  schema?: Record<string, any> | Record<string, any>[];
+  /** Set true only on the homepage — avoids duplicating the Organization
+   * schema on every single page. */
+  includeOrganizationSchema?: boolean;
+}
+
+const {
+  title,
+  description,
+  path,
+  image,
+  schema,
+  includeOrganizationSchema = false,
+} = Astro.props;
+
+const schemaItems = [
+  ...(includeOrganizationSchema ? [organizationSchema()] : []),
+  ...(schema ? (Array.isArray(schema) ? schema : [schema]) : []),
+];
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="theme-color" content="#E42929" />
+
+    <Meta title={title} description={description} path={path} image={image} />
+    {schemaItems.length > 0 && <Schema data={schemaItems} />}
+
+    <link rel="icon" href="/assets/logo.png" type="image/png" />
+    <link rel="apple-touch-icon" href="/assets/logo.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+  </head>
+  <body>
+    <Nav />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+    <script src="/scripts/reveal.js" is:inline defer></script>
+  </body>
+</html>

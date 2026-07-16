@@ -1,0 +1,39 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Badge from "../components/ui/Badge.astro";
+import BtnPrimary from "../components/ui/BtnPrimary.astro";
+import BtnGhost from "../components/ui/BtnGhost.astro";
+import FaqAccordion from "../components/ui/FaqAccordion.astro";
+import { waLink } from "../data/schema";
+
+// Skeleton page — proves the foundation (layout, tokens, components) works
+// end-to-end. Full home page content lands in Phase 1.
+---
+
+<BaseLayout
+  title="Fórmula Mídia | Fundação do projeto (Fase 0)"
+  description="Página esqueleto de verificação da Fase 0 — layout, tokens de design e componentes base."
+  includeOrganizationSchema
+>
+  <section class="mx-auto max-w-3xl px-6 py-24 text-center">
+    <Badge label="Fase 0 — Fundação" />
+    <h1 class="mt-6 font-heading text-4xl font-bold tracking-tight" data-in>
+      Fundação do projeto <span class="text-red-hi">funcionando</span>
+    </h1>
+    <p class="mx-auto mt-5 max-w-xl text-base leading-relaxed text-mid" data-in>
+      Layout, tokens de design (cores, fontes), navegação, rodapé e componentes base
+      estão prontos. O conteúdo completo da Home entra na Fase 1.
+    </p>
+    <div class="mt-8 flex justify-center gap-3" data-in>
+      <BtnPrimary href={waLink("Teste da Fase 0")} target="_blank" rel="noopener">Botão primário →</BtnPrimary>
+      <BtnGhost href="/">Botão secundário</BtnGhost>
+    </div>
+
+    <FaqAccordion
+      items={[
+        { question: "Isso é a página final?", answer: "Não — é só uma verificação de que a fundação (Fase 0) funciona antes de portar o conteúdo completo na Fase 1." },
+        { question: "O FAQ usa JavaScript?", answer: "Não, usa <details>/<summary> nativo do HTML — zero JavaScript." },
+      ]}
+    />
+  </section>
+</BaseLayout>

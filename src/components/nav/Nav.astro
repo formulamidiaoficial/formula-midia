@@ -1,0 +1,44 @@
+---
+import { waLink } from "../../data/schema";
+
+interface NavLink {
+  label: string;
+  href: string;
+}
+
+const links: NavLink[] = [
+  { label: "Home", href: "/" },
+  { label: "O Manifesto", href: "/manifesto" },
+  { label: "Serviços", href: "/servicos" },
+  { label: "SEO & GEO", href: "/seo" },
+];
+---
+
+<nav class="sticky top-0 z-50 border-b border-border bg-bg/75 backdrop-blur-md">
+  <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+    <a href="/" class="flex items-center gap-2.5 text-ink no-underline">
+      <img src="/assets/logo.png" alt="Fórmula Mídia" class="h-[26px] w-[26px]" />
+      <span class="font-heading text-[15px] font-bold tracking-tight">FÓRMULA MÍDIA</span>
+    </a>
+
+    <div class="hidden items-center gap-7 md:flex">
+      {links.map((link) => (
+        <a
+          href={link.href}
+          class="font-heading text-[13.5px] font-medium text-mid no-underline transition-colors hover:text-ink"
+        >
+          {link.label}
+        </a>
+      ))}
+    </div>
+
+    <a
+      href={waLink("Olá, quero saber mais sobre os serviços Fórmula Mídia")}
+      target="_blank"
+      rel="noopener"
+      class="flex items-center gap-2 rounded-full bg-red px-4 py-2.5 font-heading text-[13px] font-semibold text-white no-underline shadow-[0_4px_18px_rgba(228,41,41,0.25)] transition-transform hover:-translate-y-px"
+    >
+      Falar com especialista
+    </a>
+  </div>
+</nav>

@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+@import "@fontsource/space-grotesk/400.css";
+@import "@fontsource/space-grotesk/500.css";
+@import "@fontsource/space-grotesk/600.css";
+@import "@fontsource/space-grotesk/700.css";
+@import "@fontsource/inter/300.css";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+
+@theme {
+  --font-heading: "Space Grotesk", sans-serif;
+  --font-body: "Inter", -apple-system, sans-serif;
+
+  --color-red: #E42929;
+  --color-red-hi: #FF4F4F;
+  --color-red-lo: #A81C1C;
+  --color-bg: #09090B;
+  --color-bg-2: #0F0F12;
+  --color-glass: rgba(255, 255, 255, .045);
+  --color-glass-hi: rgba(255, 255, 255, .075);
+  --color-border: rgba(255, 255, 255, .08);
+  --color-border-hi: rgba(255, 255, 255, .16);
+  --color-ink: #F4F4F5;
+  --color-mid: rgba(255, 255, 255, .58);
+  --color-dim: rgba(255, 255, 255, .30);
+
+  --radius-card: 20px;
+  --radius-card-sm: 14px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(228, 41, 41, .25);
+  border-radius: 2px;
+}
+
+/* shared "reveal on scroll" entrance state; toggled by scripts/reveal.js */
+[data-in] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity .6s cubic-bezier(.22,1,.36,1), transform .6s cubic-bezier(.22,1,.36,1);
+}
+[data-in].in {
+  opacity: 1;
+  transform: translateY(0);
+}
