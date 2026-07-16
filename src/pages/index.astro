@@ -4,36 +4,436 @@ import Badge from "../components/ui/Badge.astro";
 import BtnPrimary from "../components/ui/BtnPrimary.astro";
 import BtnGhost from "../components/ui/BtnGhost.astro";
 import FaqAccordion from "../components/ui/FaqAccordion.astro";
-import { waLink } from "../data/schema";
+import { waLink, faqPageSchema } from "../data/schema";
+import { homeFaq } from "../data/faq/home";
 
-// Skeleton page — proves the foundation (layout, tokens, components) works
-// end-to-end. Full home page content lands in Phase 1.
+const schema = faqPageSchema(homeFaq);
+
+const platformFeatures = [
+  {
+    n: 1,
+    title: "Dashboards Profissionais",
+    desc: "Painéis exclusivos que mostram qual campanha, anúncio ou criativo gerou cada lead. Gestores de tráfego de alta performance utilizam essas ferramentas para otimizar campanhas de forma contínua.",
+  },
+  {
+    n: 2,
+    title: "Rastreamento via WhatsApp",
+    desc: "Identificação da origem técnica de cada conversa iniciada no WhatsApp. Gestores de tráfego de alta performance utilizam essas ferramentas para otimizar campanhas de forma contínua.",
+  },
+  {
+    n: 3,
+    title: "CRM Visual com Kanban",
+    desc: "Gestão visual dos leads e acompanhamento das etapas do processo comercial. Gestores de tráfego de alta performance utilizam essas ferramentas para otimizar campanhas de forma contínua.",
+  },
+  {
+    n: 4,
+    title: "Páginas de Conversão e SEO",
+    desc: "Desenvolvimento de sites e landing pages de altíssima performance, com Lighthouse 90+ (muitos projetos com nota 100 em Performance, Acessibilidade, Boas Práticas e SEO). Construímos com stack moderna e IA (Claude Code e outras ferramentas), aplicando SEO técnico e GEO (otimização para mecanismos de busca por IA), para que tráfego pago e tráfego orgânico trabalhem juntos na geração de oportunidades de negócio.",
+  },
+  {
+    n: 5,
+    title: "Relatórios Automatizados",
+    desc: "Relatórios periódicos enviados diretamente no WhatsApp com dados claros das campanhas. Gestores de tráfego de alta performance utilizam essas ferramentas para otimizar campanhas de forma contínua.",
+  },
+  {
+    n: 6,
+    title: "Otimização por Inteligência Artificial",
+    desc: "Tecnologia que ajusta parâmetros técnicos das campanhas para manter eficiência do investimento.",
+  },
+  {
+    n: 7,
+    title: "Monitoramento de Instagram Orgânico",
+    desc: "Acompanhe o desempenho do Instagram orgânico da empresa, visualizando métricas de alcance, engajamento e crescimento diretamente na plataforma.",
+  },
+  {
+    n: 8,
+    title: "Segurança de Dados",
+    desc: "Infraestrutura com criptografia e conformidade com LGPD e GDPR.",
+  },
+];
+
+const methodSteps = [
+  { l: "M", t: "Mapeamento Estratégico", d: "Análise do negócio, mercado e oportunidades de investimento em tráfego pago." },
+  { l: "I", t: "Implementação da Estrutura", d: "Configuração das plataformas de anúncios, rastreamento e integração das ferramentas." },
+  { l: "D", t: "Desenvolvimento de Campanhas", d: "Criação e ativação das campanhas de anúncios com segmentação estratégica." },
+  { l: "I", t: "Integração e Monitoramento", d: "Acompanhamento contínuo das campanhas e rastreamento do fluxo de leads." },
+  { l: "A", t: "Análise de Dados e Escala", d: "Avaliação de resultados e identificação de oportunidades de crescimento." },
+];
+
+const differentials = [
+  "Monitoramento contínuo das campanhas",
+  "Clareza sobre a origem dos leads",
+  "Dashboards profissionais de acompanhamento",
+  "Integração com CRM e fluxo de atendimento",
+  "Rastreamento técnico de campanhas",
+  "Otimização contínua baseada em dados",
+  "Infraestrutura tecnológica dedicada",
+  "Gestão estruturada para escalabilidade",
+];
+
+const testimonials = [
+  { quote: "A Fórmula Mídia transformou nosso ROI. Saímos de um CPA de R$150 para R$45 em três meses.", name: "João Silva", role: "CEO — TechSolutions" },
+  { quote: "Finalmente temos um parceiro que entende nossa estratégia comercial.", name: "Maria Oliveira", role: "Diretora de Marketing — InnovateCorp" },
+  { quote: "Aumentamos nossas conversões em 280% e reduzimos significativamente o custo por aquisição.", name: "Carlos Mendes", role: "Diretor Comercial — GrowthBiz" },
+];
+
+const pricingTiers = [
+  {
+    name: "Fórmula Aceleração",
+    price: "1.200",
+    desc: "Gestão profissional de tráfego pago com estrutura completa de geração de leads",
+    feats: ["Gestão profissional de tráfego", "Google Ads ou Meta Ads", "Estruturação de campanhas", "Otimização semanal", "Estratégia de geração de leads", "Relatório mensal", "Dashboard exclusivo Fórmula Mídia", "Suporte estratégico"],
+    note: "Gestão até R$5.000 de investimento em mídia. Acima disso, aplicar acréscimo de 5%.",
+    featured: false,
+  },
+  {
+    name: "Fórmula Conversão",
+    price: "2.200",
+    desc: "Tudo do pacote anterior + CRM integrado para aumentar conversão e evitar perda de leads",
+    feats: ["Tudo do Fórmula Aceleração", "CRM integrado ao WhatsApp", "Automação de atendimento", "Organização de leads", "Pipeline de vendas", "Funil de negociação", "Tracking completo do lead até a venda"],
+    note: "Objetivo: aumentar a conversão e evitar perda de leads.",
+    featured: true,
+  },
+  {
+    name: "Fórmula Domínio",
+    price: "3.500",
+    desc: "Solução completa com planejamento estratégico, funil de vendas e gestão criativa profissional",
+    feats: ["Tudo do Fórmula Conversão", "Planejamento estratégico", "Estrutura de funil de vendas", "Criação de landing pages", "Campanhas de escala", "Otimização avançada de anúncios", "Gestão completa de criativos (cards, vídeos, fotos)", "Gestão criativa pela Essenzia"],
+    note: "Solução completa para empresas que desejam dominar seu mercado.",
+    featured: false,
+  },
+];
+
+const comparisonRows = [
+  { label: "Gestão de Tráfego", vals: [true, true, true] },
+  { label: "Google Ads / Meta Ads", vals: [true, true, true] },
+  { label: "CRM + WhatsApp", vals: [false, true, true] },
+  { label: "Automação de Atendimento", vals: [false, true, true] },
+  { label: "Planejamento Estratégico", vals: [false, false, true] },
+  { label: "Landing Pages", vals: [false, false, true] },
+  { label: "Gestão de Criativos", vals: [false, false, true] },
+  { label: "Dashboard Exclusivo", vals: [true, true, true] },
+];
 ---
 
 <BaseLayout
-  title="Fórmula Mídia | Fundação do projeto (Fase 0)"
-  description="Página esqueleto de verificação da Fase 0 — layout, tokens de design e componentes base."
+  title="Gestão de Tráfego Pago e SEO/GEO | Fórmula Mídia - Google Ads, Meta Ads e Performance"
+  description="Agência de performance especializada em tráfego pago (Google Ads e Meta Ads), SEO técnico e GEO (otimização para IA). Sites com Lighthouse 90+. Geração de clientes qualificados em todo o Brasil."
+  path="/"
+  schema={schema}
   includeOrganizationSchema
 >
-  <section class="mx-auto max-w-3xl px-6 py-24 text-center">
-    <Badge label="Fase 0 — Fundação" />
-    <h1 class="mt-6 font-heading text-4xl font-bold tracking-tight" data-in>
-      Fundação do projeto <span class="text-red-hi">funcionando</span>
-    </h1>
-    <p class="mx-auto mt-5 max-w-xl text-base leading-relaxed text-mid" data-in>
-      Layout, tokens de design (cores, fontes), navegação, rodapé e componentes base
-      estão prontos. O conteúdo completo da Home entra na Fase 1.
-    </p>
-    <div class="mt-8 flex justify-center gap-3" data-in>
-      <BtnPrimary href={waLink("Teste da Fase 0")} target="_blank" rel="noopener">Botão primário →</BtnPrimary>
-      <BtnGhost href="/">Botão secundário</BtnGhost>
-    </div>
+  <!-- HERO -->
+  <header class="relative overflow-hidden px-6 pb-20 pt-24 text-center">
+    <div class="pointer-events-none absolute -left-32 -top-40 h-[460px] w-[460px] rounded-full bg-[radial-gradient(circle,rgba(228,41,41,.25),transparent_70%)] blur-[70px]"></div>
+    <div class="pointer-events-none absolute -right-36 -top-20 h-[380px] w-[380px] rounded-full bg-[radial-gradient(circle,rgba(180,20,20,.20),transparent_70%)] blur-[70px]"></div>
 
-    <FaqAccordion
-      items={[
-        { question: "Isso é a página final?", answer: "Não — é só uma verificação de que a fundação (Fase 0) funciona antes de portar o conteúdo completo na Fase 1." },
-        { question: "O FAQ usa JavaScript?", answer: "Não, usa <details>/<summary> nativo do HTML — zero JavaScript." },
-      ]}
-    />
+    <div class="relative z-[2] mx-auto max-w-[820px]">
+      <Badge label="Gestão Estratégica de Tráfego" />
+      <h1 class="mt-6 font-heading text-[clamp(32px,5.2vw,54px)] font-bold leading-[1.1] tracking-tight" data-in>
+        Gestão de Tráfego Pago Estratégica
+      </h1>
+      <p class="mx-auto mt-3 max-w-[620px] text-lg text-mid" data-in>Saiba exatamente qual anúncio gerou cada lead</p>
+
+      <p class="mx-auto mt-7 max-w-[640px] text-[clamp(15px,1.6vw,18px)] leading-relaxed text-mid" data-in>
+        Gestão estratégica de tráfego pago com páginas de conversão, rastreamento real de leads, dashboards
+        profissionais e controle total da jornada do cliente.
+      </p>
+      <p class="mx-auto mt-4 max-w-[640px] text-[15px] leading-relaxed text-dim" data-in>
+        Mais do que criar anúncios, estruturamos todo o processo de aquisição de clientes para que o investimento
+        em mídia seja conduzido com clareza, monitoramento e controle.
+      </p>
+      <p class="mt-5 font-heading text-sm font-semibold text-red-hi" data-in>Menos tentativa. Mais direção.</p>
+
+      <div class="mt-8 flex flex-wrap justify-center gap-3.5" data-in>
+        <BtnPrimary href={waLink("Olá, quero saber mais sobre os serviços Fórmula Mídia")} target="_blank" rel="noopener">
+          Falar com especialista →
+        </BtnPrimary>
+        <BtnGhost href="#metodo">Ver método</BtnGhost>
+      </div>
+      <p class="mt-4 text-xs text-dim" data-in>Diagnóstico estratégico inicial.</p>
+
+      <div class="mt-14 flex flex-wrap justify-center gap-x-14 gap-y-6" data-in>
+        <div class="text-center"><div class="font-heading text-[28px] font-bold tracking-tight text-red-hi">100+</div><div class="mt-1 text-[11px] uppercase tracking-[.06em] text-dim">Clientes</div></div>
+        <div class="text-center"><div class="font-heading text-[28px] font-bold tracking-tight text-red-hi">98%</div><div class="mt-1 text-[11px] uppercase tracking-[.06em] text-dim">Satisfação</div></div>
+        <div class="text-center"><div class="font-heading text-[28px] font-bold tracking-tight text-red-hi">+10</div><div class="mt-1 text-[11px] uppercase tracking-[.06em] text-dim">Anos de experiência</div></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- QUALIFIER -->
+  <section class="bg-bg-2 px-6 py-20">
+    <div class="mx-auto max-w-[820px] text-center">
+      <h2 class="font-heading text-[clamp(24px,3.2vw,34px)] font-bold tracking-tight" data-in>Este serviço é para sua empresa?</h2>
+      <p class="mt-4 text-base text-mid" data-in>Responda estas três perguntas e descubra se a Fórmula Mídia faz sentido para a sua empresa.</p>
+
+      <div class="mx-auto mt-10 flex max-w-[560px] flex-col gap-4 text-left">
+        {[
+          "Busca investir em tráfego pago com estratégia e organização?",
+          "Você sente que poderia gerar mais oportunidades de venda com uma estrutura melhor de marketing?",
+          "Quer ter clareza sobre onde o seu investimento em anúncios está sendo aplicado?",
+        ].map((q) => (
+          <div class="rounded-2xl border border-border bg-glass p-5 font-heading text-[15px] font-semibold" data-in>{q}</div>
+        ))}
+      </div>
+
+      <p class="mt-8 text-base" data-in>Se suas respostas forem <strong>"sim"</strong>, a Fórmula Mídia faz sentido para você.</p>
+
+      <div class="mx-auto mt-7 flex max-w-[560px] flex-col gap-2.5 text-left" data-in>
+        {["Monitoramento contínuo das campanhas", "Rastreamento completo da origem dos leads", "Acompanhamento da jornada do cliente"].map((f) => (
+          <div class="flex items-center gap-2.5 text-sm text-mid"><span class="font-bold text-red-hi">✓</span>{f}</div>
+        ))}
+      </div>
+
+      <div class="mt-9">
+        <BtnPrimary href={waLink("Quero crescer com estratégia")} target="_blank" rel="noopener">Quero crescer com estratégia</BtnPrimary>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLATFORM -->
+  <section id="plataforma" class="px-6 py-22">
+    <div class="mx-auto max-w-[1080px]">
+      <h2 class="max-w-[720px] font-heading text-[clamp(26px,3.4vw,38px)] font-bold leading-[1.15] tracking-tight" data-in>
+        Plataforma Completa de Gestão de Tráfego Pago
+      </h2>
+      <div class="mt-5 flex max-w-[720px] flex-col gap-3 text-[16px] leading-[1.75] text-mid" data-in>
+        <p>Disponibilizamos uma infraestrutura tecnológica completa para gestão de tráfego pago de alta performance que permite acompanhar todo o fluxo de geração de leads com total clareza.</p>
+        <p>A plataforma conecta anúncios de Google Ads e Meta Ads, dados, páginas de conversão e atendimento em um único ambiente de gestão estratégica.</p>
+        <p>Assim é possível visualizar desde o anúncio que gerou o lead até o estágio do atendimento, garantindo máximo controle e ROI em suas campanhas.</p>
+      </div>
+
+      <div class="mt-12 grid gap-5 md:grid-cols-2">
+        {platformFeatures.map((f) => (
+          <div class="flex gap-4 rounded-card border border-border bg-glass p-6" data-in>
+            <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-red/10 font-heading text-sm font-bold text-red-hi">{f.n}</div>
+            <div>
+              <h3 class="mb-1.5 font-heading text-[15.5px] font-semibold">{f.title}</h3>
+              <p class="text-[13.5px] leading-relaxed text-mid">{f.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- METHOD -->
+  <section id="metodo" class="bg-bg-2 px-6 py-22">
+    <div class="mx-auto max-w-[1080px]">
+      <h2 class="max-w-[720px] font-heading text-[clamp(26px,3.4vw,38px)] font-bold leading-[1.15] tracking-tight" data-in>
+        Método Fórmula Mídia® — Consultoria de Tráfego Pago
+      </h2>
+      <p class="mt-5 max-w-[720px] text-[16px] leading-[1.75] text-mid" data-in>
+        O Método Fórmula Mídia® organiza toda a consultoria de tráfego pago em um processo estruturado que conecta
+        estratégia, execução e análise de dados. Cada etapa da operação é desenhada para garantir clareza sobre o
+        investimento, controle da geração de leads e capacidade de crescimento das campanhas de Google Ads e Meta
+        Ads em todo o Brasil.
+      </p>
+
+      <div class="mt-11 flex flex-col">
+        {methodSteps.map((s, i, arr) => (
+          <div class={`grid grid-cols-[52px_1fr] gap-5 border-t border-border py-6 ${i === arr.length - 1 ? "border-b" : ""}`} data-in>
+            <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-red to-red-lo font-heading text-base font-bold text-white">{s.l}</div>
+            <div>
+              <h3 class="mb-1 font-heading text-[16px] font-semibold">{s.t}</h3>
+              <p class="max-w-[560px] text-sm leading-relaxed text-mid">{s.d}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-10">
+        <BtnPrimary href={waLink("Vamos conversar sobre sua estratégia")} target="_blank" rel="noopener">Vamos conversar sobre sua estratégia</BtnPrimary>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIFFERENTIALS -->
+  <section id="diferenciais" class="px-6 py-22">
+    <div class="mx-auto max-w-[1080px]">
+      <h2 class="max-w-[720px] font-heading text-[clamp(24px,3.2vw,34px)] font-bold leading-[1.2] tracking-tight" data-in>
+        Agência de Marketing Digital de Performance — Não fazemos apenas anúncios. Fazemos gestão.
+      </h2>
+      <p class="mt-5 max-w-[720px] text-[16px] leading-[1.75] text-mid" data-in>
+        A Fórmula Mídia é uma agência de marketing digital especializada em gestão de tráfego pago de alta
+        performance — nosso foco número 1 — com autoridade também em SEO e GEO (otimização para buscadores de IA).
+        Trabalhamos com uma abordagem estratégica, conectando dados, tecnologia e acompanhamento contínuo para
+        garantir clareza e controle sobre os resultados de suas campanhas.
+      </p>
+
+      <div class="mt-10 grid gap-3 sm:grid-cols-2">
+        {differentials.map((d) => (
+          <div class="flex items-center gap-2.5 rounded-xl border border-border bg-glass px-5 py-4 text-sm" data-in>
+            <span class="font-bold text-red-hi">✓</span>{d}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="depoimentos" class="bg-bg-2 px-6 py-22">
+    <div class="mx-auto max-w-[1080px]">
+      <h2 class="max-w-[720px] font-heading text-[clamp(24px,3.2vw,34px)] font-bold tracking-tight" data-in>O que nossos clientes dizem</h2>
+      <p class="mt-4 max-w-[640px] text-base text-mid" data-in>Resultados reais de empresas que transformaram sua estratégia de tráfego pago com a Fórmula Mídia.</p>
+
+      <div class="mt-11 grid gap-5 md:grid-cols-3">
+        {testimonials.map((t) => (
+          <div class="rounded-card border border-border bg-glass p-7" data-in>
+            <p class="mb-5 text-[14.5px] italic leading-relaxed text-ink">"{t.quote}"</p>
+            <div class="font-heading text-sm font-semibold">{t.name}</div>
+            <div class="text-xs text-dim">{t.role}</div>
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-14 flex flex-wrap justify-center gap-x-14 gap-y-6 border-t border-border pt-11">
+        <div class="text-center" data-in><div class="font-heading text-2xl font-bold text-red-hi">100+</div><div class="mt-1 text-[11px] uppercase tracking-[.05em] text-dim">clientes atendidos</div></div>
+        <div class="text-center" data-in><div class="font-heading text-2xl font-bold text-red-hi">98%</div><div class="mt-1 text-[11px] uppercase tracking-[.05em] text-dim">satisfação de clientes</div></div>
+        <div class="text-center" data-in><div class="font-heading text-2xl font-bold text-red-hi">4.9</div><div class="mt-1 text-[11px] uppercase tracking-[.05em] text-dim">avaliação média</div></div>
+        <div class="text-center" data-in><div class="font-heading text-2xl font-bold text-red-hi">+10</div><div class="mt-1 text-[11px] uppercase tracking-[.05em] text-dim">anos de experiência</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pacotes" class="px-6 py-22">
+    <div class="mx-auto max-w-[1080px]">
+      <h2 class="max-w-[720px] font-heading text-[clamp(26px,3.4vw,38px)] font-bold leading-[1.15] tracking-tight" data-in>
+        Pacotes de Serviços — Consultoria de Tráfego Pago
+      </h2>
+      <p class="mt-5 max-w-[720px] text-[16px] leading-[1.75] text-mid" data-in>
+        Escolha o plano ideal para sua empresa. Cada pacote de consultoria de tráfego pago é estruturado para
+        gerar mais clientes e aumentar suas vendas com Google Ads e Meta Ads em qualquer lugar do Brasil.
+      </p>
+
+      <div class="mt-12 grid items-stretch gap-5 md:grid-cols-3">
+        {pricingTiers.map((tier) => (
+          <div class={`flex flex-col rounded-card border p-8 ${tier.featured ? "border-red/40 bg-gradient-to-b from-red/7 to-glass" : "border-border bg-glass"}`} data-in>
+            {tier.featured && <span class="mb-4 self-start rounded-full bg-red px-3 py-1.5 font-heading text-[11px] font-bold tracking-wide text-white">Mais Popular</span>}
+            <h3 class="font-heading text-xl font-bold">{tier.name}</h3>
+            <div class="mt-3 mb-1 flex items-baseline gap-1.5">
+              <span class="font-heading text-[13px] text-dim">a partir de</span>
+            </div>
+            <div class="mb-4 flex items-baseline gap-1.5">
+              <span class="font-heading text-[15px] text-mid">R$</span>
+              <span class="font-heading text-[34px] font-bold tracking-tight">{tier.price}</span>
+              <span class="text-sm text-dim">/mês</span>
+            </div>
+            <p class="mb-5.5 text-sm leading-relaxed text-mid">{tier.desc}</p>
+            <ul class="mb-6 flex flex-1 flex-col gap-2.5">
+              {tier.feats.map((f) => (
+                <li class="flex gap-2.5 text-[13.5px] leading-snug"><span class="shrink-0 font-bold text-red-hi">✓</span>{f}</li>
+              ))}
+            </ul>
+            <p class="mb-5 text-xs italic leading-relaxed text-dim">Nota: {tier.note}</p>
+            <a
+              href={waLink(`Quero o pacote ${tier.name}`)}
+              target="_blank"
+              rel="noopener"
+              class={`flex items-center justify-center gap-2 rounded-full px-4.5 py-3.5 font-heading text-sm font-semibold no-underline transition-colors ${
+                tier.featured ? "bg-red text-white" : "border border-border-hi bg-glass-hi hover:border-red hover:bg-red"
+              }`}
+            >
+              Quero este pacote
+            </a>
+          </div>
+        ))}
+      </div>
+
+      <!-- COMPARISON TABLE -->
+      <div class="mt-16 overflow-x-auto">
+        <h3 class="mb-6 font-heading text-xl font-bold" data-in>Comparativo Completo</h3>
+        <table class="w-full min-w-[560px] border-collapse text-sm">
+          <thead>
+            <tr class="border-b border-border-hi text-left">
+              <th class="py-3 pr-4 font-heading font-semibold text-mid">Funcionalidade</th>
+              <th class="px-4 py-3 text-center font-heading font-semibold">Aceleração</th>
+              <th class="px-4 py-3 text-center font-heading font-semibold">Conversão</th>
+              <th class="px-4 py-3 text-center font-heading font-semibold">Domínio</th>
+            </tr>
+          </thead>
+          <tbody>
+            {comparisonRows.map((row) => (
+              <tr class="border-b border-border">
+                <td class="py-3.5 pr-4 text-mid">{row.label}</td>
+                {row.vals.map((v) => (
+                  <td class="px-4 py-3.5 text-center">{v ? <span class="font-bold text-red-hi">✓</span> : <span class="text-dim">—</span>}</td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <!-- DASHBOARD PREVIEW -->
+      <div class="mt-16 rounded-card border border-border bg-glass p-9" data-in>
+        <h3 class="font-heading text-xl font-bold">Dashboard Exclusivo Fórmula Mídia</h3>
+        <p class="mt-2.5 max-w-[560px] text-sm leading-relaxed text-mid">Acompanhe em tempo real o desempenho das suas campanhas e o retorno do seu investimento em um único lugar.</p>
+        <div class="mt-7 grid grid-cols-2 gap-4 sm:grid-cols-5">
+          {[
+            { icon: "💰", label: "Investimento em Anúncios" },
+            { icon: "📊", label: "Leads Gerados" },
+            { icon: "💵", label: "Custo por Lead" },
+            { icon: "✅", label: "Vendas Geradas" },
+            { icon: "📈", label: "Desempenho das Campanhas" },
+          ].map((item) => (
+            <div class="rounded-xl border border-border bg-bg-2 p-4 text-center">
+              <div class="mb-2 text-2xl">{item.icon}</div>
+              <div class="text-[11px] leading-tight text-dim">{item.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="mt-16 text-center" data-in>
+        <h3 class="font-heading text-2xl font-bold tracking-tight">Pronto para gerar mais clientes?</h3>
+        <p class="mx-auto mt-3 max-w-[480px] text-mid">Escolha o pacote ideal e comece a transformar seu investimento em mídia em resultados reais.</p>
+        <div class="mt-7"><BtnPrimary href={waLink("Olá, quero saber mais sobre os pacotes")} target="_blank" rel="noopener">Falar com especialista →</BtnPrimary></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEO LOCAL CONTENT (condensed — same information, less repetition than the original) -->
+  <section class="bg-bg-2 px-6 py-22">
+    <div class="mx-auto max-w-[1080px]">
+      <div class="grid gap-10 md:grid-cols-2">
+        <div data-in>
+          <h3 class="mb-2.5 font-heading text-lg font-bold">Agência de Tráfego Pago no Brasil</h3>
+          <p class="text-sm leading-relaxed text-mid">A Fórmula Mídia é uma agência especializada em gestão de tráfego pago para empresas em todo o Brasil. Oferecemos soluções completas de Google Ads, Meta Ads e automação para empresas que desejam gerar mais clientes e aumentar suas vendas. Com mais de 100 clientes satisfeitos e um rating de 4.9/5, somos a escolha confiável em performance digital.</p>
+        </div>
+        <div data-in>
+          <h3 class="mb-2.5 font-heading text-lg font-bold">Especialistas em Google Ads</h3>
+          <p class="text-sm leading-relaxed text-mid">Nossos especialistas em Google Ads criam campanhas otimizadas para gerar leads qualificados e vendas. Utilizamos estratégias avançadas de segmentação, palavras-chave e otimização de anúncios para maximizar seu ROI. Cada campanha é personalizada conforme o mercado e as necessidades específicas do seu negócio.</p>
+        </div>
+        <div data-in>
+          <h3 class="mb-2.5 font-heading text-lg font-bold">Gestão de Anúncios Online em Todo o Brasil</h3>
+          <p class="text-sm leading-relaxed text-mid">Gerenciamos campanhas de anúncios online para empresas em todo o Brasil, utilizando as melhores práticas de tráfego pago. Nosso objetivo é transformar seu investimento em mídia em resultados reais: mais clientes, mais vendas, mais crescimento, em qualquer estado do país.</p>
+        </div>
+        <div data-in>
+          <h3 class="mb-2.5 font-heading text-lg font-bold">Atendimento 100% Remoto, em Todo o Brasil</h3>
+          <p class="text-sm leading-relaxed text-mid">Atendemos empresas em todo o Brasil, 100% remoto. Nossa equipe entende profundamente o comportamento de compra digital e as oportunidades de crescimento de cada segmento. Somos especialistas em gerar clientes qualificados usando Google Ads, Meta Ads e estratégias de tráfego pago.</p>
+        </div>
+      </div>
+
+      <div class="mt-12 border-t border-border pt-8" data-in>
+        <h3 class="mb-4 font-heading text-sm font-semibold uppercase tracking-[.08em] text-red-hi">Recursos de Gestão de Tráfego Pago</h3>
+        <div class="flex flex-col gap-2 text-sm">
+          <a href="#metodo" class="text-mid no-underline hover:text-ink">→ Conheça nosso método de gestão de tráfego pago de alta performance</a>
+          <a href="#diferenciais" class="text-mid no-underline hover:text-ink">→ Veja os diferenciais da Fórmula Mídia para gestão de tráfego pago</a>
+          <a href="#pacotes" class="text-mid no-underline hover:text-ink">→ Confira os pacotes de gestão de tráfego pago para sua empresa</a>
+          <a href="#depoimentos" class="text-mid no-underline hover:text-ink">→ Leia depoimentos de clientes que cresceram com gestão de tráfego pago</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="px-6 py-22">
+    <div class="mx-auto max-w-[1080px]">
+      <span class="mb-3.5 block font-heading text-xs font-semibold uppercase tracking-[.16em] text-red-hi" data-in>Dúvidas comuns</span>
+      <h2 class="max-w-[680px] font-heading text-[clamp(26px,3.4vw,38px)] font-bold leading-[1.15] tracking-tight" data-in>Perguntas frequentes</h2>
+      <FaqAccordion items={homeFaq} />
+    </div>
   </section>
 </BaseLayout>
