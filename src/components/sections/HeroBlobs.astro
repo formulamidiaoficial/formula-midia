@@ -1,0 +1,19 @@
+---
+// Decorative blurred background blobs shared by hero/CTA sections.
+// IMPORTANT: the parent element must have `overflow-hidden` + `relative` —
+// without it, these fixed-width absolutely-positioned blobs cause horizontal
+// scroll on mobile (this bit us once already, see PROGRESS.md).
+interface Props {
+  variant?: "top" | "bottom";
+}
+const { variant = "top" } = Astro.props;
+---
+
+{variant === "top" ? (
+  <>
+    <div class="pointer-events-none absolute -left-32 -top-40 h-[460px] w-[460px] rounded-full bg-[radial-gradient(circle,rgba(228,41,41,.25),transparent_70%)] blur-[70px]"></div>
+    <div class="pointer-events-none absolute -right-36 -top-20 h-[380px] w-[380px] rounded-full bg-[radial-gradient(circle,rgba(180,20,20,.20),transparent_70%)] blur-[70px]"></div>
+  </>
+) : (
+  <div class="pointer-events-none absolute bottom-[-200px] left-1/2 h-[460px] w-[460px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(228,41,41,.25),transparent_70%)] blur-[70px]"></div>
+)}

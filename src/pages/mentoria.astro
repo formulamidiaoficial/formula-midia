@@ -1,0 +1,97 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/sections/PageHero.astro";
+import SectionHeading from "../components/sections/SectionHeading.astro";
+import DiffGrid from "../components/sections/DiffGrid.astro";
+import FaqAccordion from "../components/ui/FaqAccordion.astro";
+import FinalCta from "../components/sections/FinalCta.astro";
+import { waLink, faqPageSchema, breadcrumbSchema } from "../data/schema";
+import { mentoriaFaq } from "../data/faq/mentoria";
+
+const schema = [
+  faqPageSchema(mentoriaFaq),
+  breadcrumbSchema([
+    { name: "Home", path: "/" },
+    { name: "Mentoria", path: "/mentoria" },
+  ]),
+];
+
+const waitlistMessage = "Olá, quero entrar na lista de interesse da Mentoria Fórmula Mídia";
+---
+
+<BaseLayout
+  title="Mentoria Fórmula Mídia | Tráfego Pago e Growth"
+  description="Uma mentoria prática sobre tráfego pago, SEO/GEO e growth — direto de quem aplica isso todos os dias em clientes reais. Em breve."
+  path="/mentoria"
+  schema={schema}
+>
+  <PageHero
+    badge="Mentoria Fórmula Mídia"
+    title="Aprenda a construir"
+    highlight="tráfego pago e growth do jeito que a gente faz de verdade."
+    sub="Uma mentoria prática sobre tráfego pago, SEO/GEO e growth — direto de quem aplica isso todos os dias em clientes reais."
+    primaryHref={waLink(waitlistMessage)}
+    primaryLabel="Quero entrar na lista de interesse →"
+    ghostHref="#conteudo"
+    ghostLabel="Ver o que você vai aprender"
+  />
+
+  <section class="border-y border-red/25 bg-red/6 px-6 py-5 text-center">
+    <p class="font-heading text-sm font-semibold text-red-hi">
+      Em fase final de estruturação — entre na lista de interesse e seja avisado em primeira mão.
+    </p>
+  </section>
+
+  <!-- CONTEÚDO -->
+  <section id="conteudo" class="px-6 py-22">
+    <div class="mx-auto max-w-[1080px]">
+      <SectionHeading eyebrow="O que você vai aprender" title="O mesmo método que aplicamos com nossos clientes" />
+      <DiffGrid
+        items={[
+          { icon: "🎯", title: "Tráfego Pago na Prática", desc: "Como estruturar, otimizar e escalar campanhas de Google Ads e Meta Ads com base em dados reais." },
+          { icon: "📊", title: "Growth e Funil Completo", desc: "Como enxergar e otimizar cada etapa do funil, do primeiro clique até o fechamento." },
+          { icon: "🧠", title: "O Método Fórmula Mídia®", desc: "A mesma metodologia que aplicamos em clientes reais, agora explicada passo a passo." },
+        ]}
+      />
+    </div>
+  </section>
+
+  <!-- PARA QUEM É / NÃO É -->
+  <section class="bg-bg-2 px-6 py-22">
+    <div class="mx-auto max-w-[1080px]">
+      <SectionHeading eyebrow="Para quem é" title="Essa mentoria faz sentido pra você se..." />
+      <div class="mt-10 grid gap-8 md:grid-cols-2">
+        <div data-in>
+          <h3 class="mb-4 font-heading text-base font-semibold text-red-hi">✅ Para quem é</h3>
+          <ul class="flex flex-col gap-3 text-sm text-mid">
+            <li class="flex gap-2.5"><span class="font-bold text-red-hi">✓</span>Profissionais de marketing que querem se aprofundar em tráfego pago e growth</li>
+            <li class="flex gap-2.5"><span class="font-bold text-red-hi">✓</span>Donos de negócio que querem entender de verdade o que estão pagando pra terceirizar</li>
+            <li class="flex gap-2.5"><span class="font-bold text-red-hi">✓</span>Gestores de tráfego que querem uma metodologia estruturada, não conteúdo solto de internet</li>
+          </ul>
+        </div>
+        <div data-in>
+          <h3 class="mb-4 font-heading text-base font-semibold text-dim">❌ Para quem não é</h3>
+          <ul class="flex flex-col gap-3 text-sm text-mid">
+            <li class="flex gap-2.5"><span class="font-bold text-dim">—</span>Quem busca fórmula mágica sem esforço</li>
+            <li class="flex gap-2.5"><span class="font-bold text-dim">—</span>Quem não tem disposição para aplicar o que aprende</li>
+            <li class="flex gap-2.5"><span class="font-bold text-dim">—</span>Quem quer só teoria, sem prática</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="px-6 py-22">
+    <div class="mx-auto max-w-[1080px]">
+      <SectionHeading eyebrow="Dúvidas comuns" title="Perguntas frequentes" />
+      <FaqAccordion items={mentoriaFaq} />
+    </div>
+  </section>
+
+  <FinalCta
+    title="Quer ser avisado quando a Mentoria abrir?"
+    desc="Entre na lista de interesse e garanta condição especial de lançamento."
+    message={waitlistMessage}
+    ctaLabel="Quero entrar na lista de interesse →"
+  />
+</BaseLayout>

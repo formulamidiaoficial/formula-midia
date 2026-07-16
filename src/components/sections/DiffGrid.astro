@@ -1,0 +1,31 @@
+---
+interface DiffItem {
+  icon: string;
+  title: string;
+  desc: string;
+  chips?: string[];
+}
+
+interface Props {
+  items: DiffItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class={`mt-12 grid gap-5 ${items.length === 2 ? "sm:grid-cols-2" : "md:grid-cols-3"}`}>
+  {items.map((item) => (
+    <div class="rounded-card border border-border bg-glass p-7 transition-all hover:-translate-y-1 hover:border-red/30 hover:shadow-[0_16px_40px_rgba(228,41,41,0.10)]" data-in>
+      <div class="mb-4.5 flex h-12 w-12 items-center justify-center rounded-[13px] bg-red/8 text-[22px]">{item.icon}</div>
+      <h3 class="mb-2.5 font-heading text-[17px] font-semibold">{item.title}</h3>
+      <p class="text-sm leading-[1.65] text-mid">{item.desc}</p>
+      {item.chips && item.chips.length > 0 && (
+        <div class="mt-4.5 flex flex-wrap gap-2.5">
+          {item.chips.map((c) => (
+            <span class="rounded-lg bg-emerald-500/14 px-3 py-1.5 font-heading text-xs font-bold text-emerald-400">{c}</span>
+          ))}
+        </div>
+      )}
+    </div>
+  ))}
+</div>

@@ -1,0 +1,142 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/sections/PageHero.astro";
+import SectionHeading from "../components/sections/SectionHeading.astro";
+import DiffGrid from "../components/sections/DiffGrid.astro";
+import ToolBanner from "../components/sections/ToolBanner.astro";
+import OfferGrid from "../components/sections/OfferGrid.astro";
+import FaqAccordion from "../components/ui/FaqAccordion.astro";
+import FinalCta from "../components/sections/FinalCta.astro";
+import { waLink, faqPageSchema, breadcrumbSchema } from "../data/schema";
+import { criacaoDeSitesFaq } from "../data/faq/criacao-de-sites";
+
+const schema = [
+  faqPageSchema(criacaoDeSitesFaq),
+  breadcrumbSchema([
+    { name: "Home", path: "/" },
+    { name: "Criação de Sites", path: "/criacao-de-sites" },
+  ]),
+];
+---
+
+<BaseLayout
+  title="Criação de Sites e Landing Pages | Fórmula Mídia"
+  description="Sites e landing pages com Lighthouse 90+, construídos com stack moderna e IA, já nascendo otimizados para SEO e GEO."
+  path="/criacao-de-sites"
+  schema={schema}
+>
+  <PageHero
+    badge="Criação de Sites & Landing Pages"
+    title="Seu site não é um cartão de visita."
+    highlight="É o seu melhor vendedor, 24 horas por dia."
+    sub="Construímos sites e landing pages com Lighthouse 90+ (muitos com nota 100), usando stack moderna e IA de ponta como Claude Code — já nascendo otimizados para SEO e GEO."
+    primaryHref={waLink("Olá, quero saber mais sobre criação de sites")}
+    ghostHref="#oferta"
+    ghostLabel="Ver o que entregamos"
+    stats={[
+      { n: "90+", l: "Lighthouse médio" },
+      { n: "100", l: "Em vários projetos" },
+      { n: "100+", l: "Clientes atendidos" },
+      { n: "+10", l: "Anos de mercado" },
+    ]}
+  />
+
+  <section class="px-6 py-22">
+    <div class="mx-auto max-w-[1080px]">
+      <SectionHeading
+        eyebrow="O que mudou"
+        title="Seu site converte, ou só existe?"
+        lead="A maioria dos sites institucionais é só uma vitrine bonita — carrega devagar, não aparece no Google, e não guia o visitante para nenhuma ação. Isso custa caro: cada clique que vira desistência é dinheiro jogado fora, seja ele de tráfego pago ou orgânico."
+      />
+    </div>
+  </section>
+
+  <section class="bg-bg-2 px-6 py-22">
+    <div class="mx-auto max-w-[1080px]">
+      <SectionHeading
+        eyebrow="Nosso diferencial"
+        title="Performance não é opcional — é a base"
+        lead="Construímos com a mesma disciplina técnica que aplicamos em tráfego pago e SEO: tudo medido, nada por achismo."
+      />
+      <DiffGrid
+        items={[
+          { icon: "⚡", title: "Lighthouse 90+ desde o lançamento", desc: "Performance, Acessibilidade, Boas Práticas e SEO auditados desde o primeiro dia — não como ajuste feito depois.", chips: ["Performance", "Acessibilidade", "SEO"] },
+          { icon: "🤖", title: "Construção com IA de ponta", desc: "Usamos Claude Code e ferramentas de IA para entregar qualidade de engenharia acima da média do mercado, em muito menos tempo." },
+          { icon: "🎯", title: "SEO e GEO desde a raiz", desc: "Todo site sai do zero já estruturado com dados schema.org, meta tags corretas e conteúdo pensado para buscadores tradicionais e de IA." },
+        ]}
+      />
+    </div>
+  </section>
+
+  <section class="px-6 py-22">
+    <div class="mx-auto max-w-[1080px]">
+      <SectionHeading eyebrow="Como trabalhamos" title="Do zero ao ar, com clareza em cada etapa" />
+      <div class="mt-11 flex flex-col">
+        {[
+          { n: "1", t: "Descoberta e Estratégia", d: "Entendemos seu negócio, público e objetivo de conversão antes de desenhar qualquer tela." },
+          { n: "2", t: "Design e Copywriting", d: "Interface alinhada à sua marca, com copy persuasiva focada em conversão, não só estética." },
+          { n: "3", t: "Desenvolvimento de Alta Performance", d: "Construção com stack moderna, otimização de imagens, e Lighthouse 90+ validado antes do lançamento." },
+          { n: "4", t: "SEO Técnico e GEO", d: "Dados estruturados, meta tags, sitemap e conteúdo já otimizados para Google e para buscadores de IA." },
+        ].map((s, i, arr) => (
+          <div class={`grid grid-cols-[52px_1fr] gap-5 border-t border-border py-6 ${i === arr.length - 1 ? "border-b" : ""}`} data-in>
+            <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-red to-red-lo font-heading text-base font-bold text-white">{s.n}</div>
+            <div>
+              <h3 class="mb-1 font-heading text-[16px] font-semibold">{s.t}</h3>
+              <p class="max-w-[560px] text-sm leading-relaxed text-mid">{s.d}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <ToolBanner
+    title="Quer saber o escopo exato do seu site?"
+    desc="Escolha quantas páginas, se precisa de loja virtual e de blog — em 1 minuto você tem um resumo completo."
+    href="/simulador-de-site"
+    ctaLabel="Simular meu site →"
+  />
+
+  <section id="oferta" class="bg-bg-2 px-6 py-22">
+    <div class="mx-auto max-w-[1080px]">
+      <SectionHeading eyebrow="O que entregamos" title="Pacotes de Site & Landing Page" lead="Cada projeto é dimensionado para o seu momento. Fale com a gente para desenhar o plano certo." />
+      <OfferGrid
+        items={[
+          {
+            title: "Landing Page de Conversão",
+            desc: "Uma página focada, para uma oferta ou campanha específica.",
+            feats: ["Design focado em conversão", "Copy persuasiva", "Lighthouse 90+", "Integração com WhatsApp/CRM"],
+            ctaMessage: "Olá, quero saber mais sobre Landing Page de Conversão",
+          },
+          {
+            title: "Site Institucional",
+            desc: "Site completo para sua empresa, com todas as páginas que você precisa.",
+            feats: ["Múltiplas páginas", "Blog opcional", "SEO técnico completo", "Design responsivo"],
+            ctaMessage: "Olá, quero saber mais sobre Site Institucional",
+          },
+          {
+            title: "Site + SEO & GEO Integrado",
+            desc: "Tudo do site institucional, mais estratégia de SEO/GEO aplicada desde o lançamento.",
+            feats: ["Tudo do Site Institucional", "Estruturação de conteúdo por tópico", "GEO aplicado desde a raiz", "Relatórios de indexação"],
+            ribbon: "Mais Completo",
+            featured: true,
+            ctaMessage: "Olá, quero saber mais sobre Site + SEO e GEO Integrado",
+          },
+        ]}
+      />
+    </div>
+  </section>
+
+  <section class="px-6 py-22">
+    <div class="mx-auto max-w-[1080px]">
+      <SectionHeading eyebrow="Dúvidas comuns" title="Perguntas frequentes" />
+      <FaqAccordion items={criacaoDeSitesFaq} />
+    </div>
+  </section>
+
+  <FinalCta
+    title="Pronto para ter um site que realmente vende?"
+    desc="Fale com a gente e desenhamos o site certo para o seu momento."
+    message="Olá, quero saber mais sobre criação de sites"
+  />
+</BaseLayout>

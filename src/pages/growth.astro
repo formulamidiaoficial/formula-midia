@@ -1,0 +1,158 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/sections/PageHero.astro";
+import SectionHeading from "../components/sections/SectionHeading.astro";
+import DiffGrid from "../components/sections/DiffGrid.astro";
+import ToolBanner from "../components/sections/ToolBanner.astro";
+import OfferGrid from "../components/sections/OfferGrid.astro";
+import FaqAccordion from "../components/ui/FaqAccordion.astro";
+import FinalCta from "../components/sections/FinalCta.astro";
+import { waLink, faqPageSchema, breadcrumbSchema } from "../data/schema";
+import { growthFaq } from "../data/faq/growth";
+
+const schema = [
+  faqPageSchema(growthFaq),
+  breadcrumbSchema([
+    { name: "Home", path: "/" },
+    { name: "Growth & Performance", path: "/growth" },
+  ]),
+];
+
+const spin = [
+  { l: "Situação", t: "Você já investe em marketing digital", d: "Talvez tráfego pago, talvez SEO, talvez automação de atendimento — mas cada canal reporta números diferentes, em lugares diferentes." },
+  { l: "Problema", t: "Ninguém enxerga o funil inteiro", d: "Sem uma visão unificada, fica impossível saber ONDE exatamente os leads estão se perdendo — no anúncio, na landing page, no atendimento ou no fechamento." },
+  { l: "Implicação", t: "Cada vazamento é dinheiro jogado fora", d: "Um gargalo não identificado continua consumindo orçamento de mídia mês após mês, sem que ninguém perceba até o resultado não vir." },
+  { l: "Necessidade", t: "Alguém precisa olhar o funil inteiro, todos os dias", d: "Um gestor de growth dedicado, com visão de ponta a ponta, tomando decisões com dado — não com achismo." },
+];
+---
+
+<BaseLayout
+  title="Gestão de Growth & Performance | Fórmula Mídia"
+  description="Um gestor de crescimento dedicado, acompanhando todos os números do seu funil — de ponta a ponta, todos os dias."
+  path="/growth"
+  schema={schema}
+>
+  <PageHero
+    badge="Gestão de Growth & Performance"
+    title="Você sabe exatamente onde"
+    highlight="seu funil está vazando?"
+    sub="Growth & Performance é a camada que integra tráfego pago, SEO/GEO e conversão sob um único painel de métricas — com um gestor de crescimento dedicado ao seu funil."
+    primaryHref={waLink("Olá, quero saber mais sobre Growth & Performance")}
+    ghostHref="#oferta"
+    ghostLabel="Ver como funciona"
+    stats={[
+      { n: "100+", l: "Clientes atendidos" },
+      { n: "98%", l: "Satisfação" },
+      { n: "+10", l: "Anos de mercado" },
+    ]}
+  />
+
+  <!-- SPIN -->
+  <section class="px-6 py-22">
+    <div class="mx-auto max-w-[1080px]">
+      <SectionHeading eyebrow="Por que isso importa" title="4 perguntas que toda empresa que investe em marketing deveria se fazer" />
+      <div class="mt-11 flex flex-col">
+        {spin.map((s, i, arr) => (
+          <div class={`grid grid-cols-[52px_1fr] gap-5 border-t border-border py-6 ${i === arr.length - 1 ? "border-b" : ""}`} data-in>
+            <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-red to-red-lo font-heading text-sm font-bold text-white">{i + 1}</div>
+            <div>
+              <span class="mb-1 block font-heading text-[11px] font-semibold uppercase tracking-[.08em] text-red-hi">{s.l}</span>
+              <h3 class="mb-1.5 font-heading text-[16px] font-semibold">{s.t}</h3>
+              <p class="max-w-[560px] text-sm leading-relaxed text-mid">{s.d}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- DIFERENCIAL -->
+  <section class="bg-bg-2 px-6 py-22">
+    <div class="mx-auto max-w-[1080px]">
+      <SectionHeading eyebrow="Nosso diferencial" title="Growth de verdade é acompanhamento, não relatório mensal" />
+      <DiffGrid
+        items={[
+          { icon: "📊", title: "Painel único de funil", desc: "Todos os números — tráfego, conversão, CAC, LTV — em um só lugar, sem depender de 5 ferramentas diferentes." },
+          { icon: "🧭", title: "Gestor de crescimento dedicado", desc: "Uma pessoa acompanhando seu funil todos os dias, não um relatório mensal genérico." },
+          { icon: "🎯", title: "Decisão por dado, não por achismo", desc: "Cada ajuste de campanha, página ou processo comercial é baseado em números reais do seu funil." },
+        ]}
+      />
+    </div>
+  </section>
+
+  <ToolBanner
+    eyebrow="Diagnóstico"
+    title="Onde está o maior vazamento do seu funil?"
+    desc="Informe tráfego, conversão e ticket médio — descubra em 1 minuto onde priorizar."
+    href="/simulador-de-funil"
+    ctaLabel="Simular meu funil →"
+  />
+
+  <!-- METODOLOGIA -->
+  <section class="px-6 py-22">
+    <div class="mx-auto max-w-[1080px]">
+      <SectionHeading eyebrow="Como trabalhamos" title="Do diagnóstico à otimização contínua" />
+      <div class="mt-11 flex flex-col">
+        {[
+          { n: "1", t: "Diagnóstico de Funil", d: "Mapeamento completo de todas as etapas, do primeiro clique ao fechamento." },
+          { n: "2", t: "Unificação de Dados", d: "Conectamos tráfego pago, site, CRM e atendimento em um painel único." },
+          { n: "3", t: "Priorização de Vazamentos", d: "Identificamos onde o funil perde mais oportunidades, e por quê." },
+          { n: "4", t: "Testes e Otimização Contínua", d: "Ajustes constantes guiados por dado, com acompanhamento de um gestor dedicado." },
+          { n: "5", t: "Relatório Estratégico Recorrente", d: "Você sempre sabe exatamente onde está seu negócio, sem depender de relatórios confusos." },
+        ].map((s, i, arr) => (
+          <div class={`grid grid-cols-[52px_1fr] gap-5 border-t border-border py-6 ${i === arr.length - 1 ? "border-b" : ""}`} data-in>
+            <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-red to-red-lo font-heading text-base font-bold text-white">{s.n}</div>
+            <div>
+              <h3 class="mb-1 font-heading text-[16px] font-semibold">{s.t}</h3>
+              <p class="max-w-[560px] text-sm leading-relaxed text-mid">{s.d}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- OFERTA -->
+  <section id="oferta" class="bg-bg-2 px-6 py-22">
+    <div class="mx-auto max-w-[1080px]">
+      <SectionHeading eyebrow="O que entregamos" title="Pacotes de Growth & Performance" lead="Cada projeto é dimensionado para o seu momento. Fale com a gente para desenhar o plano certo." />
+      <OfferGrid
+        items={[
+          {
+            title: "Growth Essencial",
+            desc: "Painel unificado e leitura estratégica do seu funil.",
+            feats: ["Painel de funil unificado", "Relatório estratégico mensal", "Diagnóstico inicial completo"],
+            ctaMessage: "Olá, quero saber mais sobre o Growth Essencial",
+          },
+          {
+            title: "Growth Gestão Contínua",
+            desc: "Tudo do Essencial, com um gestor de growth acompanhando seu funil semanalmente.",
+            feats: ["Tudo do Growth Essencial", "Gestor de growth dedicado", "Acompanhamento semanal", "Testes contínuos de otimização"],
+            ribbon: "Mais Popular",
+            featured: true,
+            ctaMessage: "Olá, quero saber mais sobre o Growth Gestão Contínua",
+          },
+          {
+            title: "Growth Full Stack",
+            desc: "Integração completa: tráfego pago, SEO/GEO, site e automação sob uma única estratégia.",
+            feats: ["Tudo do Growth Gestão Contínua", "Tráfego pago integrado", "SEO & GEO integrado", "Automação de atendimento integrada"],
+            ctaMessage: "Olá, quero saber mais sobre o Growth Full Stack",
+          },
+        ]}
+      />
+    </div>
+  </section>
+
+  <section class="px-6 py-22">
+    <div class="mx-auto max-w-[1080px]">
+      <SectionHeading eyebrow="Dúvidas comuns" title="Perguntas frequentes" />
+      <FaqAccordion items={growthFaq} />
+    </div>
+  </section>
+
+  <FinalCta
+    title="Pronto para parar de adivinhar onde seu funil vaza?"
+    desc="Fale com a gente e vamos mapear seu funil de crescimento."
+    message="Olá, quero saber mais sobre Growth & Performance"
+  />
+</BaseLayout>

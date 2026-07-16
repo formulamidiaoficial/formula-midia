@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<!-- v3.2 -->
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+<meta http-equiv="Pragma" content="no-cache"/>
+<meta http-equiv="Expires" content="0"/>
+<title>Fórmula Mídia | Tráfego Pago, SEO & GEO</title>
+<meta name="description" content="Agência de performance: tráfego pago (Google Ads e Meta Ads), SEO técnico, GEO e sites de alta performance. Fale com a gente no WhatsApp."/>
+<link rel="canonical" href="https://formulamidia.com.br/links"/>
+
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://formulamidia.com.br/links"/>
+<meta property="og:title" content="Fórmula Mídia | Tráfego Pago, SEO & GEO"/>
+<meta property="og:description" content="Agência de performance: tráfego pago (Google Ads e Meta Ads), SEO técnico, GEO e sites de alta performance. Fale com a gente no WhatsApp."/>
+<meta property="og:image" content="https://formulamidia.com.br/assets/og-image.png"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta property="og:locale" content="pt_BR"/>
+<meta property="og:site_name" content="Fórmula Mídia"/>
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Fórmula Mídia | Tráfego Pago, SEO & GEO"/>
+<meta name="twitter:description" content="Agência de performance: tráfego pago, SEO técnico, GEO e sites de alta performance."/>
+<meta name="twitter:image" content="https://formulamidia.com.br/assets/og-image.png"/>
+
+<link rel="icon" href="logo.png" type="image/png"/>
+<link rel="apple-touch-icon" href="logo.png"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+
+/* ── RESET ──────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+
+:root{
+  --red:      #E42929;
+  --red-hi:   #FF4F4F;
+  --red-lo:   #A81C1C;
+  --glow:     rgba(228,41,41,.30);
+  --glow-sm:  rgba(228,41,41,.14);
+  --pale:     rgba(228,41,41,.08);
+  --bg:       #09090B;
+  --glass:    rgba(255,255,255,.045);
+  --glass-hi: rgba(255,255,255,.075);
+  --border:   rgba(255,255,255,.08);
+  --border-hi:rgba(255,255,255,.14);
+  --text:     #F4F4F5;
+  --mid:      rgba(255,255,255,.50);
+  --dim:      rgba(255,255,255,.24);
+  --r:18px; --r-sm:13px;
+}
+
+body{
+  background:var(--bg);
+  font-family:'Inter',-apple-system,sans-serif;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  -webkit-font-smoothing:antialiased;
+  overscroll-behavior-y:none;
+  color:var(--text);
+}
+
+.page{
+  width:100%;
+  max-width:430px;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  background:var(--bg);
+  position:relative;
+  overflow-x:hidden;
+}
+
+/* ── SCROLL PROGRESS BAR ────────────────────── */
+.progress{
+  position:fixed;
+  top:0;left:0;
+  height:2px;
+  width:0%;
+  background:linear-gradient(90deg,var(--red-lo),var(--red),var(--red-hi));
+  box-shadow:0 0 10px var(--glow);
+  z-index:999;
+  transition:width .08s linear;
+}
+
+/* ── HERO ────────────────────────────────────── */
+.hero{
+  position:relative;
+  width:100%;
+  min-height:420px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  overflow:hidden;
+  padding:56px 24px 48px;
+  flex-shrink:0;
+}
+
+/* Blobs */
+.blob{
+  position:absolute;
+  border-radius:50%;
+  filter:blur(56px);
+  pointer-events:none;
+}
+.blob-1{
+  width:300px;height:300px;
+  background:radial-gradient(circle,rgba(228,41,41,.22),transparent 70%);
+  top:-80px;left:-40px;
+  animation:blob1 11s ease-in-out infinite alternate;
+}
+.blob-2{
+  width:240px;height:240px;
+  background:radial-gradient(circle,rgba(180,20,20,.18),transparent 70%);
+  bottom:-60px;right:-30px;
+  animation:blob2 9s ease-in-out infinite alternate;
+}
+@keyframes blob1{
+  from{transform:translate(0,0) scale(1)}
+  to  {transform:translate(60px,40px) scale(1.3)}
+}
+@keyframes blob2{
+  from{transform:translate(0,0) scale(1)}
+  to  {transform:translate(-50px,-30px) scale(1.25)}
+}
+
+/* Dot grid */
+.dots{
+  position:absolute;inset:0;
+  background-image:radial-gradient(circle,rgba(228,41,41,.16) 1px,transparent 1px);
+  background-size:24px 24px;
+  mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 30%,transparent 75%);
+  pointer-events:none;
+}
+
+/* ── LOGO CONTAINER ─────────────────────────── */
+.logo-wrap{
+  position:relative;
+  width:160px;height:160px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-bottom:28px;
+}
+
+/* Outer pulse rings */
+.ring{
+  position:absolute;
+  border-radius:50%;
+  border:1px solid rgba(228,41,41,.22);
+  animation:ringPulse 3s ease-in-out infinite;
+}
+.ring-1{inset:-12px; animation-delay:0s;}
+.ring-2{inset:-26px; animation-delay:.6s;}
+.ring-3{inset:-44px; animation-delay:1.2s;}
+@keyframes ringPulse{
+  0%,100%{opacity:.5;transform:scale(1)}
+  50%    {opacity:1; transform:scale(1.03)}
+}
+
+/* Orbiting dots */
+.orbit{
+  position:absolute;
+  top:50%;left:50%;
+  width:8px;height:8px;
+  margin:-4px;
+  border-radius:50%;
+  background:var(--red);
+  box-shadow:0 0 10px var(--red),0 0 20px var(--glow-sm);
+}
+.orbit-1{animation:orb1 5s linear infinite 1.8s;}
+.orbit-2{
+  width:5px;height:5px;
+  margin:-2.5px;
+  background:var(--red-hi);
+  box-shadow:0 0 6px var(--red-hi);
+  animation:orb2 3.5s linear infinite 2.2s;
+  opacity:0;
+}
+@keyframes orb1{
+  from{transform:rotate(0deg)   translateX(90px)}
+  to  {transform:rotate(360deg) translateX(90px)}
+}
+@keyframes orb2{
+  from{transform:rotate(180deg) translateX(68px)}
+  to  {transform:rotate(540deg) translateX(68px)}
+}
+
+/* The SVG asterisk */
+.ast{
+  width:108px;height:108px;
+  position:relative;z-index:2;
+  overflow:visible;
+  filter:drop-shadow(0 0 14px rgba(228,41,41,.55))
+         drop-shadow(0 0 40px rgba(228,41,41,.22));
+  animation:astSpin 26s linear infinite;
+  animation-play-state:paused;
+  transform-origin:center center;
+}
+@keyframes astSpin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+
+.ast-arm{
+  stroke-linecap:round;
+  stroke-width:14;
+  fill:none;
+  stroke:url(#armGrad);
+}
+
+/* Logo breath on container */
+.logo-wrap{ animation:logoBreath 5s ease-in-out infinite; }
+@keyframes logoBreath{
+  0%,100%{filter:drop-shadow(0 0 0px rgba(228,41,41,0));}
+  50%    {filter:drop-shadow(0 0 22px rgba(228,41,41,.35));}
+}
+
+/* Radar ping ring */
+.radar{
+  position:absolute;
+  width:108px;height:108px;
+  border-radius:50%;
+  border:1.5px solid rgba(228,41,41,.7);
+  top:50%;left:50%;
+  translate:-50% -50%;
+  pointer-events:none;
+  opacity:0;
+}
+@keyframes radarPing{
+  0%  {transform:scale(.85); opacity:.75;}
+  100%{transform:scale(2.6);  opacity:0;}
+}
+
+/* ── HERO TEXT ───────────────────────────────── */
+.hero-content{
+  position:relative;z-index:2;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  width:100%;
+}
+
+.hero-name{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:30px;
+  font-weight:700;
+  letter-spacing:-.5px;
+  line-height:1.1;
+  margin-bottom:12px;
+  opacity:0;
+  animation:fadeUp .6s cubic-bezier(.22,1,.36,1) 1.5s forwards;
+}
+.hero-name .red{color:var(--red);}
+
+.badge{
+  display:inline-flex;
+  align-items:center;gap:6px;
+  font-family:'Space Grotesk',sans-serif;
+  font-size:10px;font-weight:600;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:var(--red-hi);
+  background:var(--pale);
+  border:1px solid rgba(228,41,41,.22);
+  padding:5px 12px;border-radius:100px;
+  margin-bottom:14px;
+  opacity:0;
+  animation:fadeUp .5s cubic-bezier(.22,1,.36,1) 1.75s forwards;
+}
+.badge-dot{
+  width:5px;height:5px;border-radius:50%;
+  background:var(--red-hi);
+  box-shadow:0 0 8px var(--red-hi);
+  animation:bdot 2s ease-in-out infinite;
+}
+@keyframes bdot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.75)}}
+
+.hero-bio{
+  font-size:13.5px;font-weight:400;
+  color:var(--mid);line-height:1.65;
+  max-width:300px;
+  opacity:0;
+  animation:fadeUp .5s cubic-bezier(.22,1,.36,1) 2s forwards;
+}
+
+/* Scroll hint */
+.scroll-hint{
+  position:absolute;bottom:20px;left:50%;
+  transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+  color:var(--dim);font-size:10px;letter-spacing:.12em;
+  text-transform:uppercase;font-family:'Space Grotesk',sans-serif;
+  opacity:0;
+  animation:fadeUp .5s ease 2.5s forwards;
+}
+.chevron{
+  width:16px;height:16px;
+  border-right:1.5px solid var(--dim);
+  border-bottom:1.5px solid var(--dim);
+  transform:rotate(45deg);
+  animation:bounce 1.8s ease-in-out infinite 2.5s;
+}
+@keyframes bounce{0%,100%{transform:rotate(45deg) translateY(0)}50%{transform:rotate(45deg) translateY(5px)}}
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(14px)}
+  to  {opacity:1;transform:translateY(0)}
+}
+
+/* ── CONTENT ─────────────────────────────────── */
+.content{
+  flex:1;
+  padding:20px 12px 68px;
+  display:flex;flex-direction:column;
+}
+
+/* Section labels */
+.lbl{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:10px;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;
+  color:var(--dim);
+  margin:22px 4px 11px;
+  display:flex;align-items:center;gap:10px;
+}
+.lbl::after{content:'';flex:1;height:1px;background:var(--border);transform:scaleX(0);transform-origin:left;transition:transform .5s ease;}
+.lbl.in::after{transform:scaleX(1);}
+
+/* CTA wrapper (animated gradient border) */
+.cta-wrap{
+  padding:1.5px;
+  border-radius:calc(var(--r-sm) + 1.5px);
+  background:linear-gradient(135deg,var(--red-lo),var(--red),var(--red-hi),var(--red));
+  background-size:300% 300%;
+  animation:borderFlow 4s ease infinite;
+  margin-bottom:10px;
+}
+@keyframes borderFlow{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+
+.btn-cta{
+  display:flex;align-items:center;gap:13px;
+  padding:15px 16px;
+  background:linear-gradient(135deg,rgba(228,41,41,.16),rgba(168,28,28,.09));
+  border-radius:var(--r-sm);
+  color:var(--text);font-size:14px;
+  text-decoration:none;
+  font-family:'Inter',sans-serif;line-height:1.3;
+  cursor:pointer;-webkit-tap-highlight-color:transparent;
+  position:relative;overflow:hidden;
+  transition:background .2s,transform .15s;
+}
+.btn-cta:hover{background:linear-gradient(135deg,rgba(228,41,41,.24),rgba(168,28,28,.14));transform:translateY(-1px);}
+.btn-cta:active{transform:scale(.98);}
+
+/* Standard button */
+.btn{
+  display:flex;align-items:center;gap:13px;
+  padding:13px 15px;
+  background:var(--glass);
+  border:1px solid var(--border);
+  border-radius:var(--r-sm);
+  color:var(--text);font-size:14px;
+  text-decoration:none;
+  margin-bottom:9px;
+  font-family:'Inter',sans-serif;line-height:1.3;
+  cursor:pointer;-webkit-tap-highlight-color:transparent;
+  position:relative;overflow:hidden;
+  transition:border-color .22s,box-shadow .22s,background .22s,transform .15s;
+  will-change:transform;
+}
+.btn:hover{
+  border-color:rgba(228,41,41,.38);
+  background:var(--glass-hi);
+  box-shadow:0 0 0 1px rgba(228,41,41,.12) inset,0 8px 28px rgba(228,41,41,.10);
+  transform:translateY(-2px);
+}
+.btn:active{transform:scale(.98) translateY(0);}
+
+/* Ripple */
+.ripple{
+  position:absolute;border-radius:50%;
+  transform:scale(0);
+  background:rgba(228,41,41,.16);
+  animation:rpl .55s linear;
+  pointer-events:none;
+}
+@keyframes rpl{to{transform:scale(4.5);opacity:0}}
+
+/* Icon */
+.ico{
+  width:42px;height:42px;border-radius:11px;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;font-size:19px;
+  transition:transform .2s;
+}
+.btn:hover .ico,.btn-cta:hover .ico{transform:scale(1.1);}
+.ico-wa {background:rgba(37,211,102,.12);}
+.ico-ig {background:rgba(200,60,140,.12);}
+.ico-yt {background:rgba(255,0,0,.12);}
+.ico-www{background:rgba(59,130,246,.12);}
+.ico-red{background:rgba(228,41,41,.11);}
+.ico-ai {background:rgba(139,92,246,.12);}
+
+/* Button text */
+.bt{flex:1;min-width:0;}
+.bt strong{
+  display:block;
+  font-family:'Space Grotesk',sans-serif;
+  font-size:14px;font-weight:600;
+  color:var(--text);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.bt small{
+  display:block;font-size:11.5px;font-weight:400;
+  color:var(--mid);margin-top:2px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+
+/* Arrow chip */
+.arr{
+  flex-shrink:0;
+  width:26px;height:26px;border-radius:50%;
+  background:rgba(255,255,255,.06);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--dim);font-size:15px;
+  transition:background .2s,color .2s,transform .2s;
+}
+.btn:hover .arr,.btn-cta:hover .arr{background:var(--red);color:#fff;transform:translateX(2px);}
+
+/* ── STATS ───────────────────────────────────── */
+.stats{
+  display:grid;grid-template-columns:1fr 1fr 1fr;
+  gap:8px;margin-bottom:4px;
+}
+.stat{
+  background:var(--glass);border:1px solid var(--border);
+  border-radius:var(--r-sm);padding:16px 8px;
+  text-align:center;cursor:default;
+  transition:border-color .22s,box-shadow .22s,transform .2s;
+}
+.stat:hover{
+  border-color:rgba(228,41,41,.28);
+  box-shadow:0 0 24px rgba(228,41,41,.08);
+  transform:translateY(-2px);
+}
+.stat-n{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:22px;font-weight:700;
+  color:var(--red-hi);letter-spacing:-.5px;
+  line-height:1;margin-bottom:5px;
+}
+.stat-l{font-size:10px;font-weight:500;color:var(--dim);letter-spacing:.07em;text-transform:uppercase;}
+
+/* ── SOCIAL ──────────────────────────────────── */
+.social{display:flex;justify-content:center;gap:10px;margin-bottom:4px;}
+.soc{
+  width:52px;height:52px;border-radius:15px;
+  background:var(--glass);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  text-decoration:none;font-size:22px;
+  transition:border-color .22s,box-shadow .22s,background .22s,transform .18s;
+}
+.soc:hover{
+  border-color:rgba(228,41,41,.38);
+  background:rgba(228,41,41,.08);
+  box-shadow:0 8px 28px rgba(228,41,41,.14);
+  transform:translateY(-4px) scale(1.07);
+}
+.soc:active{transform:scale(.94);}
+
+/* ── FOOTER ──────────────────────────────────── */
+.footer{
+  text-align:center;font-size:11px;
+  color:var(--dim);margin-top:36px;letter-spacing:.05em;
+}
+.footer a{color:var(--red);text-decoration:none;opacity:.8;}
+
+/* ── ENTRANCE ────────────────────────────────── */
+[data-in]{
+  opacity:0;transform:translateY(18px);
+  transition:opacity .5s cubic-bezier(.22,1,.36,1),
+             transform .5s cubic-bezier(.22,1,.36,1);
+}
+[data-in].in{opacity:1;transform:translateY(0);}
+
+/* scrollbar */
+::-webkit-scrollbar{width:3px;}
+::-webkit-scrollbar-thumb{background:rgba(228,41,41,.22);border-radius:2px;}
+
+</style>
+</head>
+<body>
+
+<!-- Progress bar -->
+<div class="progress" id="prog"></div>
+
+<div class="page">
+
+  <!-- ── HERO ── -->
+  <div class="hero" id="hero">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="dots"></div>
+
+    <div class="hero-content" id="heroContent">
+
+      <!-- Animated Logo -->
+      <div class="logo-wrap">
+        <div class="ring ring-1"></div>
+        <div class="ring ring-2"></div>
+        <div class="ring ring-3"></div>
+        <div class="orbit orbit-1"></div>
+        <div class="orbit orbit-2"></div>
+
+        <div class="radar" id="radar"></div>
+
+        <svg class="ast" id="ast" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="armGrad" gradientUnits="userSpaceOnUse" x1="10" y1="10" x2="90" y2="90">
+              <stop offset="0%"   stop-color="#FF6060"/>
+              <stop offset="45%"  stop-color="#E42929"/>
+              <stop offset="100%" stop-color="#8B0A0A"/>
+            </linearGradient>
+            <filter id="armGlow" x="-40%" y="-40%" width="180%" height="180%">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="2.2" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+          <!-- 6-arm asterisk — R=37, centro (50,50), ângulos 60° -->
+          <path class="ast-arm" d="M50,13  L50,87"/>
+          <path class="ast-arm" d="M82,31.5 L18,68.5"/>
+          <path class="ast-arm" d="M82,68.5 L18,31.5"/>
+        </svg>
+      </div>
+
+      <h1 class="hero-name">
+        <span id="n1">FÓRMULA </span><span class="red" id="n2">MÍDIA IA</span>
+      </h1>
+      <div class="badge"><span class="badge-dot"></span> Agência · Inteligência Artificial</div>
+      <p class="hero-bio">Estratégia, conteúdo e performance com IA.<br>Resultados reais para o seu negócio.</p>
+    </div>
+
+    <div class="scroll-hint">
+      <span>scroll</span>
+      <div class="chevron"></div>
+    </div>
+  </div>
+
+  <!-- ── CONTENT ── -->
+  <div class="content">
+
+    <p class="lbl" data-in>Fale Conosco</p>
+
+    <div class="cta-wrap" data-in>
+      <a class="btn-cta" href="https://wa.me/5548991826577" target="_blank" rel="noopener">
+        <span class="ico ico-wa">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </span>
+        <span class="bt">
+          <strong>Fale com a equipe agora</strong>
+          <small>Estratégia · Orçamento · Dúvidas</small>
+        </span>
+        <span class="arr">›</span>
+      </a>
+    </div>
+
+    <p class="lbl" data-in>Nossas Redes</p>
+
+    <a class="btn" href="https://instagram.com/formulamidia" target="_blank" rel="noopener" data-in>
+      <span class="ico ico-ig">
+        <svg width="21" height="21" viewBox="0 0 24 24">
+          <defs><linearGradient id="ig" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#F58529"/><stop offset="50%" stop-color="#DD2A7B"/><stop offset="100%" stop-color="#8134AF"/></linearGradient></defs>
+          <path fill="url(#ig)" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+        </svg>
+      </span>
+      <span class="bt">
+        <strong>Instagram</strong>
+        <small>@formulamidia · Conteúdo e bastidores</small>
+      </span>
+      <span class="arr">›</span>
+    </a>
+
+    <a class="btn" href="https://formulamidia.com.br" target="_blank" rel="noopener" data-in>
+      <span class="ico ico-www">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      </span>
+      <span class="bt">
+        <strong>Site Oficial</strong>
+        <small>formulamidia.com.br</small>
+      </span>
+      <span class="arr">›</span>
+    </a>
+
+    <p class="lbl" data-in>Nossos Serviços</p>
+
+    <a class="btn" href="/" data-in>
+      <span class="ico ico-red">📈</span>
+      <span class="bt">
+        <strong>Tráfego Pago e Performance</strong>
+        <small>Meta Ads · Google Ads · Estratégia integrada</small>
+      </span>
+      <span class="arr">›</span>
+    </a>
+
+    <a class="btn" href="/seo" data-in>
+      <span class="ico ico-red">🔎</span>
+      <span class="bt">
+        <strong>Posicionamento de sites para SEO & GEO</strong>
+        <small>Sites Lighthouse 90+ · SEO técnico · GEO (SEO para IA)</small>
+      </span>
+      <span class="arr">›</span>
+    </a>
+
+    <a class="btn" href="/criacao-de-sites" data-in>
+      <span class="ico ico-red">🖥️</span>
+      <span class="bt">
+        <strong>Criação de Sites & Landing Pages</strong>
+        <small>Stack moderna · IA · Lighthouse 90+</small>
+      </span>
+      <span class="arr">›</span>
+    </a>
+
+    <a class="btn" href="/growth" data-in>
+      <span class="ico ico-red">🚀</span>
+      <span class="bt">
+        <strong>Gestão de Growth & Performance</strong>
+        <small>Todos os números do seu funil, em um só lugar</small>
+      </span>
+      <span class="arr">›</span>
+    </a>
+
+    <a class="btn" href="/mentoria" data-in>
+      <span class="ico ico-red">🎓</span>
+      <span class="bt">
+        <strong>Mentoria Fórmula Mídia</strong>
+        <small>Aprenda tráfego pago e growth na prática</small>
+      </span>
+      <span class="arr">›</span>
+    </a>
+
+    <p class="lbl" data-in>Ferramentas Gratuitas</p>
+
+    <a class="btn" href="/calculadora" data-in>
+      <span class="ico ico-red">🧮</span>
+      <span class="bt">
+        <strong>Calculadora de Projeto SEO & GEO</strong>
+        <small>Simule o escopo do seu projeto de SEO</small>
+      </span>
+      <span class="arr">›</span>
+    </a>
+
+    <a class="btn" href="/simulador-de-site" data-in>
+      <span class="ico ico-red">🌐</span>
+      <span class="bt">
+        <strong>Simulador de Site</strong>
+        <small>Descubra o porte e o prazo do seu site</small>
+      </span>
+      <span class="arr">›</span>
+    </a>
+
+    <a class="btn" href="/simulador-de-funil" data-in>
+      <span class="ico ico-red">📊</span>
+      <span class="bt">
+        <strong>Simulador de Funil de Growth</strong>
+        <small>Descubra onde seu funil está vazando</small>
+      </span>
+      <span class="arr">›</span>
+    </a>
+
+    <p class="lbl" data-in>Em Números</p>
+
+    <div class="stats" data-in id="statsBox">
+      <div class="stat">
+        <div class="stat-n" data-count="200" data-pre="+" data-suf="">0</div>
+        <div class="stat-l">Clientes</div>
+      </div>
+      <div class="stat">
+        <div class="stat-n" data-count="5" data-pre="" data-suf=" anos">0</div>
+        <div class="stat-l">Mercado</div>
+      </div>
+      <div class="stat">
+        <div class="stat-n">IA</div>
+        <div class="stat-l">Driven</div>
+      </div>
+    </div>
+
+    <p class="lbl" data-in>Redes Sociais</p>
+
+    <div class="social" data-in>
+      <a class="soc" href="https://instagram.com/formulamidia" target="_blank" rel="noopener" title="Instagram">
+        <svg width="21" height="21" viewBox="0 0 24 24"><defs><linearGradient id="ig2" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#F58529"/><stop offset="50%" stop-color="#DD2A7B"/><stop offset="100%" stop-color="#8134AF"/></linearGradient></defs><path fill="url(#ig2)" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </a>
+      <a class="soc" href="https://wa.me/5548991826577" target="_blank" rel="noopener" title="WhatsApp">
+        <svg width="21" height="21" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      </a>
+      <a class="soc" href="https://formulamidia.com.br" target="_blank" rel="noopener" title="Site">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      </a>
+    </div>
+
+    <p class="footer">© 2025 Fórmula Mídia IA · <a href="https://wa.me/5548991826577">Contato</a></p>
+
+  </div><!-- /content -->
+</div><!-- /page -->
+
+<script>
+// ── 1. Draw-in via CSS transition + getTotalLength() ──
+// Abordagem mais confiável: CSS transition não tem conflito com SVG filter/stroke
+(function() {
+  const arms = document.querySelectorAll('.ast-arm');
+
+  // Esconde todos com o comprimento real de cada path
+  arms.forEach(arm => {
+    const len = arm.getTotalLength();
+    arm.style.strokeDasharray  = len;
+    arm.style.strokeDashoffset = len;
+  });
+
+  // Duplo RAF: garante que estado inicial foi pintado antes de iniciar transições
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    arms.forEach((arm, i) => {
+      // delay escalonado: braço 0 = 200ms, 1 = 520ms, 2 = 840ms
+      arm.style.transition = 'stroke-dashoffset 0.6s cubic-bezier(0,0,.2,1) ' + (200 + i * 320) + 'ms';
+      arm.style.strokeDashoffset = 0;
+    });
+
+    // ── 2. Após todos os draw-ins: spin + órbitas + radar ping ──
+    setTimeout(() => {
+      const ast = document.getElementById('ast');
+      if (ast) ast.style.animationPlayState = 'running';
+
+      document.querySelectorAll('.orbit').forEach(o => {
+        o.style.transition = 'opacity .4s ease';
+        o.style.opacity = '1';
+      });
+
+      function ping() {
+        const r = document.getElementById('radar');
+        r.style.animation = 'none';
+        r.offsetHeight;
+        r.style.animation = 'radarPing 1.1s cubic-bezier(.2,.8,.4,1) forwards';
+      }
+      ping();
+      setTimeout(ping, 700);
+    }, 1500);
+  }));
+})();
+
+// ── 2. Text scramble on hero name ────────────
+const CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#@$%';
+function scramble(el, final, duration, delay) {
+  setTimeout(() => {
+    const len = final.length;
+    const t0 = performance.now();
+    (function tick(now) {
+      const p = Math.min((now - t0) / duration, 1);
+      const resolved = Math.floor(p * len);
+      let out = '';
+      for (let i = 0; i < len; i++) {
+        if (final[i] === ' ') { out += ' '; continue; }
+        out += i < resolved
+          ? final[i]
+          : CHARS[Math.floor(Math.random() * CHARS.length)];
+      }
+      el.textContent = out;
+      if (p < 1) requestAnimationFrame(tick);
+    })(performance.now());
+  }, delay);
+}
+scramble(document.getElementById('n1'), 'FÓRMULA ', 900, 1500);
+scramble(document.getElementById('n2'), 'MÍDIA IA', 900, 1700);
+
+// ── 3. Scroll progress bar ────────────────────
+const prog = document.getElementById('prog');
+window.addEventListener('scroll', () => {
+  const max = document.body.scrollHeight - window.innerHeight;
+  prog.style.width = (max > 0 ? window.scrollY / max * 100 : 0) + '%';
+}, {passive: true});
+
+// ── 4. Hero parallax + fade on scroll ────────
+const heroEl = document.getElementById('heroContent');
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  if (y < 500) {
+    heroEl.style.transform = `translateY(${y * 0.28}px)`;
+    heroEl.style.opacity   = Math.max(0, 1 - y / 320);
+  }
+}, {passive: true});
+
+// ── 5. Staggered entrance (IntersectionObserver) ─
+const inObs = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => {
+    if (!e.isIntersecting) return;
+    setTimeout(() => {
+      e.target.classList.add('in');
+      // animate section label line
+      if (e.target.classList.contains('lbl')) e.target.classList.add('in');
+    }, i * 50);
+    inObs.unobserve(e.target);
+  });
+}, {threshold: 0.08, rootMargin: '0px 0px -12px 0px'});
+
+document.querySelectorAll('[data-in]').forEach(el => inObs.observe(el));
+
+// ── 6. Counter animation ──────────────────────
+const cntObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.querySelectorAll('[data-count]').forEach(el => {
+      const target = +el.dataset.count;
+      const pre = el.dataset.pre || '', suf = el.dataset.suf || '';
+      const dur = 1400, t0 = performance.now();
+      (function tick(now) {
+        const p = Math.min((now - t0) / dur, 1);
+        const ease = 1 - Math.pow(1 - p, 3);
+        el.textContent = pre + Math.round(ease * target) + suf;
+        if (p < 1) requestAnimationFrame(tick);
+      })(performance.now());
+    });
+    cntObs.unobserve(e.target);
+  });
+}, {threshold: 0.5});
+const sb = document.getElementById('statsBox');
+if (sb) cntObs.observe(sb);
+
+// ── 7. Ripple on buttons ──────────────────────
+document.querySelectorAll('.btn,.btn-cta').forEach(btn => {
+  btn.addEventListener('pointerdown', e => {
+    const r = document.createElement('span');
+    r.className = 'ripple';
+    const rect = btn.getBoundingClientRect();
+    const size = Math.max(rect.width, rect.height) * 1.4;
+    r.style.cssText = `width:${size}px;height:${size}px;left:${e.clientX-rect.left-size/2}px;top:${e.clientY-rect.top-size/2}px`;
+    btn.appendChild(r);
+    r.addEventListener('animationend', () => r.remove());
+  });
+});
+
+// ── 8. 3D tilt on desktop hover ───────────────
+if (!('ontouchstart' in window)) {
+  document.querySelectorAll('.btn').forEach(btn => {
+    btn.addEventListener('mousemove', e => {
+      const r = btn.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width  - 0.5;
+      const y = (e.clientY - r.top)  / r.height - 0.5;
+      btn.style.transform = `perspective(700px) rotateY(${x*7}deg) rotateX(${-y*4}deg) translateY(-2px)`;
+    });
+    btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
+  });
+}
+</script>
+
+</body>
+</html>

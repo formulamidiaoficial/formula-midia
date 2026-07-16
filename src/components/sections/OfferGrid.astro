@@ -1,0 +1,49 @@
+---
+import { waLink } from "../../data/schema";
+
+interface OfferItem {
+  title: string;
+  desc: string;
+  feats: string[];
+  ribbon?: string;
+  featured?: boolean;
+  ctaMessage: string;
+  ctaLabel?: string;
+}
+
+interface Props {
+  items: OfferItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="mt-12 grid items-stretch gap-5.5 md:grid-cols-3">
+  {items.map((item) => (
+    <div
+      class={`flex flex-col rounded-card border p-8 transition-all hover:-translate-y-1 ${
+        item.featured ? "border-red/40 bg-gradient-to-b from-red/7 to-glass" : "border-border bg-glass hover:border-red/30"
+      }`}
+      data-in
+    >
+      {item.ribbon && <span class="mb-4 self-start rounded-full bg-red px-3 py-1.5 font-heading text-[11px] font-bold tracking-wide text-white">{item.ribbon}</span>}
+      <h3 class="mb-2.5 font-heading text-xl font-bold">{item.title}</h3>
+      <p class="mb-5.5 text-sm leading-relaxed text-mid">{item.desc}</p>
+      <ul class="mb-6.5 flex flex-1 flex-col gap-2.5">
+        {item.feats.map((f) => (
+          <li class="flex gap-2.5 text-[13.5px] leading-snug"><span class="shrink-0 font-bold text-red-hi">✓</span>{f}</li>
+        ))}
+      </ul>
+      <a
+        href={waLink(item.ctaMessage)}
+        target="_blank"
+        rel="noopener"
+        class={`flex items-center justify-center gap-2 rounded-full px-4.5 py-3.5 font-heading text-sm font-semibold no-underline transition-colors ${
+          item.featured ? "bg-red text-white" : "border border-border-hi bg-glass-hi hover:border-red hover:bg-red"
+        }`}
+      >
+        {item.ctaLabel ?? "Falar sobre este pacote"}
+      </a>
+    </div>
+  ))}
+</div>

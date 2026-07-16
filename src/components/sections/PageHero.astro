@@ -1,0 +1,65 @@
+---
+import Badge from "../ui/Badge.astro";
+import BtnPrimary from "../ui/BtnPrimary.astro";
+import BtnGhost from "../ui/BtnGhost.astro";
+import HeroBlobs from "./HeroBlobs.astro";
+
+interface Stat {
+  n: string;
+  l: string;
+}
+
+interface Props {
+  badge: string;
+  /** Plain title text; use `highlight` for the part that should render in red-hi on its own line. */
+  title: string;
+  highlight?: string;
+  sub: string;
+  primaryHref: string;
+  primaryLabel?: string;
+  ghostHref?: string;
+  ghostLabel?: string;
+  stats?: Stat[];
+}
+
+const {
+  badge,
+  title,
+  highlight,
+  sub,
+  primaryHref,
+  primaryLabel = "Falar com especialista →",
+  ghostHref,
+  ghostLabel,
+  stats,
+} = Astro.props;
+---
+
+<header class="relative overflow-hidden px-6 pb-24 pt-28 text-center">
+  <HeroBlobs variant="top" />
+
+  <div class="relative z-[2] mx-auto max-w-[820px]">
+    <Badge label={badge} />
+    <h1 class="mt-6 font-heading text-[clamp(32px,5.2vw,58px)] font-bold leading-[1.08] tracking-tight" data-in>
+      {title}
+      {highlight && <><br /><span class="text-red-hi">{highlight}</span></>}
+    </h1>
+    <p class="mx-auto mt-6 max-w-[640px] text-[clamp(15px,1.6vw,18px)] leading-relaxed text-mid" data-in set:html={sub} />
+
+    <div class="mt-9 flex flex-wrap justify-center gap-3.5" data-in>
+      <BtnPrimary href={primaryHref} target="_blank" rel="noopener">{primaryLabel}</BtnPrimary>
+      {ghostHref && ghostLabel && <BtnGhost href={ghostHref}>{ghostLabel}</BtnGhost>}
+    </div>
+
+    {stats && stats.length > 0 && (
+      <div class="mt-16 flex flex-wrap justify-center gap-x-16 gap-y-6" data-in>
+        {stats.map((s) => (
+          <div class="text-center">
+            <div class="font-heading text-[30px] font-bold tracking-tight text-red-hi">{s.n}</div>
+            <div class="mt-1 text-[11.5px] uppercase tracking-[.06em] text-dim">{s.l}</div>
+          </div>
+        ))}
+      </div>
+    )}
+  </div>
+</header>

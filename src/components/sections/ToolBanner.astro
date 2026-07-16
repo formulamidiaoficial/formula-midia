@@ -1,0 +1,26 @@
+---
+import BtnPrimary from "../ui/BtnPrimary.astro";
+
+interface Props {
+  eyebrow?: string;
+  title: string;
+  desc: string;
+  href: string;
+  ctaLabel?: string;
+}
+
+const { eyebrow = "Simulador", title, desc, href, ctaLabel = "Simular agora →" } = Astro.props;
+---
+
+<section class="px-6 py-11">
+  <div class="mx-auto max-w-[1080px]">
+    <div class="flex flex-wrap items-center justify-between gap-8 rounded-card border border-red/28 bg-gradient-to-br from-red/12 to-red-lo/6 p-10" data-in>
+      <div>
+        <span class="mb-2 block font-heading text-xs font-semibold uppercase tracking-[.16em] text-red-hi">{eyebrow}</span>
+        <h3 class="mb-2 font-heading text-[22px] font-bold tracking-tight">{title}</h3>
+        <p class="max-w-[460px] text-sm leading-relaxed text-mid">{desc}</p>
+      </div>
+      <BtnPrimary href={href} class="shrink-0">{ctaLabel}</BtnPrimary>
+    </div>
+  </div>
+</section>
