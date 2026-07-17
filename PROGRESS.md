@@ -1,7 +1,7 @@
 # PROGRESS.md
 
 ## Status (atualizar a cada sessão)
-Fase 2 concluída — /manifesto, /servicos (índice) e as 4 páginas de serviço (gestao-anuncios-online migrada, google-ads/meta-ads/consultoria-trafego criadas do zero via rota dinâmica `[slug].astro` + `src/data/services.ts`) — as 3 que eram links mortos no site antigo agora existem de verdade. Guarda de regressão (grep) contra Manaus rodada e limpa. Build de produção com 14 páginas, tudo testado (desktop + mobile, schema, WhatsApp). Falta: páginas legais (LGPD) + deploy (Fase 3) antes de publicar.
+Fase 3 concluída — Política de Privacidade e Termos de Uso criados (com placeholder `[CNPJ]` a preencher), página 404 customizada, `.htaccess` novo adaptado ao site estático (sem fallback de SPA, CSP mais restrita — exceto `script-src 'unsafe-inline'`, necessário porque o Astro usa um script inline pequeno pra hidratar os componentes React; testado e confirmado), `manifest.webmanifest` com os tokens corretos, favicon real (substituiu o placeholder padrão do Astro). Build de produção com 17 páginas. Pacote de deploy pronto em `Downloads/formula-midia-astro-deploy.zip`. **Site novo ainda NÃO foi publicado** — falta o cliente confirmar o CNPJ nas páginas legais e fazer o upload.
 
 ## Ambiente / Acesso
 - Repositório: github.com/formulamidiaoficial/formula-midia
@@ -30,7 +30,7 @@ Fase 2 concluída — /manifesto, /servicos (índice) e as 4 páginas de serviç
 - [x] Fase 1 — /seo, /calculadora (island React), Home completa
 - [x] Fase 1.5 (fora do plano original, adicionada a pedido do cliente) — Catálogo expandido: `/criacao-de-sites` + `/simulador-de-site`, `/growth` + `/simulador-de-funil`, `/mentoria`, componentes de seção reutilizáveis, `/links` reorganizado
 - [x] Fase 2 — /manifesto, /servicos + 3 subpáginas reais (google-ads, meta-ads, consultoria-trafego), /servicos/gestao-anuncios-online
-- [ ] Fase 3 — Páginas legais (Política de Privacidade, Termos de Uso — prioridade alta, risco LGPD) + Deploy no Hostinger
+- [x] Fase 3 — Páginas legais, 404, .htaccess, manifest, favicon. Pacote de deploy pronto — **falta o CNPJ e o upload de fato**
 - [ ] Fase 4 — Content Collections + página própria do case EMOPS
 - [ ] Fase 5 — Conteúdo de autoridade (primeiro guia pilar de SEO/GEO ou tráfego pago, clusters) — horizonte mais longo, começar só depois do site no ar
 
@@ -38,6 +38,24 @@ Fase 2 concluída — /manifesto, /servicos (índice) e as 4 páginas de serviç
 - Página de vendas de WhatsApp Bot (Typebot + BotConversa) — depende da decisão de stack do Typebot
 - Preço/oferta fechada de Mentoria — página existe, mas com CTA de lista de interesse até a entrega estar madura
 - Qualquer pixel de rastreamento (Meta/GTM/GA4/LinkedIn) — CSP fica restrita até o cliente confirmar instalação real
+
+## Pendências do cliente antes de publicar
+- **CNPJ real** da Fórmula Mídia — usado como `[CNPJ]` em `/privacidade` e `/termos`, precisa ser preenchido antes (ou logo depois) de ir ao ar
+- Fazer o upload de `formula-midia-astro-deploy.zip` (em Downloads) no Hostinger, substituindo TUDO em `public_html` — isso troca a arquitetura inteira do site (SPA antiga → Astro estático), não é um ajuste incremental como as vezes anteriores
+
+## O que falta para a Fase 4 (página do case EMOPS)
+- Decidir a URL: sugestão `/casos/emops` ou `/cases/grupo-emops`
+- **Perguntar ao cliente**: tem mais detalhes do projeto EMOPS além do que já está na página de Gestão de Anúncios (contexto do nicho, prazo do resultado, alguma citação/depoimento do cliente)?
+- **Confirmar com o cliente**: pode usar o nome "Grupo EMOPS" e os números (-45% CPL, +38% margem) publicamente numa página dedicada, com mais destaque do que hoje?
+- Criar `src/content/config.ts` (Content Collections) com schema de case study
+- Refatorar os blocos de EMOPS em `/manifesto` e `/servicos/gestao-anuncios-online` pra puxar da mesma fonte (Content Collection), evitando duplicar os números em 3 lugares
+
+## O que falta para a Fase 5 (primeiro conteúdo pilar)
+- Tópico já definido nesta sessão: "O Guia Definitivo de SEO e GEO para Empresas no Brasil"
+- Precisa de collection de blog em `src/content/config.ts` (separada da de case studies) e uma rota `/blog/[slug].astro` ou `/recursos/[slug].astro`
+- **Perguntar ao cliente**: prefere que o guia fique em `/blog/...` ou em algo como `/recursos/...`?
+- Este é um texto longo (pillar content de verdade cobre o tema a fundo) — vou escrever com o conhecimento técnico que já usamos no `/seo`, mas sem dados de volume de busca reais (não tenho acesso a ferramentas de keyword research) — o foco é profundidade e autoridade, não otimização por volume de palavra-chave
+- Depois do pilar, viriam os posts de cluster (ex: "O que é GEO na prática", "Core Web Vitals: o guia completo") — não fazer tudo de uma vez
 
 ## Tabela de paridade de conteúdo
 
@@ -71,4 +89,4 @@ Os 16 FAQs originais (schema JSON-LD do site antigo) já estão salvos em `src/d
 - Bug encontrado e corrigido nesta fase: blobs decorativos (absolute, blur) sem `overflow-hidden` no container pai causavam overflow horizontal no mobile em `/seo` (seção de CTA final) — checar isso em qualquer nova seção com blobs decorativos nas próximas fases.
 
 ## Próxima tarefa concreta
-Fase 3: criar Política de Privacidade e Termos de Uso (prioridade alta, risco LGPD), depois fazer o deploy real no Hostinger (build → pasta limpa → upload → validar headers de segurança em produção).
+Cliente precisa: (1) confirmar/enviar o CNPJ para as páginas legais, (2) fazer o upload de `formula-midia-astro-deploy.zip` no Hostinger. Depois disso, validar os headers de segurança em produção (securityheaders.com) e seguir para a Fase 4 (case EMOPS) ou Fase 5 (conteúdo pilar), conforme prioridade do cliente.
