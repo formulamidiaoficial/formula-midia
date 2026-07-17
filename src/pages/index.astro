@@ -4,6 +4,7 @@ import Badge from "../components/ui/Badge.astro";
 import BtnPrimary from "../components/ui/BtnPrimary.astro";
 import BtnGhost from "../components/ui/BtnGhost.astro";
 import FaqAccordion from "../components/ui/FaqAccordion.astro";
+import LogoCarousel from "../components/sections/LogoCarousel.astro";
 import { waLink, faqPageSchema } from "../data/schema";
 import { homeFaq } from "../data/faq/home";
 
@@ -160,6 +161,12 @@ const comparisonRows = [
       </div>
     </div>
   </header>
+
+  <!-- CLIENT LOGOS -->
+  <section class="border-y border-border px-6 py-8">
+    <p class="mb-6 text-center text-xs font-semibold uppercase tracking-[.08em] text-dim">Empresas que confiam na Fórmula Mídia</p>
+    <LogoCarousel />
+  </section>
 
   <!-- QUALIFIER -->
   <section class="bg-bg-2 px-6 py-20">
