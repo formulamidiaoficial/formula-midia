@@ -1,7 +1,7 @@
 # PROGRESS.md
 
 ## Status (atualizar a cada sessão)
-Fase 3 concluída — Política de Privacidade e Termos de Uso criados (com placeholder `[CNPJ]` a preencher), página 404 customizada, `.htaccess` novo adaptado ao site estático (sem fallback de SPA, CSP mais restrita — exceto `script-src 'unsafe-inline'`, necessário porque o Astro usa um script inline pequeno pra hidratar os componentes React; testado e confirmado), `manifest.webmanifest` com os tokens corretos, favicon real (substituiu o placeholder padrão do Astro). Build de produção com 17 páginas. Pacote de deploy pronto em `Downloads/formula-midia-astro-deploy.zip`. **Site novo ainda NÃO foi publicado** — falta o cliente confirmar o CNPJ nas páginas legais e fazer o upload.
+Fase 3 100% concluída — CNPJ real (55.777.659/0001-40) preenchido em `/privacidade`, `/termos` e no schema.org (`taxID`), removendo o último bloqueio de publicação. Auditoria completa de SEO/OG/meta feita e corrigida (ver "Auditoria de SEO/OG" abaixo). Gap de paridade de conteúdo encontrado e corrigido: carrossel de 25 logos de clientes (existia no site antigo, nunca portado) agora está na Home (`LogoCarousel.astro`, zero-JS). Build de produção rodado (17 páginas), commit `c9feaf1` enviado ao GitHub, pacote de deploy regenerado em `Downloads/formula-midia-astro-deploy.zip` (141 arquivos, ~1.99MB, inclui `.htaccess`). **Site novo pronto para publicar — falta apenas o cliente fazer o upload no Hostinger** (instruções passo a passo entregues nesta sessão).
 
 ## Ambiente / Acesso
 - Repositório: github.com/formulamidiaoficial/formula-midia
@@ -24,13 +24,16 @@ Fase 3 concluída — Política de Privacidade e Termos de Uso criados (com plac
   - **WhatsApp Bot** = continua adiado. Quando construir, será UMA página só mostrando duas entregas: Typebot embutido no site (demo ao vivo) + BotConversa (WhatsApp). Depende de decisão de stack do Typebot (cliente vai pesquisar no GitHub/Reddit).
 - 2026-07-16 — Criado um conjunto de componentes de seção reutilizáveis (`src/components/sections/`: PageHero, SectionHeading, DiffGrid, OfferGrid, ToolBanner, FinalCta, HeroBlobs) para acelerar a criação de landing pages — cada página nova agora é praticamente só conteúdo, não design do zero.
 - 2026-07-16 — `/links` reorganizado em grupos: Fale Conosco, Nossas Redes, Nossos Serviços (todas as landing pages), Ferramentas Gratuitas (todos os simuladores/calculadoras). Ideia de longo prazo: qualquer coisa vendável ou qualquer ferramenta/conteúdo gratuito (calculadoras, análises, auditorias, checklists, e-books, cursos, vídeos) ganha um botão aqui.
+- 2026-07-16 — CNPJ real da Fórmula Mídia confirmado pelo cliente: **55.777.659/0001-40**. Preenchido em `/privacidade`, `/termos` e em `organizationSchema()` (`taxID`).
+- 2026-07-16 — Auditoria de SEO/OG/meta feita a pedido do cliente ("já temos description e open graph? quer fazer uma auditoria?"). Achados e correções: título da Home (93→50 chars) e do Manifesto (118→54 chars) encurtados para exibição ideal em SERP; `robots: noindex` adicionado (só na 404, que não existia antes); títulos genéricos das subpáginas de `/servicos/[slug]` enriquecidos com o diferencial de cada serviço; `og:image:alt` adicionado ao Meta.astro; meta tags de PWA (theme-color, apple-mobile-web-app-*, format-detection) adicionadas ao BaseLayout; skip-link de acessibilidade adicionado. Também corrigidos 2 bugs reais encontrados durante a auditoria: `manifest.webmanifest` referenciado no BaseLayout mas nunca criado (404 real), e favicon.ico/favicon.svg ainda eram o placeholder padrão do Astro.
+- 2026-07-16 — Gap de paridade de conteúdo encontrado: o site antigo tinha um carrossel de 25 logos de clientes na Home (`inject-carousel.js`) que nunca foi portado, apesar dos arquivos já estarem em `public/assets/logos/` desde a Fase 0. Corrigido com `LogoCarousel.astro` (puro CSS, sem JS, pausa no hover, respeita `prefers-reduced-motion`). Removido `loading="lazy"` das imagens do carrossel — são só 25 arquivos únicos (~12KB cada, cacheados entre as 50 tags duplicadas), custo de banda mínimo, e elimina qualquer risco de o carregamento lazy não disparar corretamente dentro de um container com animação CSS via `transform`.
 
 ## Checklist de Fases
 - [x] Fase 0 — Fundação (Astro/Tailwind/React, tokens, layout, Nav/Footer, UI atoms, Meta/Schema)
 - [x] Fase 1 — /seo, /calculadora (island React), Home completa
 - [x] Fase 1.5 (fora do plano original, adicionada a pedido do cliente) — Catálogo expandido: `/criacao-de-sites` + `/simulador-de-site`, `/growth` + `/simulador-de-funil`, `/mentoria`, componentes de seção reutilizáveis, `/links` reorganizado
 - [x] Fase 2 — /manifesto, /servicos + 3 subpáginas reais (google-ads, meta-ads, consultoria-trafego), /servicos/gestao-anuncios-online
-- [x] Fase 3 — Páginas legais, 404, .htaccess, manifest, favicon. Pacote de deploy pronto — **falta o CNPJ e o upload de fato**
+- [x] Fase 3 — Páginas legais (com CNPJ real), 404, .htaccess, manifest, favicon. Auditoria de SEO/OG feita. Pacote de deploy pronto — **falta apenas o upload de fato**
 - [ ] Fase 4 — Content Collections + página própria do case EMOPS
 - [ ] Fase 5 — Conteúdo de autoridade (primeiro guia pilar de SEO/GEO ou tráfego pago, clusters) — horizonte mais longo, começar só depois do site no ar
 
@@ -40,8 +43,8 @@ Fase 3 concluída — Política de Privacidade e Termos de Uso criados (com plac
 - Qualquer pixel de rastreamento (Meta/GTM/GA4/LinkedIn) — CSP fica restrita até o cliente confirmar instalação real
 
 ## Pendências do cliente antes de publicar
-- **CNPJ real** da Fórmula Mídia — usado como `[CNPJ]` em `/privacidade` e `/termos`, precisa ser preenchido antes (ou logo depois) de ir ao ar
-- Fazer o upload de `formula-midia-astro-deploy.zip` (em Downloads) no Hostinger, substituindo TUDO em `public_html` — isso troca a arquitetura inteira do site (SPA antiga → Astro estático), não é um ajuste incremental como as vezes anteriores
+- ~~CNPJ real~~ — resolvido em 2026-07-16 (55.777.659/0001-40)
+- Fazer o upload de `formula-midia-astro-deploy.zip` (em Downloads) no Hostinger, substituindo TUDO em `public_html` — isso troca a arquitetura inteira do site (SPA antiga → Astro estático), não é um ajuste incremental como as vezes anteriores. Instruções passo a passo entregues no chat em 2026-07-16.
 
 ## O que falta para a Fase 4 (página do case EMOPS)
 - Decidir a URL: sugestão `/casos/emops` ou `/cases/grupo-emops`
@@ -78,7 +81,8 @@ Fase 3 concluída — Política de Privacidade e Termos de Uso criados (com plac
 | /growth + /simulador-de-funil | ✅ construído, testado |
 | /mentoria | ✅ construído, testado (CTA de lista de interesse) |
 | /servicos/whatsapp-bot (Typebot + BotConversa) | ⏸ adiado — depende de decisão de stack |
-| Política de Privacidade / Termos de Uso | pendente (Fase 3) |
+| Política de Privacidade / Termos de Uso | ✅ construído, CNPJ real preenchido |
+| Carrossel de logos de clientes (Home) | ✅ construído, corrige gap de paridade com site antigo |
 | Case EMOPS (página própria) | pendente (Fase 4) |
 
 Os 16 FAQs originais (schema JSON-LD do site antigo) já estão salvos em `src/data/faq/{home,manifesto,servicos,gestao-anuncios-online}.ts` — os de manifesto/servicos/gestao-anuncios-online já estão prontos para a Fase 2, só falta usá-los nas páginas. FAQs novos (criacao-de-sites, growth, mentoria) também já estão em `src/data/faq/`.
@@ -89,4 +93,4 @@ Os 16 FAQs originais (schema JSON-LD do site antigo) já estão salvos em `src/d
 - Bug encontrado e corrigido nesta fase: blobs decorativos (absolute, blur) sem `overflow-hidden` no container pai causavam overflow horizontal no mobile em `/seo` (seção de CTA final) — checar isso em qualquer nova seção com blobs decorativos nas próximas fases.
 
 ## Próxima tarefa concreta
-Cliente precisa: (1) confirmar/enviar o CNPJ para as páginas legais, (2) fazer o upload de `formula-midia-astro-deploy.zip` no Hostinger. Depois disso, validar os headers de segurança em produção (securityheaders.com) e seguir para a Fase 4 (case EMOPS) ou Fase 5 (conteúdo pilar), conforme prioridade do cliente.
+Cliente vai fazer o upload de `formula-midia-astro-deploy.zip` no Hostinger (instruções passo a passo dadas no chat em 2026-07-16). Depois disso: (1) validar os headers de segurança em produção (securityheaders.com), (2) validar Lighthouse na URL real, (3) seguir para a Fase 4 (case EMOPS — falta decisão do cliente sobre detalhes extras e permissão de destaque do nome) ou Fase 5 (conteúdo pilar de SEO/GEO — falta decisão do cliente sobre `/blog/` vs `/recursos/`), conforme prioridade do cliente.
