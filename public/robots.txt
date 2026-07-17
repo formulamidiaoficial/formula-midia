@@ -1,0 +1,40 @@
+# Robots.txt - Fórmula Mídia
+# Otimizado para Google, Bing e outros buscadores
+
+# Permitir todos os buscadores
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+Disallow: /temp/
+Disallow: /*.json$
+Disallow: /console_outputs/
+Disallow: /screenshots/
+Disallow: /page_texts/
+Disallow: /upload/
+
+# Específico para Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+# Específico para Bing
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Bloquear bots maliciosos
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+# Sitemap
+Sitemap: https://formulamidia.com.br/sitemap.xml

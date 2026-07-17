@@ -1,0 +1,36 @@
+{
+  "name": "Fórmula Mídia - Tráfego Pago, SEO e GEO",
+  "short_name": "Fórmula Mídia",
+  "description": "Agência de performance especializada em tráfego pago, SEO técnico e GEO (otimização para IA). Google Ads, Meta Ads e sites de alta performance para gerar mais clientes em todo o Brasil.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#E42929",
+  "background_color": "#09090B",
+  "categories": ["business", "marketing"],
+  "icons": [
+    {
+      "src": "/assets/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Falar com especialista",
+      "short_name": "Contato",
+      "description": "Entre em contato com um especialista",
+      "url": "/",
+      "icons": [
+        {
+          "src": "/assets/logo.png",
+          "sizes": "512x512",
+          "type": "image/png"
+        }
+      ]
+    }
+  ],
+  "prefer_related_applications": false
+}

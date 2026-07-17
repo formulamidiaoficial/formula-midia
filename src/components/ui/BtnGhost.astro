@@ -1,13 +1,17 @@
 ---
 interface Props {
   href: string;
+  target?: string;
+  rel?: string;
   class?: string;
 }
-const { href, class: className = "" } = Astro.props;
+const { href, target, rel, class: className = "" } = Astro.props;
 ---
 
 <a
   href={href}
+  target={target}
+  rel={rel}
   class={`inline-flex items-center gap-2.5 rounded-full border border-border bg-glass px-6 py-4 font-heading text-[15px] font-semibold text-ink no-underline transition-all hover:-translate-y-0.5 hover:border-border-hi hover:bg-glass-hi ${className}`}
 >
   <slot />

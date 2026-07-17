@@ -1,0 +1,24 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import BtnPrimary from "../components/ui/BtnPrimary.astro";
+import BtnGhost from "../components/ui/BtnGhost.astro";
+import { waLink } from "../data/schema";
+---
+
+<BaseLayout
+  title="Página não encontrada | Fórmula Mídia"
+  description="A página que você procura não existe ou foi movida."
+  path="/404"
+>
+  <section class="mx-auto flex min-h-[60vh] max-w-2xl flex-col items-center justify-center px-6 py-24 text-center">
+    <span class="font-heading text-6xl font-bold text-red-hi">404</span>
+    <h1 class="mt-4 font-heading text-2xl font-bold tracking-tight">Essa página não existe (ou mudou de endereço)</h1>
+    <p class="mt-4 max-w-md text-mid">
+      Pode ser um link antigo ou um erro de digitação. Volte para a home ou fale com a gente.
+    </p>
+    <div class="mt-8 flex flex-wrap justify-center gap-3.5">
+      <BtnPrimary href="/">Voltar para a Home</BtnPrimary>
+      <BtnGhost href={waLink("Olá, cheguei numa página que não encontrei no site")} target="_blank" rel="noopener">Falar com a gente</BtnGhost>
+    </div>
+  </section>
+</BaseLayout>

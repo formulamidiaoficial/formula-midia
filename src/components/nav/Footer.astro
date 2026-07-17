@@ -3,9 +3,16 @@ import { waLink } from "../../data/schema";
 ---
 
 <footer class="border-t border-border px-6 py-8 text-center text-[12.5px] text-dim">
-  © {new Date().getFullYear()} Fórmula Mídia ·{" "}
-  <a href="/" class="text-red-hi no-underline">formulamidia.com.br</a> ·{" "}
-  <a href={waLink("Olá, quero saber mais sobre os serviços Fórmula Mídia")} target="_blank" rel="noopener" class="text-red-hi no-underline">
-    WhatsApp
-  </a>
+  <p>
+    © {new Date().getFullYear()} Fórmula Mídia ·{" "}
+    <a href="/" class="text-red-hi no-underline">formulamidia.com.br</a> ·{" "}
+    <a href={waLink("Olá, quero saber mais sobre os serviços Fórmula Mídia")} target="_blank" rel="noopener" class="text-red-hi no-underline">
+      WhatsApp
+    </a>
+  </p>
+  <p class="mt-2">
+    <a href="/privacidade" class="text-dim no-underline hover:text-mid">Política de Privacidade</a>
+    {" · "}
+    <a href="/termos" class="text-dim no-underline hover:text-mid">Termos de Uso</a>
+  </p>
 </footer>
