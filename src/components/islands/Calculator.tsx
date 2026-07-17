@@ -84,7 +84,7 @@ export default function Calculator() {
         <Field
           label="Quantas cidades ou regiões você quer alcançar?"
           value={city}
-          hint="Páginas de SEO local — uma para cada cidade/região que você atende."
+          hint="Páginas de SEO local, uma para cada cidade/região que você atende."
         >
           <input
             type="range"

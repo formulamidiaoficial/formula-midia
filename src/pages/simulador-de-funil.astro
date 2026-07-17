@@ -13,7 +13,7 @@ const schema = breadcrumbSchema([
 
 <BaseLayout
   title="Simulador de Funil de Growth | Fórmula Mídia"
-  description="Simule seu funil: tráfego, conversão e ticket médio, e descubra onde está o maior vazamento — topo ou fundo de funil."
+  description="Simule seu funil: tráfego, conversão e ticket médio, e descubra onde está o maior vazamento, no topo ou no fundo do funil."
   path="/simulador-de-funil"
   schema={schema}
 >
@@ -33,7 +33,9 @@ const schema = breadcrumbSchema([
     </div>
   </header>
 
-  <div class="mx-auto max-w-[1140px] px-6 pb-24">
-    <FunnelSimulator client:load />
+  <div class="section-light px-6 pb-24 pt-8">
+    <div class="mx-auto max-w-[1140px]">
+      <FunnelSimulator client:load />
+    </div>
   </div>
 </BaseLayout>

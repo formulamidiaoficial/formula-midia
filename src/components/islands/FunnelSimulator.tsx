@@ -138,7 +138,7 @@ export default function FunnelSimulator() {
           Falar com especialista sobre este funil →
         </a>
         <p className="mt-3.5 text-center text-[11.5px] leading-relaxed text-dim">
-          Estimativa educativa baseada em benchmarks de mercado — não substitui um diagnóstico real do seu funil.
+          Estimativa educativa baseada em benchmarks de mercado, não substitui um diagnóstico real do seu funil.
         </p>
       </div>
     </div>

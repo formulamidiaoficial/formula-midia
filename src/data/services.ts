@@ -29,7 +29,7 @@ export const services: ServiceDefinition[] = [
     navTitle: "Google Ads",
     heroTitle: "Google Ads:",
     heroHighlight: "Capture a Demanda Ativa",
-    heroSub: "Apareça exatamente no momento em que seu cliente já está procurando por você — com estratégia, não só lance.",
+    heroSub: "Apareça exatamente no momento em que seu cliente já está procurando por você, com estratégia, não só lance.",
     diffs: [
       { icon: "🔍", title: "Pesquisa de Palavras-Chave Estratégica", desc: "Mapeamos exatamente o que seu cliente ideal busca no Google, sem desperdiçar orçamento com termos genéricos." },
       { icon: "💰", title: "Otimização de Lances", desc: "Ajuste contínuo de lances para maximizar conversões dentro do seu orçamento, sem cliques desperdiçados." },
@@ -42,7 +42,7 @@ export const services: ServiceDefinition[] = [
       { n: "4", t: "Otimização Contínua", d: "Ajustes semanais baseados em dados reais de performance." },
     ],
     faq: [
-      { question: "Preciso de um site pronto para rodar Google Ads?", answer: "Recomendamos uma landing page otimizada para conversão — se você não tem uma, também construímos isso pra você." },
+      { question: "Preciso de um site pronto para rodar Google Ads?", answer: "Recomendamos uma landing page otimizada para conversão. Se você não tem uma, também construímos isso pra você." },
       { question: "Quanto tempo leva para ver resultado?", answer: "Campanhas de busca geram tráfego imediatamente após a publicação; a maturidade de otimização (CPA ideal) costuma vir entre o 1º e o 3º mês." },
     ],
     finalCtaTitle: "Pronto para capturar quem já está procurando por você?",
@@ -66,7 +66,7 @@ export const services: ServiceDefinition[] = [
       { n: "4", t: "Otimização de Performance", d: "Testes contínuos de criativos e públicos, guiados por ROAS." },
     ],
     faq: [
-      { question: "Preciso ter uma página no Instagram ativa?", answer: "Não é obrigatório, mas ajuda na credibilidade do anúncio — podemos orientar sobre isso também." },
+      { question: "Preciso ter uma página no Instagram ativa?", answer: "Não é obrigatório, mas ajuda na credibilidade do anúncio, e podemos orientar sobre isso também." },
       { question: "Meta Ads funciona para qualquer nicho?", answer: "Funciona melhor para negócios com ciclo de decisão mais curto ou produtos/serviços visuais; avaliamos isso no diagnóstico inicial." },
     ],
     finalCtaTitle: "Pronto para gerar desejo antes da concorrência?",
@@ -90,7 +90,7 @@ export const services: ServiceDefinition[] = [
       { n: "4", t: "Apresentação e Próximos Passos", d: "Reunião de entrega com plano claro do que fazer, e como podemos ajudar a executar." },
     ],
     faq: [
-      { question: "A consultoria já inclui a execução das mudanças?", answer: "Não necessariamente — a consultoria entrega o diagnóstico e o plano; a execução pode ser feita por você ou contratada à parte." },
+      { question: "A consultoria já inclui a execução das mudanças?", answer: "Não necessariamente: a consultoria entrega o diagnóstico e o plano; a execução pode ser feita por você ou contratada à parte." },
       { question: "Quanto tempo leva a consultoria?", answer: "O diagnóstico completo costuma ser entregue em 1 a 2 semanas, dependendo do volume de dados disponível." },
     ],
     finalCtaTitle: "Pronto para saber exatamente onde otimizar?",
