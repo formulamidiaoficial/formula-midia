@@ -11,6 +11,7 @@ interface Props {
   description: string;
   path?: string;
   image?: string;
+  noindex?: boolean;
   schema?: Record<string, any> | Record<string, any>[];
   /** Set true only on the homepage — avoids duplicating the Organization
    * schema on every single page. */
@@ -22,6 +23,7 @@ const {
   description,
   path,
   image,
+  noindex = false,
   schema,
   includeOrganizationSchema = false,
 } = Astro.props;
@@ -39,8 +41,14 @@ const schemaItems = [
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="theme-color" content="#E42929" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Fórmula Mídia" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
 
-    <Meta title={title} description={description} path={path} image={image} />
+    <Meta title={title} description={description} path={path} image={image} noindex={noindex} />
     {schemaItems.length > 0 && <Schema data={schemaItems} />}
 
     <link rel="icon" href="/assets/logo.png" type="image/png" />
@@ -48,8 +56,11 @@ const schemaItems = [
     <link rel="manifest" href="/manifest.webmanifest" />
   </head>
   <body>
+    <a href="#conteudo-principal" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-red focus:px-4 focus:py-2.5 focus:font-heading focus:text-sm focus:font-semibold focus:text-white">
+      Pular para o conteúdo
+    </a>
     <Nav />
-    <main>
+    <main id="conteudo-principal">
       <slot />
     </main>
     <Footer />

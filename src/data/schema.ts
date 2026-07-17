@@ -28,6 +28,7 @@ export function organizationSchema() {
     url: SITE_URL,
     telephone: WHATSAPP_E164,
     email: "formulamidiaoficial@gmail.com",
+    taxID: "55.777.659/0001-40",
     address: { "@type": "PostalAddress", addressCountry: "BR" },
     areaServed: "BR",
     serviceType:
