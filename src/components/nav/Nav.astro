@@ -12,6 +12,32 @@ const serviceLinks: NavLink[] = [
   { label: "Criação de Sites", href: "/criacao-de-sites" },
   { label: "SEO & GEO", href: "/seo" },
 ];
+
+const toolLinks: NavLink[] = [
+  { label: "Calculadora de SEO & GEO", href: "/calculadora" },
+  { label: "Simulador de Site", href: "/simulador-de-site" },
+  { label: "Simulador de Funil", href: "/simulador-de-funil" },
+];
+
+// Grouped once and reused for both the desktop dropdowns and the mobile
+// menu, so adding/removing a link never needs to happen in two places
+// (a "Ferramentas" category was missing from the menu for a while because
+// the mobile/desktop lists had drifted apart).
+const menuGroups = [
+  { title: "Serviços", links: serviceLinks },
+  { title: "Ferramentas", links: toolLinks },
+];
+
+const flatLinks: NavLink[] = [
+  { label: "Mentoria", href: "/mentoria" },
+  { label: "O Manifesto", href: "/manifesto" },
+];
+
+const currentPath = Astro.url.pathname;
+function isActive(href: string): boolean {
+  if (href === "/") return currentPath === "/";
+  return currentPath === href || currentPath.startsWith(href + "/");
+}
 ---
 
 <nav class="sticky top-0 z-50 border-b border-border bg-bg/75 backdrop-blur-md">
@@ -22,35 +48,54 @@ const serviceLinks: NavLink[] = [
     </a>
 
     <div class="hidden items-center gap-7 md:flex">
-      <a href="/" class="font-heading text-[13.5px] font-medium text-mid no-underline transition-colors hover:text-ink">Home</a>
+      <a
+        href="/"
+        aria-current={isActive("/") ? "page" : undefined}
+        class={`font-heading text-[13.5px] font-medium no-underline transition-colors hover:text-ink ${isActive("/") ? "text-ink" : "text-mid"}`}
+      >
+        Home
+      </a>
 
-      <div class="group relative">
-        <button
-          type="button"
-          class="flex items-center gap-1 font-heading text-[13.5px] font-medium text-mid transition-colors hover:text-ink"
-          aria-haspopup="true"
-        >
-          Serviços
-          <svg width="10" height="6" viewBox="0 0 10 6" fill="none" class="mt-px transition-transform group-focus-within:-rotate-180 group-hover:-rotate-180">
-            <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-        </button>
-        <div class="invisible absolute left-0 top-full w-64 pt-3 opacity-0 transition-opacity duration-150 group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
-          <div class="flex flex-col gap-1 rounded-2xl border border-border bg-bg p-2 shadow-xl">
-            {serviceLinks.map((link) => (
-              <a
-                href={link.href}
-                class="rounded-xl px-3.5 py-2.5 font-heading text-[13.5px] font-medium text-mid no-underline transition-colors hover:bg-glass hover:text-ink"
-              >
-                {link.label}
-              </a>
-            ))}
+      {menuGroups.map((group) => {
+        const active = group.links.some((l) => isActive(l.href));
+        return (
+          <div class="group relative">
+            <button
+              type="button"
+              class={`flex items-center gap-1 font-heading text-[13.5px] font-medium transition-colors hover:text-ink ${active ? "text-ink" : "text-mid"}`}
+              aria-haspopup="true"
+            >
+              {group.title}
+              <svg width="10" height="6" viewBox="0 0 10 6" fill="none" class="mt-px transition-transform group-focus-within:-rotate-180 group-hover:-rotate-180">
+                <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+            <div class="invisible absolute left-0 top-full w-64 pt-3 opacity-0 transition-opacity duration-150 group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
+              <div class="flex flex-col gap-1 rounded-2xl border border-border bg-bg p-2 shadow-xl">
+                {group.links.map((link) => (
+                  <a
+                    href={link.href}
+                    aria-current={isActive(link.href) ? "page" : undefined}
+                    class={`rounded-xl px-3.5 py-2.5 font-heading text-[13.5px] font-medium no-underline transition-colors hover:bg-glass hover:text-ink ${isActive(link.href) ? "text-ink" : "text-mid"}`}
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
+        );
+      })}
 
-      <a href="/mentoria" class="font-heading text-[13.5px] font-medium text-mid no-underline transition-colors hover:text-ink">Mentoria</a>
-      <a href="/manifesto" class="font-heading text-[13.5px] font-medium text-mid no-underline transition-colors hover:text-ink">O Manifesto</a>
+      {flatLinks.map((link) => (
+        <a
+          href={link.href}
+          aria-current={isActive(link.href) ? "page" : undefined}
+          class={`font-heading text-[13.5px] font-medium no-underline transition-colors hover:text-ink ${isActive(link.href) ? "text-ink" : "text-mid"}`}
+        >
+          {link.label}
+        </a>
+      ))}
     </div>
 
     <div class="flex items-center gap-3">
@@ -73,14 +118,39 @@ const serviceLinks: NavLink[] = [
           </svg>
         </summary>
         <div class="absolute right-0 top-full mt-3 w-60 rounded-2xl border border-border bg-bg p-2 shadow-xl">
-          <a href="/" class="block rounded-xl px-3.5 py-2.5 font-heading text-[13.5px] font-medium text-mid no-underline hover:bg-glass hover:text-ink">Home</a>
-          <p class="mt-1 px-3.5 pb-1 pt-2 font-heading text-[11px] font-semibold uppercase tracking-[.08em] text-dim">Serviços</p>
-          {serviceLinks.map((link) => (
-            <a href={link.href} class="block rounded-xl px-3.5 py-2.5 font-heading text-[13.5px] font-medium text-mid no-underline hover:bg-glass hover:text-ink">{link.label}</a>
+          <a
+            href="/"
+            aria-current={isActive("/") ? "page" : undefined}
+            class={`block rounded-xl px-3.5 py-2.5 font-heading text-[13.5px] font-medium no-underline hover:bg-glass hover:text-ink ${isActive("/") ? "text-ink" : "text-mid"}`}
+          >
+            Home
+          </a>
+
+          {menuGroups.map((group) => (
+            <>
+              <p class="mt-1 px-3.5 pb-1 pt-2 font-heading text-[11px] font-semibold uppercase tracking-[.08em] text-dim">{group.title}</p>
+              {group.links.map((link) => (
+                <a
+                  href={link.href}
+                  aria-current={isActive(link.href) ? "page" : undefined}
+                  class={`block rounded-xl px-3.5 py-2.5 font-heading text-[13.5px] font-medium no-underline hover:bg-glass hover:text-ink ${isActive(link.href) ? "text-ink" : "text-mid"}`}
+                >
+                  {link.label}
+                </a>
+              ))}
+            </>
           ))}
+
           <div class="my-1 border-t border-border"></div>
-          <a href="/mentoria" class="block rounded-xl px-3.5 py-2.5 font-heading text-[13.5px] font-medium text-mid no-underline hover:bg-glass hover:text-ink">Mentoria</a>
-          <a href="/manifesto" class="block rounded-xl px-3.5 py-2.5 font-heading text-[13.5px] font-medium text-mid no-underline hover:bg-glass hover:text-ink">O Manifesto</a>
+          {flatLinks.map((link) => (
+            <a
+              href={link.href}
+              aria-current={isActive(link.href) ? "page" : undefined}
+              class={`block rounded-xl px-3.5 py-2.5 font-heading text-[13.5px] font-medium no-underline hover:bg-glass hover:text-ink ${isActive(link.href) ? "text-ink" : "text-mid"}`}
+            >
+              {link.label}
+            </a>
+          ))}
           <a href="/links" class="block rounded-xl px-3.5 py-2.5 font-heading text-[13.5px] font-medium text-mid no-underline hover:bg-glass hover:text-ink">Todos os links e ferramentas</a>
         </div>
       </details>
