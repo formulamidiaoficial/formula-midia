@@ -5,6 +5,7 @@ import SectionHeading from "../../components/sections/SectionHeading.astro";
 import DiffGrid from "../../components/sections/DiffGrid.astro";
 import FaqAccordion from "../../components/ui/FaqAccordion.astro";
 import FinalCta from "../../components/sections/FinalCta.astro";
+import Breadcrumbs from "../../components/ui/Breadcrumbs.astro";
 import { waLink, faqPageSchema, breadcrumbSchema } from "../../data/schema";
 import { services } from "../../data/services";
 
@@ -17,14 +18,12 @@ export function getStaticPaths() {
 
 const { service } = Astro.props;
 
-const schema = [
-  faqPageSchema(service.faq),
-  breadcrumbSchema([
-    { name: "Home", path: "/" },
-    { name: "Serviços", path: "/servicos" },
-    { name: service.navTitle, path: `/servicos/${service.slug}` },
-  ]),
+const breadcrumbItems = [
+  { name: "Home", path: "/" },
+  { name: "Serviços", path: "/servicos" },
+  { name: service.navTitle, path: `/servicos/${service.slug}` },
 ];
+const schema = [faqPageSchema(service.faq), breadcrumbSchema(breadcrumbItems)];
 
 const ctaMessage = `Olá, quero saber mais sobre ${service.navTitle}`;
 ---
@@ -35,6 +34,7 @@ const ctaMessage = `Olá, quero saber mais sobre ${service.navTitle}`;
   path={`/servicos/${service.slug}`}
   schema={schema}
 >
+  <Breadcrumbs items={breadcrumbItems} />
   <PageHero
     badge={service.navTitle}
     title={service.heroTitle}

@@ -4,17 +4,16 @@ import PageHero from "../../components/sections/PageHero.astro";
 import SectionHeading from "../../components/sections/SectionHeading.astro";
 import FaqAccordion from "../../components/ui/FaqAccordion.astro";
 import FinalCta from "../../components/sections/FinalCta.astro";
+import Breadcrumbs from "../../components/ui/Breadcrumbs.astro";
 import { waLink, faqPageSchema, breadcrumbSchema } from "../../data/schema";
 import { servicosFaq } from "../../data/faq/servicos";
 import { services } from "../../data/services";
 
-const schema = [
-  faqPageSchema(servicosFaq),
-  breadcrumbSchema([
-    { name: "Home", path: "/" },
-    { name: "Serviços", path: "/servicos" },
-  ]),
+const breadcrumbItems = [
+  { name: "Home", path: "/" },
+  { name: "Serviços", path: "/servicos" },
 ];
+const schema = [faqPageSchema(servicosFaq), breadcrumbSchema(breadcrumbItems)];
 
 const ctaMessage = "Olá, quero saber mais sobre os serviços Fórmula Mídia";
 
@@ -31,6 +30,7 @@ const cards = [
   path="/servicos"
   schema={schema}
 >
+  <Breadcrumbs items={breadcrumbItems} />
   <PageHero
     badge="Nossos Serviços"
     title="Nossos Serviços de"

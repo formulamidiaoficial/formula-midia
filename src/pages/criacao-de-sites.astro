@@ -7,16 +7,15 @@ import ToolBanner from "../components/sections/ToolBanner.astro";
 import OfferGrid from "../components/sections/OfferGrid.astro";
 import FaqAccordion from "../components/ui/FaqAccordion.astro";
 import FinalCta from "../components/sections/FinalCta.astro";
+import Breadcrumbs from "../components/ui/Breadcrumbs.astro";
 import { waLink, faqPageSchema, breadcrumbSchema } from "../data/schema";
 import { criacaoDeSitesFaq } from "../data/faq/criacao-de-sites";
 
-const schema = [
-  faqPageSchema(criacaoDeSitesFaq),
-  breadcrumbSchema([
-    { name: "Home", path: "/" },
-    { name: "Criação de Sites", path: "/criacao-de-sites" },
-  ]),
+const breadcrumbItems = [
+  { name: "Home", path: "/" },
+  { name: "Criação de Sites", path: "/criacao-de-sites" },
 ];
+const schema = [faqPageSchema(criacaoDeSitesFaq), breadcrumbSchema(breadcrumbItems)];
 ---
 
 <BaseLayout
@@ -25,6 +24,7 @@ const schema = [
   path="/criacao-de-sites"
   schema={schema}
 >
+  <Breadcrumbs items={breadcrumbItems} />
   <PageHero
     badge="Criação de Sites & Landing Pages"
     title="Seu site não é um cartão de visita."

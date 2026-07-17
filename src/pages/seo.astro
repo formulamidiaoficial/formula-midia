@@ -4,16 +4,15 @@ import Badge from "../components/ui/Badge.astro";
 import BtnPrimary from "../components/ui/BtnPrimary.astro";
 import BtnGhost from "../components/ui/BtnGhost.astro";
 import FaqAccordion from "../components/ui/FaqAccordion.astro";
+import Breadcrumbs from "../components/ui/Breadcrumbs.astro";
 import { waLink, faqPageSchema, breadcrumbSchema } from "../data/schema";
 import { seoFaq } from "../data/faq/seo";
 
-const schema = [
-  faqPageSchema(seoFaq),
-  breadcrumbSchema([
-    { name: "Home", path: "/" },
-    { name: "SEO & GEO", path: "/seo" },
-  ]),
+const breadcrumbItems = [
+  { name: "Home", path: "/" },
+  { name: "SEO & GEO", path: "/seo" },
 ];
+const schema = [faqPageSchema(seoFaq), breadcrumbSchema(breadcrumbItems)];
 ---
 
 <BaseLayout
@@ -22,6 +21,7 @@ const schema = [
   path="/seo"
   schema={schema}
 >
+  <Breadcrumbs items={breadcrumbItems} />
   <!-- HERO -->
   <header class="relative overflow-hidden px-6 pb-24 pt-28 text-center">
     <div class="pointer-events-none absolute -left-32 -top-40 h-[460px] w-[460px] rounded-full bg-[radial-gradient(circle,rgba(228,41,41,.25),transparent_70%)] blur-[70px]"></div>

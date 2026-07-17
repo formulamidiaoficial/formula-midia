@@ -5,16 +5,15 @@ import SectionHeading from "../components/sections/SectionHeading.astro";
 import DiffGrid from "../components/sections/DiffGrid.astro";
 import FaqAccordion from "../components/ui/FaqAccordion.astro";
 import FinalCta from "../components/sections/FinalCta.astro";
+import Breadcrumbs from "../components/ui/Breadcrumbs.astro";
 import { waLink, faqPageSchema, breadcrumbSchema } from "../data/schema";
 import { mentoriaFaq } from "../data/faq/mentoria";
 
-const schema = [
-  faqPageSchema(mentoriaFaq),
-  breadcrumbSchema([
-    { name: "Home", path: "/" },
-    { name: "Mentoria", path: "/mentoria" },
-  ]),
+const breadcrumbItems = [
+  { name: "Home", path: "/" },
+  { name: "Mentoria", path: "/mentoria" },
 ];
+const schema = [faqPageSchema(mentoriaFaq), breadcrumbSchema(breadcrumbItems)];
 
 const waitlistMessage = "Olá, quero saber mais sobre as vagas da Mentoria 1:1 Fórmula Mídia";
 ---
@@ -25,6 +24,7 @@ const waitlistMessage = "Olá, quero saber mais sobre as vagas da Mentoria 1:1 F
   path="/mentoria"
   schema={schema}
 >
+  <Breadcrumbs items={breadcrumbItems} />
   <PageHero
     badge="Mentoria 1:1: Vagas Limitadas"
     title="Mentoria individual para"

@@ -60,7 +60,12 @@ export function faqPageSchema(items: FaqItem[]) {
   };
 }
 
-export function breadcrumbSchema(items: { name: string; path: string }[]) {
+export interface BreadcrumbItem {
+  name: string;
+  path: string;
+}
+
+export function breadcrumbSchema(items: BreadcrumbItem[]) {
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",

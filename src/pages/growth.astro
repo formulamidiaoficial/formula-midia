@@ -7,16 +7,15 @@ import ToolBanner from "../components/sections/ToolBanner.astro";
 import OfferGrid from "../components/sections/OfferGrid.astro";
 import FaqAccordion from "../components/ui/FaqAccordion.astro";
 import FinalCta from "../components/sections/FinalCta.astro";
+import Breadcrumbs from "../components/ui/Breadcrumbs.astro";
 import { waLink, faqPageSchema, breadcrumbSchema } from "../data/schema";
 import { growthFaq } from "../data/faq/growth";
 
-const schema = [
-  faqPageSchema(growthFaq),
-  breadcrumbSchema([
-    { name: "Home", path: "/" },
-    { name: "Growth & Performance", path: "/growth" },
-  ]),
+const breadcrumbItems = [
+  { name: "Home", path: "/" },
+  { name: "Growth & Performance", path: "/growth" },
 ];
+const schema = [faqPageSchema(growthFaq), breadcrumbSchema(breadcrumbItems)];
 
 const spin = [
   { l: "Situação", t: "Você já investe em marketing digital", d: "Talvez tráfego pago, talvez SEO, talvez automação de atendimento, mas cada canal reporta números diferentes, em lugares diferentes." },
@@ -32,6 +31,7 @@ const spin = [
   path="/growth"
   schema={schema}
 >
+  <Breadcrumbs items={breadcrumbItems} />
   <PageHero
     badge="Gestão de Growth & Performance"
     title="Você sabe exatamente onde"

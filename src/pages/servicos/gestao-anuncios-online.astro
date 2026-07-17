@@ -4,17 +4,16 @@ import PageHero from "../../components/sections/PageHero.astro";
 import SectionHeading from "../../components/sections/SectionHeading.astro";
 import FaqAccordion from "../../components/ui/FaqAccordion.astro";
 import FinalCta from "../../components/sections/FinalCta.astro";
+import Breadcrumbs from "../../components/ui/Breadcrumbs.astro";
 import { waLink, faqPageSchema, breadcrumbSchema } from "../../data/schema";
 import { gestaoAnunciosFaq } from "../../data/faq/gestao-anuncios-online";
 
-const schema = [
-  faqPageSchema(gestaoAnunciosFaq),
-  breadcrumbSchema([
-    { name: "Home", path: "/" },
-    { name: "Serviços", path: "/servicos" },
-    { name: "Gestão de Anúncios Online", path: "/servicos/gestao-anuncios-online" },
-  ]),
+const breadcrumbItems = [
+  { name: "Home", path: "/" },
+  { name: "Serviços", path: "/servicos" },
+  { name: "Gestão de Anúncios Online", path: "/servicos/gestao-anuncios-online" },
 ];
+const schema = [faqPageSchema(gestaoAnunciosFaq), breadcrumbSchema(breadcrumbItems)];
 
 const auditMessage = "Olá! Gostaria de solicitar uma auditoria gratuita da minha conta de anúncios.";
 const consultoriaMessage = "Olá! Quero agendar minha consultoria de tráfego.";
@@ -26,6 +25,7 @@ const consultoriaMessage = "Olá! Quero agendar minha consultoria de tráfego.";
   path="/servicos/gestao-anuncios-online"
   schema={schema}
 >
+  <Breadcrumbs items={breadcrumbItems} />
   <PageHero
     badge="Gestão Estratégica de Tráfego"
     title="Gestão de Anúncios Online:"

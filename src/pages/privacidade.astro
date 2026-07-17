@@ -1,11 +1,13 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "../components/ui/Breadcrumbs.astro";
 import { breadcrumbSchema } from "../data/schema";
 
-const schema = breadcrumbSchema([
+const breadcrumbItems = [
   { name: "Home", path: "/" },
   { name: "Política de Privacidade", path: "/privacidade" },
-]);
+];
+const schema = breadcrumbSchema(breadcrumbItems);
 
 const lastUpdated = "16 de julho de 2026";
 ---
@@ -16,6 +18,7 @@ const lastUpdated = "16 de julho de 2026";
   path="/privacidade"
   schema={schema}
 >
+  <Breadcrumbs items={breadcrumbItems} />
   <article class="mx-auto max-w-[760px] px-6 py-20">
     <span class="mb-3 block font-heading text-xs font-semibold uppercase tracking-[.14em] text-red-hi">Legal</span>
     <h1 class="mb-3 font-heading text-3xl font-bold tracking-tight">Política de Privacidade</h1>
