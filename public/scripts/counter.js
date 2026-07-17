@@ -1,20 +1,8 @@
-// Shared, site-wide "reveal on scroll" + stat count-up.
-// Loaded once via BaseLayout — intentionally not a React island: this is a
-// few hundred bytes of vanilla JS, far cheaper than shipping a framework
-// runtime for a fade-in effect.
+// Stat count-up on scroll. The fade-in reveal effect ([data-in]) moved to
+// pure CSS (scroll-driven animations) — this is the one effect that still
+// needs JS, since animating a number's text content isn't reliably doable
+// in CSS yet.
 (function () {
-  const revealObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry, i) => {
-        if (!entry.isIntersecting) return;
-        setTimeout(() => entry.target.classList.add("in"), i * 60);
-        revealObserver.unobserve(entry.target);
-      });
-    },
-    { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
-  );
-  document.querySelectorAll("[data-in]").forEach((el) => revealObserver.observe(el));
-
   const countObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {

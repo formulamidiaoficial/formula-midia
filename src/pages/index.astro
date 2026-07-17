@@ -207,7 +207,7 @@ const comparisonRows = [
   </section>
 
   <!-- QUALIFIER -->
-  <section class="bg-bg-2 px-6 py-20">
+  <section class="section-light px-6 py-20">
     <div class="mx-auto max-w-[820px] text-center">
       <h2 class="font-heading text-[clamp(24px,3.2vw,34px)] font-bold tracking-tight" data-in>Este serviço é para sua empresa?</h2>
       <p class="mt-4 text-base text-mid" data-in>Responda estas três perguntas e descubra se a Fórmula Mídia faz sentido para a sua empresa.</p>
@@ -248,13 +248,64 @@ const comparisonRows = [
         <p>Assim é possível visualizar desde o anúncio que gerou o lead até o estágio do atendimento, garantindo máximo controle e ROI em suas campanhas.</p>
       </div>
 
-      <div class="mt-12 grid gap-5 md:grid-cols-2">
-        {platformFeatures.map((f) => (
+      <div class="mt-12 grid auto-rows-[minmax(190px,auto)] grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-4">
+        <!-- Dashboards Profissionais: large cell with real product screenshot -->
+        <div class="group relative col-span-1 overflow-hidden rounded-card border border-border sm:col-span-2 md:col-span-2 md:row-span-2" data-in>
+          <img
+            src="/assets/screenshots/dashboard-google-ads.png"
+            alt="Dashboard real de campanhas Google Ads usado pela Fórmula Mídia"
+            class="absolute inset-0 h-full w-full object-cover object-top opacity-35 transition-opacity duration-300 group-hover:opacity-55"
+            loading="lazy"
+            decoding="async"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-bg via-bg/75 to-bg/10"></div>
+          <div class="relative flex h-full flex-col justify-end p-6">
+            <div class="mb-3 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-red/10 font-heading text-sm font-bold text-red-hi">{platformFeatures[0].n}</div>
+            <h3 class="mb-1.5 font-heading text-[15.5px] font-semibold">{platformFeatures[0].title}</h3>
+            <p class="max-w-md text-[13.5px] leading-relaxed text-mid">{platformFeatures[0].desc}</p>
+          </div>
+        </div>
+
+        <!-- Relatórios Automatizados: tall cell with real WhatsApp report screenshot -->
+        <div class="col-span-1 flex flex-col rounded-card border border-border bg-glass p-6 md:row-span-2" data-in>
+          <div class="mb-3 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-red/10 font-heading text-sm font-bold text-red-hi">{platformFeatures[4].n}</div>
+          <h3 class="mb-1.5 font-heading text-[15.5px] font-semibold">{platformFeatures[4].title}</h3>
+          <p class="mb-4 text-[13.5px] leading-relaxed text-mid">{platformFeatures[4].desc}</p>
+          <img
+            src="/assets/screenshots/relatorio-whatsapp.png"
+            alt="Exemplo real de relatório automático de campanhas enviado via WhatsApp"
+            class="mt-auto max-h-56 w-full rounded-xl object-contain"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+
+        <!-- Rastreamento via WhatsApp: illustrative mockup, no real lead data -->
+        <div class="col-span-1 flex flex-col rounded-card border border-border bg-glass p-6" data-in>
+          <div class="mb-3 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-red/10 font-heading text-sm font-bold text-red-hi">{platformFeatures[1].n}</div>
+          <h3 class="mb-1.5 font-heading text-[15.5px] font-semibold">{platformFeatures[1].title}</h3>
+          <p class="mb-4 text-[13.5px] leading-relaxed text-mid">{platformFeatures[1].desc}</p>
+          <div class="mt-auto flex flex-col gap-2">
+            {[
+              { label: "Novo lead recebido", time: "agora" },
+              { label: "Contato via anúncio", time: "3 min" },
+              { label: "Pedido de orçamento", time: "9 min" },
+            ].map((row) => (
+              <div class="flex items-center gap-2.5 rounded-xl border border-border bg-bg-2 px-3 py-2.5">
+                <span class="h-2 w-2 shrink-0 rounded-full bg-emerald-400"></span>
+                <p class="min-w-0 flex-1 truncate font-heading text-[12px] font-semibold">{row.label}</p>
+                <span class="shrink-0 text-[10.5px] text-dim">{row.time}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {[2, 3, 5, 6, 7].map((i) => (
           <div class="flex gap-4 rounded-card border border-border bg-glass p-6" data-in>
-            <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-red/10 font-heading text-sm font-bold text-red-hi">{f.n}</div>
+            <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-red/10 font-heading text-sm font-bold text-red-hi">{platformFeatures[i].n}</div>
             <div>
-              <h3 class="mb-1.5 font-heading text-[15.5px] font-semibold">{f.title}</h3>
-              <p class="text-[13.5px] leading-relaxed text-mid">{f.desc}</p>
+              <h3 class="mb-1.5 font-heading text-[15.5px] font-semibold">{platformFeatures[i].title}</h3>
+              <p class="text-[13.5px] leading-relaxed text-mid">{platformFeatures[i].desc}</p>
             </div>
           </div>
         ))}
@@ -440,7 +491,7 @@ const comparisonRows = [
   </section>
 
   <!-- SEO LOCAL CONTENT (condensed — same information, less repetition than the original) -->
-  <section class="bg-bg-2 px-6 py-22">
+  <section class="section-light px-6 py-22">
     <div class="mx-auto max-w-[1080px]">
       <div class="grid gap-10 md:grid-cols-2">
         <div data-in>
