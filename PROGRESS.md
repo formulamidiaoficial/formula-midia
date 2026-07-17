@@ -27,6 +27,13 @@ Fase 3 100% concluída — CNPJ real (55.777.659/0001-40) preenchido em `/privac
 - 2026-07-16 — CNPJ real da Fórmula Mídia confirmado pelo cliente: **55.777.659/0001-40**. Preenchido em `/privacidade`, `/termos` e em `organizationSchema()` (`taxID`).
 - 2026-07-16 — Auditoria de SEO/OG/meta feita a pedido do cliente ("já temos description e open graph? quer fazer uma auditoria?"). Achados e correções: título da Home (93→50 chars) e do Manifesto (118→54 chars) encurtados para exibição ideal em SERP; `robots: noindex` adicionado (só na 404, que não existia antes); títulos genéricos das subpáginas de `/servicos/[slug]` enriquecidos com o diferencial de cada serviço; `og:image:alt` adicionado ao Meta.astro; meta tags de PWA (theme-color, apple-mobile-web-app-*, format-detection) adicionadas ao BaseLayout; skip-link de acessibilidade adicionado. Também corrigidos 2 bugs reais encontrados durante a auditoria: `manifest.webmanifest` referenciado no BaseLayout mas nunca criado (404 real), e favicon.ico/favicon.svg ainda eram o placeholder padrão do Astro.
 - 2026-07-16 — Gap de paridade de conteúdo encontrado: o site antigo tinha um carrossel de 25 logos de clientes na Home (`inject-carousel.js`) que nunca foi portado, apesar dos arquivos já estarem em `public/assets/logos/` desde a Fase 0. Corrigido com `LogoCarousel.astro` (puro CSS, sem JS, pausa no hover, respeita `prefers-reduced-motion`). Removido `loading="lazy"` das imagens do carrossel — são só 25 arquivos únicos (~12KB cada, cacheados entre as 50 tags duplicadas), custo de banda mínimo, e elimina qualquer risco de o carregamento lazy não disparar corretamente dentro de um container com animação CSS via `transform`.
+- 2026-07-16 — **Decisão estratégica de modelo de negócio** (conversa longa com o cliente sobre "virar top 1 local / top 10 Brasil / top 100 mundo"): pesquisa de mercado feita (agências que escalaram — V4 Company, RD Station, Agência Mestre, Neil Patel, WebFX — nenhuma cresceu vendendo mais horas do fundador). Cliente esclareceu que a operação NÃO é solo: é CEO (cliente) + sócio (head da maior agência de CRM/performance do setor dele) + gestores + times jr/pleno, já operando white-label. Isso valida capacidade real de entrega em Growth & Performance e Tráfego Pago produtizado. Decisão de **enxugar posicionamento em vez de atender todos os tickets/públicos ao mesmo tempo**:
+  - **Mantém e fortalece agora**: Tráfego Pago produtizado (médio ticket), Growth & Performance (alto ticket, alto touch — não produtizar), Criação de Sites, SEO & GEO (com GEO embutido no pacote, não vendido separado — mercado brasileiro de GEO ainda imaturo pra ticket próprio, ver pesquisa), Mentoria 1:1 com vagas limitadas por trimestre (decisão do cliente: mentoria fica 1:1, não vira curso/turma — aceito, escassez reforça ticket premium).
+  - **Mapeado como visão, NÃO construir ainda**: (a) Atendimento a governos/prefeituras via licitação (chatbot WhatsApp API e afins) — motion de venda totalmente diferente (certidões, registro, portfólio de edital), merece fase/site próprio quando o cliente decidir investir nisso; (b) Programa de parceria/white-label para OUTRAS agências (B2B2B, cliente já faz internamente e quer expandir) — pode virar um 6º produto no molde do programa de parceiros da RD Station, mas só quando o modelo for validado; (c) Página pessoal do CEO (Fabiano de Medeiros — "Gestor de Crescimento, Growth Marketer & Sales Performance") como link-tree/bio dentro do site da Fórmula Mídia — item de backlog futuro, sem urgência.
+  - **IA**: não vira produto/página própria — fica como fio condutor citado dentro dos serviços existentes (ex: "construído com Claude Code", otimização de campanha via IA), não como oferta separada.
+  - **Wedge/diferencial único proposto**: a integração real entre tráfego pago + CRM (via expertise do sócio) + dados de growth de ponta a ponta — a maioria das agências brasileiras vende só uma dessas pernas isoladamente. Isso já existe em conteúdo na seção "Plataforma Completa" da Home; falta reforçar essa integração como o motivo de ser "top 1", não só como lista de features.
+  - **Caso EMOPS confirmado como case de cliente**: o cliente esclareceu que qualquer papel executivo seu ou do sócio (ex: head de growth do Grupo EMOPS em 12 estados) pode ser usado como case da Fórmula Mídia. A Fase 4 (página própria do case) pode prosseguir sem restrição de confidencialidade. **Exceção confirmada**: a mentoria de oftalmologia premium que o cliente lidera (maior do Brasil no nicho) NUNCA deve ser citada em lugar nenhum do site — é papel pessoal fora do escopo da Fórmula Mídia.
+- 2026-07-16 — Implementado o primeiro passo da reorganização: Nav ganhou dropdown "Serviços" (Tráfego Pago, Growth, Criação de Sites, SEO & GEO — antes só descobertas via `/links`), Home ganhou seção "Nossos Serviços" (cards linkando as 4 ofertas core + faixa de Mentoria), `/mentoria` reposicionada de "lista de interesse" genérica para "vagas limitadas por trimestre" (1:1).
 
 ## Checklist de Fases
 - [x] Fase 0 — Fundação (Astro/Tailwind/React, tokens, layout, Nav/Footer, UI atoms, Meta/Schema)
@@ -37,19 +44,23 @@ Fase 3 100% concluída — CNPJ real (55.777.659/0001-40) preenchido em `/privac
 - [ ] Fase 4 — Content Collections + página própria do case EMOPS
 - [ ] Fase 5 — Conteúdo de autoridade (primeiro guia pilar de SEO/GEO ou tráfego pago, clusters) — horizonte mais longo, começar só depois do site no ar
 
-## Não construir ainda (aguardando decisão do cliente)
+## Não construir ainda (aguardando decisão do cliente / fases futuras)
 - Página de vendas de WhatsApp Bot (Typebot + BotConversa) — depende da decisão de stack do Typebot
-- Preço/oferta fechada de Mentoria — página existe, mas com CTA de lista de interesse até a entrega estar madura
 - Qualquer pixel de rastreamento (Meta/GTM/GA4/LinkedIn) — CSP fica restrita até o cliente confirmar instalação real
+- Atendimento a governos/prefeituras (licitação, chatbot WhatsApp API) — fase/site próprio futuro, motion de venda diferente do site atual
+- Programa de parceria/white-label para outras agências (B2B2B) — validar modelo internamente antes de ter página pública
+- Página pessoal do CEO (Fabiano de Medeiros, link-tree/bio dentro do site) — backlog futuro, sem data
+- GEO como produto/ticket separado — hoje embutido no pacote de SEO; revisitar quando o mercado brasileiro amadurecer (ver decisão de 2026-07-16)
+- **NUNCA citar**: a mentoria de oftalmologia premium liderada pelo cliente (fora do escopo da Fórmula Mídia, confidencial)
 
 ## Pendências do cliente antes de publicar
 - ~~CNPJ real~~ — resolvido em 2026-07-16 (55.777.659/0001-40)
 - Fazer o upload de `formula-midia-astro-deploy.zip` (em Downloads) no Hostinger, substituindo TUDO em `public_html` — isso troca a arquitetura inteira do site (SPA antiga → Astro estático), não é um ajuste incremental como as vezes anteriores. Instruções passo a passo entregues no chat em 2026-07-16.
 
 ## O que falta para a Fase 4 (página do case EMOPS)
+- ~~Confirmar permissão de citar "Grupo EMOPS" publicamente~~ — resolvido em 2026-07-16: cliente confirmou que papéis executivos seus/do sócio podem ser usados como case da Fórmula Mídia
 - Decidir a URL: sugestão `/casos/emops` ou `/cases/grupo-emops`
-- **Perguntar ao cliente**: tem mais detalhes do projeto EMOPS além do que já está na página de Gestão de Anúncios (contexto do nicho, prazo do resultado, alguma citação/depoimento do cliente)?
-- **Confirmar com o cliente**: pode usar o nome "Grupo EMOPS" e os números (-45% CPL, +38% margem) publicamente numa página dedicada, com mais destaque do que hoje?
+- **Perguntar ao cliente**: tem mais detalhes do projeto EMOPS além do que já está na página de Gestão de Anúncios (contexto do nicho, prazo do resultado, alguma citação/depoimento, a escala real — cliente mencionou growth em 12 estados, vale destacar isso na página)?
 - Criar `src/content/config.ts` (Content Collections) com schema de case study
 - Refatorar os blocos de EMOPS em `/manifesto` e `/servicos/gestao-anuncios-online` pra puxar da mesma fonte (Content Collection), evitando duplicar os números em 3 lugares
 
@@ -79,7 +90,7 @@ Fase 3 100% concluída — CNPJ real (55.777.659/0001-40) preenchido em `/privac
 |---|---|
 | /criacao-de-sites + /simulador-de-site | ✅ construído, testado |
 | /growth + /simulador-de-funil | ✅ construído, testado |
-| /mentoria | ✅ construído, testado (CTA de lista de interesse) |
+| /mentoria | ✅ construído, testado (reposicionado 2026-07-16: 1:1, vagas limitadas por trimestre) |
 | /servicos/whatsapp-bot (Typebot + BotConversa) | ⏸ adiado — depende de decisão de stack |
 | Política de Privacidade / Termos de Uso | ✅ construído, CNPJ real preenchido |
 | Carrossel de logos de clientes (Home) | ✅ construído, corrige gap de paridade com site antigo |
@@ -88,9 +99,9 @@ Fase 3 100% concluída — CNPJ real (55.777.659/0001-40) preenchido em `/privac
 Os 16 FAQs originais (schema JSON-LD do site antigo) já estão salvos em `src/data/faq/{home,manifesto,servicos,gestao-anuncios-online}.ts` — os de manifesto/servicos/gestao-anuncios-online já estão prontos para a Fase 2, só falta usá-los nas páginas. FAQs novos (criacao-de-sites, growth, mentoria) também já estão em `src/data/faq/`.
 
 ## Problemas conhecidos / carregados
-- Nenhum pendente no momento — o bug de WhatsApp errado + resíduos de Manaus em /servicos/gestao-anuncios-online foi corrigido diretamente no site antigo em produção em 2026-07-15, antes de começar este rebuild.
-- Drift de nome de manifest: o `manifest.json` antigo tinha `theme_color`/`background_color` fora dos tokens reais — corrigir ao portar (Fase 3).
-- Bug encontrado e corrigido nesta fase: blobs decorativos (absolute, blur) sem `overflow-hidden` no container pai causavam overflow horizontal no mobile em `/seo` (seção de CTA final) — checar isso em qualquer nova seção com blobs decorativos nas próximas fases.
+- **Nav mobile não tem menu nenhum** — em telas `< md` o `<nav>` esconde todos os links (`hidden md:flex`), sobrando só logo + botão de WhatsApp. Isso é anterior a esta sessão (não introduzido agora), mas ficou mais visível ao adicionar o dropdown de Serviços (que também some no mobile). Precisa de um menu hambúrguer mobile antes do site crescer mais em número de páginas — ainda não resolvido, registrar como próxima melhoria de UX.
+- Drift de nome de manifest: o `manifest.json` antigo tinha `theme_color`/`background_color` fora dos tokens reais — corrigido na Fase 3.
+- Bug encontrado e corrigido na Fase 1: blobs decorativos (absolute, blur) sem `overflow-hidden` no container pai causavam overflow horizontal no mobile em `/seo` (seção de CTA final) — checar isso em qualquer nova seção com blobs decorativos nas próximas fases.
 
 ## Próxima tarefa concreta
-Cliente vai fazer o upload de `formula-midia-astro-deploy.zip` no Hostinger (instruções passo a passo dadas no chat em 2026-07-16). Depois disso: (1) validar os headers de segurança em produção (securityheaders.com), (2) validar Lighthouse na URL real, (3) seguir para a Fase 4 (case EMOPS — falta decisão do cliente sobre detalhes extras e permissão de destaque do nome) ou Fase 5 (conteúdo pilar de SEO/GEO — falta decisão do cliente sobre `/blog/` vs `/recursos/`), conforme prioridade do cliente.
+Cliente vai fazer o upload de `formula-midia-astro-deploy.zip` no Hostinger (instruções passo a passo dadas no chat em 2026-07-16). Depois disso: (1) validar os headers de segurança em produção (securityheaders.com), (2) validar Lighthouse na URL real, (3) seguir para a Fase 4 (case EMOPS — permissão já confirmada, falta só detalhes extras do case) ou Fase 5 (conteúdo pilar de SEO/GEO — falta decisão do cliente sobre `/blog/` vs `/recursos/`), conforme prioridade do cliente. Menu mobile (hambúrguer) também é candidato a próxima melhoria — hoje não existe navegação nenhuma em telas pequenas.
