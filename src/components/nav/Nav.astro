@@ -53,13 +53,37 @@ const serviceLinks: NavLink[] = [
       <a href="/manifesto" class="font-heading text-[13.5px] font-medium text-mid no-underline transition-colors hover:text-ink">O Manifesto</a>
     </div>
 
-    <a
-      href={waLink("Olá, quero saber mais sobre os serviços Fórmula Mídia")}
-      target="_blank"
-      rel="noopener"
-      class="flex items-center gap-2 rounded-full bg-red px-4 py-2.5 font-heading text-[13px] font-semibold text-white no-underline shadow-[0_4px_18px_rgba(228,41,41,0.25)] transition-transform hover:-translate-y-px"
-    >
-      Falar com especialista
-    </a>
+    <div class="flex items-center gap-3">
+      <a
+        href={waLink("Olá, quero saber mais sobre os serviços Fórmula Mídia")}
+        target="_blank"
+        rel="noopener"
+        class="flex items-center gap-2 rounded-full bg-red px-4 py-2.5 font-heading text-[13px] font-semibold text-white no-underline shadow-[0_4px_18px_rgba(228,41,41,0.25)] transition-transform hover:-translate-y-px"
+      >
+        Falar com especialista
+      </a>
+
+      <details class="group/mobile relative md:hidden [&_summary::-webkit-details-marker]:hidden">
+        <summary
+          class="flex h-9 w-9 cursor-pointer list-none items-center justify-center rounded-lg border border-border text-ink"
+          aria-label="Abrir menu"
+        >
+          <svg width="18" height="14" viewBox="0 0 18 14" fill="none" class="shrink-0">
+            <path d="M0 1h18M0 7h18M0 13h18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+          </svg>
+        </summary>
+        <div class="absolute right-0 top-full mt-3 w-60 rounded-2xl border border-border bg-bg p-2 shadow-xl">
+          <a href="/" class="block rounded-xl px-3.5 py-2.5 font-heading text-[13.5px] font-medium text-mid no-underline hover:bg-glass hover:text-ink">Home</a>
+          <p class="mt-1 px-3.5 pb-1 pt-2 font-heading text-[11px] font-semibold uppercase tracking-[.08em] text-dim">Serviços</p>
+          {serviceLinks.map((link) => (
+            <a href={link.href} class="block rounded-xl px-3.5 py-2.5 font-heading text-[13.5px] font-medium text-mid no-underline hover:bg-glass hover:text-ink">{link.label}</a>
+          ))}
+          <div class="my-1 border-t border-border"></div>
+          <a href="/mentoria" class="block rounded-xl px-3.5 py-2.5 font-heading text-[13.5px] font-medium text-mid no-underline hover:bg-glass hover:text-ink">Mentoria</a>
+          <a href="/manifesto" class="block rounded-xl px-3.5 py-2.5 font-heading text-[13.5px] font-medium text-mid no-underline hover:bg-glass hover:text-ink">O Manifesto</a>
+          <a href="/links" class="block rounded-xl px-3.5 py-2.5 font-heading text-[13.5px] font-medium text-mid no-underline hover:bg-glass hover:text-ink">Todos os links e ferramentas</a>
+        </div>
+      </details>
+    </div>
   </div>
 </nav>

@@ -4,6 +4,7 @@ import Meta from "../components/seo/Meta.astro";
 import Schema from "../components/seo/Schema.astro";
 import Nav from "../components/nav/Nav.astro";
 import Footer from "../components/nav/Footer.astro";
+import WhatsAppFloat from "../components/ui/WhatsAppFloat.astro";
 import { organizationSchema } from "../data/schema";
 
 interface Props {
@@ -64,6 +65,7 @@ const schemaItems = [
       <slot />
     </main>
     <Footer />
+    <WhatsAppFloat />
     <script src="/scripts/reveal.js" is:inline defer></script>
   </body>
 </html>
