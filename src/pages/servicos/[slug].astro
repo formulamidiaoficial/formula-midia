@@ -1,0 +1,80 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageHero from "../../components/sections/PageHero.astro";
+import SectionHeading from "../../components/sections/SectionHeading.astro";
+import DiffGrid from "../../components/sections/DiffGrid.astro";
+import FaqAccordion from "../../components/ui/FaqAccordion.astro";
+import FinalCta from "../../components/sections/FinalCta.astro";
+import { waLink, faqPageSchema, breadcrumbSchema } from "../../data/schema";
+import { services } from "../../data/services";
+
+export function getStaticPaths() {
+  return services.map((service) => ({
+    params: { slug: service.slug },
+    props: { service },
+  }));
+}
+
+const { service } = Astro.props;
+
+const schema = [
+  faqPageSchema(service.faq),
+  breadcrumbSchema([
+    { name: "Home", path: "/" },
+    { name: "Serviços", path: "/servicos" },
+    { name: service.navTitle, path: `/servicos/${service.slug}` },
+  ]),
+];
+
+const ctaMessage = `Olá, quero saber mais sobre ${service.navTitle}`;
+---
+
+<BaseLayout
+  title={`${service.navTitle} | Fórmula Mídia`}
+  description={service.heroSub}
+  path={`/servicos/${service.slug}`}
+  schema={schema}
+>
+  <PageHero
+    badge={service.navTitle}
+    title={service.heroTitle}
+    highlight={service.heroHighlight}
+    sub={service.heroSub}
+    primaryHref={waLink(ctaMessage)}
+    ghostHref="/servicos"
+    ghostLabel="← Ver todos os serviços"
+  />
+
+  <section class="bg-bg-2 px-6 py-22">
+    <div class="mx-auto max-w-[1080px]">
+      <SectionHeading eyebrow="Nosso diferencial" title={`Como fazemos ${service.navTitle} de verdade`} />
+      <DiffGrid items={service.diffs} />
+    </div>
+  </section>
+
+  <section class="px-6 py-22">
+    <div class="mx-auto max-w-[1080px]">
+      <SectionHeading eyebrow="Como trabalhamos" title="Do diagnóstico à otimização contínua" />
+      <div class="mt-11 flex flex-col">
+        {service.steps.map((s: any, i: number, arr: any[]) => (
+          <div class={`grid grid-cols-[52px_1fr] gap-5 border-t border-border py-6 ${i === arr.length - 1 ? "border-b" : ""}`} data-in>
+            <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-red to-red-lo font-heading text-base font-bold text-white">{s.n}</div>
+            <div>
+              <h3 class="mb-1 font-heading text-[16px] font-semibold">{s.t}</h3>
+              <p class="max-w-[560px] text-sm leading-relaxed text-mid">{s.d}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-bg-2 px-6 py-22">
+    <div class="mx-auto max-w-[1080px]">
+      <SectionHeading eyebrow="Dúvidas comuns" title="Perguntas frequentes" />
+      <FaqAccordion items={service.faq} />
+    </div>
+  </section>
+
+  <FinalCta title={service.finalCtaTitle} desc={service.finalCtaDesc} message={ctaMessage} />
+</BaseLayout>

@@ -1,0 +1,117 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageHero from "../../components/sections/PageHero.astro";
+import SectionHeading from "../../components/sections/SectionHeading.astro";
+import FaqAccordion from "../../components/ui/FaqAccordion.astro";
+import FinalCta from "../../components/sections/FinalCta.astro";
+import { waLink, faqPageSchema, breadcrumbSchema } from "../../data/schema";
+import { servicosFaq } from "../../data/faq/servicos";
+import { services } from "../../data/services";
+
+const schema = [
+  faqPageSchema(servicosFaq),
+  breadcrumbSchema([
+    { name: "Home", path: "/" },
+    { name: "Serviços", path: "/servicos" },
+  ]),
+];
+
+const ctaMessage = "Olá, quero saber mais sobre os serviços Fórmula Mídia";
+
+const cards = [
+  { ...services[0], desc: "Campanhas estratégicas de busca e display para capturar leads qualificados em todo o Brasil", feats: ["Pesquisa de palavras-chave", "Otimização de lances", "Rastreamento de conversões"] },
+  { ...services[1], desc: "Publicidade no Facebook e Instagram com segmentação avançada e retargeting", feats: ["Segmentação por público", "Retargeting dinâmico", "Otimização de ROAS"] },
+  { ...services[2], desc: "Análise completa de estratégia de tráfego pago com plano de ação personalizado", feats: ["Auditoria de campanhas", "Plano estratégico", "Implementação e monitoramento"] },
+];
+---
+
+<BaseLayout
+  title="Serviços de Tráfego Pago | Fórmula Mídia - Google Ads, Meta Ads e Consultoria"
+  description="Soluções completas de gestão de tráfego pago. Desde Google Ads até consultoria estratégica, temos o serviço certo para escalar seu negócio em qualquer lugar do Brasil."
+  path="/servicos"
+  schema={schema}
+>
+  <PageHero
+    badge="Nossos Serviços"
+    title="Nossos Serviços de"
+    highlight="Tráfego Pago"
+    sub="Soluções completas de gestão de tráfego pago. Desde Google Ads até consultoria estratégica, temos o serviço certo para escalar seu negócio em qualquer lugar do Brasil."
+    primaryHref={waLink(ctaMessage)}
+  />
+
+  <section class="px-6 py-22">
+    <div class="mx-auto max-w-[1080px]">
+      <SectionHeading
+        eyebrow="Por que escolher nossos serviços"
+        title="Mais do que publicidade"
+        lead="A Fórmula Mídia oferece engenharia de conversão baseada em dados, rastreamento de ponta a ponta e parceria estratégica focada em ROI real."
+      />
+      <div class="mt-10 grid gap-5 sm:grid-cols-3">
+        {[
+          { icon: "⚡", t: "Rápido", d: "Resultados mensuráveis em dias, não meses" },
+          { icon: "🎯", t: "Preciso", d: "Segmentação avançada para seu público ideal" },
+          { icon: "📈", t: "Escalável", d: "Crescimento previsível e controlado" },
+        ].map((f) => (
+          <div class="rounded-card border border-border bg-glass p-6 text-center" data-in>
+            <div class="mb-3 text-2xl">{f.icon}</div>
+            <h3 class="mb-1.5 font-heading text-base font-semibold">{f.t}</h3>
+            <p class="text-sm text-mid">{f.d}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-bg-2 px-6 py-22">
+    <div class="mx-auto max-w-[1080px]">
+      <SectionHeading eyebrow="Conheça nossos serviços" title="Cada serviço é personalizado para suas necessidades específicas" />
+      <div class="mt-10 grid gap-5 md:grid-cols-3">
+        {cards.map((c) => (
+          <a href={`/servicos/${c.slug}`} class="flex flex-col rounded-card border border-border bg-glass p-7 no-underline transition-all hover:-translate-y-1 hover:border-red/30" data-in>
+            <h3 class="mb-2.5 font-heading text-lg font-bold text-ink">{c.navTitle}</h3>
+            <p class="mb-5 flex-1 text-sm leading-relaxed text-mid">{c.desc}</p>
+            <ul class="mb-5 flex flex-col gap-1.5">
+              {c.feats.map((f: string) => (
+                <li class="flex gap-2 text-[12.5px] text-mid"><span class="font-bold text-red-hi">✓</span>{f}</li>
+              ))}
+            </ul>
+            <span class="font-heading text-sm font-semibold text-red-hi">Saiba mais →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="px-6 py-22">
+    <div class="mx-auto max-w-[1080px]">
+      <SectionHeading eyebrow="Como trabalhamos" title="Nosso processo é transparente, estruturado e focado em resultados" />
+      <div class="mt-10 grid gap-5 sm:grid-cols-2 md:grid-cols-4">
+        {[
+          { n: "1", t: "Diagnóstico", d: "Analisamos seu negócio e mercado" },
+          { n: "2", t: "Estratégia", d: "Criamos plano personalizado" },
+          { n: "3", t: "Execução", d: "Implementamos campanhas" },
+          { n: "4", t: "Otimização", d: "Monitoramos e escalamos" },
+        ].map((s) => (
+          <div class="rounded-card border border-border bg-glass p-6" data-in>
+            <div class="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-red to-red-lo font-heading text-sm font-bold text-white">{s.n}</div>
+            <h3 class="mb-1.5 font-heading text-base font-semibold">{s.t}</h3>
+            <p class="text-sm text-mid">{s.d}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-bg-2 px-6 py-22">
+    <div class="mx-auto max-w-[1080px]">
+      <SectionHeading eyebrow="Dúvidas comuns" title="Perguntas frequentes" />
+      <FaqAccordion items={servicosFaq} />
+    </div>
+  </section>
+
+  <FinalCta
+    title="Pronto para Escalar?"
+    desc="Vamos analisar seu negócio e criar uma estratégia de tráfego pago que gera resultados reais."
+    message={ctaMessage}
+  />
+</BaseLayout>

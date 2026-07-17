@@ -1,0 +1,178 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageHero from "../../components/sections/PageHero.astro";
+import SectionHeading from "../../components/sections/SectionHeading.astro";
+import FaqAccordion from "../../components/ui/FaqAccordion.astro";
+import FinalCta from "../../components/sections/FinalCta.astro";
+import { waLink, faqPageSchema, breadcrumbSchema } from "../../data/schema";
+import { gestaoAnunciosFaq } from "../../data/faq/gestao-anuncios-online";
+
+const schema = [
+  faqPageSchema(gestaoAnunciosFaq),
+  breadcrumbSchema([
+    { name: "Home", path: "/" },
+    { name: "Serviços", path: "/servicos" },
+    { name: "Gestão de Anúncios Online", path: "/servicos/gestao-anuncios-online" },
+  ]),
+];
+
+const auditMessage = "Olá! Gostaria de solicitar uma auditoria gratuita da minha conta de anúncios.";
+const consultoriaMessage = "Olá! Quero agendar minha consultoria de tráfego.";
+---
+
+<BaseLayout
+  title="Gestão de Anúncios Online: Google e Meta Ads | Fórmula Mídia"
+  description="Transforme cliques em previsibilidade de vendas com Engenharia de Conversão. Gestão estratégica de Google Ads e Meta Ads para empresas em todo o Brasil."
+  path="/servicos/gestao-anuncios-online"
+  schema={schema}
+>
+  <PageHero
+    badge="Gestão Estratégica de Tráfego"
+    title="Gestão de Anúncios Online:"
+    highlight="Google e Meta Ads"
+    sub="Pare de entregar o seu orçamento às cegas para as plataformas. Transforme cliques em previsibilidade de vendas com a nossa Engenharia de Conversão."
+    primaryHref={waLink(auditMessage)}
+    primaryLabel="🟢 Solicitar Auditoria Gratuita da Minha Conta"
+  />
+
+  <section class="px-6 py-22">
+    <div class="mx-auto max-w-[1080px]">
+      <SectionHeading eyebrow="O problema" title="Por que 80% das empresas no Brasil rasgam dinheiro na internet?" />
+      <div class="mt-5 flex max-w-[720px] flex-col gap-4 text-[16px] leading-[1.75] text-mid" data-in>
+        <p>O mercado mudou. O empresário brasileiro já percebeu que ter apenas um "Instagram bonito" ou apertar o botão "Impulsionar" não paga a folha de pagamento no final do mês.</p>
+        <p>Agências tradicionais focam em "curtidas", "alcance" e métricas de vaidade. Elas não entendem o comportamento de compra do seu público, a cultura do seu mercado ou as diferenças de consumo entre as regiões do Brasil.</p>
+      </div>
+      <div class="mt-8 max-w-[720px] rounded-card border border-border bg-glass p-7" data-in>
+        <p class="text-sm leading-relaxed text-ink">
+          <strong>Na Fórmula Mídia</strong>, nós não vendemos cliques. Nós implementamos um sistema de rastreamento
+          que diz exatamente de onde veio cada real que entrou no seu caixa.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GOOGLE VS META -->
+  <section class="bg-bg-2 px-6 py-22">
+    <div class="mx-auto max-w-[1080px]">
+      <SectionHeading eyebrow="O Fim do Achismo" title="Como Cercamos o Seu Cliente Ideal" lead="Entenda a diferença entre capturar demanda ativa e gerar desejo" />
+      <div class="mt-10 grid gap-6 md:grid-cols-2">
+        <div class="rounded-card border border-border bg-glass p-8" data-in>
+          <div class="mb-4 text-2xl">🔍</div>
+          <span class="mb-1 block font-heading text-xs font-semibold uppercase tracking-[.08em] text-blue-400">Google Ads — A Captura da Intenção</span>
+          <h3 class="mb-3 font-heading text-lg font-bold">O seu cliente já está procurando por você</h3>
+          <p class="text-sm leading-relaxed text-mid">
+            Quando alguém pesquisa por "clínica odontológica perto de mim" ou "comprar energia solar", essa pessoa
+            já está com o cartão de crédito na mão. O nosso trabalho no Google Ads é garantir que a sua empresa
+            seja a primeira resposta absoluta no exato momento dessa busca, em qualquer cidade do Brasil.
+            Capturamos a demanda ativa.
+          </p>
+        </div>
+        <div class="rounded-card border border-border bg-glass p-8" data-in>
+          <div class="mb-4 text-2xl">💡</div>
+          <span class="mb-1 block font-heading text-xs font-semibold uppercase tracking-[.08em] text-purple-300">Meta Ads — A Geração de Desejo</span>
+          <h3 class="mb-3 font-heading text-lg font-bold">O seu cliente não sabe que precisa de você... ainda</h3>
+          <p class="text-sm leading-relaxed text-mid">
+            Usamos a inteligência artificial do Meta para mapear o comportamento do consumidor brasileiro.
+            Mostramos anúncios irresistíveis da sua oferta para o público certo, transformando desconhecidos em
+            leads qualificados que caem direto no WhatsApp da sua equipe comercial.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESSO -->
+  <section class="px-6 py-22">
+    <div class="mx-auto max-w-[1080px]">
+      <SectionHeading eyebrow="Como funciona" title="Como Funciona a Gestão de Tráfego da Fórmula Mídia?" lead="4 passos que transformam cliques em vendas previsíveis" />
+      <div class="mt-11 flex flex-col">
+        {[
+          { n: "1", t: "Setup e Tagueamento", sub: "A Fundação", d: "Instalamos o Pixel e as Tags de rastreamento no seu site. A partir de agora, o Google e o Meta sabem exatamente quem compra de você." },
+          { n: "2", t: "Criação de Ofertas Locais", sub: "Linguagem Regional", d: "Desenhamos anúncios com linguagem focada no seu público-alvo, criando familiaridade e confiança instantânea." },
+          { n: "3", t: "Blindagem de Orçamento", sub: "Sem Desperdício", d: "Configuramos as campanhas para não desperdiçar dinheiro com cliques de curiosos ou fora da sua área de atendimento." },
+          { n: "4", t: "Escala de Vendas", sub: "ROI Comprovado", d: "O que funciona, recebe mais orçamento. O que não funciona, é cortado. Você recebe relatórios claros focados em ROI." },
+        ].map((s, i, arr) => (
+          <div class={`grid grid-cols-[52px_1fr] gap-5 border-t border-border py-6 ${i === arr.length - 1 ? "border-b" : ""}`} data-in>
+            <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-red to-red-lo font-heading text-base font-bold text-white">{s.n}</div>
+            <div>
+              <h3 class="mb-0.5 font-heading text-[16px] font-semibold">{s.t}</h3>
+              <span class="mb-1.5 block text-xs font-semibold text-red-hi">{s.sub}</span>
+              <p class="max-w-[560px] text-sm leading-relaxed text-mid">{s.d}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE EMOPS -->
+  <section class="bg-bg-2 px-6 py-22">
+    <div class="mx-auto max-w-[1080px]">
+      <SectionHeading eyebrow="Prova real" title="Resultados Reais para Empresas Reais em Todo o Brasil" />
+      <div class="mt-10 rounded-card border border-border bg-glass p-8" data-in>
+        <h3 class="mb-6 font-heading text-lg font-bold">Grupo EMOPS</h3>
+        <div class="grid gap-6 md:grid-cols-2">
+          <div>
+            <span class="mb-1 block font-heading text-xs font-semibold uppercase tracking-[.06em] text-dim">O Desafio</span>
+            <p class="text-sm leading-relaxed text-mid">Escalar a operação e a previsibilidade de caixa sem aumentar o custo de aquisição de forma descontrolada.</p>
+          </div>
+          <div>
+            <span class="mb-1 block font-heading text-xs font-semibold uppercase tracking-[.06em] text-dim">A Solução Fórmula Mídia</span>
+            <p class="text-sm leading-relaxed text-mid">Reestruturação completa das campanhas de fundo de funil no Google e retargeting inteligente no Meta Ads.</p>
+          </div>
+        </div>
+        <div class="mt-7 grid gap-4 sm:grid-cols-2">
+          <div class="rounded-xl border border-border bg-bg-2 p-5 text-center">
+            <div class="font-heading text-2xl font-bold text-red-hi">-45%</div>
+            <div class="mt-1 text-xs text-dim">Redução do CPL</div>
+          </div>
+          <div class="rounded-xl border border-border bg-bg-2 p-5 text-center">
+            <div class="font-heading text-2xl font-bold text-red-hi">+38%</div>
+            <div class="mt-1 text-xs text-dim">Aumento de Margem</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARA QUEM SOMOS / NÃO SOMOS -->
+  <section class="px-6 py-22">
+    <div class="mx-auto max-w-[1080px]">
+      <SectionHeading eyebrow="Para quem é" title="A nossa Engenharia de Tráfego é exclusiva para empresas que:" />
+      <div class="mt-10 grid gap-8 md:grid-cols-2">
+        <div data-in>
+          <h3 class="mb-4 font-heading text-base font-semibold text-red-hi">✅ Para Quem Somos</h3>
+          <ul class="flex flex-col gap-3 text-sm text-mid">
+            <li class="flex gap-2.5"><span class="font-bold text-red-hi">✓</span>Já possuem um processo de vendas (uma equipe ou comercial pronto para atender o WhatsApp)</li>
+            <li class="flex gap-2.5"><span class="font-bold text-red-hi">✓</span>Têm capacidade para atender novos clientes em qualquer lugar do Brasil</li>
+            <li class="flex gap-2.5"><span class="font-bold text-red-hi">✓</span>Estão cansadas de agências que entregam relatórios confusos cheios de "impressões" em vez de vendas</li>
+            <li class="flex gap-2.5"><span class="font-bold text-red-hi">✓</span>Estão dispostas a investir de forma profissional no crescimento do negócio</li>
+          </ul>
+        </div>
+        <div data-in>
+          <h3 class="mb-4 font-heading text-base font-semibold text-dim">❌ Para Quem Não Somos</h3>
+          <ul class="flex flex-col gap-3 text-sm text-mid">
+            <li class="flex gap-2.5"><span class="font-bold text-dim">—</span>Empresas que querem "impulsionar" com orçamento aleatório</li>
+            <li class="flex gap-2.5"><span class="font-bold text-dim">—</span>Quem busca milagres do dia para a noite</li>
+            <li class="flex gap-2.5"><span class="font-bold text-dim">—</span>Negócios sem processo comercial maduro</li>
+            <li class="flex gap-2.5"><span class="font-bold text-dim">—</span>Quem prioriza curtidas e seguidores em vez de vendas</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-bg-2 px-6 py-22">
+    <div class="mx-auto max-w-[1080px]">
+      <SectionHeading eyebrow="Dúvidas comuns" title="Dúvidas Frequentes sobre Gestão de Tráfego Pago" />
+      <FaqAccordion items={gestaoAnunciosFaq} />
+    </div>
+  </section>
+
+  <FinalCta
+    title="Está Pronto para Parar de Perder Vendas para o Seu Concorrente?"
+    desc="A cada minuto que a sua empresa não está otimizada no Google ou no Meta, um cliente na sua região está fechando negócio com o seu concorrente."
+    message={consultoriaMessage}
+    ctaLabel="🟢 Quero Agendar a Minha Consultoria de Tráfego"
+  />
+</BaseLayout>

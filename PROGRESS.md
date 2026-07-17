@@ -1,7 +1,7 @@
 # PROGRESS.md
 
 ## Status (atualizar a cada sessão)
-Fase 1 concluída. Além disso, catálogo de produtos expandido e construído: landing pages novas de Criação de Sites (+ Simulador de Site), Growth & Performance (+ Simulador de Funil) e Mentoria (CTA de lista de interesse), todas com componentes de seção reutilizáveis (`src/components/sections/`). `/links` reorganizado em grupos (Fale Conosco / Redes / Nossos Serviços / Ferramentas Gratuitas) com todos os botões novos. Tudo testado (desktop + mobile) e com build de produção limpo — 8 páginas geradas, sitemap automático via `@astrojs/sitemap`. Pronto para a Fase 2 (Manifesto, Serviços + subpáginas).
+Fase 2 concluída — /manifesto, /servicos (índice) e as 4 páginas de serviço (gestao-anuncios-online migrada, google-ads/meta-ads/consultoria-trafego criadas do zero via rota dinâmica `[slug].astro` + `src/data/services.ts`) — as 3 que eram links mortos no site antigo agora existem de verdade. Guarda de regressão (grep) contra Manaus rodada e limpa. Build de produção com 14 páginas, tudo testado (desktop + mobile, schema, WhatsApp). Falta: páginas legais (LGPD) + deploy (Fase 3) antes de publicar.
 
 ## Ambiente / Acesso
 - Repositório: github.com/formulamidiaoficial/formula-midia
@@ -29,7 +29,7 @@ Fase 1 concluída. Além disso, catálogo de produtos expandido e construído: l
 - [x] Fase 0 — Fundação (Astro/Tailwind/React, tokens, layout, Nav/Footer, UI atoms, Meta/Schema)
 - [x] Fase 1 — /seo, /calculadora (island React), Home completa
 - [x] Fase 1.5 (fora do plano original, adicionada a pedido do cliente) — Catálogo expandido: `/criacao-de-sites` + `/simulador-de-site`, `/growth` + `/simulador-de-funil`, `/mentoria`, componentes de seção reutilizáveis, `/links` reorganizado
-- [ ] Fase 2 — /manifesto, /servicos + 3 subpáginas reais (google-ads, meta-ads, consultoria-trafego), /servicos/gestao-anuncios-online
+- [x] Fase 2 — /manifesto, /servicos + 3 subpáginas reais (google-ads, meta-ads, consultoria-trafego), /servicos/gestao-anuncios-online
 - [ ] Fase 3 — Páginas legais (Política de Privacidade, Termos de Uso — prioridade alta, risco LGPD) + Deploy no Hostinger
 - [ ] Fase 4 — Content Collections + página própria do case EMOPS
 - [ ] Fase 5 — Conteúdo de autoridade (primeiro guia pilar de SEO/GEO ou tráfego pago, clusters) — horizonte mais longo, começar só depois do site no ar
@@ -48,10 +48,10 @@ Fase 1 concluída. Além disso, catálogo de produtos expandido e construído: l
 | /seo (já existia como HTML estático) | src/pages/seo.astro | ✅ portado, FAQPage JSON-LD adicionado (faltava no HTML original) |
 | /calculadora (já existia como HTML estático) | src/pages/calculadora.astro + Calculator.tsx | ✅ portado, island React com `client:load` |
 | /links | public/links/index.html | ✅ portado e reorganizado em grupos, com todos os botões novos |
-| /manifesto | src/pages/manifesto.astro | pendente (Fase 2) |
-| /servicos | src/pages/servicos/index.astro | pendente (Fase 2) |
-| /servicos/gestao-anuncios-online | src/pages/servicos/gestao-anuncios-online.astro | pendente (Fase 2) — já sem o bug de Manaus/WhatsApp, corrigido no site antigo em 2026-07-15 |
-| /servicos/google-ads, meta-ads, consultoria-trafego | src/pages/servicos/[slug].astro | pendente (Fase 2) — hoje são links mortos no site antigo |
+| /manifesto | src/pages/manifesto.astro | ✅ portado, com case EMOPS (números reais -45%/+38% reaproveitados) |
+| /servicos | src/pages/servicos/index.astro | ✅ portado |
+| /servicos/gestao-anuncios-online | src/pages/servicos/gestao-anuncios-online.astro | ✅ portado, já sem o bug de Manaus/WhatsApp |
+| /servicos/google-ads, meta-ads, consultoria-trafego | src/pages/servicos/[slug].astro + src/data/services.ts | ✅ criadas do zero (eram links mortos no site antigo) — rota dinâmica com getStaticPaths |
 
 **Novas (não existiam no site antigo, catálogo expandido em 2026-07-16):**
 | Página | Status |
@@ -71,4 +71,4 @@ Os 16 FAQs originais (schema JSON-LD do site antigo) já estão salvos em `src/d
 - Bug encontrado e corrigido nesta fase: blobs decorativos (absolute, blur) sem `overflow-hidden` no container pai causavam overflow horizontal no mobile em `/seo` (seção de CTA final) — checar isso em qualquer nova seção com blobs decorativos nas próximas fases.
 
 ## Próxima tarefa concreta
-Fase 2: portar `/manifesto` (usar `src/data/faq/manifesto.ts`, já pronto), depois `/servicos` + as 3 subpáginas reais (google-ads, meta-ads, consultoria-trafego).
+Fase 3: criar Política de Privacidade e Termos de Uso (prioridade alta, risco LGPD), depois fazer o deploy real no Hostinger (build → pasta limpa → upload → validar headers de segurança em produção).

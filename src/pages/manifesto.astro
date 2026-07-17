@@ -1,0 +1,158 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/sections/PageHero.astro";
+import SectionHeading from "../components/sections/SectionHeading.astro";
+import DiffGrid from "../components/sections/DiffGrid.astro";
+import FaqAccordion from "../components/ui/FaqAccordion.astro";
+import FinalCta from "../components/sections/FinalCta.astro";
+import { waLink, faqPageSchema, breadcrumbSchema } from "../data/schema";
+import { manifestoFaq } from "../data/faq/manifesto";
+
+const schema = [
+  faqPageSchema(manifestoFaq),
+  breadcrumbSchema([
+    { name: "Home", path: "/" },
+    { name: "O Manifesto", path: "/manifesto" },
+  ]),
+];
+
+const ctaMessage = "Olá, quero saber mais sobre os serviços Fórmula Mídia";
+---
+
+<BaseLayout
+  title="O Manifesto da Fórmula Mídia: Agência de Performance e Engenharia de Conversão vs. Métricas de Vaidade"
+  description="No que acreditamos, como ajudamos a escalar vendas de serviços B2B em todo o Brasil, e por que nossa agência de performance é diferente."
+  path="/manifesto"
+  schema={schema}
+>
+  <PageHero
+    badge="O Manifesto"
+    title="Agência de Performance e Engenharia de Conversão"
+    highlight="vs. Métricas de Vaidade"
+    sub="No que acreditamos, como ajudamos a escalar vendas de serviços B2B em todo o Brasil, e por que nossa agência de performance é diferente."
+    primaryHref={waLink(ctaMessage)}
+    primaryLabel="Agendar Sessão Estratégica →"
+    ghostHref="#resposta"
+    ghostLabel="Nossa resposta"
+  />
+
+  <!-- TL;DR -->
+  <section class="px-6 pb-6">
+    <div class="mx-auto max-w-[820px] rounded-card border border-red/25 bg-red/6 p-7" data-in>
+      <span class="mb-3 block font-heading text-xs font-semibold uppercase tracking-[.12em] text-red-hi">Resumo rápido</span>
+      <p class="text-[15px] leading-relaxed text-ink">
+        A Fórmula Mídia é uma <strong>agência de performance nacional</strong> focada em <strong>engenharia de conversão</strong>.
+        Diferente do mercado tradicional que foca em métricas de vaidade (curtidas), nosso método utiliza inteligência
+        de dados, Google Ads e Meta Ads para reduzir o Custo de Aquisição de Cliente (CAC) e gerar <strong>previsibilidade de vendas para líderes de mercado</strong>.
+      </p>
+    </div>
+  </section>
+
+  <!-- MERCADO QUEBRADO -->
+  <section class="px-6 py-22">
+    <div class="mx-auto max-w-[1080px]">
+      <SectionHeading eyebrow="O problema" title="Por que o mercado de agências tradicionais está quebrado?" />
+      <div class="mt-5 flex max-w-[720px] flex-col gap-4 text-[16px] leading-[1.75] text-mid" data-in>
+        <p>
+          Se você é o tomador de decisão da sua empresa, provavelmente já sentiu essa frustração na pele. Você
+          contrata uma agência, aprova layouts bonitos, vê o número de seguidores crescer e recebe relatórios
+          cheios de termos difíceis no fim do mês... mas o telefone não toca.
+        </p>
+        <p>
+          O mercado tradicional se viciou em <strong class="text-ink">métricas de vaidade</strong>. Vende-se a
+          ilusão de que likes pagam a folha de pagamento. A dor da falta de transparência e a desconexão entre
+          o marketing e o seu time comercial destroem margens de lucro.
+        </p>
+      </div>
+      <div class="mt-8 max-w-[720px] rounded-card border border-border bg-glass p-7" data-in>
+        <p class="font-heading text-lg font-bold">Nós cansamos disso. É por isso que a Fórmula Mídia nasceu.</p>
+        <p class="mt-2 text-sm text-mid">Nós não focamos em likes. Nós construímos máquinas de vendas previsíveis.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESPOSTA: ENGENHARIA DE CONVERSÃO -->
+  <section id="resposta" class="bg-bg-2 px-6 py-22">
+    <div class="mx-auto max-w-[1080px]">
+      <SectionHeading
+        eyebrow="A nossa resposta"
+        title="Engenharia de Conversão"
+        lead={'Não acreditamos em "postar por postar". Acreditamos em marketing focado em ROI, tráfego qualificado e inteligência de mercado.'}
+      />
+      <DiffGrid
+        items={[
+          { icon: "📊", title: "Dados acima de opiniões", desc: "O achismo destrói orçamentos. Cada decisão que tomamos nas nossas campanhas de Gestão de Tráfego é baseada em performance e retorno financeiro." },
+          { icon: "🔗", title: "Rastreamento de ponta a ponta", desc: "Se não podemos medir, não fazemos. Rastreamos cada centavo investido no Google e na Meta até o momento em que o lead entra no seu CRM ou WhatsApp." },
+          { icon: "🤝", title: "Parceria estratégica de negócios", desc: "Sentamos na mesa com você. Entendemos seu ticket médio, processo de vendas e CAC ideal antes de gastar um único real do seu caixa." },
+        ]}
+      />
+    </div>
+  </section>
+
+  <!-- ENGENHARIA NA PRÁTICA: CASE EMOPS -->
+  <section class="px-6 py-22">
+    <div class="mx-auto max-w-[1080px]">
+      <SectionHeading eyebrow="Engenharia na prática" title="Dominando o Mercado de Serviços" lead="Não espere apenas palavras; os números falam mais alto." />
+
+      <div class="mt-10 rounded-card border border-border bg-glass p-8" data-in>
+        <h3 class="mb-3 font-heading text-lg font-bold">Grupo EMOPS: Liderança Regional em Buscas Locais</h3>
+        <p class="mb-6 max-w-[720px] text-sm leading-relaxed text-mid">
+          Veja o exemplo de como dominamos as buscas do Google, atuando como um parceiro estratégico de negócios
+          em todo o Brasil para o Grupo EMOPS, uma das empresas líderes do seu setor. Ao substituirmos o foco em
+          "alcance" por estratégias de intenção de busca local, geramos:
+        </p>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div class="rounded-xl border border-border bg-bg-2 p-5 text-center">
+            <div class="font-heading text-2xl font-bold text-red-hi">-45%</div>
+            <div class="mt-1 text-xs text-dim">Redução do Custo por Lead</div>
+          </div>
+          <div class="rounded-xl border border-border bg-bg-2 p-5 text-center">
+            <div class="font-heading text-2xl font-bold text-red-hi">+38%</div>
+            <div class="mt-1 text-xs text-dim">Aumento de Margem</div>
+          </div>
+        </div>
+        <p class="mt-6 text-sm leading-relaxed text-mid">Resultado: consolidação da liderança da empresa na região de forma previsível.</p>
+        <p class="mt-3 font-heading text-sm font-semibold text-red-hi">Isso não é mágica. É método.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARA QUEM SOMOS / NÃO SOMOS -->
+  <section class="bg-bg-2 px-6 py-22">
+    <div class="mx-auto max-w-[1080px]">
+      <SectionHeading eyebrow="Para quem somos" title="Nosso modelo exige alinhamento total de expectativas" lead="Não aceitamos qualquer cliente." />
+      <div class="mt-10 grid gap-8 md:grid-cols-2">
+        <div data-in>
+          <h3 class="mb-4 font-heading text-base font-semibold text-red-hi">✅ Nós SOMOS a agência ideal para</h3>
+          <ul class="flex flex-col gap-3 text-sm text-mid">
+            <li class="flex gap-2.5"><span class="font-bold text-red-hi">✓</span>Empresas maduras que têm processos de vendas estruturados e querem escalar.</li>
+            <li class="flex gap-2.5"><span class="font-bold text-red-hi">✓</span>Clínicas, imobiliárias e negócios B2B que buscam especialistas no seu nicho.</li>
+            <li class="flex gap-2.5"><span class="font-bold text-red-hi">✓</span>Empresários focados em ROI (Retorno sobre Investimento), não em "branding vazio".</li>
+          </ul>
+        </div>
+        <div data-in>
+          <h3 class="mb-4 font-heading text-base font-semibold text-dim">❌ Nós NÃO somos a agência para</h3>
+          <ul class="flex flex-col gap-3 text-sm text-mid">
+            <li class="flex gap-2.5"><span class="font-bold text-dim">—</span>Quem quer comprar seguidores ou focar em dancinhas genéricas.</li>
+            <li class="flex gap-2.5"><span class="font-bold text-dim">—</span>Quem não tem orçamento mínimo para investir em mídia paga com consistência.</li>
+            <li class="flex gap-2.5"><span class="font-bold text-dim">—</span>Quem busca milagres do dia para a noite sem esforço conjunto.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="px-6 py-22">
+    <div class="mx-auto max-w-[1080px]">
+      <SectionHeading eyebrow="Dúvidas comuns" title="Perguntas frequentes" />
+      <FaqAccordion items={manifestoFaq} />
+    </div>
+  </section>
+
+  <FinalCta
+    title="Você acredita no que acreditamos?"
+    desc="Se a nossa visão faz sentido para a realidade do seu negócio e você está pronto para trocar relatórios de curtidas por gráficos de faturamento, vamos construir uma máquina de vendas juntos."
+    message={ctaMessage}
+    ctaLabel="Agendar Sessão Estratégica →"
+  />
+</BaseLayout>
