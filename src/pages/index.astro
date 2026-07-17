@@ -168,6 +168,44 @@ const comparisonRows = [
     <LogoCarousel />
   </section>
 
+  <!-- SERVICES HUB -->
+  <section class="px-6 py-22">
+    <div class="mx-auto max-w-[1080px]">
+      <span class="mb-3.5 block font-heading text-xs font-semibold uppercase tracking-[.16em] text-red-hi" data-in>Ecossistema Fórmula Mídia</span>
+      <h2 class="max-w-[720px] font-heading text-[clamp(26px,3.4vw,38px)] font-bold leading-[1.15] tracking-tight" data-in>
+        Tráfego pago é o nosso foco. Growth, sites e SEO completam a operação.
+      </h2>
+      <p class="mt-5 max-w-[720px] text-[16px] leading-[1.75] text-mid" data-in>
+        Cada serviço abaixo tem sua própria página, com escopo e método detalhados. Escolha por onde começar.
+      </p>
+
+      <div class="mt-11 grid gap-5 md:grid-cols-2">
+        {[
+          { href: "/servicos", tag: "Foco nº1", title: "Tráfego Pago", desc: "Google Ads e Meta Ads com rastreamento real de leads e dashboards profissionais.", featured: true },
+          { href: "/growth", tag: "Alto ticket", title: "Growth & Performance", desc: "Gestão contínua de todo o funil de crescimento, com dados de ponta a ponta.", featured: false },
+          { href: "/criacao-de-sites", tag: "", title: "Criação de Sites", desc: "Sites e landing pages de alta performance, Lighthouse 90-100, SEO técnico desde a fundação.", featured: false },
+          { href: "/seo", tag: "", title: "SEO & GEO", desc: "Autoridade orgânica em buscadores tradicionais e mecanismos de busca por IA.", featured: false },
+        ].map((s) => (
+          <a
+            href={s.href}
+            class={`flex flex-col rounded-card border p-7 no-underline transition-all hover:-translate-y-1 ${s.featured ? "border-red/30 bg-gradient-to-b from-red/7 to-glass" : "border-border bg-glass hover:border-red/30"}`}
+            data-in
+          >
+            {s.tag && <span class="mb-3 self-start rounded-full bg-red px-3 py-1 font-heading text-[10.5px] font-bold tracking-wide text-white">{s.tag}</span>}
+            <h3 class="mb-2 font-heading text-lg font-bold text-ink">{s.title}</h3>
+            <p class="mb-4 flex-1 text-sm leading-relaxed text-mid">{s.desc}</p>
+            <span class="font-heading text-sm font-semibold text-red-hi">Saiba mais →</span>
+          </a>
+        ))}
+      </div>
+
+      <div class="mt-8 flex flex-wrap items-center gap-4 rounded-2xl border border-border bg-bg-2 px-6 py-5" data-in>
+        <span class="font-heading text-sm font-semibold">Mentoria 1:1 com vagas limitadas por trimestre</span>
+        <a href="/mentoria" class="font-heading text-sm font-semibold text-red-hi no-underline hover:underline">Ver detalhes →</a>
+      </div>
+    </div>
+  </section>
+
   <!-- QUALIFIER -->
   <section class="bg-bg-2 px-6 py-20">
     <div class="mx-auto max-w-[820px] text-center">

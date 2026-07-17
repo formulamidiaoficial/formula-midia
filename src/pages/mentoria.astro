@@ -16,29 +16,29 @@ const schema = [
   ]),
 ];
 
-const waitlistMessage = "Olá, quero entrar na lista de interesse da Mentoria Fórmula Mídia";
+const waitlistMessage = "Olá, quero saber mais sobre as vagas da Mentoria 1:1 Fórmula Mídia";
 ---
 
 <BaseLayout
-  title="Mentoria Fórmula Mídia | Tráfego Pago e Growth"
-  description="Uma mentoria prática sobre tráfego pago, SEO/GEO e growth — direto de quem aplica isso todos os dias em clientes reais. Em breve."
+  title="Mentoria 1:1 Fórmula Mídia | Tráfego Pago e Growth"
+  description="Mentoria individual, vagas limitadas por trimestre, sobre tráfego pago, SEO/GEO e growth — direto de quem aplica isso todos os dias em clientes reais e operações próprias."
   path="/mentoria"
   schema={schema}
 >
   <PageHero
-    badge="Mentoria Fórmula Mídia"
-    title="Aprenda a construir"
-    highlight="tráfego pago e growth do jeito que a gente faz de verdade."
-    sub="Uma mentoria prática sobre tráfego pago, SEO/GEO e growth — direto de quem aplica isso todos os dias em clientes reais."
+    badge="Mentoria 1:1 — Vagas Limitadas"
+    title="Mentoria individual para"
+    highlight="quem quer aprender tráfego pago e growth direto de quem executa."
+    sub="Acompanhamento 1:1, sem turma, sem conteúdo genérico — poucas vagas por trimestre para manter o nível de profundidade."
     primaryHref={waLink(waitlistMessage)}
-    primaryLabel="Quero entrar na lista de interesse →"
+    primaryLabel="Quero saber sobre as vagas →"
     ghostHref="#conteudo"
     ghostLabel="Ver o que você vai aprender"
   />
 
   <section class="border-y border-red/25 bg-red/6 px-6 py-5 text-center">
     <p class="font-heading text-sm font-semibold text-red-hi">
-      Em fase final de estruturação — entre na lista de interesse e seja avisado em primeira mão.
+      Apenas 6 vagas por trimestre — acompanhamento individual, não em grupo.
     </p>
   </section>
 
@@ -89,9 +89,9 @@ const waitlistMessage = "Olá, quero entrar na lista de interesse da Mentoria F�
   </section>
 
   <FinalCta
-    title="Quer ser avisado quando a Mentoria abrir?"
-    desc="Entre na lista de interesse e garanta condição especial de lançamento."
+    title="Restam vagas para o próximo trimestre?"
+    desc="São só 6 vagas por trimestre para manter o acompanhamento individual. Fale com a gente para saber a disponibilidade atual."
     message={waitlistMessage}
-    ctaLabel="Quero entrar na lista de interesse →"
+    ctaLabel="Quero saber sobre as vagas →"
   />
 </BaseLayout>

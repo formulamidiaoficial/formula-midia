@@ -6,10 +6,10 @@ interface NavLink {
   href: string;
 }
 
-const links: NavLink[] = [
-  { label: "Home", href: "/" },
-  { label: "O Manifesto", href: "/manifesto" },
-  { label: "Serviços", href: "/servicos" },
+const serviceLinks: NavLink[] = [
+  { label: "Tráfego Pago", href: "/servicos" },
+  { label: "Growth & Performance", href: "/growth" },
+  { label: "Criação de Sites", href: "/criacao-de-sites" },
   { label: "SEO & GEO", href: "/seo" },
 ];
 ---
@@ -22,14 +22,35 @@ const links: NavLink[] = [
     </a>
 
     <div class="hidden items-center gap-7 md:flex">
-      {links.map((link) => (
-        <a
-          href={link.href}
-          class="font-heading text-[13.5px] font-medium text-mid no-underline transition-colors hover:text-ink"
+      <a href="/" class="font-heading text-[13.5px] font-medium text-mid no-underline transition-colors hover:text-ink">Home</a>
+
+      <div class="group relative">
+        <button
+          type="button"
+          class="flex items-center gap-1 font-heading text-[13.5px] font-medium text-mid transition-colors hover:text-ink"
+          aria-haspopup="true"
         >
-          {link.label}
-        </a>
-      ))}
+          Serviços
+          <svg width="10" height="6" viewBox="0 0 10 6" fill="none" class="mt-px transition-transform group-focus-within:-rotate-180 group-hover:-rotate-180">
+            <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+        <div class="invisible absolute left-0 top-full w-64 pt-3 opacity-0 transition-opacity duration-150 group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
+          <div class="flex flex-col gap-1 rounded-2xl border border-border bg-bg p-2 shadow-xl">
+            {serviceLinks.map((link) => (
+              <a
+                href={link.href}
+                class="rounded-xl px-3.5 py-2.5 font-heading text-[13.5px] font-medium text-mid no-underline transition-colors hover:bg-glass hover:text-ink"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <a href="/mentoria" class="font-heading text-[13.5px] font-medium text-mid no-underline transition-colors hover:text-ink">Mentoria</a>
+      <a href="/manifesto" class="font-heading text-[13.5px] font-medium text-mid no-underline transition-colors hover:text-ink">O Manifesto</a>
     </div>
 
     <a
