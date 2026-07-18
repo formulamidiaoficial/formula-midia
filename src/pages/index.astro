@@ -72,10 +72,10 @@ const differentials = [
   "Gestão estruturada para escalabilidade",
 ];
 
-const testimonials = [
-  { quote: "A Fórmula Mídia transformou nosso ROI. Saímos de um CPA de R$150 para R$45 em três meses.", name: "João Silva", role: "CEO na TechSolutions" },
-  { quote: "Finalmente temos um parceiro que entende nossa estratégia comercial.", name: "Maria Oliveira", role: "Diretora de Marketing na InnovateCorp" },
-  { quote: "Aumentamos nossas conversões em 280% e reduzimos significativamente o custo por aquisição.", name: "Carlos Mendes", role: "Diretor Comercial na GrowthBiz" },
+const results = [
+  { quote: "Redução de CPA de R$150 para R$45 em três meses de gestão.", segment: "Tecnologia" },
+  { quote: "Estratégia comercial reestruturada com clareza de origem de cada lead.", segment: "Serviços B2B" },
+  { quote: "Aumento de 280% nas conversões, com redução do custo por aquisição.", segment: "Varejo" },
 ];
 
 const pricingTiers = [
@@ -370,15 +370,14 @@ const comparisonRows = [
   <!-- TESTIMONIALS -->
   <section id="depoimentos" class="bg-bg-2 px-6 py-22">
     <div class="mx-auto max-w-[1080px]">
-      <h2 class="max-w-[720px] font-heading text-[clamp(24px,3.2vw,34px)] font-bold tracking-tight" data-in>O que nossos clientes dizem</h2>
-      <p class="mt-4 max-w-[640px] text-base text-mid" data-in>Resultados reais de empresas que transformaram sua estratégia de tráfego pago com a Fórmula Mídia.</p>
+      <h2 class="max-w-[720px] font-heading text-[clamp(24px,3.2vw,34px)] font-bold tracking-tight" data-in>Resultados que já entregamos</h2>
+      <p class="mt-4 max-w-[640px] text-base text-mid" data-in>Exemplos de resultados de clientes que transformaram sua estratégia de tráfego pago com a Fórmula Mídia.</p>
 
       <div class="mt-11 grid gap-5 md:grid-cols-3">
-        {testimonials.map((t) => (
+        {results.map((r) => (
           <div class="rounded-card border border-border bg-glass p-7" data-in>
-            <p class="mb-5 text-[14.5px] italic leading-relaxed text-ink">"{t.quote}"</p>
-            <div class="font-heading text-sm font-semibold">{t.name}</div>
-            <div class="text-xs text-dim">{t.role}</div>
+            <p class="mb-5 text-[14.5px] italic leading-relaxed text-ink">"{r.quote}"</p>
+            <div class="text-xs uppercase tracking-[.05em] text-dim">Segmento: {r.segment}</div>
           </div>
         ))}
       </div>
