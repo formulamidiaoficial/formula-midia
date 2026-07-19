@@ -118,8 +118,8 @@ const comparisonRows = [
 ---
 
 <BaseLayout
-  title="Agência de Tráfego Pago, SEO & GEO | Fórmula Mídia"
-  description="Agência de performance especializada em tráfego pago (Google Ads e Meta Ads), SEO técnico e GEO. Geração de clientes qualificados em todo o Brasil."
+  title="Fórmula Mídia | Crescimento para Negócios de Alto Padrão"
+  description="A parceira de crescimento dos negócios de alto padrão da sua cidade — clínicas, imóveis, hotelaria e serviços premium. Transformamos reputação em fluxo constante de clientes."
   path="/"
   schema={schema}
   includeOrganizationSchema
@@ -130,29 +130,27 @@ const comparisonRows = [
     <div class="pointer-events-none absolute -right-36 -top-20 h-[380px] w-[380px] rounded-full bg-[radial-gradient(circle,rgba(180,20,20,.20),transparent_70%)] blur-[70px]"></div>
 
     <div class="relative z-[2] mx-auto max-w-[820px]">
-      <Badge label="Gestão Estratégica de Tráfego" />
+      <Badge label="Parceira de Crescimento" />
       <h1 class="mt-6 font-heading text-[clamp(32px,5.2vw,54px)] font-bold leading-[1.1] tracking-tight" data-in>
-        Gestão de Tráfego Pago Estratégica
+        Os melhores negócios da sua cidade merecem crescer como os melhores do mundo.
       </h1>
-      <p class="mx-auto mt-3 max-w-[620px] text-lg text-mid" data-in>Saiba exatamente qual anúncio gerou cada lead</p>
-
-      <p class="mx-auto mt-7 max-w-[640px] text-[clamp(15px,1.6vw,18px)] leading-relaxed text-mid" data-in>
-        Gestão estratégica de tráfego pago com páginas de conversão, rastreamento real de leads, dashboards
-        profissionais e controle total da jornada do cliente.
+      <p class="mx-auto mt-5 max-w-[640px] text-[clamp(15px,1.6vw,18px)] leading-relaxed text-mid" data-in>
+        Somos a parceira de crescimento dos negócios de alto padrão — clínicas, imóveis, hotelaria e serviços
+        de urgência e alto valor. Transformamos a reputação que você já tem em fluxo constante de clientes.
       </p>
       <p class="mx-auto mt-4 max-w-[640px] text-[15px] leading-relaxed text-dim" data-in>
-        Mais do que criar anúncios, estruturamos todo o processo de aquisição de clientes para que o investimento
-        em mídia seja conduzido com clareza, monitoramento e controle.
+        Tráfego pago traz, CRM converte, dados otimizam — sob um único método de growth e um gestor de
+        crescimento dedicado ao seu negócio.
       </p>
-      <p class="mt-5 font-heading text-sm font-semibold text-red-hi" data-in>Menos tentativa. Mais direção.</p>
+      <p class="mt-5 font-heading text-sm font-semibold text-red-hi" data-in>Reputação é o começo. Crescimento é o que fazemos.</p>
 
       <div class="mt-8 flex flex-wrap justify-center gap-3.5" data-in>
-        <BtnPrimary href={waLink("Olá, quero saber mais sobre os serviços Fórmula Mídia")} target="_blank" rel="noopener">
-          Falar com especialista →
+        <BtnPrimary href={waLink("Olá, quero saber como a Fórmula Mídia pode fazer meu negócio crescer")} target="_blank" rel="noopener">
+          Quero crescer com método →
         </BtnPrimary>
-        <BtnGhost href="#metodo">Ver método</BtnGhost>
+        <BtnGhost href="#metodo">Ver como funciona</BtnGhost>
       </div>
-      <p class="mt-4 text-xs text-dim" data-in>Diagnóstico estratégico inicial.</p>
+      <p class="mt-4 text-xs text-dim" data-in>Diagnóstico de crescimento inicial.</p>
 
       <div class="mt-14 flex flex-wrap justify-center gap-x-14 gap-y-6" data-in>
         <div class="text-center"><div class="font-heading text-[28px] font-bold tracking-tight text-red-hi">100+</div><div class="mt-1 text-[11px] uppercase tracking-[.06em] text-dim">Clientes</div></div>
@@ -162,8 +160,18 @@ const comparisonRows = [
     </div>
   </header>
 
-  <!-- CLIENT LOGOS -->
+  <!-- SEGMENTS -->
   <section class="border-y border-border px-6 py-8">
+    <p class="mb-5 text-center text-xs font-semibold uppercase tracking-[.08em] text-dim">Negócios de alto padrão que crescem com a Fórmula Mídia</p>
+    <div class="mx-auto flex max-w-[900px] flex-wrap items-center justify-center gap-x-3 gap-y-3">
+      {["Clínicas premium", "Imobiliário & incorporação", "Hotelaria premium", "Serviços de urgência", "Alto valor local", "Controle de pragas"].map((seg) => (
+        <span class="rounded-full border border-border bg-glass px-4 py-2 font-heading text-[13px] font-semibold text-mid">{seg}</span>
+      ))}
+    </div>
+  </section>
+
+  <!-- CLIENT LOGOS -->
+  <section class="border-b border-border px-6 py-8">
     <p class="mb-6 text-center text-xs font-semibold uppercase tracking-[.08em] text-dim">Empresas que confiam na Fórmula Mídia</p>
     <LogoCarousel />
   </section>
@@ -171,18 +179,19 @@ const comparisonRows = [
   <!-- SERVICES HUB -->
   <section class="px-6 py-22">
     <div class="mx-auto max-w-[1080px]">
-      <span class="mb-3.5 block font-heading text-xs font-semibold uppercase tracking-[.16em] text-red-hi" data-in>Ecossistema Fórmula Mídia</span>
+      <span class="mb-3.5 block font-heading text-xs font-semibold uppercase tracking-[.16em] text-red-hi" data-in>O motor de crescimento</span>
       <h2 class="max-w-[720px] font-heading text-[clamp(26px,3.4vw,38px)] font-bold leading-[1.15] tracking-tight" data-in>
-        Tráfego pago é o nosso foco. Growth, sites e SEO completam a operação.
+        Growth é a espinha. Tráfego, sites e SEO são as peças que ela move.
       </h2>
       <p class="mt-5 max-w-[720px] text-[16px] leading-[1.75] text-mid" data-in>
-        Cada serviço abaixo tem sua própria página, com escopo e método detalhados. Escolha por onde começar.
+        A maioria das agências entrega uma perna só. Nós integramos tudo sob um único método de crescimento —
+        cada frente abaixo tem sua página, mas trabalham juntas pra encher a sua agenda.
       </p>
 
       <div class="mt-11 grid gap-5 md:grid-cols-2">
         {[
-          { href: "/servicos", tag: "Foco nº1", title: "Tráfego Pago", desc: "Google Ads e Meta Ads com rastreamento real de leads e dashboards profissionais.", featured: true },
-          { href: "/growth", tag: "Alto ticket", title: "Growth & Performance", desc: "Gestão contínua de todo o funil de crescimento, com dados de ponta a ponta.", featured: false },
+          { href: "/growth", tag: "A espinha", title: "Growth & Performance", desc: "Um gestor de crescimento e um método que integram tráfego, CRM e dados de ponta a ponta.", featured: true },
+          { href: "/servicos", tag: "", title: "Tráfego Pago", desc: "Google Ads e Meta Ads com rastreamento real de leads e dashboards profissionais.", featured: false },
           { href: "/criacao-de-sites", tag: "", title: "Criação de Sites", desc: "Sites e landing pages de alta performance, Lighthouse 90-100, SEO técnico desde a fundação.", featured: false },
           { href: "/seo", tag: "", title: "SEO & GEO", desc: "Autoridade orgânica em buscadores tradicionais e mecanismos de busca por IA.", featured: false },
         ].map((s) => (
@@ -209,14 +218,14 @@ const comparisonRows = [
   <!-- QUALIFIER -->
   <section class="section-light px-6 py-20">
     <div class="mx-auto max-w-[820px] text-center">
-      <h2 class="font-heading text-[clamp(24px,3.2vw,34px)] font-bold tracking-tight" data-in>Este serviço é para sua empresa?</h2>
-      <p class="mt-4 text-base text-mid" data-in>Responda estas três perguntas e descubra se a Fórmula Mídia faz sentido para a sua empresa.</p>
+      <h2 class="font-heading text-[clamp(24px,3.2vw,34px)] font-bold tracking-tight" data-in>Isso é para o seu negócio?</h2>
+      <p class="mt-4 text-base text-mid" data-in>Responda estas três perguntas e descubra se a Fórmula Mídia faz sentido para você.</p>
 
       <div class="mx-auto mt-10 flex max-w-[560px] flex-col gap-4 text-left">
         {[
-          "Busca investir em tráfego pago com estratégia e organização?",
-          "Você sente que poderia gerar mais oportunidades de venda com uma estrutura melhor de marketing?",
-          "Quer ter clareza sobre onde o seu investimento em anúncios está sendo aplicado?",
+          "Seu negócio já tem reputação e nome na cidade, mas ainda depende muito de indicação e boca a boca?",
+          "Sente que poderia atender muito mais clientes se tivesse um fluxo previsível de novas oportunidades?",
+          "Quer crescer com método e dados — não com achismo nem \"impulsionar\" post de vez em quando?",
         ].map((q) => (
           <div class="rounded-2xl border border-border bg-glass p-5 font-heading text-[15px] font-semibold" data-in>{q}</div>
         ))}
@@ -225,13 +234,13 @@ const comparisonRows = [
       <p class="mt-8 text-base" data-in>Se suas respostas forem <strong>"sim"</strong>, a Fórmula Mídia faz sentido para você.</p>
 
       <div class="mx-auto mt-7 flex max-w-[560px] flex-col gap-2.5 text-left" data-in>
-        {["Monitoramento contínuo das campanhas", "Rastreamento completo da origem dos leads", "Acompanhamento da jornada do cliente"].map((f) => (
+        {["Fluxo constante e previsível de novos clientes", "Reputação transformada em agenda cheia", "Crescimento acompanhado por dados, de ponta a ponta"].map((f) => (
           <div class="flex items-center gap-2.5 text-sm text-mid"><span class="font-bold text-red-hi">✓</span>{f}</div>
         ))}
       </div>
 
       <div class="mt-9">
-        <BtnPrimary href={waLink("Quero crescer com estratégia")} target="_blank" rel="noopener">Quero crescer com estratégia</BtnPrimary>
+        <BtnPrimary href={waLink("Quero transformar minha reputação em fluxo de clientes")} target="_blank" rel="noopener">Quero crescer com método</BtnPrimary>
       </div>
     </div>
   </section>
@@ -240,12 +249,12 @@ const comparisonRows = [
   <section id="plataforma" class="px-6 py-22">
     <div class="mx-auto max-w-[1080px]">
       <h2 class="max-w-[720px] font-heading text-[clamp(26px,3.4vw,38px)] font-bold leading-[1.15] tracking-tight" data-in>
-        Plataforma Completa de Gestão de Tráfego Pago
+        Uma plataforma completa de crescimento, não só de anúncios
       </h2>
       <div class="mt-5 flex max-w-[720px] flex-col gap-3 text-[16px] leading-[1.75] text-mid" data-in>
-        <p>Disponibilizamos uma infraestrutura tecnológica completa para gestão de tráfego pago de alta performance que permite acompanhar todo o fluxo de geração de leads com total clareza.</p>
-        <p>A plataforma conecta anúncios de Google Ads e Meta Ads, dados, páginas de conversão e atendimento em um único ambiente de gestão estratégica.</p>
-        <p>Assim é possível visualizar desde o anúncio que gerou o lead até o estágio do atendimento, garantindo máximo controle e ROI em suas campanhas.</p>
+        <p>Disponibilizamos uma infraestrutura tecnológica completa que conecta cada etapa do crescimento do seu negócio — da primeira impressão do anúncio até o cliente fechando no WhatsApp.</p>
+        <p>Anúncios de Google Ads e Meta Ads, dados, páginas de conversão e atendimento vivem em um único ambiente, sob um método de growth e um gestor dedicado.</p>
+        <p>Assim você enxerga o caminho inteiro — do que trouxe o cliente até o que fechou a venda — com clareza e controle total sobre o crescimento.</p>
       </div>
 
       <div class="mt-12 grid auto-rows-[minmax(190px,auto)] grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-4">
@@ -317,13 +326,12 @@ const comparisonRows = [
   <section id="metodo" class="bg-bg-2 px-6 py-22">
     <div class="mx-auto max-w-[1080px]">
       <h2 class="max-w-[720px] font-heading text-[clamp(26px,3.4vw,38px)] font-bold leading-[1.15] tracking-tight" data-in>
-        Método Fórmula Mídia®: Consultoria de Tráfego Pago
+        Método Fórmula Mídia®: o processo que transforma reputação em crescimento
       </h2>
       <p class="mt-5 max-w-[720px] text-[16px] leading-[1.75] text-mid" data-in>
-        O Método Fórmula Mídia® organiza toda a consultoria de tráfego pago em um processo estruturado que conecta
-        estratégia, execução e análise de dados. Cada etapa da operação é desenhada para garantir clareza sobre o
-        investimento, controle da geração de leads e capacidade de crescimento das campanhas de Google Ads e Meta
-        Ads em todo o Brasil.
+        O Método Fórmula Mídia® organiza todo o crescimento do seu negócio em um processo estruturado que conecta
+        estratégia, execução e dados. Cada etapa é desenhada para dar clareza sobre o investimento, controle da
+        geração de clientes e capacidade de escalar — de negócios locais de alto padrão a operações em todo o Brasil.
       </p>
 
       <div class="mt-11 flex flex-col">
@@ -348,13 +356,12 @@ const comparisonRows = [
   <section id="diferenciais" class="px-6 py-22">
     <div class="mx-auto max-w-[1080px]">
       <h2 class="max-w-[720px] font-heading text-[clamp(24px,3.2vw,34px)] font-bold leading-[1.2] tracking-tight" data-in>
-        Agência de Marketing Digital de Performance. Não fazemos apenas anúncios, fazemos gestão.
+        Não fazemos apenas anúncios. Fazemos o seu negócio crescer.
       </h2>
       <p class="mt-5 max-w-[720px] text-[16px] leading-[1.75] text-mid" data-in>
-        A Fórmula Mídia é uma agência de marketing digital especializada em gestão de tráfego pago de alta
-        performance, nosso foco número 1, com autoridade também em SEO e GEO (otimização para buscadores de IA).
-        Trabalhamos com uma abordagem estratégica, conectando dados, tecnologia e acompanhamento contínuo para
-        garantir clareza e controle sobre os resultados de suas campanhas.
+        A Fórmula Mídia é a parceira de crescimento dos negócios de alto padrão. Integramos tráfego pago, CRM,
+        SEO e dados sob um único método de growth — com um gestor de crescimento dedicado, conectando estratégia,
+        tecnologia e acompanhamento contínuo para transformar reputação em fluxo constante de clientes.
       </p>
 
       <div class="mt-10 grid gap-3 sm:grid-cols-2">
@@ -371,7 +378,7 @@ const comparisonRows = [
   <section id="depoimentos" class="bg-bg-2 px-6 py-22">
     <div class="mx-auto max-w-[1080px]">
       <h2 class="max-w-[720px] font-heading text-[clamp(24px,3.2vw,34px)] font-bold tracking-tight" data-in>Resultados que já entregamos</h2>
-      <p class="mt-4 max-w-[640px] text-base text-mid" data-in>Exemplos de resultados de clientes que transformaram sua estratégia de tráfego pago com a Fórmula Mídia.</p>
+      <p class="mt-4 max-w-[640px] text-base text-mid" data-in>Exemplos de resultados de negócios que transformaram reputação em crescimento com a Fórmula Mídia.</p>
 
       <div class="mt-11 grid gap-5 md:grid-cols-3">
         {results.map((r) => (
@@ -395,11 +402,12 @@ const comparisonRows = [
   <section id="pacotes" class="px-6 py-22">
     <div class="mx-auto max-w-[1080px]">
       <h2 class="max-w-[720px] font-heading text-[clamp(26px,3.4vw,38px)] font-bold leading-[1.15] tracking-tight" data-in>
-        Pacotes de Serviços: Consultoria de Tráfego Pago
+        Por onde começar o seu crescimento
       </h2>
       <p class="mt-5 max-w-[720px] text-[16px] leading-[1.75] text-mid" data-in>
-        Escolha o plano ideal para sua empresa. Cada pacote de consultoria de tráfego pago é estruturado para
-        gerar mais clientes e aumentar suas vendas com Google Ads e Meta Ads em qualquer lugar do Brasil.
+        A porta de entrada é a gestão de tráfego pago — cada plano é estruturado para gerar mais clientes com
+        Google Ads e Meta Ads. À medida que o negócio cresce, o motor completo de growth (CRM, dados e gestão
+        dedicada) entra em cena.
       </p>
 
       <div class="mt-12 grid items-stretch gap-5 md:grid-cols-3">
@@ -482,9 +490,9 @@ const comparisonRows = [
       </div>
 
       <div class="mt-16 text-center" data-in>
-        <h3 class="font-heading text-2xl font-bold tracking-tight">Pronto para gerar mais clientes?</h3>
-        <p class="mx-auto mt-3 max-w-[480px] text-mid">Escolha o pacote ideal e comece a transformar seu investimento em mídia em resultados reais.</p>
-        <div class="mt-7"><BtnPrimary href={waLink("Olá, quero saber mais sobre os pacotes")} target="_blank" rel="noopener">Falar com especialista →</BtnPrimary></div>
+        <h3 class="font-heading text-2xl font-bold tracking-tight">Pronto para transformar reputação em crescimento?</h3>
+        <p class="mx-auto mt-3 max-w-[480px] text-mid">Comece pela porta de entrada e evolua até o motor completo de growth.</p>
+        <div class="mt-7"><BtnPrimary href={waLink("Olá, quero saber como fazer meu negócio crescer")} target="_blank" rel="noopener">Falar com especialista →</BtnPrimary></div>
       </div>
     </div>
   </section>
@@ -494,30 +502,30 @@ const comparisonRows = [
     <div class="mx-auto max-w-[1080px]">
       <div class="grid gap-10 md:grid-cols-2">
         <div data-in>
-          <h3 class="mb-2.5 font-heading text-lg font-bold">Agência de Tráfego Pago no Brasil</h3>
-          <p class="text-sm leading-relaxed text-mid">A Fórmula Mídia é uma agência especializada em gestão de tráfego pago para empresas em todo o Brasil. Oferecemos soluções completas de Google Ads, Meta Ads e automação para empresas que desejam gerar mais clientes e aumentar suas vendas. Com mais de 100 clientes satisfeitos e um rating de 4.9/5, somos a escolha confiável em performance digital.</p>
+          <h3 class="mb-2.5 font-heading text-lg font-bold">Parceira de Crescimento de Negócios de Alto Padrão</h3>
+          <p class="text-sm leading-relaxed text-mid">A Fórmula Mídia é a parceira de crescimento dos negócios de alto padrão — clínicas premium, imobiliárias, hotelaria e serviços de alto valor — em todo o Brasil. Integramos tráfego pago, CRM, SEO e dados sob um único método de growth para transformar reputação em fluxo constante de clientes. Mais de 100 clientes atendidos e avaliação média de 4.9/5.</p>
         </div>
         <div data-in>
-          <h3 class="mb-2.5 font-heading text-lg font-bold">Especialistas em Google Ads</h3>
-          <p class="text-sm leading-relaxed text-mid">Nossos especialistas em Google Ads criam campanhas otimizadas para gerar leads qualificados e vendas. Utilizamos estratégias avançadas de segmentação, palavras-chave e otimização de anúncios para maximizar seu ROI. Cada campanha é personalizada conforme o mercado e as necessidades específicas do seu negócio.</p>
+          <h3 class="mb-2.5 font-heading text-lg font-bold">Growth para Clínicas e Serviços Premium</h3>
+          <p class="text-sm leading-relaxed text-mid">Clínicas e serviços de alto valor vivem de agenda cheia. Construímos a máquina de aquisição de clientes que faltava: tráfego que traz, CRM que converte e dados que otimizam — com um gestor de crescimento dedicado ao seu negócio, respeitando as regras de cada setor.</p>
         </div>
         <div data-in>
-          <h3 class="mb-2.5 font-heading text-lg font-bold">Gestão de Anúncios Online em Todo o Brasil</h3>
-          <p class="text-sm leading-relaxed text-mid">Gerenciamos campanhas de anúncios online para empresas em todo o Brasil, utilizando as melhores práticas de tráfego pago. Nosso objetivo é transformar seu investimento em mídia em resultados reais: mais clientes, mais vendas, mais crescimento, em qualquer estado do país.</p>
+          <h3 class="mb-2.5 font-heading text-lg font-bold">Aquisição de Clientes em Todo o Brasil</h3>
+          <p class="text-sm leading-relaxed text-mid">Atendemos negócios de alto padrão em todo o Brasil, do local ao nacional. Nosso objetivo é transformar reputação em resultado real: mais clientes, mais vendas, mais crescimento — com previsibilidade, não com achismo.</p>
         </div>
         <div data-in>
-          <h3 class="mb-2.5 font-heading text-lg font-bold">Atendimento 100% Remoto, em Todo o Brasil</h3>
-          <p class="text-sm leading-relaxed text-mid">Atendemos empresas em todo o Brasil, 100% remoto. Nossa equipe entende profundamente o comportamento de compra digital e as oportunidades de crescimento de cada segmento. Somos especialistas em gerar clientes qualificados usando Google Ads, Meta Ads e estratégias de tráfego pago.</p>
+          <h3 class="mb-2.5 font-heading text-lg font-bold">Atendimento 100% Remoto, com Time Dedicado</h3>
+          <p class="text-sm leading-relaxed text-mid">Atendemos o Brasil inteiro, 100% remoto, mas com um time dedicado que entende o seu mercado. Grandes em capacidade, próximos no atendimento — cada negócio tem seu gestor de crescimento acompanhando os números de perto.</p>
         </div>
       </div>
 
       <div class="mt-12 border-t border-border pt-8" data-in>
-        <h3 class="mb-4 font-heading text-sm font-semibold uppercase tracking-[.08em] text-red-hi">Recursos de Gestão de Tráfego Pago</h3>
+        <h3 class="mb-4 font-heading text-sm font-semibold uppercase tracking-[.08em] text-red-hi">Como crescemos o seu negócio</h3>
         <div class="flex flex-col gap-2 text-sm">
-          <a href="#metodo" class="text-mid no-underline hover:text-ink">→ Conheça nosso método de gestão de tráfego pago de alta performance</a>
-          <a href="#diferenciais" class="text-mid no-underline hover:text-ink">→ Veja os diferenciais da Fórmula Mídia para gestão de tráfego pago</a>
-          <a href="#pacotes" class="text-mid no-underline hover:text-ink">→ Confira os pacotes de gestão de tráfego pago para sua empresa</a>
-          <a href="#depoimentos" class="text-mid no-underline hover:text-ink">→ Leia depoimentos de clientes que cresceram com gestão de tráfego pago</a>
+          <a href="#metodo" class="text-mid no-underline hover:text-ink">→ Conheça o Método Fórmula Mídia® de crescimento</a>
+          <a href="#diferenciais" class="text-mid no-underline hover:text-ink">→ Veja por que integramos growth em vez de vender só anúncio</a>
+          <a href="#pacotes" class="text-mid no-underline hover:text-ink">→ Descubra por onde começar o seu crescimento</a>
+          <a href="/growth" class="text-mid no-underline hover:text-ink">→ Entenda o motor de Growth & Performance</a>
         </div>
       </div>
     </div>
