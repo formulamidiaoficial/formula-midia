@@ -1,0 +1,44 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Badge from "../components/ui/Badge.astro";
+import Breadcrumbs from "../components/ui/Breadcrumbs.astro";
+import GrowthDiagnosis from "../components/islands/GrowthDiagnosis.tsx";
+import { breadcrumbSchema } from "../data/schema";
+
+const breadcrumbItems = [
+  { name: "Home", path: "/" },
+  { name: "Growth & Performance", path: "/growth" },
+  { name: "Diagnóstico de Crescimento", path: "/diagnostico" },
+];
+const schema = breadcrumbSchema(breadcrumbItems);
+---
+
+<BaseLayout
+  title="Diagnóstico de Crescimento | Fórmula Mídia"
+  description="Descubra em 2 minutos o nível de maturidade de crescimento do seu negócio, qual é o seu maior gargalo e o próximo passo mais importante. Grátis."
+  path="/diagnostico"
+  schema={schema}
+>
+  <Breadcrumbs items={breadcrumbItems} />
+  <header class="relative overflow-hidden px-6 pb-6 pt-16 text-center">
+    <div class="pointer-events-none absolute -left-24 -top-44 h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,rgba(228,41,41,.22),transparent_70%)] blur-[80px]"></div>
+    <div class="pointer-events-none absolute -right-28 -top-24 h-[380px] w-[380px] rounded-full bg-[radial-gradient(circle,rgba(180,20,20,.18),transparent_70%)] blur-[80px]"></div>
+
+    <div class="relative z-[2] mx-auto max-w-[680px]">
+      <a href="/growth" class="mb-6 inline-flex items-center gap-1.5 font-heading text-[13px] font-semibold text-mid no-underline hover:text-ink">← Voltar para Growth &amp; Performance</a>
+      <div class="mb-6"><Badge label="Diagnóstico de Crescimento" /></div>
+      <h1 class="font-heading text-[clamp(28px,4.4vw,44px)] font-bold leading-[1.12] tracking-tight">
+        Qual é o nível de <span class="text-red-hi">crescimento do seu negócio?</span>
+      </h1>
+      <p class="mx-auto mt-4 max-w-[520px] text-base leading-relaxed text-mid">
+        Responda 6 perguntas rápidas e descubra a maturidade de crescimento do seu negócio, o seu maior gargalo e o próximo passo mais importante. Leva 2 minutos.
+      </p>
+    </div>
+  </header>
+
+  <div class="section-light px-6 pb-24 pt-8">
+    <div class="mx-auto max-w-[1140px]">
+      <GrowthDiagnosis client:load />
+    </div>
+  </div>
+</BaseLayout>
