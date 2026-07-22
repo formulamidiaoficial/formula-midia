@@ -1,7 +1,9 @@
 # PROGRESS.md
 
 ## Status (atualizar a cada sessão)
-Fase 3 100% concluída — CNPJ real (55.777.659/0001-40) preenchido em `/privacidade`, `/termos` e no schema.org (`taxID`), removendo o último bloqueio de publicação. Auditoria completa de SEO/OG/meta feita e corrigida (ver "Auditoria de SEO/OG" abaixo). Gap de paridade de conteúdo encontrado e corrigido: carrossel de 25 logos de clientes (existia no site antigo, nunca portado) agora está na Home (`LogoCarousel.astro`, zero-JS). Build de produção rodado (17 páginas), commit `c9feaf1` enviado ao GitHub, pacote de deploy regenerado em `Downloads/formula-midia-astro-deploy.zip` (141 arquivos, ~1.99MB, inclui `.htaccess`). **Site novo pronto para publicar — falta apenas o cliente fazer o upload no Hostinger** (instruções passo a passo entregues nesta sessão).
+**PIVOT ESTRATÉGICO EM CURSO (2026-07-22):** o site deixou de ser "agência de tráfego pago" e passou a **"parceira de crescimento dos negócios de alto padrão da cidade"** — foco por TIPO DE CLIENTE (premium local: clínicas, imóveis, hotelaria, urgência, alto valor), com **growth como espinha**. Home reposicionada (commit 6d11591) e **/growth transformada em página flagship** (commit e7a7e91). Pricing premium definido (preço na proposta, piso R$1.8k como critério de seleção — ver decisão abaixo). Em construção agora: páginas por segmento (ímã de nicho). Roadmap completo de expansão documentado na seção "ROADMAP DE EXPANSÃO DO SITE" abaixo. Base técnica (Fase 0-3) 100% pronta; pacote de deploy em `Downloads/formula-midia-astro-deploy.zip`. **O site reposicionado só vai ao ar quando o cliente re-subir o zip no Hostinger.**
+
+> **Para retomar em qualquer sessão futura:** leia (1) esta seção Status, (2) a seção "ROADMAP DE EXPANSÃO DO SITE" no fim deste arquivo, e (3) a memória `project_business_strategy` (posicionamento, decisão de vertical, regra do oftalmo). A regra inviolável: **oftalmo NUNCA aparece no site** (é a vantagem interna confidencial; protege o cliente atual de oftalmo). Saúde só genérica ("clínicas de alto padrão").
 
 ## Ambiente / Acesso
 - Repositório: github.com/formulamidiaoficial/formula-midia
@@ -117,4 +119,60 @@ Os 16 FAQs originais (schema JSON-LD do site antigo) já estão salvos em `src/d
 - Bug encontrado e corrigido na Fase 1: blobs decorativos (absolute, blur) sem `overflow-hidden` no container pai causavam overflow horizontal no mobile em `/seo` (seção de CTA final) — checar isso em qualquer nova seção com blobs decorativos nas próximas fases.
 
 ## Próxima tarefa concreta
-Cliente vai fazer o upload de `formula-midia-astro-deploy.zip` no Hostinger (instruções passo a passo dadas no chat em 2026-07-16). Depois disso: (1) validar os headers de segurança em produção (securityheaders.com), (2) validar Lighthouse na URL real, (3) seguir para a Fase 4 (case EMOPS — permissão já confirmada, falta só detalhes extras do case) ou Fase 5 (conteúdo pilar de SEO/GEO — falta decisão do cliente sobre `/blog/` vs `/recursos/`), conforme prioridade do cliente. Menu mobile (hambúrguer) também é candidato a próxima melhoria — hoje não existe navegação nenhuma em telas pequenas.
+Cliente precisa re-subir `formula-midia-astro-deploy.zip` no Hostinger pra o site reposicionado ir ao ar (instruções em `DEPLOY.md`). Em paralelo, seguir o ROADMAP DE EXPANSÃO abaixo.
+
+---
+
+## ROADMAP DE EXPANSÃO DO SITE (definido 2026-07-22)
+
+Contexto: após a série de 5 documentos de estratégia (publicados como artifacts) + a decisão de posicionamento (parceira de crescimento de negócios de alto padrão, growth como espinha, oftalmo interno/confidencial), o site vai muito além do estado atual. Menu completo de expansão, por função de captar o cliente certo, priorizado.
+
+### Decisões travadas nesta rodada
+- **Posicionamento:** "parceira de crescimento dos negócios de alto padrão da cidade" (foco por tipo de cliente premium local, não por indústria). Growth = espinha; tráfego/sites/SEO = peças.
+- **Oftalmo:** NUNCA no site (arma secreta interna; protege cliente atual). Saúde só genérica.
+- **Pricing:** preço fora da vitrine (premium). Cards de preço fixo devem sair da home/growth; usar "níveis por valor" + CTA "Solicitar diagnóstico"; piso de **R$1.8k/mês** aparece só 1x, enquadrado como critério de seleção ("trabalhamos com negócios prontos a investir a partir de R$1.8k/mês"), idealmente no FAQ — nunca como "pacote básico". Site-isca (criação de site) é a pista transacional separada e pode ter preço.
+- **Números do hero (100+/98%/+10/4.9):** AINDA NÃO confirmados como reais/auditados — confirmar com cliente antes de tratar como fato.
+
+### Já feito nesta rodada
+- [x] Home reposicionada em torno do mote (commit 6d11591)
+- [x] /growth virou página flagship — 9 seções (commit e7a7e91)
+
+### Roadmap por categoria (ganchos pro nicho)
+
+**1. Ganchos interativos (lead magnets — ferramentas):**
+- [ ] **Auditoria de Presença Digital** (gancho nº1 — modelo HubSpot Website Grader). ATENÇÃO técnica: auditoria automática real (inserir URL → crawl) precisa de backend, que a Hostinger estática não tem. Alternativa viável 100% client-side: **diagnóstico guiado por perguntas** (quiz pontuado → relatório personalizado → gate WhatsApp). Decidir abordagem antes de construir.
+- [ ] Calculadora "Custo da Agenda Vazia" (quantifica em R$ o que o negócio premium deixa de faturar sem máquina de aquisição)
+- [ ] Simulador "Quantos clientes meu investimento traz"
+- [ ] Quiz de Maturidade de Crescimento
+- [ ] Calculadora de CAC/LTV
+- (já existem: /calculadora, /simulador-de-site, /simulador-de-funil)
+
+**2. Páginas por segmento (ímã de busca do nicho) — EM CONSTRUÇÃO AGORA:**
+- [ ] Sistema data-driven: `src/data/segments.ts` + `/segmentos/[slug].astro` + `/segmentos` (hub)
+- [ ] Clínicas de alto padrão (genérico, nunca oftalmo) · Imobiliárias · Hotelaria premium · Serviços de urgência · Controle de pragas
+
+**3. Hub de autoridade / mídia própria (moat de longo prazo):**
+- [ ] Central de Recursos (e-books/checklists/templates gateados) · Conteúdo pilar ("Guia de aquisição de clientes para negócios de alto padrão") · Newsletter · Glossário/central de conhecimento (GEO)
+
+**4. Provas & confiança:**
+- [ ] Portfólio de sites/cases reais (AGUARDA os links do cliente) · Central de Resultados · Depoimentos em vídeo · Quem Somos/time
+
+**5. Novos produtos vendáveis:**
+- [ ] Página White-label / Para Agências (2ª receita B2B2B) · Programa de Indicação/Parceria · Site-isca produtizado · WhatsApp Bot (aguarda decisão de stack)
+
+**6. Infra de conversão:**
+- [ ] Página de Diagnóstico/Agendamento (funil principal) · Analytics Plausible · Captura de lead nas ferramentas (mostrar resultado → gatear)
+
+### Ordem recomendada de execução
+1. Páginas por segmento (buildável a excelência agora, estático, SEO, reforça posicionamento) ← COMEÇANDO POR AQUI
+2. Diagnóstico guiado (o gancho interativo mais forte que dá pra fazer sem backend)
+3. Central de Recursos + 1º material (início do moat de autoridade)
+4. Reposicionar /servicos, /criacao-de-sites, /seo como peças do growth
+5. Portfólio (quando cliente enviar links)
+6. Pricing premium na home (tirar cards de preço fixo)
+
+### Pendências que dependem do cliente
+- Re-subir o zip no Hostinger (site reposicionado no ar)
+- Enviar links dos sites/cases já criados (pro portfólio)
+- Conta Plausible + confirmar números do hero
+- Detalhes do case EMOPS (Fase 4) / decisão URL do conteúdo pilar (Fase 5)

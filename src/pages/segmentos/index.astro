@@ -1,0 +1,69 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageHero from "../../components/sections/PageHero.astro";
+import SectionHeading from "../../components/sections/SectionHeading.astro";
+import FinalCta from "../../components/sections/FinalCta.astro";
+import Breadcrumbs from "../../components/ui/Breadcrumbs.astro";
+import { waLink, breadcrumbSchema } from "../../data/schema";
+import { segments } from "../../data/segments";
+
+const breadcrumbItems = [
+  { name: "Home", path: "/" },
+  { name: "Segmentos", path: "/segmentos" },
+];
+const schema = breadcrumbSchema(breadcrumbItems);
+
+const ctaMsg = "Olá, quero um diagnóstico de crescimento para o meu negócio";
+---
+
+<BaseLayout
+  title="Segmentos que Atendemos | Fórmula Mídia"
+  description="Crescimento sob medida para os negócios de alto padrão da sua cidade: clínicas, imobiliárias, hotelaria, serviços de urgência e controle de pragas."
+  path="/segmentos"
+  schema={schema}
+>
+  <Breadcrumbs items={breadcrumbItems} />
+  <PageHero
+    badge="Quem atendemos"
+    title="Cada negócio de alto padrão"
+    highlight="cresce de um jeito. A gente conhece o seu."
+    sub="O método de crescimento é o mesmo — tráfego traz, CRM converte, dados otimizam. O que muda é entender a dor específica de cada segmento. Escolha o seu."
+    primaryHref={waLink(ctaMsg)}
+    primaryLabel="Quero um diagnóstico →"
+  />
+
+  <section class="px-6 py-22">
+    <div class="mx-auto max-w-[1080px]">
+      <SectionHeading
+        eyebrow="Segmentos"
+        title="Especialistas no crescimento de negócios de alto padrão"
+        lead="Não somos genéricos. Conhecemos a realidade, o ciclo de compra e as regras de cada um destes segmentos."
+      />
+      <div class="mt-11 grid gap-5 md:grid-cols-2">
+        {segments.map((s) => (
+          <a
+            href={`/segmentos/${s.slug}`}
+            class="flex flex-col rounded-card border border-border bg-glass p-7 no-underline transition-all hover:-translate-y-1 hover:border-red/30"
+            data-in
+          >
+            <h3 class="mb-2 font-heading text-lg font-bold text-ink">{s.navTitle}</h3>
+            <p class="mb-4 flex-1 text-sm leading-relaxed text-mid">{s.heroSub}</p>
+            <span class="font-heading text-sm font-semibold text-red-hi">Ver crescimento para este segmento →</span>
+          </a>
+        ))}
+      </div>
+
+      <p class="mt-8 text-center text-sm text-dim" data-in>
+        Não é exatamente o seu segmento? Se o seu negócio é de alto padrão e vive de agenda cheia, o método vale
+        para você também. <a href={waLink(ctaMsg)} target="_blank" rel="noopener" class="font-semibold text-red-hi no-underline hover:underline">Fale com a gente.</a>
+      </p>
+    </div>
+  </section>
+
+  <FinalCta
+    title="Pronto para transformar reputação em crescimento?"
+    desc="Comece com um diagnóstico. Vamos entender o seu segmento e mapear o seu crescimento."
+    message={ctaMsg}
+    ctaLabel="Quero um diagnóstico →"
+  />
+</BaseLayout>

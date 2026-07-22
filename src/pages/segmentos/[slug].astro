@@ -1,0 +1,90 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageHero from "../../components/sections/PageHero.astro";
+import SectionHeading from "../../components/sections/SectionHeading.astro";
+import DiffGrid from "../../components/sections/DiffGrid.astro";
+import ToolBanner from "../../components/sections/ToolBanner.astro";
+import FinalCta from "../../components/sections/FinalCta.astro";
+import Breadcrumbs from "../../components/ui/Breadcrumbs.astro";
+import { waLink, breadcrumbSchema } from "../../data/schema";
+import { segments } from "../../data/segments";
+
+export function getStaticPaths() {
+  return segments.map((segment) => ({
+    params: { slug: segment.slug },
+    props: { segment },
+  }));
+}
+
+const { segment } = Astro.props;
+
+const breadcrumbItems = [
+  { name: "Home", path: "/" },
+  { name: "Segmentos", path: "/segmentos" },
+  { name: segment.navTitle, path: `/segmentos/${segment.slug}` },
+];
+const schema = breadcrumbSchema(breadcrumbItems);
+
+const ctaMsg = `Olá, quero um diagnóstico de crescimento para meu negócio (${segment.navTitle})`;
+---
+
+<BaseLayout title={segment.metaTitle} description={segment.metaDesc} path={`/segmentos/${segment.slug}`} schema={schema}>
+  <Breadcrumbs items={breadcrumbItems} />
+  <PageHero
+    badge={segment.badge}
+    title={segment.heroTitle}
+    highlight={segment.heroHighlight}
+    sub={segment.heroSub}
+    primaryHref={waLink(ctaMsg)}
+    primaryLabel="Quero um diagnóstico →"
+    ghostHref="#como-ajudamos"
+    ghostLabel="Ver como ajudamos"
+  />
+
+  <!-- A DOR DO SEGMENTO -->
+  <section class="px-6 py-22">
+    <div class="mx-auto max-w-[1080px]">
+      <SectionHeading eyebrow="O ponto cego" title={segment.painTitle} lead={segment.painLead} />
+      <div class="mt-10 grid gap-3 sm:grid-cols-2">
+        {segment.pains.map((p) => (
+          <div class="flex gap-3 rounded-xl border border-border bg-glass px-5 py-4" data-in>
+            <span class="mt-0.5 shrink-0 font-bold text-red-hi">✕</span>
+            <p class="text-sm leading-relaxed text-mid">{p}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- COMO AJUDAMOS -->
+  <section id="como-ajudamos" class="bg-bg-2 px-6 py-22">
+    <div class="mx-auto max-w-[1080px]">
+      <SectionHeading eyebrow="A nossa solução" title={segment.helpTitle} />
+      <DiffGrid items={segment.diffs} />
+    </div>
+  </section>
+
+  <!-- SINAIS -->
+  <section class="section-light px-6 py-20">
+    <div class="mx-auto max-w-[820px] text-center">
+      <SectionHeading eyebrow="Isso é pra você?" title={segment.signalsTitle} />
+      <div class="mx-auto mt-9 flex max-w-[600px] flex-col gap-2.5 text-left">
+        {segment.signals.map((s) => (
+          <div class="flex items-center gap-2.5 rounded-xl border border-border bg-glass px-5 py-4 text-sm" data-in>
+            <span class="font-bold text-red-hi">✓</span>{s}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <ToolBanner
+    eyebrow="Growth"
+    title="É o motor de crescimento que faz isso acontecer"
+    desc="Cada segmento cresce com o mesmo método: tráfego traz, CRM converte, dados otimizam."
+    href="/growth"
+    ctaLabel="Ver o Motor de Crescimento →"
+  />
+
+  <FinalCta title={segment.ctaTitle} desc={segment.ctaDesc} message={ctaMsg} ctaLabel="Quero um diagnóstico →" />
+</BaseLayout>
