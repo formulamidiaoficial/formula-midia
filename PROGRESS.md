@@ -140,7 +140,7 @@ Contexto: após a série de 5 documentos de estratégia (publicados como artifac
 ### Roadmap por categoria (ganchos pro nicho)
 
 **1. Ganchos interativos (lead magnets — ferramentas):**
-- [ ] **Auditoria de Presença Digital** (gancho nº1 — modelo HubSpot Website Grader). ATENÇÃO técnica: auditoria automática real (inserir URL → crawl) precisa de backend, que a Hostinger estática não tem. Alternativa viável 100% client-side: **diagnóstico guiado por perguntas** (quiz pontuado → relatório personalizado → gate WhatsApp). Decidir abordagem antes de construir.
+- [x] **Diagnóstico de Crescimento** (`/diagnostico`, island `GrowthDiagnosis.tsx`) — quiz guiado 6 perguntas → nota 0-100 + nível + maior gargalo + recomendação → WhatsApp com resultado embutido. Feito 2026-07-22 (commit d9ef669). Foi a alternativa client-side à "auditoria por URL" (que precisaria de backend, inviável na Hostinger estática).
 - [ ] Calculadora "Custo da Agenda Vazia" (quantifica em R$ o que o negócio premium deixa de faturar sem máquina de aquisição)
 - [ ] Simulador "Quantos clientes meu investimento traz"
 - [ ] Quiz de Maturidade de Crescimento
