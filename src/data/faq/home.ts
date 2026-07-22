@@ -2,28 +2,28 @@ import type { FaqItem } from "../schema";
 
 export const homeFaq: FaqItem[] = [
   {
-    question: "Qual é o investimento mínimo em tráfego pago?",
+    question: "Vocês trabalham com negócios do meu segmento?",
     answer:
-      "O investimento mínimo varia conforme o pacote escolhido. Começamos a partir de R$ 1.200/mês com o pacote Fórmula Aceleração, que inclui gestão profissional de tráfego pago em Google Ads ou Meta Ads para empresas em todo o Brasil.",
+      "Somos especializados em negócios de alto padrão que vivem de reputação e precisam de fluxo constante de clientes: clínicas premium, imobiliárias e incorporadoras, hotelaria, serviços de urgência e de alto valor local, entre outros. Se o seu negócio já tem nome e quer crescer com previsibilidade, provavelmente é pra você.",
   },
   {
-    question: "Como funciona a gestão de tráfego pago da Fórmula Mídia?",
+    question: "A partir de quanto vocês trabalham?",
     answer:
-      "Nosso processo de gestão de tráfego pago inclui: análise de mercado, estruturação de campanhas, otimização semanal, relatórios mensais e suporte estratégico contínuo. Utilizamos Google Ads e Meta Ads para gerar clientes qualificados.",
+      "Trabalhamos com negócios prontos para investir a partir de R$ 1.800/mês em crescimento. O valor exato vai na proposta, dimensionado ao seu momento e objetivo — não vendemos pacote de prateleira. Começamos com um diagnóstico para desenhar o plano certo antes de falar em número.",
   },
   {
-    question: "Vocês trabalham com Google Ads e Meta Ads em todo o Brasil?",
+    question: "O que é o método de growth de vocês?",
     answer:
-      "Sim, somos especialistas em ambas as plataformas. Desenvolvemos estratégias integradas de Google Ads e Meta Ads para maximizar o alcance e gerar mais clientes em qualquer região do Brasil.",
+      "É a integração de tráfego pago, CRM e dados sob um único método, com um gestor de crescimento dedicado ao seu negócio. Tráfego traz, CRM converte, dados otimizam — em vez de contratar cada perna separada, você tem o funil inteiro trabalhando junto, com clareza de ponta a ponta.",
   },
   {
-    question: "Qual é a diferença entre os pacotes de tráfego pago?",
+    question: "Vocês atendem só a minha cidade ou todo o Brasil?",
     answer:
-      "Fórmula Aceleração (R$ 1.200) inclui gestão básica. Fórmula Conversão (R$ 2.200) adiciona CRM com WhatsApp. Fórmula Domínio (R$ 3.500) inclui planejamento estratégico, landing pages e gestão criativa profissional.",
+      "Atendemos negócios em todo o Brasil, 100% remoto — do local ao nacional. Grandes em capacidade, próximos no atendimento: cada cliente tem um time e um gestor de crescimento dedicados, acompanhando os números de perto.",
   },
   {
-    question: "Posso ver resultados em quanto tempo com gestão de tráfego pago?",
+    question: "Em quanto tempo vejo resultado?",
     answer:
-      "Resultados iniciais aparecem em 2-4 semanas. Otimizações significativas ocorrem em 2-3 meses. Crescimento exponencial é alcançado em 6-12 meses de gestão contínua de tráfego pago.",
+      "Os primeiros resultados costumam aparecer em 2 a 4 semanas. Otimizações relevantes acontecem entre o 2º e o 3º mês, e o crescimento consistente se constrói ao longo de 6 a 12 meses de trabalho contínuo — growth é método aplicado com constância, não milagre pontual.",
   },
 ];

@@ -81,7 +81,6 @@ const results = [
 const pricingTiers = [
   {
     name: "Fórmula Aceleração",
-    price: "1.200",
     desc: "Gestão profissional de tráfego pago com estrutura completa de geração de leads",
     feats: ["Gestão profissional de tráfego", "Google Ads ou Meta Ads", "Estruturação de campanhas", "Otimização semanal", "Estratégia de geração de leads", "Relatório mensal", "Dashboard exclusivo Fórmula Mídia", "Suporte estratégico"],
     note: "Gestão até R$5.000 de investimento em mídia. Acima disso, aplicar acréscimo de 5%.",
@@ -89,7 +88,6 @@ const pricingTiers = [
   },
   {
     name: "Fórmula Conversão",
-    price: "2.200",
     desc: "Tudo do pacote anterior + CRM integrado para aumentar conversão e evitar perda de leads",
     feats: ["Tudo do Fórmula Aceleração", "CRM integrado ao WhatsApp", "Automação de atendimento", "Organização de leads", "Pipeline de vendas", "Funil de negociação", "Tracking completo do lead até a venda"],
     note: "Objetivo: aumentar a conversão e evitar perda de leads.",
@@ -97,7 +95,6 @@ const pricingTiers = [
   },
   {
     name: "Fórmula Domínio",
-    price: "3.500",
     desc: "Solução completa com planejamento estratégico, funil de vendas e gestão criativa profissional",
     feats: ["Tudo do Fórmula Conversão", "Planejamento estratégico", "Estrutura de funil de vendas", "Criação de landing pages", "Campanhas de escala", "Otimização avançada de anúncios", "Gestão completa de criativos (cards, vídeos, fotos)", "Gestão criativa pela Essenzia"],
     note: "Solução completa para empresas que desejam dominar seu mercado.",
@@ -413,17 +410,9 @@ const comparisonRows = [
       <div class="mt-12 grid items-stretch gap-5 md:grid-cols-3">
         {pricingTiers.map((tier) => (
           <div class={`flex flex-col rounded-card border p-8 ${tier.featured ? "border-red/40 bg-gradient-to-b from-red/7 to-glass" : "border-border bg-glass"}`} data-in>
-            {tier.featured && <span class="mb-4 self-start rounded-full bg-red px-3 py-1.5 font-heading text-[11px] font-bold tracking-wide text-white">Mais Popular</span>}
+            {tier.featured && <span class="mb-4 self-start rounded-full bg-red px-3 py-1.5 font-heading text-[11px] font-bold tracking-wide text-white">Mais Escolhido</span>}
             <h3 class="font-heading text-xl font-bold">{tier.name}</h3>
-            <div class="mt-3 mb-1 flex items-baseline gap-1.5">
-              <span class="font-heading text-[13px] text-dim">a partir de</span>
-            </div>
-            <div class="mb-4 flex items-baseline gap-1.5">
-              <span class="font-heading text-[15px] text-mid">R$</span>
-              <span class="font-heading text-[34px] font-bold tracking-tight">{tier.price}</span>
-              <span class="text-sm text-dim">/mês</span>
-            </div>
-            <p class="mb-5.5 text-sm leading-relaxed text-mid">{tier.desc}</p>
+            <p class="mb-5.5 mt-3 text-sm leading-relaxed text-mid">{tier.desc}</p>
             <ul class="mb-6 flex flex-1 flex-col gap-2.5">
               {tier.feats.map((f) => (
                 <li class="flex gap-2.5 text-[13.5px] leading-snug"><span class="shrink-0 font-bold text-red-hi">✓</span>{f}</li>
@@ -431,14 +420,14 @@ const comparisonRows = [
             </ul>
             <p class="mb-5 text-xs italic leading-relaxed text-dim">Nota: {tier.note}</p>
             <a
-              href={waLink(`Quero o pacote ${tier.name}`)}
+              href={waLink(`Olá, quero um diagnóstico de crescimento — nível ${tier.name}`)}
               target="_blank"
               rel="noopener"
               class={`flex items-center justify-center gap-2 rounded-full px-4.5 py-3.5 font-heading text-sm font-semibold no-underline transition-colors ${
                 tier.featured ? "bg-red text-white" : "border border-border-hi bg-glass-hi hover:border-red hover:bg-red"
               }`}
             >
-              Quero este pacote
+              Solicitar diagnóstico
             </a>
           </div>
         ))}

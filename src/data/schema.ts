@@ -44,7 +44,7 @@ export function organizationSchema() {
       bestRating: "5",
       worstRating: "1",
     },
-    priceRange: "R$ 1.200 - R$ 3.500",
+    priceRange: "$$$",
   };
 }
 
