@@ -4,6 +4,7 @@ import PageHero from "../../components/sections/PageHero.astro";
 import SectionHeading from "../../components/sections/SectionHeading.astro";
 import FaqAccordion from "../../components/ui/FaqAccordion.astro";
 import FinalCta from "../../components/sections/FinalCta.astro";
+import ToolBanner from "../../components/sections/ToolBanner.astro";
 import Breadcrumbs from "../../components/ui/Breadcrumbs.astro";
 import { waLink, faqPageSchema, breadcrumbSchema } from "../../data/schema";
 import { servicosFaq } from "../../data/faq/servicos";
@@ -32,11 +33,13 @@ const cards = [
 >
   <Breadcrumbs items={breadcrumbItems} />
   <PageHero
-    badge="Nossos Serviços"
-    title="Nossos Serviços de"
-    highlight="Tráfego Pago"
-    sub="Soluções completas de gestão de tráfego pago. Desde Google Ads até consultoria estratégica, temos o serviço certo para escalar seu negócio em qualquer lugar do Brasil."
+    badge="Tráfego Pago — a força que traz"
+    title="Tráfego pago é a força que"
+    highlight="traz o cliente até você."
+    sub="É a primeira peça do Motor de Crescimento: Google Ads e Meta Ads levam a pessoa certa ao seu negócio, no momento certo. Sozinho traz o lead; integrado ao CRM e aos dados, vira crescimento previsível."
     primaryHref={waLink(ctaMessage)}
+    ghostHref="/growth"
+    ghostLabel="Ver o Motor de Crescimento"
   />
 
   <section class="px-6 py-22">
@@ -101,6 +104,14 @@ const cards = [
       </div>
     </div>
   </section>
+
+  <ToolBanner
+    eyebrow="Faz parte de algo maior"
+    title="Tráfego é uma peça. O crescimento é o motor inteiro."
+    desc="Tráfego traz, CRM converte, dados otimizam. Veja como as peças trabalham juntas no Motor de Crescimento."
+    href="/growth"
+    ctaLabel="Ver o Motor de Crescimento →"
+  />
 
   <section class="bg-bg-2 px-6 py-22">
     <div class="mx-auto max-w-[1080px]">
