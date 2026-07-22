@@ -2,7 +2,6 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageHero from "../components/sections/PageHero.astro";
 import SectionHeading from "../components/sections/SectionHeading.astro";
-import DiffGrid from "../components/sections/DiffGrid.astro";
 import ToolBanner from "../components/sections/ToolBanner.astro";
 import OfferGrid from "../components/sections/OfferGrid.astro";
 import FaqAccordion from "../components/ui/FaqAccordion.astro";
@@ -17,28 +16,69 @@ const breadcrumbItems = [
 ];
 const schema = [faqPageSchema(growthFaq), breadcrumbSchema(breadcrumbItems)];
 
+const diagMsg = "Olá, quero um diagnóstico de crescimento para o meu negócio";
+
+// The gap — SPIN, reframed for established premium businesses
 const spin = [
-  { l: "Situação", t: "Você já investe em marketing digital", d: "Talvez tráfego pago, talvez SEO, talvez automação de atendimento, mas cada canal reporta números diferentes, em lugares diferentes." },
-  { l: "Problema", t: "Ninguém enxerga o funil inteiro", d: "Sem uma visão unificada, fica impossível saber ONDE exatamente os leads estão se perdendo: no anúncio, na landing page, no atendimento ou no fechamento." },
-  { l: "Implicação", t: "Cada vazamento é dinheiro jogado fora", d: "Um gargalo não identificado continua consumindo orçamento de mídia mês após mês, sem que ninguém perceba até o resultado não vir." },
-  { l: "Necessidade", t: "Alguém precisa olhar o funil inteiro, todos os dias", d: "Um gestor de growth dedicado, com visão de ponta a ponta, tomando decisões com dado, não com achismo." },
+  { l: "Situação", t: "Seu negócio já tem nome", d: "Reputação construída, clientes fiéis, indicação constante. Você já é referência no que faz." },
+  { l: "Problema", t: "Mas o crescimento depende do acaso", d: "Quando a indicação esfria, não há uma máquina previsível para trazer o próximo cliente. O mês bom e o mês fraco não estão sob seu controle." },
+  { l: "Implicação", t: "Você atende menos do que poderia", d: "Capacidade ociosa enquanto concorrentes com menos reputação crescem mais rápido — só porque têm um motor de aquisição e você não." },
+  { l: "Necessidade", t: "Falta um motor de aquisição próprio", d: "Previsível, medido e seu. Que transforma a reputação que você já tem em fluxo constante de novos clientes, todos os meses." },
 ];
+
+// The 3 forces of the engine
+const pillars = [
+  { n: "01", icon: "🎯", title: "Tráfego traz", d: "Google Ads e Meta Ads levam a pessoa certa até você, no momento certo — capturando quem já procura e gerando desejo em quem ainda não conhece." },
+  { n: "02", icon: "🔄", title: "CRM converte", d: "Cada contato é organizado, respondido rápido e acompanhado até a venda. Nenhum lead se perde entre o clique e o fechamento no WhatsApp." },
+  { n: "03", icon: "📈", title: "Dados otimizam", d: "Tudo é medido, do primeiro clique ao cliente fechado. Os números dizem onde investir mais, onde cortar e onde está o próximo ganho." },
+];
+
+// Illustrative dashboard metrics (exemplo do painel — não são números de cliente)
+const dashboard = [
+  { icon: "💰", label: "Investimento em mídia", v: "R$ 12.400" },
+  { icon: "🧲", label: "Leads gerados", v: "184" },
+  { icon: "🎯", label: "Custo por lead", v: "R$ 67" },
+  { icon: "✅", label: "Taxa de conversão", v: "23%" },
+  { icon: "🤝", label: "Vendas fechadas", v: "42" },
+  { icon: "📊", label: "Retorno sobre investimento", v: "5,8x" },
+];
+
+// Common agency vs. growth engine
+const contrast = [
+  { feat: "Escopo", comum: "Só sobe anúncio", fm: "Funil inteiro: tráfego + CRM + dados" },
+  { feat: "Acompanhamento", comum: "Relatório no fim do mês", fm: "Gestor dedicado, olhando os números toda semana" },
+  { feat: "Decisão", comum: "Por achismo / \"impulsionar\"", fm: "Por dado real do seu funil" },
+  { feat: "Visão", comum: "Métricas soltas em 5 lugares", fm: "Um painel único, do clique à venda" },
+  { feat: "Quando o lead some", comum: "Ninguém percebe", fm: "O vazamento é identificado e corrigido" },
+  { feat: "Relação", comum: "Fornecedor de anúncio", fm: "Parceiro de crescimento do negócio" },
+];
+
+const method = [
+  { n: "1", t: "Diagnóstico de Funil", d: "Mapeamento completo de cada etapa, do primeiro clique ao fechamento — onde entra, onde converte e onde vaza." },
+  { n: "2", t: "Unificação de Dados", d: "Conectamos tráfego pago, site, CRM e atendimento em um painel único, sua fonte de verdade." },
+  { n: "3", t: "Priorização de Vazamentos", d: "Identificamos onde o funil perde mais oportunidades — e atacamos primeiro o que dá mais retorno." },
+  { n: "4", t: "Otimização Contínua", d: "Ajustes constantes guiados por dado, com um gestor de crescimento acompanhando de perto." },
+  { n: "5", t: "Leitura Estratégica Recorrente", d: "Você sempre sabe exatamente onde está o crescimento do negócio — sem relatório confuso, com direção clara." },
+];
+
+const segments = ["Clínicas premium", "Imobiliário & incorporação", "Hotelaria premium", "Serviços de urgência", "Alto valor local"];
 ---
 
 <BaseLayout
-  title="Gestão de Growth & Performance | Fórmula Mídia"
-  description="Um gestor de crescimento dedicado, acompanhando todos os números do seu funil, de ponta a ponta, todos os dias."
+  title="Growth & Performance | O Motor de Crescimento da Fórmula Mídia"
+  description="O motor que integra tráfego, CRM e dados sob um único método, com um gestor de crescimento dedicado. Transforma a reputação do seu negócio em fluxo constante de clientes."
   path="/growth"
   schema={schema}
 >
   <Breadcrumbs items={breadcrumbItems} />
   <PageHero
-    badge="Gestão de Growth & Performance"
-    title="Você sabe exatamente onde"
-    highlight="seu funil está vazando?"
-    sub="Growth & Performance é a camada que integra tráfego pago, SEO/GEO e conversão sob um único painel de métricas, com um gestor de crescimento dedicado ao seu funil."
-    primaryHref={waLink("Olá, quero saber mais sobre Growth & Performance")}
-    ghostHref="#oferta"
+    badge="O Motor de Crescimento"
+    title="Sua reputação já abre portas."
+    highlight="Nós a transformamos em agenda cheia."
+    sub="Growth &amp; Performance é o motor que integra tráfego, CRM e dados sob um único método — com um gestor de crescimento dedicado. Tráfego traz, CRM converte, dados otimizam. Você para de adivinhar e passa a crescer com previsibilidade."
+    primaryHref={waLink(diagMsg)}
+    primaryLabel="Quero um diagnóstico →"
+    ghostHref="#como-funciona"
     ghostLabel="Ver como funciona"
     stats={[
       { n: "100+", l: "Clientes atendidos" },
@@ -47,10 +87,14 @@ const spin = [
     ]}
   />
 
-  <!-- SPIN -->
+  <!-- THE GAP -->
   <section class="px-6 py-22">
     <div class="mx-auto max-w-[1080px]">
-      <SectionHeading eyebrow="Por que isso importa" title="4 perguntas que toda empresa que investe em marketing deveria se fazer" />
+      <SectionHeading
+        eyebrow="O ponto cego dos bons negócios"
+        title="Reputação não vira agenda cheia sozinha."
+        lead="Os melhores negócios da cidade têm um ativo raro: reputação. Mas reputação sem um motor de aquisição é crescimento na sorte — e a sorte não escala."
+      />
       <div class="mt-11 flex flex-col">
         {spin.map((s, i, arr) => (
           <div class={`grid grid-cols-[52px_1fr] gap-5 border-t border-border py-6 ${i === arr.length - 1 ? "border-b" : ""}`} data-in>
@@ -66,17 +110,85 @@ const spin = [
     </div>
   </section>
 
-  <!-- DIFERENCIAL -->
-  <section class="bg-bg-2 px-6 py-22">
+  <!-- THE ENGINE: 3 FORCES -->
+  <section id="como-funciona" class="bg-bg-2 px-6 py-22">
     <div class="mx-auto max-w-[1080px]">
-      <SectionHeading eyebrow="Nosso diferencial" title="Growth de verdade é acompanhamento, não relatório mensal" />
-      <DiffGrid
-        items={[
-          { icon: "📊", title: "Painel único de funil", desc: "Todos os números (tráfego, conversão, CAC, LTV) em um só lugar, sem depender de 5 ferramentas diferentes." },
-          { icon: "🧭", title: "Gestor de crescimento dedicado", desc: "Uma pessoa acompanhando seu funil todos os dias, não um relatório mensal genérico." },
-          { icon: "🎯", title: "Decisão por dado, não por achismo", desc: "Cada ajuste de campanha, página ou processo comercial é baseado em números reais do seu funil." },
-        ]}
+      <SectionHeading
+        eyebrow="Como funciona"
+        title="Um motor. Três forças trabalhando juntas."
+        lead="A maioria das agências entrega uma perna só — e você fica com três fornecedores que não conversam entre si. O growth é as três sob um cérebro único."
       />
+      <div class="mt-12 grid gap-5 md:grid-cols-3">
+        {pillars.map((p) => (
+          <div class="flex flex-col rounded-card border border-border bg-glass p-8" data-in>
+            <div class="mb-5 flex items-center justify-between">
+              <div class="flex h-12 w-12 items-center justify-center rounded-[13px] bg-red/8 text-[22px]">{p.icon}</div>
+              <span class="font-heading text-[13px] font-bold text-dim">{p.n}</span>
+            </div>
+            <h3 class="mb-2.5 font-heading text-[19px] font-semibold">{p.title}</h3>
+            <p class="text-sm leading-[1.7] text-mid">{p.d}</p>
+          </div>
+        ))}
+      </div>
+      <div class="mt-6 flex items-start gap-3 rounded-card border border-red/25 bg-red/6 px-6 py-5" data-in>
+        <span class="mt-0.5 shrink-0 font-bold text-red-hi">→</span>
+        <p class="text-[15px] leading-relaxed text-ink">
+          <strong class="font-semibold">É a integração que faz a diferença.</strong> Tráfego sem CRM vira lead perdido. CRM sem dados vira achismo. As três juntas, sob um método, viram crescimento previsível.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DASHBOARD -->
+  <section class="section-light px-6 py-22">
+    <div class="mx-auto max-w-[1080px]">
+      <SectionHeading
+        eyebrow="Clareza total"
+        title="Você sempre sabe exatamente onde está o seu crescimento."
+        lead="Do primeiro clique ao cliente fechando — o caminho inteiro em um painel só. Sem planilha solta, sem relatório confuso, sem depender da nossa palavra."
+      />
+      <div class="mt-11 rounded-card border border-border bg-glass p-6 sm:p-9" data-in>
+        <div class="mb-6 flex items-center justify-between">
+          <span class="font-heading text-sm font-semibold">Painel de Crescimento</span>
+          <span class="rounded-full bg-glass-hi px-3 py-1 font-heading text-[10.5px] font-semibold uppercase tracking-wide text-dim">Exemplo ilustrativo</span>
+        </div>
+        <div class="grid grid-cols-2 gap-4 sm:grid-cols-3">
+          {dashboard.map((m) => (
+            <div class="rounded-xl border border-border bg-bg-2 p-5">
+              <div class="mb-3 text-2xl">{m.icon}</div>
+              <div class="font-heading text-[22px] font-bold tracking-tight">{m.v}</div>
+              <div class="mt-1 text-[11.5px] leading-tight text-dim">{m.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTRAST -->
+  <section class="px-6 py-22">
+    <div class="mx-auto max-w-[1080px]">
+      <SectionHeading eyebrow="A diferença" title="Agência comum × Motor de Crescimento" />
+      <div class="mt-10 overflow-x-auto">
+        <table class="w-full min-w-[560px] border-collapse text-sm">
+          <thead>
+            <tr class="border-b border-border-hi text-left">
+              <th class="py-3.5 pr-4 font-heading font-semibold text-mid"></th>
+              <th class="px-4 py-3.5 font-heading font-semibold text-dim">Agência comum</th>
+              <th class="px-4 py-3.5 font-heading font-semibold text-red-hi">Fórmula Mídia</th>
+            </tr>
+          </thead>
+          <tbody>
+            {contrast.map((row) => (
+              <tr class="border-b border-border">
+                <td class="py-3.5 pr-4 font-heading text-[13px] font-semibold text-mid">{row.feat}</td>
+                <td class="px-4 py-3.5 text-[13.5px] text-dim">{row.comum}</td>
+                <td class="px-4 py-3.5 text-[13.5px] text-ink">{row.fm}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   </section>
 
@@ -88,18 +200,12 @@ const spin = [
     ctaLabel="Simular meu funil →"
   />
 
-  <!-- METODOLOGIA -->
+  <!-- METHOD -->
   <section class="px-6 py-22">
     <div class="mx-auto max-w-[1080px]">
       <SectionHeading eyebrow="Como trabalhamos" title="Do diagnóstico à otimização contínua" />
       <div class="mt-11 flex flex-col">
-        {[
-          { n: "1", t: "Diagnóstico de Funil", d: "Mapeamento completo de todas as etapas, do primeiro clique ao fechamento." },
-          { n: "2", t: "Unificação de Dados", d: "Conectamos tráfego pago, site, CRM e atendimento em um painel único." },
-          { n: "3", t: "Priorização de Vazamentos", d: "Identificamos onde o funil perde mais oportunidades, e por quê." },
-          { n: "4", t: "Testes e Otimização Contínua", d: "Ajustes constantes guiados por dado, com acompanhamento de um gestor dedicado." },
-          { n: "5", t: "Relatório Estratégico Recorrente", d: "Você sempre sabe exatamente onde está seu negócio, sem depender de relatórios confusos." },
-        ].map((s, i, arr) => (
+        {method.map((s, i, arr) => (
           <div class={`grid grid-cols-[52px_1fr] gap-5 border-t border-border py-6 ${i === arr.length - 1 ? "border-b" : ""}`} data-in>
             <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-red to-red-lo font-heading text-base font-bold text-white">{s.n}</div>
             <div>
@@ -112,38 +218,61 @@ const spin = [
     </div>
   </section>
 
-  <!-- OFERTA -->
-  <section id="oferta" class="bg-bg-2 px-6 py-22">
+  <!-- WHO IT'S FOR -->
+  <section class="bg-bg-2 px-6 py-20">
+    <div class="mx-auto max-w-[1080px] text-center">
+      <SectionHeading eyebrow="Para quem é" title="Feito para negócios de alto padrão que vivem de agenda cheia" />
+      <div class="mt-9 flex flex-wrap items-center justify-center gap-3">
+        {segments.map((seg) => (
+          <span class="rounded-full border border-border bg-glass px-4 py-2 font-heading text-[13px] font-semibold text-mid">{seg}</span>
+        ))}
+      </div>
+      <p class="mx-auto mt-8 max-w-[600px] text-[15px] leading-relaxed text-mid" data-in>
+        Se o seu negócio já tem reputação e quer transformá-la em crescimento previsível — com método, dados e um time dedicado — o Motor de Crescimento foi feito para você.
+      </p>
+    </div>
+  </section>
+
+  <!-- OFFER -->
+  <section id="oferta" class="px-6 py-22">
     <div class="mx-auto max-w-[1080px]">
-      <SectionHeading eyebrow="O que entregamos" title="Pacotes de Growth & Performance" lead="Cada projeto é dimensionado para o seu momento. Fale com a gente para desenhar o plano certo." />
+      <SectionHeading
+        eyebrow="Como começar"
+        title="Três formas de ligar o motor"
+        lead="Cada projeto é dimensionado para o seu momento — começamos com um diagnóstico para desenhar o plano certo antes de falar em número."
+      />
       <OfferGrid
         items={[
           {
             title: "Growth Essencial",
-            desc: "Painel unificado e leitura estratégica do seu funil.",
-            feats: ["Painel de funil unificado", "Relatório estratégico mensal", "Diagnóstico inicial completo"],
-            ctaMessage: "Olá, quero saber mais sobre o Growth Essencial",
+            desc: "Painel unificado e leitura estratégica do seu funil — clareza antes de escalar.",
+            feats: ["Painel de funil unificado", "Diagnóstico inicial completo", "Leitura estratégica mensal"],
+            ctaMessage: "Olá, quero um diagnóstico — nível Growth Essencial",
+            ctaLabel: "Solicitar diagnóstico",
           },
           {
             title: "Growth Gestão Contínua",
-            desc: "Tudo do Essencial, com um gestor de growth acompanhando seu funil semanalmente.",
-            feats: ["Tudo do Growth Essencial", "Gestor de growth dedicado", "Acompanhamento semanal", "Testes contínuos de otimização"],
-            ribbon: "Mais Popular",
+            desc: "Tudo do Essencial, com um gestor de crescimento acompanhando o seu funil de perto.",
+            feats: ["Tudo do Growth Essencial", "Gestor de crescimento dedicado", "Acompanhamento semanal", "Testes contínuos de otimização"],
+            ribbon: "Mais Escolhido",
             featured: true,
-            ctaMessage: "Olá, quero saber mais sobre o Growth Gestão Contínua",
+            ctaMessage: "Olá, quero um diagnóstico — nível Growth Gestão Contínua",
+            ctaLabel: "Solicitar diagnóstico",
           },
           {
             title: "Growth Full Stack",
-            desc: "Integração completa: tráfego pago, SEO/GEO, site e automação sob uma única estratégia.",
+            desc: "O motor completo: tráfego, SEO/GEO, site e automação sob uma única estratégia.",
             feats: ["Tudo do Growth Gestão Contínua", "Tráfego pago integrado", "SEO & GEO integrado", "Automação de atendimento integrada"],
-            ctaMessage: "Olá, quero saber mais sobre o Growth Full Stack",
+            ctaMessage: "Olá, quero um diagnóstico — nível Growth Full Stack",
+            ctaLabel: "Solicitar diagnóstico",
           },
         ]}
       />
     </div>
   </section>
 
-  <section class="px-6 py-22">
+  <!-- FAQ -->
+  <section class="bg-bg-2 px-6 py-22">
     <div class="mx-auto max-w-[1080px]">
       <SectionHeading eyebrow="Dúvidas comuns" title="Perguntas frequentes" />
       <FaqAccordion items={growthFaq} />
@@ -151,8 +280,9 @@ const spin = [
   </section>
 
   <FinalCta
-    title="Pronto para parar de adivinhar onde seu funil vaza?"
-    desc="Fale com a gente e vamos mapear seu funil de crescimento."
-    message="Olá, quero saber mais sobre Growth & Performance"
+    title="Pronto para transformar reputação em crescimento?"
+    desc="Comece com um diagnóstico. Vamos mapear o seu funil e mostrar onde está o próximo cliente."
+    message={diagMsg}
+    ctaLabel="Quero um diagnóstico →"
   />
 </BaseLayout>
