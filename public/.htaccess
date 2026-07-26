@@ -14,6 +14,16 @@
   RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
   # ============================================================
+  # 1b. FERRAMENTAS MOVIDAS PARA /ferramentas/ (301 real, 2026-07-26)
+  # calculadora, simulador-de-funil, simulador-de-site e diagnostico
+  # viviam na raiz; consolidadas em /ferramentas/ por consistência (C2).
+  # ============================================================
+  RewriteRule ^calculadora/?$ /ferramentas/calculadora [R=301,L]
+  RewriteRule ^simulador-de-funil/?$ /ferramentas/simulador-de-funil [R=301,L]
+  RewriteRule ^simulador-de-site/?$ /ferramentas/simulador-de-site [R=301,L]
+  RewriteRule ^diagnostico/?$ /ferramentas/diagnostico [R=301,L]
+
+  # ============================================================
   # 2. BLOQUEAR ACESSO A ARQUIVOS SENSÍVEIS
   # ============================================================
   RewriteRule ^\.(env|git|htaccess|htpasswd)$ - [F]
