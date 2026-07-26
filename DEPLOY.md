@@ -10,7 +10,8 @@ Por isso o passo 1 (backup) não é opcional.
 
 ## Antes de começar
 
-- Pacote pronto: `Downloads/formula-midia-astro-deploy.zip` (~1.99MB, 141 arquivos).
+- Pacote pronto: `Downloads/formula-midia-astro-deploy.zip` (regenerado em 26/07, ~2.72MB, 160
+  arquivos — inclui as 4 ferramentas movidas pra `/ferramentas/` + as 3 novas que já estavam prontas).
 - Ele já contém tudo: HTML de todas as páginas, `/links`, `.htaccess`,
   `robots.txt`, `sitemap-index.xml`, `manifest.webmanifest`, favicon, imagens,
   CSS/JS.
@@ -49,10 +50,13 @@ dá pra restaurar o site antigo em minutos.
 3. Apagar o arquivo `.zip` depois de extrair (não precisa ficar publicado).
 4. Conferir que `public_html` agora tem, na raiz: `index.html`, `.htaccess`,
    `manifest.webmanifest`, `robots.txt`, `sitemap-index.xml`, `favicon.ico`,
-   `_astro/`, `assets/`, `links/`, `seo/`, `calculadora/`, `manifesto/`,
-   `servicos/`, `growth/`, `criacao-de-sites/`, `mentoria/`,
-   `simulador-de-site/`, `simulador-de-funil/`, `privacidade/`, `termos/`,
-   `404.html`, `scripts/`.
+   `_astro/`, `assets/`, `links/`, `seo/`, `manifesto/`,
+   `servicos/`, `segmentos/`, `growth/`, `criacao-de-sites/`, `mentoria/`,
+   `privacidade/`, `termos/`, `404.html`, `scripts/`, e a pasta `ferramentas/`
+   (contendo `calculadora/`, `diagnostico/`, `simulador-de-site/`,
+   `simulador-de-funil/`, `custo-real-da-midia/`, `auditor-de-perfil/`,
+   `medir-trafego-de-ia/` — **26/07: as 4 primeiras foram movidas da raiz pra
+   cá, com 301 real no `.htaccess`; não devem mais existir soltas na raiz**).
 
    Se o Gerenciador de Arquivos não mostrar arquivos começando com `.`
    (como `.htaccess`) por padrão, ativar "Mostrar arquivos ocultos" nas
@@ -66,8 +70,11 @@ Depois do upload, testar (idealmente em uma aba anônima, pra evitar cache):
 1. `https://formulamidia.com.br/` — carrega a Home, sem erros visuais.
 2. `https://formulamidia.com.br/links/` — abre a página de links (nota a
    barra `/` no final).
-3. `https://formulamidia.com.br/calculadora/` — a calculadora abre e calcula
-   (é a única página com JavaScript de verdade).
+3. `https://formulamidia.com.br/ferramentas/calculadora/` — a calculadora abre e calcula
+   (uma das páginas com JavaScript real: `/ferramentas/diagnostico`, `/ferramentas/simulador-de-site`
+   e `/ferramentas/simulador-de-funil` também são islands React). Testar também que as URLs antigas
+   (`/calculadora`, `/diagnostico`, `/simulador-de-site`, `/simulador-de-funil`, sem `/ferramentas/`)
+   redirecionam com **301** para a nova URL — não devem dar 404 nem 200 direto.
 4. Testar 2-3 links de WhatsApp — devem abrir com o número certo
    (5548991826577) e mensagem pré-preenchida.
 5. `https://formulamidia.com.br/sitemap-index.xml` — deve abrir um XML válido.
