@@ -76,10 +76,14 @@ dá pra restaurar o site antigo em minutos.
    `simulador-de-funil/`, `custo-real-da-midia/`, `auditor-de-perfil/`,
    `medir-trafego-de-ia/`, `velocidade-usuario-real/`, `analise-de-log/`,
    `comparador-historico/`, `friccao-do-formulario/`, `sinais-de-confianca/`,
-   **`verificador-acesso-ia/`** — **26/07: as 4 primeiras foram movidas da raiz
-   pra cá, com 301 real no `.htaccess`; não devem mais existir soltas na raiz.
-   `verificador-acesso-ia` é a mais nova (27/07), depende do Worker do RUN-001
-   — ver aviso acima.**).
+   `verificador-acesso-ia/`, `custo-do-lead-perdido/`, `cac-ltv-payback/`,
+   `meta-reversa/`, `mer-vs-roas/`, `capacidade-comercial/`,
+   `valor-do-ganho-de-conversao/`, **`gerador-politica-privacidade-lgpd/`** —
+   **26/07: as 4 primeiras foram movidas da raiz pra cá, com 301 real no
+   `.htaccess`; não devem mais existir soltas na raiz. `verificador-acesso-ia`
+   depende do Worker do RUN-001 — ver aviso acima. As 7 calculadoras
+   financeiras/jurídica (27/07, cluster Financeiro + Jurídico da Onda 1) são
+   100% client-side, sem dependência nenhuma.**).
 
    Se o Gerenciador de Arquivos não mostrar arquivos começando com `.`
    (como `.htaccess`) por padrão, ativar "Mostrar arquivos ocultos" nas

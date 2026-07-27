@@ -1,0 +1,90 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Badge from "../../components/ui/Badge.astro";
+import Breadcrumbs from "../../components/ui/Breadcrumbs.astro";
+import CustoLeadPerdido from "../../components/islands/CustoLeadPerdido.tsx";
+import { breadcrumbSchema, faqPageSchema, SITE_URL, BRAND_NAME, type FaqItem } from "../../data/schema";
+
+const breadcrumbItems = [
+  { name: "Home", path: "/" },
+  { name: "Ferramentas", path: "/ferramentas" },
+  { name: "Custo do Lead Perdido", path: "/ferramentas/custo-do-lead-perdido" },
+];
+
+const faq: FaqItem[] = [
+  { question: "De onde vêm os multiplicadores usados no cálculo?", answer: "De um estudo americano (Oldroyd, McElheran & Elkington, Harvard Business Review/MIT, 2011, com dados replicados por InsideSales.com/Velocify) sobre a chance de qualificar um lead conforme o tempo de resposta. Não é validado especificamente para o mercado brasileiro nem para o seu nicho — é uma hipótese com fonte, não um fato do seu negócio." },
+  { question: "Por que a ferramenta pede a taxa de conversão, se já pede o tempo de resposta?", answer: "A taxa que você informa (ou o benchmark de 3%) representa o que seria alcançável respondendo rápido. O tempo de resposta atual é o que reduz essa taxa — é a distância entre as duas que vira 'perda estimada'." },
+  { question: "Esse valor é garantido se eu responder mais rápido?", answer: "Não. É uma estimativa educativa para dimensionar o problema, não uma previsão do seu negócio específico — fatores como qualidade do lead, sazonalidade e capacidade do time comercial também importam." },
+  { question: "Isso substitui o Simulador de Funil?", answer: "Não — o Simulador de Funil olha o funil inteiro. Esta ferramenta isola só a variável 'tempo de resposta', que costuma ser a mais fácil de corrigir primeiro." },
+];
+
+const appSchema = {
+  "@context": "https://schema.org", "@type": "WebApplication",
+  name: "Calculadora de Custo do Lead Perdido",
+  applicationCategory: "BusinessApplication", operatingSystem: "Web",
+  url: `${SITE_URL}/ferramentas/custo-do-lead-perdido`,
+  offers: { "@type": "Offer", price: "0", priceCurrency: "BRL" },
+  provider: { "@type": "Organization", name: BRAND_NAME },
+};
+
+const schema = [breadcrumbSchema(breadcrumbItems), faqPageSchema(faq), appSchema];
+---
+
+<BaseLayout
+  title="Calculadora de Custo do Lead Perdido | Grátis | Fórmula Mídia"
+  description="Quanto você perde por mês demorando pra responder lead? Calcule com base em estudo real de tempo de resposta. Sem código, sem e-mail."
+  path="/ferramentas/custo-do-lead-perdido"
+  schema={schema}
+>
+  <Breadcrumbs items={breadcrumbItems} />
+  <header class="relative overflow-hidden px-6 pb-6 pt-16 text-center">
+    <div class="pointer-events-none absolute -left-24 -top-44 h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,rgba(228,41,41,.22),transparent_70%)] blur-[80px]"></div>
+    <div class="pointer-events-none absolute -right-28 -top-24 h-[380px] w-[380px] rounded-full bg-[radial-gradient(circle,rgba(180,20,20,.18),transparent_70%)] blur-[80px]"></div>
+    <div class="relative z-[2] mx-auto max-w-[700px]">
+      <a href="/ferramentas" class="mb-6 inline-flex items-center gap-1.5 font-heading text-[13px] font-semibold text-mid no-underline hover:text-ink">← Todas as ferramentas</a>
+      <div class="mb-6"><Badge label="Financeiro · Velocidade de resposta" /></div>
+      <h1 class="font-heading text-[clamp(28px,4.4vw,44px)] font-bold leading-[1.12] tracking-tight">
+        Cada minuto de demora <span class="text-red-hi">custa venda.</span>
+      </h1>
+      <p class="mx-auto mt-4 max-w-[560px] text-base leading-relaxed text-mid">
+        Você paga pelo lead, mas demora pra responder — e boa parte dele esfria antes de virar
+        cliente. Calcule quanto isso custa por mês.
+      </p>
+    </div>
+  </header>
+
+  <div class="section-light px-6 pb-6 pt-8">
+    <div class="mx-auto max-w-[1140px]">
+      <CustoLeadPerdido client:load />
+      <p class="mx-auto mt-6 max-w-[680px] text-center text-[11.5px] leading-relaxed text-dim">
+        Resultados anônimos e agregados podem ser usados em pesquisas públicas sobre o mercado
+        brasileiro. Veja a <a href="/privacidade" class="underline underline-offset-2 hover:text-ink">política de privacidade</a>.
+      </p>
+    </div>
+  </div>
+
+  <section class="px-6 pb-24 pt-10">
+    <div class="mx-auto max-w-[720px]">
+      <h2 class="font-heading text-[clamp(22px,3.2vw,30px)] font-bold leading-tight tracking-tight">
+        A dor que não aparece em nenhum relatório
+      </h2>
+      <div class="mt-6 flex flex-col gap-5 text-[15.5px] leading-relaxed text-mid">
+        <p>
+          Ninguém vê "vendas que não aconteceram" numa planilha. Você sabe quanto gastou em mídia e
+          quantos leads chegaram — mas quanto desse lead virou venda perdida por demora de resposta
+          fica invisível, mês após mês.
+        </p>
+        <p>
+          Pesquisa de mercado mostra que a chance de qualificar um lead cai drasticamente com o
+          tempo: responder em até 5 minutos pode significar <strong class="text-ink">21 vezes mais
+          chance</strong> de qualificar do que esperar 30 minutos.
+        </p>
+        <p class="rounded-card border border-border bg-glass p-5 text-[14px] text-dim">
+          <strong class="text-ink">Ressalva.</strong> Isto é uma estimativa educativa baseada em
+          pesquisa de mercado internacional, não um diagnóstico do seu negócio. Última atualização
+          desta ferramenta: julho de 2026.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -15,6 +15,55 @@ export interface Ferramenta {
 
 export const FERRAMENTAS: Ferramenta[] = [
   {
+    slug: "gerador-politica-privacidade-lgpd",
+    nome: "Gerador de Política de Privacidade (LGPD)",
+    nomeCurto: "Gerador de Política de Privacidade",
+    desc: "Gere um modelo de política de privacidade alinhado à LGPD com o que o seu site realmente coleta — pronto pra revisar e publicar.",
+    tag: "Jurídico",
+  },
+  {
+    slug: "valor-do-ganho-de-conversao",
+    nome: "Valor do Ganho de Conversão",
+    nomeCurto: "Valor do Ganho de Conversão",
+    desc: "Melhorar a conversão do site vira um número abstrato — até você ver quanto meio ponto percentual vale em reais.",
+    tag: "Financeiro",
+  },
+  {
+    slug: "capacidade-comercial",
+    nome: "Capacidade Comercial",
+    nomeCurto: "Capacidade Comercial",
+    desc: "Seu time consegue atender os leads que já chegam? Calcule a capacidade real antes de escalar verba de tráfego.",
+    tag: "Financeiro",
+  },
+  {
+    slug: "mer-vs-roas",
+    nome: "MER × ROAS de plataforma",
+    nomeCurto: "MER × ROAS",
+    desc: "O Gerenciador mostra um ROAS bonito, mas o caixa mostra outra coisa? Compare com o MER e veja o gap de atribuição.",
+    tag: "Financeiro",
+  },
+  {
+    slug: "meta-reversa",
+    nome: "Meta Reversa",
+    nomeCurto: "Meta Reversa",
+    desc: "Diga quanto quer faturar e descubra quantos leads e quanta verba de mídia isso exige.",
+    tag: "Financeiro",
+  },
+  {
+    slug: "cac-ltv-payback",
+    nome: "CAC · LTV · Payback",
+    nomeCurto: "CAC · LTV · Payback",
+    desc: "O cliente que você conquista se paga? Calcule CAC, LTV e Payback e compare com o benchmark de mercado 3:1.",
+    tag: "Financeiro",
+  },
+  {
+    slug: "custo-do-lead-perdido",
+    nome: "Custo do Lead Perdido",
+    nomeCurto: "Custo do Lead Perdido",
+    desc: "Quanto você perde por mês demorando pra responder um lead, com base em estudo real de tempo de resposta.",
+    tag: "Financeiro",
+  },
+  {
     slug: "custo-real-da-midia",
     nome: "Custo Real da Mídia",
     nomeCurto: "Custo real da mídia",
