@@ -9,6 +9,10 @@ const blog = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
+    // CONTENT-META-014 (Constituição Editorial, 27/07): 3-5 bullets, cada um
+    // respondendo uma dúvida — opcional porque é conteúdo real a escrever por
+    // artigo, não algo que dá pra gerar automaticamente do resto do front matter.
+    resumoExecutivo: z.array(z.string()).min(3).max(5).optional(),
     pilar: z.string(), // ex.: "P1" — referência ao pilar em CONTENT-META-011
     ferramentasRelacionadas: z.array(z.string()), // slugs de src/data/ferramentas.ts
     artigosRelacionados: z.array(z.string()).default([]), // slugs de outros posts do blog
