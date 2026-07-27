@@ -42,7 +42,7 @@ Um erro comum na direção oposta do CAC: usar o ticket **bruto**, sem descontar
 
 ## A razão LTV:CAC: o número que resume tudo
 
-Divida o LTV pelo CAC. O mercado usa **3:1** como referência de saúde (benchmark popularizado por David Skok, "SaaS Metrics 2.0"):
+Divida o LTV pelo CAC. O mercado usa **3:1** como referência de saúde (benchmark popularizado por David Skok em ["SaaS Metrics 2.0"](https://www.forentrepreneurs.com/saas-metrics-2/)):
 
 - **Abaixo de 1:1** — cada cliente novo custa mais do que gera de lucro. Investir mais verba só aumenta o prejuízo.
 - **Entre 1:1 e 3:1** — dá lucro, mas com pouca margem de segurança.
@@ -66,7 +66,7 @@ O ROAS que o Gerenciador de Anúncios mostra só enxerga o que a própria plataf
 MER = receita total do caixa ÷ investimento total em mídia
 ```
 
-Um gap pequeno entre MER e ROAS reportado (abaixo de 15%) é normal. Um gap grande (acima de 40%) é sinal forte de que vale auditar o rastreio — venda offline não contada, pixel quebrado, atribuição cruzada entre plataformas.
+Não existe um benchmark de mercado publicado que defina exatamente que tamanho de gap é "normal" — o que segue é o heurístico que usamos na prática, na Fórmula, pra decidir quando vale investigar: gap pequeno entre MER e ROAS reportado (abaixo de 15%) costuma ser normal; gap grande (acima de 40%) costuma ser sinal forte de que vale auditar o rastreio — venda offline não contada, pixel quebrado, atribuição cruzada entre plataformas.
 
 → **Compare o seu MER com o ROAS reportado:** [MER × ROAS de plataforma](/ferramentas/mer-vs-roas)
 
@@ -84,7 +84,7 @@ verba necessária    = leads necessários × custo por lead
 
 ## Custo do Lead Perdido: a variável que ninguém mede
 
-Nenhuma das contas acima captura um fator que pesquisa de mercado mostra ser decisivo: **velocidade de resposta**. Responder um lead em até 5 minutos pode significar até 21 vezes mais chance de qualificá-lo do que esperar 30 minutos (estudo Oldroyd/McElheran/Elkington, HBR/MIT 2011). Um CAC ótimo na planilha não significa nada se metade dos leads esfria antes de alguém responder.
+Nenhuma das contas acima captura um fator que a pesquisa sobre resposta a leads mostra ser decisivo: **velocidade de resposta**. Responder um lead em até 5 minutos pode significar até 21 vezes mais chance de qualificá-lo do que esperar 30 minutos ([Lead Response Management Study, James Oldroyd — MIT Sloan Executive Education, em parceria com InsideSales.com, 2007](https://www.leadresponsemanagement.org/lrm_study/)). Um CAC ótimo na planilha não significa nada se uma parte relevante dos leads esfria antes de alguém responder.
 
 → **Veja quanto isso custa no seu negócio:** [Custo do Lead Perdido](/ferramentas/custo-do-lead-perdido)
 

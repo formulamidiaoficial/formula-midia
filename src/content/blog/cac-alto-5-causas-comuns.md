@@ -3,7 +3,7 @@ title: "CAC alto: as 5 causas mais comuns (e como saber qual é a sua)"
 description: "Um CAC alto não tem uma causa só. Antes de cortar verba, identifique qual dos cinco motivos é o seu."
 pilar: "P1"
 ferramentasRelacionadas: ["cac-ltv-payback", "mer-vs-roas", "friccao-do-formulario"]
-artigosRelacionados: ["quanto-seu-cliente-custa-e-vale"]
+artigosRelacionados: ["quanto-seu-cliente-custa-e-vale", "cac-por-segmento"]
 datePublished: 2026-09-14
 faq:
   - question: "Cortar verba de mídia reduz o CAC?"
