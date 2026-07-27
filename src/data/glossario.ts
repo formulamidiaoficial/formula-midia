@@ -150,6 +150,46 @@ export const GLOSSARIO: TermoGlossario[] = [
     ferramentasRelacionadas: ["friccao-do-formulario", "valor-do-ganho-de-conversao", "simulador-de-funil"],
   },
   {
+    slug: "canonical",
+    termo: "Tag Canonical",
+    categoria: "Site / Técnico",
+    definicaoCurta:
+      "A tag canonical é uma marcação HTML que declara qual URL é a versão \"oficial\" de uma página, evitando que o Google trate conteúdo duplicado ou variações da mesma URL como páginas concorrentes.",
+    definicaoCompleta:
+      "A tag `<link rel=\"canonical\">` é colocada no `<head>` de uma página HTML para declarar explicitamente qual URL deve ser considerada a versão principal daquele conteúdo — importante quando a mesma página é acessível por mais de um endereço (com ou sem parâmetros de rastreamento, com ou sem barra final, versão mobile separada). Sem essa marcação, buscadores podem interpretar as variações como páginas duplicadas, diluindo a autoridade de SEO entre elas em vez de concentrar tudo numa única URL. Toda página deveria ter uma tag canonical, mesmo que aponte para si mesma.",
+    ferramentasRelacionadas: ["auditoria-tecnica-seo"],
+  },
+  {
+    slug: "dados-estruturados",
+    termo: "Dados Estruturados (JSON-LD / Schema.org)",
+    categoria: "SEO / IA",
+    definicaoCurta:
+      "Dados estruturados são um código adicional no HTML de uma página, seguindo o vocabulário do Schema.org, que descreve explicitamente do que se trata o conteúdo — permitindo que buscadores e IAs generativas entendam e citem a página com mais precisão.",
+    definicaoCompleta:
+      "Dados estruturados (mais comumente no formato JSON-LD) são blocos de código, geralmente invisíveis ao visitante, que descrevem explicitamente o conteúdo de uma página usando o vocabulário padronizado do Schema.org — por exemplo, marcando que um bloco de texto é uma `FAQPage`, que um conjunto de textos é um `Article` com autor e data, ou que um termo é uma `DefinedTerm`. Isso remove a ambiguidade que um buscador ou uma IA generativa teria ao tentar interpretar HTML puro, e é um dos fatores que favorece a citação de uma página em respostas de IA (GEO). A ausência de dados estruturados não impede a página de ser encontrada, mas reduz a precisão com que ela pode ser entendida e citada.",
+    ferramentasRelacionadas: ["auditoria-tecnica-seo", "verificador-acesso-ia"],
+  },
+  {
+    slug: "crawl",
+    termo: "Crawl (Rastreamento)",
+    categoria: "SEO / Técnico",
+    definicaoCurta:
+      "Crawl (rastreamento) é o processo pelo qual um robô automatizado (de busca ou de IA) visita as páginas de um site, seguindo links, para descobrir e ler o conteúdo.",
+    definicaoCompleta:
+      "Crawl, ou rastreamento, é como buscadores (Googlebot) e robôs de IA (GPTBot, PerplexityBot etc.) descobrem o conteúdo de um site: um robô visita uma página, lê o HTML, extrai os links encontrados nela e visita essas novas páginas também, repetindo o processo. O robots.txt controla quais partes do site cada robô pode rastrear; o sitemap.xml ajuda o robô a encontrar páginas que talvez não estejam bem linkadas internamente. Uma auditoria técnica de SEO que 'crawleia' um site está fazendo exatamente isso em escala pequena e controlada — visitando várias páginas automaticamente para checar problemas estruturais.",
+    ferramentasRelacionadas: ["auditoria-tecnica-seo", "verificador-acesso-ia", "analise-de-log"],
+  },
+  {
+    slug: "sla-de-resposta",
+    termo: "SLA de Resposta",
+    categoria: "Conversão",
+    definicaoCurta:
+      "SLA de Resposta é o compromisso de tempo máximo que uma empresa define internamente para responder um lead depois que ele chega — por exemplo, \"todo lead recebe a primeira resposta em até 5 minutos\".",
+    definicaoCompleta:
+      "SLA (Service Level Agreement, ou Acordo de Nível de Serviço) de Resposta é o tempo máximo que uma empresa se compromete a levar para dar a primeira resposta a um lead que acabou de chegar — seja por WhatsApp, formulário ou telefone. Diferente de uma meta vaga (\"responder rápido\"), um SLA é um número específico e mensurável (ex.: 5 minutos, 1 hora), que pode ser medido e cobrado do time. Definir um SLA de resposta é geralmente o primeiro passo prático depois de descobrir, via uma ferramenta como o Custo do Lead Perdido, que a velocidade de resposta está custando vendas.",
+    ferramentasRelacionadas: ["custo-do-lead-perdido", "capacidade-comercial"],
+  },
+  {
     slug: "cpl",
     termo: "CPL (Custo Por Lead)",
     categoria: "Financeiro",

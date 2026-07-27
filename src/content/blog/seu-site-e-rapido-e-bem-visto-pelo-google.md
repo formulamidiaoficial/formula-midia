@@ -2,7 +2,7 @@
 title: "Seu site é rápido e bem visto pelo Google?"
 description: "Laboratório vs. usuário real, a história ao longo do tempo, e o que os robôs realmente rastreiam — os três dados que fecham o diagnóstico técnico de um site."
 pilar: "P5"
-ferramentasRelacionadas: ["velocidade-usuario-real", "comparador-historico", "analise-de-log"]
+ferramentasRelacionadas: ["velocidade-usuario-real", "comparador-historico", "analise-de-log", "auditoria-tecnica-seo"]
 artigosRelacionados: ["a-ia-esta-lendo-e-citando-seu-site", "por-que-o-site-nao-converte"]
 datePublished: 2026-08-17
 faq:
@@ -50,5 +50,14 @@ Análise de Log              →  o que os robôs (Google e IA) realmente RASTRE
 ```
 
 Nenhuma das três sozinha conta a história completa: a primeira é o retrato, a segunda é o filme, a terceira é quem está de fato assistindo.
+
+## E os outros problemas técnicos que velocidade não mede?
+
+Robots.txt ausente, sitemap quebrado, link interno morto, página sem H1, imagem sem `alt` — nada
+disso aparece numa nota de performance, mas afeta indexação e experiência do mesmo jeito. Por isso
+existe uma quarta ferramenta técnica, separada das três de velocidade: ela rastreia até 20 páginas
+do seu site e devolve os problemas estruturais organizados por severidade.
+
+→ **Audite a estrutura técnica do seu site:** [Auditoria Técnica de SEO](/ferramentas/auditoria-tecnica-seo)
 
 Pra entender a distinção entre os robôs que a Análise de Log revela, veja: [A IA está lendo (e citando) o seu site?](/blog/a-ia-esta-lendo-e-citando-seu-site)

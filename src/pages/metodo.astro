@@ -1,0 +1,123 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "../components/ui/Breadcrumbs.astro";
+import { breadcrumbSchema, SITE_URL, BRAND_NAME } from "../data/schema";
+import { FERRAMENTAS } from "../data/ferramentas";
+
+const breadcrumbItems = [
+  { name: "Home", path: "/" },
+  { name: "Método", path: "/metodo" },
+];
+
+const fontes = [
+  { fonte: "Oldroyd, McElheran & Elkington — \"The Short Life of Online Sales Leads\" (HBR/MIT, 2011)", uso: "Multiplicadores de qualificação por tempo de resposta", ferramenta: "custo-do-lead-perdido" },
+  { fonte: "David Skok — \"SaaS Metrics 2.0\" (forEntrepreneurs.com)", uso: "Benchmark LTV:CAC de 3:1", ferramenta: "cac-ltv-payback" },
+  { fonte: "Google Search Central — documentação pública de E-E-A-T", uso: "Os 7 sinais de confiança avaliados", ferramenta: "sinais-de-confianca" },
+  { fonte: "RFC 9309 — Robots Exclusion Protocol", uso: "Leitura e parsing de robots.txt", ferramenta: "verificador-acesso-ia" },
+  { fonte: "Lei nº 13.709/2018 — LGPD", uso: "Estrutura do documento de política de privacidade", ferramenta: "gerador-politica-privacidade-lgpd" },
+  { fonte: "Google PageSpeed Insights API + Chrome UX Report (CrUX)", uso: "Notas de performance em laboratório e campo", ferramenta: "velocidade-usuario-real" },
+  { fonte: "Prática de mercado e-commerce/DTC (MER como conceito consolidado)", uso: "Comparação entre eficiência de mídia e ROAS de plataforma", ferramenta: "mer-vs-roas" },
+];
+
+const schema = [breadcrumbSchema(breadcrumbItems)];
+---
+
+<BaseLayout
+  title="Nosso Método | Fórmula Mídia"
+  description="Como calculamos, o que citamos e o que não sabemos. A metodologia por trás de cada ferramenta gratuita da Fórmula Mídia, num só lugar."
+  path="/metodo"
+  schema={schema}
+>
+  <Breadcrumbs items={breadcrumbItems} />
+  <header class="relative overflow-hidden px-6 pb-6 pt-16 text-center">
+    <div class="pointer-events-none absolute -left-24 -top-44 h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,rgba(228,41,41,.22),transparent_70%)] blur-[80px]"></div>
+    <div class="relative z-[2] mx-auto max-w-[700px]">
+      <h1 class="font-heading text-[clamp(28px,4.4vw,44px)] font-bold leading-[1.12] tracking-tight">
+        Como a gente <span class="text-red-hi">calcula, mede e cita.</span>
+      </h1>
+      <p class="mx-auto mt-4 max-w-[560px] text-base leading-relaxed text-mid">
+        Mostrar o trabalho, não só o resultado. Esta página reúne os princípios que toda ferramenta
+        gratuita da Fórmula Mídia segue, e as fontes externas usadas — todas consultadas e datadas.
+      </p>
+    </div>
+  </header>
+
+  <section class="px-6 pb-16 pt-6">
+    <div class="mx-auto max-w-[760px]">
+      <h2 class="font-heading text-[24px] font-bold leading-tight text-ink">Três princípios, sem exceção</h2>
+      <div class="mt-6 grid gap-4 sm:grid-cols-3">
+        <div class="rounded-card border border-border bg-glass p-6">
+          <div class="mb-2 font-heading text-[14.5px] font-semibold text-ink">1. Fonte sempre citada</div>
+          <p class="text-[13px] leading-relaxed text-mid">Todo número externo (benchmark, estudo, lei) tem fonte e data de consulta visíveis na própria ferramenta — não só nesta página.</p>
+        </div>
+        <div class="rounded-card border border-border bg-glass p-6">
+          <div class="mb-2 font-heading text-[14.5px] font-semibold text-ink">2. Hipótese ≠ fato</div>
+          <p class="text-[13px] leading-relaxed text-mid">Fórmula matemática padrão (CAC, LTV) é marcada como definição. Estudo comportamental (tempo de resposta) é marcado como hipótese com fonte, nunca apresentado como certeza.</p>
+        </div>
+        <div class="rounded-card border border-border bg-glass p-6">
+          <div class="mb-2 font-heading text-[14.5px] font-semibold text-ink">3. Nada armazenado à toa</div>
+          <p class="text-[13px] leading-relaxed text-mid">Cálculo acontece no seu navegador. Nenhum número que você digita é salvo pela Fórmula, em nenhuma ferramenta.</p>
+        </div>
+      </div>
+
+      <h2 class="mt-14 font-heading text-[24px] font-bold leading-tight text-ink">O padrão de toda ferramenta</h2>
+      <p class="mt-4 text-[15.5px] leading-relaxed text-mid">
+        Cada ferramenta gratuita segue a mesma estrutura interna: entradas claras, processamento
+        explicado (a fórmula ou a metodologia, nunca uma "caixa-preta"), limitações escritas na tela
+        (não escondidas em rodapé), e um aviso de estimativa quando o resultado depende de hipótese
+        externa. Isso é auditável — qualquer pessoa pode conferir a fórmula usada, não só confiar no
+        número final.
+      </p>
+
+      <h2 class="mt-14 font-heading text-[24px] font-bold leading-tight text-ink">Fontes externas em uso</h2>
+      <div class="mt-6 overflow-x-auto rounded-card border border-border">
+        <table class="w-full min-w-[600px] border-collapse text-left text-[13px]">
+          <thead>
+            <tr class="border-b border-border bg-glass">
+              <th class="px-4 py-3 font-heading text-[11px] font-semibold uppercase tracking-[.06em] text-dim">Fonte</th>
+              <th class="px-4 py-3 font-heading text-[11px] font-semibold uppercase tracking-[.06em] text-dim">Usada para</th>
+              <th class="px-4 py-3 font-heading text-[11px] font-semibold uppercase tracking-[.06em] text-dim">Ferramenta</th>
+            </tr>
+          </thead>
+          <tbody>
+            {fontes.map((f) => (
+              <tr class="border-b border-border last:border-0">
+                <td class="px-4 py-3 text-mid">{f.fonte}</td>
+                <td class="px-4 py-3 text-mid">{f.uso}</td>
+                <td class="px-4 py-3">
+                  <a href={`/ferramentas/${f.ferramenta}`} class="text-red-hi underline underline-offset-2">
+                    {FERRAMENTAS.find((t) => t.slug === f.ferramenta)?.nomeCurto ?? f.ferramenta}
+                  </a>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="mt-14 font-heading text-[24px] font-bold leading-tight text-ink">Revalidação</h2>
+      <p class="mt-4 text-[15.5px] leading-relaxed text-mid">
+        Fontes sobre comportamento de robôs de IA (quem treina, quem busca, o que o GA4 captura)
+        mudam rápido — revisadas a cada trimestre. Fórmulas de unit economics e legislação mudam
+        devagar — revisadas anualmente, ou quando houver mudança pública relevante (nova lei, novo
+        benchmark amplamente adotado).
+      </p>
+
+      <h2 class="mt-14 font-heading text-[24px] font-bold leading-tight text-ink">Errata</h2>
+      <p class="mt-4 text-[15.5px] leading-relaxed text-mid">
+        Se uma fórmula, fonte ou dado estiver errado, corrigimos e registramos a mudança na própria
+        ferramenta — sem esconder que existiu um erro. Encontrou algo que parece errado? Avise pelo
+        WhatsApp; toda correção é bem-vinda.
+      </p>
+
+      <div class="mt-14 rounded-card border border-border bg-glass p-7">
+        <p class="text-[14px] leading-relaxed text-mid">
+          Cada termo técnico citado nesta página e nas ferramentas está explicado no
+          <a href="/glossario" class="text-ink underline underline-offset-2">Glossário</a>. Os
+          artigos completos, conectando cada ferramenta ao contexto por trás dela, estão no
+          <a href="/blog" class="text-ink underline underline-offset-2">Blog</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

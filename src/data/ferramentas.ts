@@ -15,6 +15,13 @@ export interface Ferramenta {
 
 export const FERRAMENTAS: Ferramenta[] = [
   {
+    slug: "auditoria-tecnica-seo",
+    nome: "Auditoria Técnica de SEO",
+    nomeCurto: "Auditoria Técnica de SEO",
+    desc: "Audite até 20 páginas do seu site — robots.txt, links quebrados, heading, canonical e dados estruturados — num relatório priorizado por severidade.",
+    tag: "SEO / técnico",
+  },
+  {
     slug: "gerador-politica-privacidade-lgpd",
     nome: "Gerador de Política de Privacidade (LGPD)",
     nomeCurto: "Gerador de Política de Privacidade",
