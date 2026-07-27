@@ -125,7 +125,8 @@ ErrorDocument 404 /404.html
   #   - formula-site-audit-crawler.formulamidia.workers.dev (RUN-002, Auditoria Técnica de SEO)
   #   - www.googleapis.com                               (PageSpeed Insights, Velocidade + Usuário Real)
   #   - chromeuxreport.googleapis.com                     (CrUX History API, Comparador Histórico)
-  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://formula-robots-proxy.formulamidia.workers.dev https://formula-site-audit-crawler.formulamidia.workers.dev https://www.googleapis.com https://chromeuxreport.googleapis.com; base-uri 'self'; frame-ancestors 'self';"
+  #   - formula-concierge.formulamidia.workers.dev        (RUN-CONCIERGE, widget de chat do cabeçalho)
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://formula-robots-proxy.formulamidia.workers.dev https://formula-site-audit-crawler.formulamidia.workers.dev https://www.googleapis.com https://chromeuxreport.googleapis.com https://formula-concierge.formulamidia.workers.dev; base-uri 'self'; frame-ancestors 'self';"
 
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
   Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"

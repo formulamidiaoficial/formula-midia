@@ -1,6 +1,7 @@
 ---
 import { waLink } from "../../data/schema";
 import { FERRAMENTAS } from "../../data/ferramentas";
+import ConciergeChat from "../islands/ConciergeChat.tsx";
 
 interface NavLink {
   label: string;
@@ -107,6 +108,8 @@ function isActive(href: string): boolean {
     </div>
 
     <div class="flex items-center gap-3">
+      <ConciergeChat client:idle />
+
       <a
         href={waLink("Olá, quero saber mais sobre os serviços Fórmula Mídia")}
         target="_blank"
