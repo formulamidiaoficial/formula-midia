@@ -122,6 +122,7 @@ export default function MedicaoIaGa4() {
           </p>
           <input
             type="range"
+            aria-label="Sessões de IA que o GA4 mostra hoje, por mês"
             className="range-slider"
             min={0}
             max={5000}

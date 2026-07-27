@@ -125,7 +125,7 @@ export default function AuditoriaTecnicaSeo() {
             value={url}
             onChange={(e) => setUrl(e.target.value)}
             onFocus={marcarInicio}
-            className="mb-5 w-full rounded-2xl border border-border bg-bg px-4 py-3.5 font-body text-[15px] text-ink outline-none focus:border-red"
+            className="mb-5 w-full rounded-2xl border border-border bg-bg px-4 py-3.5 font-body text-[15px] text-ink outline-none focus:border-red focus:ring-2 focus:ring-red/35"
           />
           <button
             type="submit"

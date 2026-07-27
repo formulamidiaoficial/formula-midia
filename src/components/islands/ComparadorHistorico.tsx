@@ -120,20 +120,20 @@ export default function ComparadorHistorico() {
           <label className="mb-1.5 block font-heading text-[14px] font-semibold" htmlFor="meu-site">Seu site</label>
           <input id="meu-site" type="text" placeholder="seusite.com.br" value={meuSite}
             onChange={(e) => setMeuSite(e.target.value)}
-            className="mb-5 w-full rounded-2xl border border-border bg-bg px-4 py-3 font-body text-[14px] text-ink outline-none focus:border-red" />
+            className="mb-5 w-full rounded-2xl border border-border bg-bg px-4 py-3 font-body text-[14px] text-ink outline-none focus:border-red focus:ring-2 focus:ring-red/35" />
 
-          <label className="mb-1.5 block font-heading text-[13px] font-semibold text-mid">Concorrente 1 (opcional)</label>
-          <input type="text" placeholder="concorrente1.com" value={concorrente1}
+          <label className="mb-1.5 block font-heading text-[13px] font-semibold text-mid" htmlFor="concorrente-1">Concorrente 1 (opcional)</label>
+          <input id="concorrente-1" type="text" placeholder="concorrente1.com" value={concorrente1}
             onChange={(e) => setConcorrente1(e.target.value)}
-            className="mb-3 w-full rounded-2xl border border-border bg-bg px-4 py-3 font-body text-[14px] text-ink outline-none focus:border-red" />
-          <label className="mb-1.5 block font-heading text-[13px] font-semibold text-mid">Concorrente 2 (opcional)</label>
-          <input type="text" placeholder="concorrente2.com" value={concorrente2}
+            className="mb-3 w-full rounded-2xl border border-border bg-bg px-4 py-3 font-body text-[14px] text-ink outline-none focus:border-red focus:ring-2 focus:ring-red/35" />
+          <label className="mb-1.5 block font-heading text-[13px] font-semibold text-mid" htmlFor="concorrente-2">Concorrente 2 (opcional)</label>
+          <input id="concorrente-2" type="text" placeholder="concorrente2.com" value={concorrente2}
             onChange={(e) => setConcorrente2(e.target.value)}
-            className="mb-3 w-full rounded-2xl border border-border bg-bg px-4 py-3 font-body text-[14px] text-ink outline-none focus:border-red" />
-          <label className="mb-1.5 block font-heading text-[13px] font-semibold text-mid">Concorrente 3 (opcional)</label>
-          <input type="text" placeholder="concorrente3.com" value={concorrente3}
+            className="mb-3 w-full rounded-2xl border border-border bg-bg px-4 py-3 font-body text-[14px] text-ink outline-none focus:border-red focus:ring-2 focus:ring-red/35" />
+          <label className="mb-1.5 block font-heading text-[13px] font-semibold text-mid" htmlFor="concorrente-3">Concorrente 3 (opcional)</label>
+          <input id="concorrente-3" type="text" placeholder="concorrente3.com" value={concorrente3}
             onChange={(e) => setConcorrente3(e.target.value)}
-            className="mb-5 w-full rounded-2xl border border-border bg-bg px-4 py-3 font-body text-[14px] text-ink outline-none focus:border-red" />
+            className="mb-5 w-full rounded-2xl border border-border bg-bg px-4 py-3 font-body text-[14px] text-ink outline-none focus:border-red focus:ring-2 focus:ring-red/35" />
 
           <button type="submit" disabled={loading}
             className="flex w-full items-center justify-center gap-2.5 rounded-full bg-gradient-to-br from-red to-red-lo px-4 py-4 font-heading text-[14.5px] font-semibold text-white no-underline shadow-[0_10px_30px_rgba(228,41,41,0.30)] transition-transform hover:-translate-y-0.5 disabled:opacity-60">

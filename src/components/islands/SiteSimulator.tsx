@@ -63,6 +63,7 @@ export default function SiteSimulator() {
           <div className="mb-4 text-[12.5px] text-dim">Home, sobre, serviços, contato, etc.</div>
           <input
             type="range"
+            aria-label="Quantas páginas você precisa"
             className="range-slider"
             min={1}
             max={15}

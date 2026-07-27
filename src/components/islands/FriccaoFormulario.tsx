@@ -189,7 +189,7 @@ function NumBox({ label, value, onChange }: { label: string; value: number; onCh
         max={20}
         value={value}
         onChange={(e) => onChange(Math.max(0, Math.min(20, Number(e.target.value))))}
-        className="w-full rounded-xl border border-border bg-glass px-3 py-2.5 font-heading text-[15px] font-bold text-ink outline-none focus:border-red"
+        className="w-full rounded-xl border border-border bg-glass px-3 py-2.5 font-heading text-[15px] font-bold text-ink outline-none focus:border-red focus:ring-2 focus:ring-red/35"
       />
     </label>
   );

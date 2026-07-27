@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState } from "react";
+import { useId, useMemo, useRef, useState } from "react";
 import { waLink } from "../../data/schema";
 import { trackEvent } from "../../lib/track";
 
@@ -157,10 +157,11 @@ export default function GeradorLgpd() {
               {marcados.includes("outro") && (
                 <input
                   type="text"
+                  aria-label="Descreva o que mais é coletado"
                   value={outroDesc}
                   onChange={(e) => setOutroDesc(e.target.value)}
                   placeholder="Descreva o que mais é coletado"
-                  className="w-full rounded-2xl border border-border bg-bg px-4 py-3 font-body text-[14px] text-ink outline-none focus:border-red"
+                  className="w-full rounded-2xl border border-border bg-bg px-4 py-3 font-body text-[14px] text-ink outline-none focus:border-red focus:ring-2 focus:ring-red/35"
                 />
               )}
             </div>
@@ -217,16 +218,18 @@ function TextField({
   onFocus: () => void;
   placeholder: string;
 }) {
+  const id = useId();
   return (
     <div className="mb-6">
-      <label className="mb-2 block font-heading text-[14px] font-semibold">{label}</label>
+      <label htmlFor={id} className="mb-2 block font-heading text-[14px] font-semibold">{label}</label>
       <input
+        id={id}
         type="text"
         value={value}
         placeholder={placeholder}
         onFocus={onFocus}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full rounded-2xl border border-border bg-bg px-4 py-3.5 font-body text-[15px] text-ink outline-none focus:border-red"
+        className="w-full rounded-2xl border border-border bg-bg px-4 py-3.5 font-body text-[15px] text-ink outline-none focus:border-red focus:ring-2 focus:ring-red/35"
       />
     </div>
   );
