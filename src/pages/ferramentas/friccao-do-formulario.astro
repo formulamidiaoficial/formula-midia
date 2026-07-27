@@ -1,0 +1,75 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Badge from "../../components/ui/Badge.astro";
+import Breadcrumbs from "../../components/ui/Breadcrumbs.astro";
+import FriccaoFormulario from "../../components/islands/FriccaoFormulario.tsx";
+import { breadcrumbSchema, faqPageSchema, SITE_URL, BRAND_NAME, type FaqItem } from "../../data/schema";
+
+const breadcrumbItems = [
+  { name: "Home", path: "/" },
+  { name: "Ferramentas", path: "/ferramentas" },
+  { name: "Fricção do Formulário", path: "/ferramentas/friccao-do-formulario" },
+];
+
+const faq: FaqItem[] = [
+  { question: "De onde vem esse benchmark?", answer: "HubSpot, \"Form Conversion Rate Statistics\" (2024): conversão cai em média 4,1% por campo adicional em formulários. É média de mercado, não garante o resultado exato do seu formulário." },
+  { question: "Cortar campos é sempre bom?", answer: "Não. Menos campos convertem mais, mas captam menos dado de qualificação — você pode acabar gastando mais tempo qualificando o lead depois pelo WhatsApp." },
+  { question: "Por que a faixa ideal é 3 a 6 campos, e não 1?", answer: "Porque é a faixa com melhor relação entre completar o formulário e coletar dado suficiente para qualificar o lead sem precisar de mais uma etapa." },
+];
+
+const appSchema = {
+  "@context": "https://schema.org", "@type": "WebApplication",
+  name: "Fricção do Formulário",
+  applicationCategory: "BusinessApplication", operatingSystem: "Web",
+  url: `${SITE_URL}/ferramentas/friccao-do-formulario`,
+  offers: { "@type": "Offer", price: "0", priceCurrency: "BRL" },
+  provider: { "@type": "Organization", name: BRAND_NAME },
+};
+
+const schema = [breadcrumbSchema(breadcrumbItems), faqPageSchema(faq), appSchema];
+---
+
+<BaseLayout
+  title="Fricção do Formulário — quantos leads você está perdendo | Fórmula Mídia"
+  description="Descubra se o formulário do seu site está afastando leads por ter campos demais ou errados. Benchmark real (HubSpot 2024), grátis, sem login."
+  path="/ferramentas/friccao-do-formulario"
+  schema={schema}
+>
+  <Breadcrumbs items={breadcrumbItems} />
+  <header class="relative overflow-hidden px-6 pb-6 pt-16 text-center">
+    <div class="pointer-events-none absolute -left-24 -top-44 h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,rgba(228,41,41,.22),transparent_70%)] blur-[80px]"></div>
+    <div class="relative z-[2] mx-auto max-w-[680px]">
+      <a href="/ferramentas" class="mb-6 inline-flex items-center gap-1.5 font-heading text-[13px] font-semibold text-mid no-underline hover:text-ink">← Todas as ferramentas</a>
+      <div class="mb-6"><Badge label="Fricção do Formulário" /></div>
+      <h1 class="font-heading text-[clamp(28px,4.4vw,44px)] font-bold leading-[1.12] tracking-tight">
+        Seu formulário está <span class="text-red-hi">afastando lead</span> sem você saber?
+      </h1>
+      <p class="mx-auto mt-4 max-w-[540px] text-base leading-relaxed text-mid">
+        Descreva o formulário do seu site e veja a fricção, com benchmark real de mercado — não achismo.
+      </p>
+    </div>
+  </header>
+
+  <div class="section-light px-6 pb-6 pt-8">
+    <div class="mx-auto max-w-[1140px]">
+      <FriccaoFormulario client:load />
+    </div>
+  </div>
+
+  <section class="px-6 pb-24 pt-10">
+    <div class="mx-auto max-w-[720px]">
+      <h2 class="font-heading text-[clamp(22px,3.2vw,30px)] font-bold leading-tight tracking-tight">
+        Cada campo a mais tem um custo real de conversão
+      </h2>
+      <div class="mt-6 flex flex-col gap-5 text-[15.5px] leading-relaxed text-mid">
+        <p>
+          O dono do negócio raramente sabe se o formulário do site está "caro" — afastando lead por
+          pedir campo demais, ou campo errado, antes da hora.
+        </p>
+        <p class="rounded-card border border-border bg-glass p-5 text-[14px] text-dim">
+          <strong class="text-ink">Fonte.</strong> HubSpot, "Form Conversion Rate Statistics" (2024) — consultado em 26/07/2026.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

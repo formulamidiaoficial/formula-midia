@@ -84,4 +84,18 @@ export const FERRAMENTAS: Ferramenta[] = [
     desc: "Sua velocidade contra até 3 concorrentes, ao longo de 40 semanas — dado real do Google.",
     tag: "Site / técnico",
   },
+  {
+    slug: "friccao-do-formulario",
+    nome: "Fricção do Formulário",
+    nomeCurto: "Fricção do Formulário",
+    desc: "Descubra se o formulário do seu site afasta lead por ter campo demais ou errado — com benchmark real.",
+    tag: "Conversão",
+  },
+  {
+    slug: "sinais-de-confianca",
+    nome: "Checador de Sinais de Confiança",
+    nomeCurto: "Sinais de Confiança",
+    desc: "Os 7 sinais (E-E-A-T) que o Google e as IAs generativas usam para decidir se citam sua marca.",
+    tag: "SEO / GEO",
+  },
 ];

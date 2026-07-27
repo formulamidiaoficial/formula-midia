@@ -1,0 +1,76 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Badge from "../../components/ui/Badge.astro";
+import Breadcrumbs from "../../components/ui/Breadcrumbs.astro";
+import SinaisDeConfianca from "../../components/islands/SinaisDeConfianca.tsx";
+import { breadcrumbSchema, faqPageSchema, SITE_URL, BRAND_NAME, type FaqItem } from "../../data/schema";
+
+const breadcrumbItems = [
+  { name: "Home", path: "/" },
+  { name: "Ferramentas", path: "/ferramentas" },
+  { name: "Checador de Sinais de Confiança", path: "/ferramentas/sinais-de-confianca" },
+];
+
+const faq: FaqItem[] = [
+  { question: "O que é E-E-A-T?", answer: "Experience, Expertise, Authoritativeness, Trustworthiness — o framework que o próprio Google Search Central confirma usar para decidir o que aparece bem em Search e em respostas de IA (AI Overviews)." },
+  { question: "Ter os 7 sinais garante que minha empresa vai aparecer na IA?", answer: "Não. É aproximação de boas práticas documentadas, não medição direta — o Google e as IAs generativas não confirmam publicamente o peso exato de cada sinal para um site específico." },
+  { question: "Preciso instalar algo ou dar acesso ao meu site?", answer: "Não. É um checklist declarativo — você mesmo responde olhando o próprio site, sem login, sem custo." },
+];
+
+const appSchema = {
+  "@context": "https://schema.org", "@type": "WebApplication",
+  name: "Checador de Sinais de Confiança",
+  applicationCategory: "BusinessApplication", operatingSystem: "Web",
+  url: `${SITE_URL}/ferramentas/sinais-de-confianca`,
+  offers: { "@type": "Offer", price: "0", priceCurrency: "BRL" },
+  provider: { "@type": "Organization", name: BRAND_NAME },
+};
+
+const schema = [breadcrumbSchema(breadcrumbItems), faqPageSchema(faq), appSchema];
+---
+
+<BaseLayout
+  title="Checador de Sinais de Confiança (E-E-A-T) | Fórmula Mídia"
+  description="Seu site passa os 7 sinais de confiança que o Google e as IAs generativas usam para decidir se citam ou recomendam sua marca? Checklist grátis, sem login."
+  path="/ferramentas/sinais-de-confianca"
+  schema={schema}
+>
+  <Breadcrumbs items={breadcrumbItems} />
+  <header class="relative overflow-hidden px-6 pb-6 pt-16 text-center">
+    <div class="pointer-events-none absolute -left-24 -top-44 h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,rgba(228,41,41,.22),transparent_70%)] blur-[80px]"></div>
+    <div class="relative z-[2] mx-auto max-w-[680px]">
+      <a href="/ferramentas" class="mb-6 inline-flex items-center gap-1.5 font-heading text-[13px] font-semibold text-mid no-underline hover:text-ink">← Todas as ferramentas</a>
+      <div class="mb-6"><Badge label="Sinais de Confiança" /></div>
+      <h1 class="font-heading text-[clamp(28px,4.4vw,44px)] font-bold leading-[1.12] tracking-tight">
+        Seu site passa os <span class="text-red-hi">7 sinais de confiança</span> que o Google usa?
+      </h1>
+      <p class="mx-auto mt-4 max-w-[540px] text-base leading-relaxed text-mid">
+        Os mesmos fundamentos (E-E-A-T) que decidem se o Google e as IAs generativas citam sua marca.
+      </p>
+    </div>
+  </header>
+
+  <div class="section-light px-6 pb-6 pt-8">
+    <div class="mx-auto max-w-[1140px]">
+      <SinaisDeConfianca client:load />
+    </div>
+  </div>
+
+  <section class="px-6 pb-24 pt-10">
+    <div class="mx-auto max-w-[720px]">
+      <h2 class="font-heading text-[clamp(22px,3.2vw,30px)] font-bold leading-tight tracking-tight">
+        Não é truque técnico — são os fundamentos de sempre
+      </h2>
+      <div class="mt-6 flex flex-col gap-5 text-[15.5px] leading-relaxed text-mid">
+        <p>
+          O dono de negócio ouve falar de "otimizar para IA" e imagina que existe um truque técnico
+          novo. Não existe: o próprio Google Search Central confirma que os fundamentos são os
+          mesmos de sempre — E-E-A-T é um deles.
+        </p>
+        <p class="rounded-card border border-border bg-glass p-5 text-[14px] text-dim">
+          <strong class="text-ink">Fonte.</strong> Google Search Central (E-E-A-T) — consultado em 26/07/2026.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
