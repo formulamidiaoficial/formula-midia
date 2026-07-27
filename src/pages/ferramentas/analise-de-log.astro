@@ -1,0 +1,74 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Badge from "../../components/ui/Badge.astro";
+import Breadcrumbs from "../../components/ui/Breadcrumbs.astro";
+import AnaliseDeLog from "../../components/islands/AnaliseDeLog.tsx";
+import { breadcrumbSchema, faqPageSchema, SITE_URL, BRAND_NAME, type FaqItem } from "../../data/schema";
+
+const breadcrumbItems = [
+  { name: "Home", path: "/" },
+  { name: "Ferramentas", path: "/ferramentas" },
+  { name: "Análise de Log", path: "/ferramentas/analise-de-log" },
+];
+
+const faq: FaqItem[] = [
+  { question: "Meu arquivo de log fica salvo em algum servidor?", answer: "Não. O processamento acontece 100% no seu navegador — o arquivo nunca é enviado pra nenhum servidor, nem da Fórmula, nem de terceiros." },
+  { question: "Onde eu encontro o log do meu servidor?", answer: "Depende da hospedagem — geralmente no painel de hospedagem, em 'Logs de Acesso' ou via FTP na pasta de logs. Se não souber, seu desenvolvedor ou suporte da hospedagem consegue te passar." },
+  { question: "Qual o tamanho máximo de arquivo?", answer: "Até 40MB, pra rodar bem no navegador. Acima disso, envie uma amostra (ex.: 1 semana de log) em vez do arquivo completo." },
+];
+
+const appSchema = {
+  "@context": "https://schema.org", "@type": "WebApplication",
+  name: "Análise de Log de Servidor",
+  applicationCategory: "BusinessApplication", operatingSystem: "Web",
+  url: `${SITE_URL}/ferramentas/analise-de-log`,
+  offers: { "@type": "Offer", price: "0", priceCurrency: "BRL" },
+  provider: { "@type": "Organization", name: BRAND_NAME },
+};
+
+const schema = [breadcrumbSchema(breadcrumbItems), faqPageSchema(faq), appSchema];
+---
+
+<BaseLayout
+  title="Análise de Log de Servidor — o que os robôs realmente rastreiam | Fórmula Mídia"
+  description="Suba o log do seu servidor e veja exatamente o que Googlebot e bots de IA rastrearam no seu site. Processamento 100% local, nada sai do seu computador."
+  path="/ferramentas/analise-de-log"
+  schema={schema}
+>
+  <Breadcrumbs items={breadcrumbItems} />
+  <header class="relative overflow-hidden px-6 pb-6 pt-16 text-center">
+    <div class="pointer-events-none absolute -left-24 -top-44 h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,rgba(228,41,41,.16),transparent_70%)] blur-[80px]"></div>
+    <div class="relative z-[2] mx-auto max-w-[680px]">
+      <a href="/ferramentas" class="mb-6 inline-flex items-center gap-1.5 font-heading text-[13px] font-semibold text-mid no-underline hover:text-ink">← Todas as ferramentas</a>
+      <div class="mb-6"><Badge label="Análise de Log" /></div>
+      <h1 class="font-heading text-[clamp(28px,4.4vw,44px)] font-bold leading-[1.12] tracking-tight">
+        O que o Google <span class="text-red-hi">realmente rastreou</span> no seu site?
+      </h1>
+      <p class="mx-auto mt-4 max-w-[540px] text-base leading-relaxed text-mid">
+        A única fonte 100% precisa — direto do log do seu servidor. Nunca sai do seu computador.
+      </p>
+    </div>
+  </header>
+
+  <div class="px-6 pb-6 pt-8">
+    <div class="mx-auto max-w-[1140px]">
+      <AnaliseDeLog client:load />
+    </div>
+  </div>
+
+  <section class="px-6 pb-24 pt-10">
+    <div class="mx-auto max-w-[720px]">
+      <h2 class="font-heading text-[clamp(22px,3.2vw,30px)] font-bold leading-tight tracking-tight">
+        Por que log é mais preciso que Search Console
+      </h2>
+      <div class="mt-6 flex flex-col gap-5 text-[15.5px] leading-relaxed text-mid">
+        <p>
+          O Search Console mostra dado agregado e atrasado. O log do servidor mostra <strong class="text-ink">cada visita de bot, na hora que aconteceu</strong> — incluindo os robôs de IA (GPTBot, ClaudeBot, PerplexityBot) que ainda não aparecem em nenhum painel oficial.
+        </p>
+        <p class="rounded-card border border-border bg-glass p-5 text-[14px] text-dim">
+          <strong class="text-ink">Privacidade.</strong> O arquivo é lido pelo seu navegador e descartado ao fechar a página — nunca é enviado, nunca é armazenado.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,78 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Badge from "../../components/ui/Badge.astro";
+import Breadcrumbs from "../../components/ui/Breadcrumbs.astro";
+import VelocidadeUsuarioReal from "../../components/islands/VelocidadeUsuarioReal.tsx";
+import { breadcrumbSchema, faqPageSchema, SITE_URL, BRAND_NAME, type FaqItem } from "../../data/schema";
+
+const breadcrumbItems = [
+  { name: "Home", path: "/" },
+  { name: "Ferramentas", path: "/ferramentas" },
+  { name: "Velocidade + Usuário Real", path: "/ferramentas/velocidade-usuario-real" },
+];
+
+const faq: FaqItem[] = [
+  { question: "De onde vem esse dado?", answer: "Direto da PageSpeed Insights API, a mesma ferramenta oficial do Google (pagespeed.web.dev). Não fazemos medição própria — só organizamos o que o Google já calcula." },
+  { question: "Por que meu site não tem 'experiência real do usuário'?", answer: "O Google só mede isso (dado de campo, via CrUX) em sites com tráfego relevante no Chrome nos últimos 28 dias. Sites pequenos costumam ter só o dado de laboratório — que continua sendo válido." },
+  { question: "Isso substitui uma auditoria completa de performance?", answer: "Não — é um diagnóstico inicial. Uma auditoria completa olha também scripts de terceiros, imagens, e o que especificamente está atrasando seu site." },
+];
+
+const appSchema = {
+  "@context": "https://schema.org", "@type": "WebApplication",
+  name: "Velocidade + Usuário Real",
+  applicationCategory: "BusinessApplication", operatingSystem: "Web",
+  url: `${SITE_URL}/ferramentas/velocidade-usuario-real`,
+  offers: { "@type": "Offer", price: "0", priceCurrency: "BRL" },
+  provider: { "@type": "Organization", name: BRAND_NAME },
+};
+
+const schema = [breadcrumbSchema(breadcrumbItems), faqPageSchema(faq), appSchema];
+---
+
+<BaseLayout
+  title="Teste de Velocidade + Usuário Real | Fórmula Mídia"
+  description="Veja a nota de performance do seu site e como seus usuários reais experimentam ele — dado direto da API oficial do Google. Grátis, sem login."
+  path="/ferramentas/velocidade-usuario-real"
+  schema={schema}
+>
+  <Breadcrumbs items={breadcrumbItems} />
+  <header class="relative overflow-hidden px-6 pb-6 pt-16 text-center">
+    <div class="pointer-events-none absolute -left-24 -top-44 h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,rgba(228,41,41,.16),transparent_70%)] blur-[80px]"></div>
+    <div class="relative z-[2] mx-auto max-w-[680px]">
+      <a href="/ferramentas" class="mb-6 inline-flex items-center gap-1.5 font-heading text-[13px] font-semibold text-mid no-underline hover:text-ink">← Todas as ferramentas</a>
+      <div class="mb-6"><Badge label="Velocidade + Usuário Real" /></div>
+      <h1 class="font-heading text-[clamp(28px,4.4vw,44px)] font-bold leading-[1.12] tracking-tight">
+        Seu site é rápido <span class="text-red-hi">de verdade</span>, ou só "acha" que é?
+      </h1>
+      <p class="mx-auto mt-4 max-w-[540px] text-base leading-relaxed text-mid">
+        Nota de laboratório e experiência real dos seus usuários, lado a lado — direto da API
+        oficial do Google.
+      </p>
+    </div>
+  </header>
+
+  <div class="px-6 pb-6 pt-8">
+    <div class="mx-auto max-w-[1140px]">
+      <VelocidadeUsuarioReal client:load />
+    </div>
+  </div>
+
+  <section class="px-6 pb-24 pt-10">
+    <div class="mx-auto max-w-[720px]">
+      <h2 class="font-heading text-[clamp(22px,3.2vw,30px)] font-bold leading-tight tracking-tight">
+        Por que isso importa
+      </h2>
+      <div class="mt-6 flex flex-col gap-5 text-[15.5px] leading-relaxed text-mid">
+        <p>
+          O Google usa velocidade real de usuário como fator de ranqueamento. Não é sobre "parecer
+          rápido" no seu computador — é sobre o que o visitante no celular, com internet ruim,
+          realmente experimenta.
+        </p>
+        <p class="rounded-card border border-border bg-glass p-5 text-[14px] text-dim">
+          <strong class="text-ink">Fonte.</strong> Dado 100% oficial (Google PageSpeed Insights API).
+          Nenhum número aqui é estimativa nossa.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
