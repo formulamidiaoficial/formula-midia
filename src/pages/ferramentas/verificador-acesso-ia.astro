@@ -1,0 +1,92 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Badge from "../../components/ui/Badge.astro";
+import Breadcrumbs from "../../components/ui/Breadcrumbs.astro";
+import VerificadorAcessoIa from "../../components/islands/VerificadorAcessoIa.tsx";
+import { breadcrumbSchema, faqPageSchema, SITE_URL, BRAND_NAME, type FaqItem } from "../../data/schema";
+
+const breadcrumbItems = [
+  { name: "Home", path: "/" },
+  { name: "Ferramentas", path: "/ferramentas" },
+  { name: "Verificador de Acesso de IA", path: "/ferramentas/verificador-acesso-ia" },
+];
+
+const faq: FaqItem[] = [
+  { question: "Qual a diferença entre robô de treino e robô de busca?", answer: "Robôs de treino (GPTBot, ClaudeBot, Google-Extended) alimentam o aprendizado dos modelos de IA. Robôs de busca (OAI-SearchBot, Claude-SearchBot, PerplexityBot) buscam ao vivo pra citar seu site numa resposta. Bloquear um não afeta o outro." },
+  { question: "Se eu bloquear um robô de busca, o que acontece?", answer: "Você fica invisível nas respostas daquela IA — mesmo sem saber. É um erro silencioso: o robots.txt continua funcionando normalmente para o Google, então ninguém percebe até perder tráfego que nunca soube que tinha." },
+  { question: "Bloquear os robôs de treino é uma má ideia?", answer: "Não necessariamente — é uma escolha legítima (proteger conteúdo de virar dado de treinamento). O problema é bloquear sem saber, ou confundir treino com busca e perder citação por engano." },
+  { question: "Essa lista de robôs muda?", answer: "Sim. Novos motores de IA lançam robôs novos e os existentes mudam de comportamento. Revalide a cada trimestre." },
+];
+
+const appSchema = {
+  "@context": "https://schema.org", "@type": "WebApplication",
+  name: "Verificador de Acesso de IA",
+  applicationCategory: "BusinessApplication", operatingSystem: "Web",
+  url: `${SITE_URL}/ferramentas/verificador-acesso-ia`,
+  offers: { "@type": "Offer", price: "0", priceCurrency: "BRL" },
+  provider: { "@type": "Organization", name: BRAND_NAME },
+};
+
+const schema = [breadcrumbSchema(breadcrumbItems), faqPageSchema(faq), appSchema];
+---
+
+<BaseLayout
+  title="Verificador de Acesso de IA (robots.txt) | Grátis | Fórmula Mídia"
+  description="Confira se o seu site bloqueia sem querer os robôs de IA que poderiam citá-lo. Separa treino (GPTBot, ClaudeBot) de busca (OAI-SearchBot, PerplexityBot). Sem código."
+  path="/ferramentas/verificador-acesso-ia"
+  schema={schema}
+>
+  <Breadcrumbs items={breadcrumbItems} />
+  <header class="relative overflow-hidden px-6 pb-6 pt-16 text-center">
+    <div class="pointer-events-none absolute -left-24 -top-44 h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,rgba(228,41,41,.22),transparent_70%)] blur-[80px]"></div>
+    <div class="pointer-events-none absolute -right-28 -top-24 h-[380px] w-[380px] rounded-full bg-[radial-gradient(circle,rgba(180,20,20,.18),transparent_70%)] blur-[80px]"></div>
+    <div class="relative z-[2] mx-auto max-w-[700px]">
+      <a href="/ferramentas" class="mb-6 inline-flex items-center gap-1.5 font-heading text-[13px] font-semibold text-mid no-underline hover:text-ink">← Todas as ferramentas</a>
+      <div class="mb-6"><Badge label="Acesso de IA · robots.txt" /></div>
+      <h1 class="font-heading text-[clamp(28px,4.4vw,44px)] font-bold leading-[1.12] tracking-tight">
+        Seu site pode estar <span class="text-red-hi">invisível</span> pra IA sem você saber.
+      </h1>
+      <p class="mx-auto mt-4 max-w-[560px] text-base leading-relaxed text-mid">
+        Bloquear o robô errado no robots.txt corta sua visibilidade nas respostas de IA sem
+        avisar ninguém. Confira em segundos quais robôs seu site deixa entrar.
+      </p>
+    </div>
+  </header>
+
+  <div class="section-light px-6 pb-6 pt-8">
+    <div class="mx-auto max-w-[1140px]">
+      <VerificadorAcessoIa client:load />
+      <p class="mx-auto mt-6 max-w-[680px] text-center text-[11.5px] leading-relaxed text-dim">
+        Resultados anônimos e agregados podem ser usados em pesquisas públicas sobre o mercado
+        brasileiro. Veja a <a href="/privacidade" class="underline underline-offset-2 hover:text-ink">política de privacidade</a>.
+      </p>
+    </div>
+  </div>
+
+  <section class="px-6 pb-24 pt-10">
+    <div class="mx-auto max-w-[720px]">
+      <h2 class="font-heading text-[clamp(22px,3.2vw,30px)] font-bold leading-tight tracking-tight">
+        Todos os robôs grandes respeitam o robots.txt — o problema é bloquear o errado
+      </h2>
+      <div class="mt-6 flex flex-col gap-5 text-[15.5px] leading-relaxed text-mid">
+        <p>
+          Os provedores de IA rodam <strong class="text-ink">robôs separados para treino e para
+          busca</strong>. GPTBot e ClaudeBot alimentam o treino dos modelos; OAI-SearchBot,
+          Claude-SearchBot e PerplexityBot alimentam as respostas que aparecem para o usuário
+          agora, em tempo real.
+        </p>
+        <p>
+          Bloquear um <strong class="text-ink">não afeta o outro</strong>. Bloquear o GPTBot mas
+          permitir o OAI-SearchBot não treina o modelo, mas segue citável no ChatGPT Search. O
+          inverso também é verdade — e é aí que o erro custa caro: silencioso, comum, e só
+          percebido meses depois, quando alguém pergunta "por que a IA nunca me cita?".
+        </p>
+        <p class="rounded-card border border-border bg-glass p-5 text-[14px] text-dim">
+          <strong class="text-ink">Ressalva.</strong> Os nomes e o comportamento dos robôs de IA
+          mudam rápido. Revalide o seu robots.txt a cada trimestre. Última atualização desta
+          ferramenta: julho de 2026.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

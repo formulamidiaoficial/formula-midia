@@ -29,6 +29,13 @@ export const FERRAMENTAS: Ferramenta[] = [
     tag: "Presença local",
   },
   {
+    slug: "verificador-acesso-ia",
+    nome: "Verificador de Acesso de IA",
+    nomeCurto: "Acesso de IA",
+    desc: "Confira se o seu site bloqueia sem querer os robôs de IA que poderiam citá-lo — separa treino de busca.",
+    tag: "SEO / IA",
+  },
+  {
     slug: "medir-trafego-de-ia",
     nome: "Medir Tráfego de IA no GA4",
     nomeCurto: "Medir tráfego de IA",

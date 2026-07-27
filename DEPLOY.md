@@ -19,6 +19,11 @@ chave gratuita em [console.cloud.google.com](https://console.cloud.google.com) (
 "PageSpeed Insights API"), configure no `.env` e rode `npm run build` de novo antes de
 gerar o zip. `analise-de-log` não depende de nenhuma API — pode publicar sem essa etapa.
 
+`verificador-acesso-ia` depende do Worker do RUN-001 (`worker/`, já publicado em
+`https://formula-robots-proxy.formulamidia.workers.dev`). Sem `PUBLIC_ROBOTS_PROXY_URL`
+configurada no `.env` no momento do `npm run build`, a ferramenta mostra erro de conexão
+para todo mundo. Ver `worker/README.md` para redeployar o Worker se precisar.
+
 ## Antes de começar
 
 - Pacote pronto: `Downloads/formula-midia-astro-deploy.zip` (regenerado em 26/07, ~2.65MB, 170
@@ -69,10 +74,12 @@ dá pra restaurar o site antigo em minutos.
    `privacidade/`, `termos/`, `404.html`, `scripts/`, e a pasta `ferramentas/`
    (contendo `calculadora/`, `diagnostico/`, `simulador-de-site/`,
    `simulador-de-funil/`, `custo-real-da-midia/`, `auditor-de-perfil/`,
-   `medir-trafego-de-ia/`, **`velocidade-usuario-real/`, `analise-de-log/`,
-   `comparador-historico/`** — **26/07: as 4 primeiras foram movidas da raiz pra
-   cá, com 301 real no `.htaccess`; não devem mais existir soltas na raiz. As 3
-   últimas são novas, ainda não publicadas.**).
+   `medir-trafego-de-ia/`, `velocidade-usuario-real/`, `analise-de-log/`,
+   `comparador-historico/`, `friccao-do-formulario/`, `sinais-de-confianca/`,
+   **`verificador-acesso-ia/`** — **26/07: as 4 primeiras foram movidas da raiz
+   pra cá, com 301 real no `.htaccess`; não devem mais existir soltas na raiz.
+   `verificador-acesso-ia` é a mais nova (27/07), depende do Worker do RUN-001
+   — ver aviso acima.**).
 
    Se o Gerenciador de Arquivos não mostrar arquivos começando com `.`
    (como `.htaccess`) por padrão, ativar "Mostrar arquivos ocultos" nas
