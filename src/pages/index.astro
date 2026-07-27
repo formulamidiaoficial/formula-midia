@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Badge from "../components/ui/Badge.astro";
+import AnimatedLogo from "../components/sections/AnimatedLogo.astro";
 import BtnPrimary from "../components/ui/BtnPrimary.astro";
 import BtnGhost from "../components/ui/BtnGhost.astro";
 import FaqAccordion from "../components/ui/FaqAccordion.astro";
@@ -132,6 +133,9 @@ const comparisonRows = [
     <div class="pointer-events-none absolute -right-36 -top-20 h-[380px] w-[380px] rounded-full bg-[radial-gradient(circle,rgba(180,20,20,.20),transparent_70%)] blur-[70px]"></div>
 
     <div class="relative z-[2] mx-auto max-w-[820px]">
+      <div class="mb-7" data-in>
+        <AnimatedLogo size={132} />
+      </div>
       <Badge label="Parceira de Crescimento" />
       <h1 class="mt-6 font-heading text-[clamp(32px,5.2vw,54px)] font-bold leading-[1.1] tracking-tight" data-in>
         Os melhores negócios da sua cidade merecem crescer como os melhores do mundo.
