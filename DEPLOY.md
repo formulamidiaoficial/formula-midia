@@ -24,6 +24,11 @@ gerar o zip. `analise-de-log` não depende de nenhuma API — pode publicar sem 
 configurada no `.env` no momento do `npm run build`, a ferramenta mostra erro de conexão
 para todo mundo. Ver `worker/README.md` para redeployar o Worker se precisar.
 
+`auditoria-tecnica-seo` depende do Worker de crawl (`worker-site-audit/`, publicado em
+`https://formula-site-audit-crawler.formulamidia.workers.dev`, 27/07). Sem
+`PUBLIC_SITE_AUDIT_URL` configurada no `.env`, a ferramenta mostra erro de conexão. Ver
+`worker-site-audit/README.md` para redeployar.
+
 ## Antes de começar
 
 - Pacote pronto: `Downloads/formula-midia-astro-deploy.zip` (regenerado em 26/07, ~2.65MB, 170
