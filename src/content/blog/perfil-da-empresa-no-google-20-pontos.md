@@ -3,7 +3,7 @@ title: "Perfil da Empresa no Google: os 20 pontos que decidem se você aparece n
 description: "Nota isolada não decide nada — o que importa é como você se compara ao concorrente que aparece na sua frente. As categorias que pesam de verdade."
 pilar: "P6"
 ferramentasRelacionadas: ["auditor-de-perfil"]
-artigosRelacionados: ["presenca-local-e-conformidade"]
+artigosRelacionados: ["presenca-local-e-conformidade", "lgpd-checklist-site-pequeno"]
 datePublished: 2026-10-19
 faq:
   - question: "Ter nota alta garante aparecer em primeiro no mapa?"
@@ -36,7 +36,7 @@ Cinco dos vinte pontos de uma avaliação completa são relativos, não absoluto
 
 ## Quanto cada categoria pesa de verdade
 
-Estudos de fatores de ranqueamento local (que cruzam dado de posição real no mapa com centenas de sinais) convergem numa hierarquia parecida: o próprio Perfil da Empresa (categoria, atributos, proximidade) responde por perto de um terço do peso total — a fatia isolada mais pesada. Sinais on-page do site vêm em seguida, avaliações depois disso, e por último os sinais de comportamento (cliques, ligações pelo perfil) e citações externas (nome/endereço/telefone consistentes em outros diretórios). Na prática: otimizar o próprio perfil ainda é a alavanca mais forte — mas citação externa consistente (inclusive menção em fóruns e comunidades, que o Google também rastreia como sinal informal de relevância local) fecha a lacuna que o perfil sozinho não cobre.
+O [levantamento anual de fatores de ranqueamento local da Whitespark](https://whitespark.ca/local-search-ranking-factors/) — que reúne a avaliação de dezenas de especialistas em SEO local sobre mais de cem sinais — confirma essa hierarquia: o próprio Perfil da Empresa (categoria, atributos, proximidade) responde por cerca de 32% do peso total nos resultados de mapa (Local Pack) — perto de um terço, a fatia isolada mais pesada. Avaliações vêm em seguida (por volta de 20%), sinais on-page do site logo depois (perto de 19%), e por último sinais de link, citação externa (nome/endereço/telefone consistentes em outros diretórios) e comportamento (cliques, ligações pelo perfil) dividem o restante. Na prática: otimizar o próprio perfil ainda é a alavanca mais forte — mas citação externa consistente (inclusive menção em fóruns e comunidades, que o Google também rastreia como sinal informal de relevância local) fecha a lacuna que o perfil sozinho não cobre.
 
 ## Como ver isso com contexto competitivo real
 

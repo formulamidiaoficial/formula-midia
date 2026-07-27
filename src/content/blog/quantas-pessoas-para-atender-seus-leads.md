@@ -3,7 +3,7 @@ title: "Quantas pessoas você precisa pra atender X leads por mês?"
 description: "A conta rápida de dimensionamento comercial, na direção inversa: partindo de uma meta de leads, não do time que já existe."
 pilar: "P2"
 ferramentasRelacionadas: ["capacidade-comercial", "meta-reversa"]
-artigosRelacionados: ["sua-operacao-aguenta-crescer"]
+artigosRelacionados: ["sua-operacao-aguenta-crescer", "sinais-time-comercial-sobrecarregado"]
 datePublished: 2026-09-21
 faq:
   - question: "Essa conta substitui um planejamento de RH?"

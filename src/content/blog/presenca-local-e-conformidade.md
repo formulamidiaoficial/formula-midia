@@ -3,7 +3,7 @@ title: "Presença local e conformidade"
 description: "O básico que decide se você aparece no mapa e se você tem risco jurídico no próprio site — o Perfil da Empresa no Google e a LGPD, explicados juntos."
 pilar: "P6"
 ferramentasRelacionadas: ["auditor-de-perfil", "gerador-politica-privacidade-lgpd"]
-artigosRelacionados: ["quanto-seu-cliente-custa-e-vale"]
+artigosRelacionados: ["quanto-seu-cliente-custa-e-vale", "perfil-da-empresa-no-google-20-pontos", "lgpd-checklist-site-pequeno"]
 datePublished: 2026-08-24
 faq:
   - question: "O Perfil da Empresa no Google substitui o site?"

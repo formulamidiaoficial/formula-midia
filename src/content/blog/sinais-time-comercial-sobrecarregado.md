@@ -3,7 +3,7 @@ title: "Sinais de que seu time comercial já está sobrecarregado"
 description: "Antes do cliente reclamar, a operação já está avisando. Os sinais que costumam aparecer primeiro — e o que fazer quando aparecem."
 pilar: "P2"
 ferramentasRelacionadas: ["capacidade-comercial", "custo-do-lead-perdido"]
-artigosRelacionados: ["sua-operacao-aguenta-crescer"]
+artigosRelacionados: ["sua-operacao-aguenta-crescer", "quantas-pessoas-para-atender-seus-leads"]
 datePublished: 2026-09-21
 faq:
   - question: "Um sinal isolado já é motivo de alarme?"
