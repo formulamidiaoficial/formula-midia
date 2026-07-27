@@ -1,0 +1,16 @@
+# Cloudflare Worker — RUN-006 (agregação anônima do /placar).
+# Deploy:  cd worker-placar  →  npx wrangler login  →  npx wrangler deploy
+name = "formula-placar-stats"
+main = "stat.js"
+compatibility_date = "2026-01-01"
+
+# Analytics Engine — inclusa no plano gratuito do Workers, sem chave nem conta
+# separada pra escrever (só pra CONSULTAR o agregado depois é que precisa de um
+# API Token do Cloudflare — ver README.md, seção "Consultar o agregado").
+[[analytics_engine_datasets]]
+binding = "PLACAR_STATS"
+dataset = "formula_placar_stats"
+
+# Guardrail 4 (OPCIONAL) — rate limit por IP, mesmo padrão do RUN-001/002/CONCIERGE.
+# O Worker funciona sem isto. Pra ligar, crie um binding "RATE_LIMITER" no painel
+# (Workers → este worker → Settings → Bindings).

@@ -1,6 +1,7 @@
 import { useEffect, useId, useMemo, useState } from "react";
 import { waLink } from "../../data/schema";
 import { trackEvent } from "../../lib/track";
+import OptInPlacar from "./OptInPlacar";
 
 // TOOL-004 (formula-foundation/CAPABILITIES/TOOL-004-mer-vs-roas.md).
 // MER (Marketing Efficiency Ratio) = receita total do caixa / investimento
@@ -10,6 +11,14 @@ import { trackEvent } from "../../lib/track";
 const REF = "mer-roas-03";
 
 type Severidade = "saudavel" | "investigar" | "problema";
+
+// RUN-006 — mesmas faixas da leitura de severidade acima, reaproveitadas pro
+// opt-in do /placar (worker-placar/stat.js exige categoria fixa, não valor cru).
+function faixaDoGap(gapAbsPct: number): string {
+  if (gapAbsPct < 15) return "<15";
+  if (gapAbsPct < 40) return "15-40";
+  return "40+";
+}
 
 function leituraDe(gapAbsPct: number): { id: Severidade; label: string; cor: string; texto: string } {
   if (gapAbsPct < 15) {
@@ -103,6 +112,12 @@ export default function MerVsRoas() {
           MER é conceito consolidado de mercado (e-commerce/DTC) — não é fórmula proprietária da
           Fórmula Mídia.
         </p>
+
+        <OptInPlacar
+          ferramentaId="mer-vs-roas"
+          metrica="gap_mer_roas_pontos"
+          faixaDeValor={inv > 0 && roas > 0 ? faixaDoGap(Math.abs(gapPct)) : null}
+        />
       </div>
     </div>
   );

@@ -1,6 +1,7 @@
 import { useEffect, useId, useMemo, useState } from "react";
 import { waLink } from "../../data/schema";
 import { trackEvent } from "../../lib/track";
+import OptInPlacar from "./OptInPlacar";
 
 // TOOL-002 (formula-foundation/CAPABILITIES/TOOL-002-cac-ltv-payback.md).
 // Unit economics padrão de mercado — não é hipótese comportamental (diferente
@@ -15,6 +16,17 @@ function fmtBRL(v: number): string {
 }
 
 type Leitura = "saudavel" | "atencao" | "critico";
+
+// RUN-006 — faixas fixas pro opt-in do /placar (worker-placar/stat.js exige
+// exatamente essas categorias, não aceita valor cru).
+function faixaDaRazao(razao: number): string {
+  if (razao < 1) return "<1";
+  if (razao < 2) return "1-2";
+  if (razao < 3) return "2-3";
+  if (razao < 4) return "3-4";
+  if (razao < 5) return "4-5";
+  return "5+";
+}
 
 function leituraDe(razao: number): { id: Leitura; label: string; cor: string } {
   if (razao >= BENCHMARK_LTV_CAC) return { id: "saudavel", label: "Saudável", cor: "text-[#1B7F4B]" };
@@ -113,6 +125,12 @@ export default function CacLtvPayback() {
           Benchmark 3:1: David Skok, "SaaS Metrics 2.0" (forEntrepreneurs.com) — amplamente replicado
           em unit economics de recorrência.
         </p>
+
+        <OptInPlacar
+          ferramentaId="cac-ltv-payback"
+          metrica="razao_ltv_cac"
+          faixaDeValor={cac > 0 ? faixaDaRazao(razao) : null}
+        />
       </div>
     </div>
   );

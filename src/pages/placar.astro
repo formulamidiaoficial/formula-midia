@@ -38,16 +38,19 @@ const schema = [breadcrumbSchema(breadcrumbItems)];
   <section class="px-6 pb-16 pt-6">
     <div class="mx-auto max-w-[760px]">
       <div class="rounded-card border border-red/28 bg-gradient-to-b from-red/8 to-glass p-7">
-        <h2 class="mb-3 font-heading text-[15px] font-semibold text-ink">Por que isto ainda não existe</h2>
+        <h2 class="mb-3 font-heading text-[15px] font-semibold text-ink">Por que isto ainda não tem número</h2>
         <p class="text-[14px] leading-relaxed text-mid">
-          Hoje, todo cálculo nas nossas ferramentas acontece só no seu navegador — nada é enviado
-          nem guardado. Isso é uma escolha deliberada de privacidade (ver <a href="/metodologia" class="text-ink underline underline-offset-2">nossa metodologia</a>).
-          Pra existir um benchmark real, precisamos primeiro decidir — com muito cuidado — um
-          mecanismo de participação **opt-in explícita**: você escolhe, ativamente, se o seu número
-          (sempre anônimo, nunca identificável) entra na estatística agregada. Essa decisão ainda
-          está em avaliação. O texto de privacidade de cada ferramenta já avisa que resultados
-          agregados podem ser usados em pesquisa pública — mas hoje nenhum dado é de fato coletado
-          pra isso.
+          Todo cálculo nas nossas ferramentas continua acontecendo só no seu navegador — nada é
+          enviado nem guardado, a menos que você marque, ativamente, a caixa de
+          <span class="text-ink">"contribuir anonimamente"</span> que já existe em algumas
+          ferramentas (CAC·LTV·Payback, MER×ROAS, Custo do Lead Perdido, Verificador de Acesso de
+          IA — as próximas entram aos poucos). Quando marcada, só um número numa faixa fixa é
+          enviado — nunca domínio, nome ou e-mail (ver <a href="/metodologia" class="text-ink underline underline-offset-2">nossa metodologia</a>).
+        </p>
+        <p class="mt-3 text-[14px] leading-relaxed text-mid">
+          O mecanismo existe agora, mas os números públicos só aparecem aqui quando cada faixa
+          juntar pelo menos 100 contribuições — nossa própria regra contra publicar estatística de
+          amostra pequena demais pra significar algo. Até lá, é honesto dizer: <span class="text-ink">estamos coletando, ainda não dá pra mostrar</span>.
         </p>
       </div>
 

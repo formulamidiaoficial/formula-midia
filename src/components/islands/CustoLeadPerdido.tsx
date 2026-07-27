@@ -1,6 +1,7 @@
 import { useEffect, useId, useMemo, useState } from "react";
 import { waLink } from "../../data/schema";
 import { trackEvent } from "../../lib/track";
+import OptInPlacar from "./OptInPlacar";
 
 // TOOL-001 (formula-foundation/CAPABILITIES/TOOL-001-custo-lead-perdido.md).
 // 100% client-side. Multiplicadores derivados dos 3 achados do estudo
@@ -179,6 +180,12 @@ export default function CustoLeadPerdido() {
           Fonte: Oldroyd, McElheran & Elkington, "The Short Life of Online Sales Leads" (HBR/MIT,
           2011). Consultado em 2026-07-26.
         </p>
+
+        <OptInPlacar
+          ferramentaId="custo-do-lead-perdido"
+          metrica="faixa_tempo_resposta_minutos"
+          faixaDeValor={faixaAtual.id}
+        />
       </div>
     </div>
   );

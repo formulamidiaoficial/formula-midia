@@ -1,6 +1,15 @@
 import { useMemo, useRef, useState } from "react";
 import { waLink } from "../../data/schema";
 import { trackEvent } from "../../lib/track";
+import OptInPlacar from "./OptInPlacar";
+
+// RUN-006 — faixa fixa pro opt-in do /placar (worker-placar/stat.js exige
+// categoria, não contagem crua).
+function faixaDeBloqueio(qtdBloqueados: number): string {
+  if (qtdBloqueados === 0) return "nenhum";
+  if (qtdBloqueados <= 2) return "1-2";
+  return "3+";
+}
 
 // TOOL-014 (formula-foundation/CAPABILITIES/TOOL-014-verificador-acesso-ia.md), ferramenta 02.
 // Busca o robots.txt de um site de terceiro exige servidor (CORS impede o navegador de
@@ -292,6 +301,12 @@ export default function VerificadorAcessoIa() {
             >
               Quero entender o que isso significa →
             </a>
+
+            <OptInPlacar
+              ferramentaId="verificador-acesso-ia"
+              metrica="bloqueia_bot_ia"
+              faixaDeValor={resultado.encontrado ? faixaDeBloqueio(resultado.bloqueados.length) : null}
+            />
           </>
         )}
       </div>
