@@ -14,6 +14,10 @@ export interface Servico {
   ferramentaSlug?: string; // ferramenta de diagnóstico relacionada (se no ar)
   ferramentaNome?: string;
   waMsg: string; // mensagem pré-preenchida do WhatsApp
+  // CONTENT-META-017 (formula-foundation) — quando presente, o serviço é um
+  // "Diagnóstico [Segmento]" e também aparece na página do segmento
+  // correspondente, não só na lista geral de /solucoes.
+  segmentoSlug?: string;
 }
 
 export const SERVICOS: Servico[] = [
@@ -124,5 +128,31 @@ export const SERVICOS: Servico[] = [
     ferramentaSlug: "auditor-de-perfil",
     ferramentaNome: "Auditor de Perfil",
     waMsg: "Olá! Quero a Otimização de Perfil no Google (R$ 1.490). Rodei o auditor.",
+  },
+  {
+    // CONTENT-META-017 (formula-foundation, 27/07) — primeiro "Diagnóstico por
+    // Segmento": a peça que faltava entre o diagnóstico grátis genérico
+    // (/ferramentas/diagnostico) e o conserto de escopo fixo (os serviços
+    // acima). Preço ANCORADO no "Diagnóstico Avançado de Rastreio" (mesmo
+    // esforço: auditoria + relatório, sem execução) — não é número novo.
+    // status: proposto — aguardando confirmação final de Fabiano antes de
+    // tratar como preço definitivo (ver o doc pra decisão de abatimento).
+    slug: "diagnostico-de-agenda-clinicas",
+    nome: "Diagnóstico de Agenda — Clínicas",
+    tag: "Diagnóstico por segmento",
+    conserta:
+      "Sua agenda oscila e você não sabe se é falta de tráfego, lead perdido no WhatsApp, ou risco de conformidade no anúncio — sem saber qual, todo conserto é chute.",
+    incluso: [
+      "Auditoria de conformidade dos anúncios ativos (CFM/CRO)",
+      "Diagnóstico de rastreio e atribuição do lead até o agendamento",
+      "Auditoria de fricção no atendimento via WhatsApp",
+      "Relatório final: nota por dimensão + os 3 pontos que mais custam agenda, priorizados",
+    ],
+    prazo: "1 a 2 semanas",
+    preco: "R$ 3.990",
+    ferramentaSlug: "diagnostico",
+    ferramentaNome: "Diagnóstico de Crescimento",
+    waMsg: "Olá! Quero o Diagnóstico de Agenda para Clínicas (R$ 3.990).",
+    segmentoSlug: "clinicas",
   },
 ];
