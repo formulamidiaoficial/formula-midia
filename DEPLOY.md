@@ -8,10 +8,22 @@ compilada (sem código-fonte); o novo é 100% HTML/CSS estático gerado pelo
 Astro. Não é um ajuste incremental — é uma troca completa de arquitetura.
 Por isso o passo 1 (backup) não é opcional.
 
+## Aviso antes de publicar as 3 ferramentas novas
+
+`velocidade-usuario-real` e `comparador-historico` usam a API do Google (PageSpeed
+Insights / CrUX). Sem uma chave própria (`PUBLIC_PAGESPEED_API_KEY` configurada no build),
+a cota anônima do Google já está esgotada e a maioria dos visitantes vai ver erro de
+quota na `velocidade-usuario-real` (a `comparador-historico` testou sem esse problema, mas
+usa a mesma chave — pode esgotar com uso real). Antes de anunciar essas duas, crie uma
+chave gratuita em [console.cloud.google.com](https://console.cloud.google.com) (ativar
+"PageSpeed Insights API"), configure no `.env` e rode `npm run build` de novo antes de
+gerar o zip. `analise-de-log` não depende de nenhuma API — pode publicar sem essa etapa.
+
 ## Antes de começar
 
-- Pacote pronto: `Downloads/formula-midia-astro-deploy.zip` (regenerado em 26/07, ~2.72MB, 160
-  arquivos — inclui as 4 ferramentas movidas pra `/ferramentas/` + as 3 novas que já estavam prontas).
+- Pacote pronto: `Downloads/formula-midia-astro-deploy.zip` (regenerado em 26/07, ~2.63MB, 166
+  arquivos — inclui as 10 ferramentas em `/ferramentas/` (as 7 já publicadas + **velocidade-usuario-real**,
+  **analise-de-log** e **comparador-historico**, ainda não publicadas) e o tema claro/nav corrigido.
 - Ele já contém tudo: HTML de todas as páginas, `/links`, `.htaccess`,
   `robots.txt`, `sitemap-index.xml`, `manifest.webmanifest`, favicon, imagens,
   CSS/JS.
@@ -55,8 +67,10 @@ dá pra restaurar o site antigo em minutos.
    `privacidade/`, `termos/`, `404.html`, `scripts/`, e a pasta `ferramentas/`
    (contendo `calculadora/`, `diagnostico/`, `simulador-de-site/`,
    `simulador-de-funil/`, `custo-real-da-midia/`, `auditor-de-perfil/`,
-   `medir-trafego-de-ia/` — **26/07: as 4 primeiras foram movidas da raiz pra
-   cá, com 301 real no `.htaccess`; não devem mais existir soltas na raiz**).
+   `medir-trafego-de-ia/`, **`velocidade-usuario-real/`, `analise-de-log/`,
+   `comparador-historico/`** — **26/07: as 4 primeiras foram movidas da raiz pra
+   cá, com 301 real no `.htaccess`; não devem mais existir soltas na raiz. As 3
+   últimas são novas, ainda não publicadas.**).
 
    Se o Gerenciador de Arquivos não mostrar arquivos começando com `.`
    (como `.htaccess`) por padrão, ativar "Mostrar arquivos ocultos" nas
