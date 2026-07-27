@@ -3,7 +3,7 @@ title: "LCP, CLS e INP: o que cada métrica do Core Web Vitals realmente mede"
 description: "Três siglas, três problemas diferentes. O que cada uma mede, por que o Google usa como sinal de ranking, e como melhorar cada uma."
 pilar: "P5"
 ferramentasRelacionadas: ["velocidade-usuario-real", "auditoria-tecnica-seo"]
-artigosRelacionados: ["seu-site-e-rapido-e-bem-visto-pelo-google"]
+artigosRelacionados: ["seu-site-e-rapido-e-bem-visto-pelo-google", "rapido-no-computador-lento-no-celular"]
 datePublished: 2026-10-12
 faq:
   - question: "As três métricas pesam igual no ranking do Google?"
@@ -38,7 +38,7 @@ Mede quanto tempo a página demora pra reagir visualmente depois que alguém cli
 
 **Como melhorar:** carregar scripts de terceiros de forma assíncrona, adiar o que não é essencial pro primeiro clique, revisar plugins/scripts acumulados ao longo do tempo.
 
-Vale saber que essa é a métrica onde mais site brasileiro falha: medições de campo mostram algo perto de 40% das origens mobile não passando no limiar "bom" de INP — a métrica mais recente do trio, e a menos otimizada até agora. Boa parte da causa nem é código próprio: sites comerciais típicos carregam bem mais de uma dezena de scripts de terceiros (chat, pixel de anúncio, analytics, heatmap) antes mesmo do código do próprio site rodar — cada um concorrendo pela mesma thread principal no momento em que o visitante tenta clicar em algo.
+Vale saber que essa é a métrica onde mais site falha: dados de campo do [Web Almanac 2025 da HTTP Archive, capítulo de Performance](https://almanac.httparchive.org/en/2025/performance) (CrUX de julho de 2025) mostram que 77% das origens mobile têm INP "bom" — o que significa que quase 1 em cada 4 (24%: 21% "precisa melhorar" + 3% "ruim") ainda fica abaixo do limiar recomendado — a métrica mais recente do trio, e a menos otimizada até agora. Boa parte da causa nem é código próprio: o [capítulo de Third Parties do mesmo Web Almanac 2025](https://almanac.httparchive.org/en/2025/third-parties) mostra que a mediana de requisições de terceiros por página no mobile já vai de 79 (sites em geral) a mais de 100 (sites de maior tráfego) — script é a categoria isolada mais comum entre elas (chat, pixel de anúncio, analytics, heatmap) — cada uma concorrendo pela mesma thread principal no momento em que o visitante tenta clicar em algo.
 
 ## Como ver as três juntas no seu site
 
