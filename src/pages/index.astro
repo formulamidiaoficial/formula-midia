@@ -208,7 +208,7 @@ const comparisonRows = [
         ].map((s) => (
           <a
             href={s.href}
-            class={`flex flex-col rounded-card border p-7 no-underline transition-all hover:-translate-y-1 ${s.featured ? "border-red/30 bg-gradient-to-b from-red/7 to-glass" : "border-border bg-glass hover:border-red/30"}`}
+            class={`js-tilt flex flex-col rounded-card border p-7 no-underline transition-all hover:-translate-y-1 ${s.featured ? "border-red/30 bg-gradient-to-b from-red/7 to-glass" : "border-border bg-glass hover:border-red/30"}`}
             data-in
           >
             {s.tag && <span class="mb-3 self-start rounded-full bg-red px-3 py-1 font-heading text-[10.5px] font-bold tracking-wide text-white">{s.tag}</span>}
