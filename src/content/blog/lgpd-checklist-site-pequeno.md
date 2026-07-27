@@ -11,7 +11,7 @@ faq:
   - question: "Site pequeno realmente precisa se preocupar com LGPD?"
     answer: "Sim — a lei não isenta empresa pequena. Qualquer site que colete dado pessoal (mesmo só um formulário de contato) está sujeito às mesmas obrigações básicas."
   - question: "A ANPD realmente fiscaliza empresa pequena?"
-    answer: "Já fiscalizou — a primeira multa aplicada pela ANPD foi contra uma microempresa, não uma corporação grande. A fase inicial, mais educativa, de fiscalização da LGPD já deu lugar a uma postura mais ativa — porte pequeno deixou de ser proteção informal contra fiscalização."
+    answer: "Já fiscalizou — a primeira multa da ANPD por descumprimento à LGPD (6 de julho de 2023, publicada no Diário Oficial) foi contra a Telekall Infoservice, uma microempresa que vendia listas de contato de WhatsApp para campanha eleitoral sem base legal — R$ 14.400 no total, por infração aos artigos 7º e 41 da LGPD (fonte: nota oficial em gov.br/anpd). Porte pequeno não é proteção informal contra fiscalização."
 howTo:
   name: "Checklist mínimo de LGPD para site pequeno"
   steps:
@@ -27,7 +27,7 @@ howTo:
       text: "Dado sensível, transferência internacional ou porte que exige DPO formal não têm solução de template."
 ---
 
-Muito dono de site pequeno acha que LGPD é assunto só de empresa grande. Não é — a lei se aplica a qualquer site que colete dado pessoal, mesmo que seja só um formulário de contato, e a fiscalização já provou isso na prática: a **primeira multa aplicada pela ANPD** (Autoridade Nacional de Proteção de Dados) foi justamente contra uma microempresa, não uma corporação grande. Este é o mínimo prático, sem precisar de departamento jurídico pra começar.
+Muito dono de site pequeno acha que LGPD é assunto só de empresa grande. Não é — a lei se aplica a qualquer site que colete dado pessoal, mesmo que seja só um formulário de contato, e a fiscalização já provou isso na prática: a **primeira multa aplicada pela ANPD** (Autoridade Nacional de Proteção de Dados) — 6 de julho de 2023, [nota oficial da ANPD](https://www.gov.br/anpd/pt-br/assuntos/noticias/anpd-aplica-a-primeira-multa-por-descumprimento-a-lgpd) — foi justamente contra uma microempresa (Telekall Infoservice, R$ 14.400 no total), não uma corporação grande. Este é o mínimo prático, sem precisar de departamento jurídico pra começar.
 
 ## 1. Ter uma política de privacidade que reflita o que o site realmente coleta
 
