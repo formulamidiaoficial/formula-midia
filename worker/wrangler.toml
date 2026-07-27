@@ -1,0 +1,11 @@
+# Cloudflare Worker — RUN-001 (proxy de robots.txt).
+# Deploy:  cd worker  →  npx wrangler login  →  npx wrangler deploy
+name = "formula-robots-proxy"
+main = "robots-proxy.js"
+compatibility_date = "2026-01-01"
+
+# Guardrail 4 (OPCIONAL) — rate limit por IP.
+# O Worker funciona SEM isto (os guardrails 1/2/3 já protegem). Para ligar,
+# crie um binding de rate limit no painel do Cloudflare (Workers → este worker →
+# Settings → Bindings) OU adicione a config conforme a doc atual do wrangler,
+# usando o nome de binding "RATE_LIMITER". O código já checa `if (env.RATE_LIMITER)`.
