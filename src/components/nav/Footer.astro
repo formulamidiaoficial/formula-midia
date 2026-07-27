@@ -1,5 +1,6 @@
 ---
 import { waLink } from "../../data/schema";
+import { FERRAMENTAS } from "../../data/ferramentas";
 
 const columns = [
   {
@@ -13,16 +14,9 @@ const columns = [
     ],
   },
   {
+    // Fonte única em src/data/ferramentas.ts — não listar ferramenta aqui direto.
     title: "Ferramentas gratuitas",
-    links: [
-      { label: "Diagnóstico de crescimento", href: "/ferramentas/diagnostico" },
-      { label: "Calculadora de escopo", href: "/ferramentas/calculadora" },
-      { label: "Simulador de site", href: "/ferramentas/simulador-de-site" },
-      { label: "Simulador de funil", href: "/ferramentas/simulador-de-funil" },
-      { label: "Custo real da mídia", href: "/ferramentas/custo-real-da-midia" },
-      { label: "Auditor de perfil", href: "/ferramentas/auditor-de-perfil" },
-      { label: "Medir tráfego de IA", href: "/ferramentas/medir-trafego-de-ia" },
-    ],
+    links: FERRAMENTAS.map((f) => ({ label: f.nomeCurto, href: `/ferramentas/${f.slug}` })),
   },
   {
     title: "Quem atendemos",

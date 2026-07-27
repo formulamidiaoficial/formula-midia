@@ -3,68 +3,14 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import Badge from "../../components/ui/Badge.astro";
 import Breadcrumbs from "../../components/ui/Breadcrumbs.astro";
 import { breadcrumbSchema, SITE_URL } from "../../data/schema";
+import { FERRAMENTAS } from "../../data/ferramentas";
 
 const breadcrumbItems = [
   { name: "Home", path: "/" },
   { name: "Ferramentas", path: "/ferramentas" },
 ];
 
-const ferramentas = [
-  {
-    slug: "custo-real-da-midia",
-    nome: "Custo Real da Mídia",
-    desc: "Quanto o seu anúncio realmente custa em 2026, com tributos, IOF e spread. O Gerenciador mostra a verba; a conta mostra outra coisa.",
-    tag: "Tráfego pago",
-  },
-  {
-    slug: "auditor-de-perfil",
-    nome: "Auditor de Perfil",
-    desc: "20 pontos do seu Perfil da Empresa no Google, comparados com 3 concorrentes. Descubra o que falta para passar o vizinho no mapa.",
-    tag: "Presença local",
-  },
-  {
-    slug: "medir-trafego-de-ia",
-    nome: "Medir Tráfego de IA no GA4",
-    desc: "O GA4 ignora a Perplexity e perde até 70% do tráfego de IA. Gere o grupo de canais que captura tudo e veja quanto você está perdendo.",
-    tag: "Medição · IA",
-  },
-  {
-    slug: "diagnostico",
-    nome: "Diagnóstico de Crescimento",
-    desc: "Responda 6 perguntas rápidas e descubra a maturidade de crescimento do seu negócio e o próximo passo mais importante.",
-    tag: "Growth",
-  },
-  {
-    slug: "calculadora",
-    nome: "Calculadora de SEO & GEO",
-    desc: "Monte o escopo do seu projeto de SEO e GEO: landing pages, cidades e objetivo de ranking.",
-    tag: "SEO & GEO",
-  },
-  {
-    slug: "simulador-de-funil",
-    nome: "Simulador de Funil",
-    desc: "Informe tráfego, conversão e ticket médio e descubra em 1 minuto onde está o maior vazamento do seu funil.",
-    tag: "Growth",
-  },
-  {
-    slug: "simulador-de-site",
-    nome: "Simulador de Site",
-    desc: "Escolha quantas páginas, se precisa de loja virtual e de blog. Em 1 minuto você tem o escopo do seu site.",
-    tag: "Criação de sites",
-  },
-  {
-    slug: "velocidade-usuario-real",
-    nome: "Velocidade + Usuário Real",
-    desc: "Nota de performance e experiência real dos seus usuários, lado a lado — direto da API oficial do Google.",
-    tag: "Site / técnico",
-  },
-  {
-    slug: "analise-de-log",
-    nome: "Análise de Log de Servidor",
-    desc: "O que o Google e os bots de IA realmente rastrearam no seu site — direto do log, processado só no seu navegador.",
-    tag: "SEO / avançado",
-  },
-];
+const ferramentas = FERRAMENTAS;
 
 const listSchema = {
   "@context": "https://schema.org",

@@ -1,5 +1,6 @@
 ---
 import { waLink } from "../../data/schema";
+import { FERRAMENTAS } from "../../data/ferramentas";
 
 interface NavLink {
   label: string;
@@ -13,15 +14,9 @@ const serviceLinks: NavLink[] = [
   { label: "SEO & GEO", href: "/seo" },
 ];
 
-const toolLinks: NavLink[] = [
-  { label: "Diagnóstico de Crescimento", href: "/ferramentas/diagnostico" },
-  { label: "Calculadora de SEO & GEO", href: "/ferramentas/calculadora" },
-  { label: "Simulador de Site", href: "/ferramentas/simulador-de-site" },
-  { label: "Simulador de Funil", href: "/ferramentas/simulador-de-funil" },
-  { label: "Custo Real da Mídia", href: "/ferramentas/custo-real-da-midia" },
-  { label: "Auditor de Perfil", href: "/ferramentas/auditor-de-perfil" },
-  { label: "Medir Tráfego de IA (GA4)", href: "/ferramentas/medir-trafego-de-ia" },
-];
+// Fonte única em src/data/ferramentas.ts — nunca listar ferramenta aqui direto
+// (já dessincronizou duas vezes quando cada lugar tinha a própria lista).
+const toolLinks: NavLink[] = FERRAMENTAS.map((f) => ({ label: f.nome, href: `/ferramentas/${f.slug}` }));
 
 // Grouped once and reused for both the desktop dropdowns and the mobile
 // menu, so adding/removing a link never needs to happen in two places
