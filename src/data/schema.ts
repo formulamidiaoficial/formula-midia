@@ -60,6 +60,43 @@ export function faqPageSchema(items: FaqItem[]) {
   };
 }
 
+export interface ItemListEntry {
+  name: string;
+  url: string;
+}
+
+export function itemListSchema(items: ItemListEntry[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: items.map((item, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: item.name,
+      url: item.url,
+    })),
+  };
+}
+
+export interface HowToStep {
+  name: string;
+  text: string;
+}
+
+export function howToSchema(opts: { name: string; description: string; steps: HowToStep[] }) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: opts.name,
+    description: opts.description,
+    step: opts.steps.map((s) => ({
+      "@type": "HowToStep",
+      name: s.name,
+      text: s.text,
+    })),
+  };
+}
+
 export function definedTermSchema(opts: { termo: string; definicao: string; url: string }) {
   return {
     "@context": "https://schema.org",

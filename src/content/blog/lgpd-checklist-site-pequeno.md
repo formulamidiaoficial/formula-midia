@@ -12,6 +12,19 @@ faq:
     answer: "Sim — a lei não isenta empresa pequena. Qualquer site que colete dado pessoal (mesmo só um formulário de contato) está sujeito às mesmas obrigações básicas."
   - question: "A ANPD realmente fiscaliza empresa pequena?"
     answer: "Já fiscalizou — a primeira multa aplicada pela ANPD foi contra uma microempresa, não uma corporação grande. A fase inicial, mais educativa, de fiscalização da LGPD já deu lugar a uma postura mais ativa — porte pequeno deixou de ser proteção informal contra fiscalização."
+howTo:
+  name: "Checklist mínimo de LGPD para site pequeno"
+  steps:
+    - name: "Tenha uma política de privacidade que reflita o que o site realmente coleta"
+      text: "Não um texto genérico copiado de outro site — um documento que lista exatamente o que aquele site coleta e por quê."
+    - name: "Deixe claro qual é a base legal de cada coleta"
+      text: "Justifique cada tipo de dado coletado — consentimento, execução de contrato ou legítimo interesse."
+    - name: "Tenha um canal claro de contato do responsável"
+      text: "Disponibilize um e-mail ou canal visível pra quem quiser pedir acesso, correção ou exclusão dos próprios dados."
+    - name: "Não guarde dado além do necessário"
+      text: "Defina por quanto tempo cada tipo de dado é mantido e elimine ou anonimize depois desse prazo."
+    - name: "Saiba identificar os casos que precisam de advogado"
+      text: "Dado sensível, transferência internacional ou porte que exige DPO formal não têm solução de template."
 ---
 
 Muito dono de site pequeno acha que LGPD é assunto só de empresa grande. Não é — a lei se aplica a qualquer site que colete dado pessoal, mesmo que seja só um formulário de contato, e a fiscalização já provou isso na prática: a **primeira multa aplicada pela ANPD** (Autoridade Nacional de Proteção de Dados) foi justamente contra uma microempresa, não uma corporação grande. Este é o mínimo prático, sem precisar de departamento jurídico pra começar.

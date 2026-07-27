@@ -13,6 +13,14 @@ const blog = defineCollection({
     ferramentasRelacionadas: z.array(z.string()), // slugs de src/data/ferramentas.ts
     artigosRelacionados: z.array(z.string()).default([]), // slugs de outros posts do blog
     faq: z.array(z.object({ question: z.string(), answer: z.string() })).default([]),
+    // HowTo schema (GEO — CONTENT-META-011 §3) só faz sentido quando o
+    // artigo ensina um processo em passos de verdade — opcional, não forçado.
+    howTo: z
+      .object({
+        name: z.string(),
+        steps: z.array(z.object({ name: z.string(), text: z.string() })),
+      })
+      .optional(),
     datePublished: z.coerce.date(),
     dateModified: z.coerce.date().optional(),
   }),

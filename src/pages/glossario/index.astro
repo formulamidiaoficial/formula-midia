@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Breadcrumbs from "../../components/ui/Breadcrumbs.astro";
-import { breadcrumbSchema } from "../../data/schema";
+import { breadcrumbSchema, itemListSchema, SITE_URL } from "../../data/schema";
 import { GLOSSARIO } from "../../data/glossario";
 
 const breadcrumbItems = [
@@ -10,7 +10,10 @@ const breadcrumbItems = [
 ];
 
 const categorias = [...new Set(GLOSSARIO.map((t) => t.categoria))];
-const schema = [breadcrumbSchema(breadcrumbItems)];
+const listSchema = itemListSchema(
+  GLOSSARIO.map((t) => ({ name: t.termo, url: `${SITE_URL}/glossario/${t.slug}` }))
+);
+const schema = [breadcrumbSchema(breadcrumbItems), listSchema];
 ---
 
 <BaseLayout

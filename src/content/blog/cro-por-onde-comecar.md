@@ -12,6 +12,17 @@ faq:
     answer: "Depende do volume de tráfego — sites com mais visitas veem resultado estatisticamente confiável mais rápido. Como regra prática, meça por pelo menos 2-4 semanas antes de concluir algo."
   - question: "Quantas conversões preciso ter antes de confiar num teste?"
     answer: "Como referência de mercado, um teste A/B costuma precisar de algo perto de 350-400 conversões por variante antes do resultado ser estatisticamente confiável. Com menos que isso, o \"vencedor\" aparente pode ser só ruído — sites com pouco tráfego devem rodar o teste por mais tempo, não encurtar o prazo pra forçar uma conclusão."
+howTo:
+  name: "Como começar CRO do zero, em 4 passos"
+  steps:
+    - name: "Descubra onde está o maior vazamento"
+      text: "Meça qual etapa do funil perde mais gente — tráfego, conversão de página ou ticket médio — antes de otimizar qualquer coisa."
+    - name: "Se o vazamento é no formulário, meça a fricção"
+      text: "Formulário é a causa mais comum e mais barata de corrigir: cada campo a mais reduz conclusão de forma mensurável."
+    - name: "Calcule quanto vale consertar antes de investir tempo"
+      text: "Estime o retorno de melhorar a conversão no seu tráfego atual antes de dedicar semanas otimizando."
+    - name: "Teste uma mudança de cada vez"
+      text: "Mude uma variável, meça por algumas semanas, só então mude a próxima — assim você sabe o que causou o resultado."
 ---
 
 [CRO](/glossario/cro) (Conversion Rate Optimization) soa como disciplina que exige especialista e ferramenta cara. Na prática, o começo é simples e qualquer negócio consegue rodar sozinho.

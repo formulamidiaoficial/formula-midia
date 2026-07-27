@@ -3,7 +3,7 @@ import { getCollection, render } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Breadcrumbs from "../../components/ui/Breadcrumbs.astro";
 import FaqAccordion from "../../components/ui/FaqAccordion.astro";
-import { breadcrumbSchema, faqPageSchema, SITE_URL, BRAND_NAME } from "../../data/schema";
+import { breadcrumbSchema, faqPageSchema, howToSchema, SITE_URL, BRAND_NAME } from "../../data/schema";
 import { FERRAMENTAS } from "../../data/ferramentas";
 
 export async function getStaticPaths() {
@@ -43,6 +43,11 @@ const articleSchema = {
 
 const schema = [breadcrumbSchema(breadcrumbItems), articleSchema];
 if (post.data.faq.length > 0) schema.push(faqPageSchema(post.data.faq));
+if (post.data.howTo) {
+  schema.push(
+    howToSchema({ name: post.data.howTo.name, description: post.data.description, steps: post.data.howTo.steps })
+  );
+}
 ---
 
 <BaseLayout
