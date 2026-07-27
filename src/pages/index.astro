@@ -7,6 +7,7 @@ import BtnPrimary from "../components/ui/BtnPrimary.astro";
 import BtnGhost from "../components/ui/BtnGhost.astro";
 import FaqAccordion from "../components/ui/FaqAccordion.astro";
 import LogoCarousel from "../components/sections/LogoCarousel.astro";
+import ToolsCarousel from "../components/sections/ToolsCarousel.astro";
 import { waLink, faqPageSchema } from "../data/schema";
 import { homeFaq } from "../data/faq/home";
 
@@ -222,36 +223,41 @@ const comparisonRows = [
     </div>
   </section>
 
-  <!-- PROOF -->
-  <section class="section-light px-6 py-20">
+  <!-- PROOF / TOOLS CAROUSEL -->
+  <section class="section-light overflow-hidden px-6 py-20">
     <div class="mx-auto max-w-[1080px]">
       <span class="mb-3.5 block font-heading text-xs font-semibold uppercase tracking-[.16em] text-red-hi" data-in>Prova, não promessa</span>
       <h2 class="max-w-[720px] font-heading text-[clamp(24px,3.2vw,34px)] font-bold leading-[1.2] tracking-tight" data-in>
-        Antes de confiar na gente, teste você mesmo.
+        Tráfego pago, geração de demanda e growth — um site completo de performance, não só uma página de vendas.
       </h2>
-      <p class="mt-5 max-w-[680px] text-[16px] leading-[1.75] text-mid" data-in>
-        Construímos mais de 20 ferramentas gratuitas — calculadoras, auditorias, diagnósticos — que qualquer
-        pessoa pode usar, mesmo sem fechar nada com a gente. Cada uma mostra a fórmula, a fonte e a limitação
-        na tela, não só o resultado. É o jeito mais simples de mostrar como pensamos, antes de pedir sua confiança.
+      <p class="mt-5 max-w-[720px] text-[16px] leading-[1.75] text-mid" data-in>
+        Da conta de quanto o anúncio custa de verdade até o diagnóstico de se a IA está te encontrando: cada
+        ferramenta abaixo nasceu de um problema real de quem faz tráfego pago, gera demanda e mede resultado
+        no dia a dia — não é conteúdo genérico pra parecer moderno. IA é uma das nossas forças, aqui inclusive:
+        é como boa parte dessas ferramentas foi construída.
       </p>
+    </div>
 
-      <div class="mt-9 grid gap-4 sm:grid-cols-3">
-        <a href="/ferramentas" class="flex flex-col rounded-card border border-border bg-glass p-6 no-underline transition-colors hover:border-red/30" data-in>
-          <h3 class="mb-1.5 font-heading text-[15px] font-semibold text-ink">Ferramentas Gratuitas</h3>
-          <p class="flex-1 text-[13.5px] leading-relaxed text-mid">20+ calculadoras e auditorias, sem cadastro, sem e-mail.</p>
-          <span class="mt-3 font-heading text-[13px] font-semibold text-red-hi">Usar agora →</span>
-        </a>
-        <a href="/metodologia" class="flex flex-col rounded-card border border-border bg-glass p-6 no-underline transition-colors hover:border-red/30" data-in>
-          <h3 class="mb-1.5 font-heading text-[15px] font-semibold text-ink">Nossa Metodologia</h3>
-          <p class="flex-1 text-[13.5px] leading-relaxed text-mid">As fontes e fórmulas por trás de cada número, num só lugar.</p>
-          <span class="mt-3 font-heading text-[13px] font-semibold text-red-hi">Ver método →</span>
-        </a>
-        <a href="/glossario" class="flex flex-col rounded-card border border-border bg-glass p-6 no-underline transition-colors hover:border-red/30" data-in>
-          <h3 class="mb-1.5 font-heading text-[15px] font-semibold text-ink">Glossário</h3>
-          <p class="flex-1 text-[13.5px] leading-relaxed text-mid">Os termos técnicos de growth e SEO/GEO, sem jargão.</p>
-          <span class="mt-3 font-heading text-[13px] font-semibold text-red-hi">Consultar →</span>
-        </a>
-      </div>
+    <div class="mt-11" data-in>
+      <ToolsCarousel />
+    </div>
+
+    <div class="mx-auto mt-9 grid max-w-[1080px] gap-4 sm:grid-cols-3">
+      <a href="/ferramentas" class="flex flex-col rounded-card border border-border bg-glass p-6 no-underline transition-colors hover:border-red/30" data-in>
+        <h3 class="mb-1.5 font-heading text-[15px] font-semibold text-ink">Todas as Ferramentas</h3>
+        <p class="flex-1 text-[13.5px] leading-relaxed text-mid">20+ calculadoras e auditorias, sem cadastro, sem e-mail.</p>
+        <span class="mt-3 font-heading text-[13px] font-semibold text-red-hi">Usar agora →</span>
+      </a>
+      <a href="/metodologia" class="flex flex-col rounded-card border border-border bg-glass p-6 no-underline transition-colors hover:border-red/30" data-in>
+        <h3 class="mb-1.5 font-heading text-[15px] font-semibold text-ink">Nossa Metodologia</h3>
+        <p class="flex-1 text-[13.5px] leading-relaxed text-mid">As fontes e fórmulas por trás de cada número, num só lugar.</p>
+        <span class="mt-3 font-heading text-[13px] font-semibold text-red-hi">Ver método →</span>
+      </a>
+      <a href="/glossario" class="flex flex-col rounded-card border border-border bg-glass p-6 no-underline transition-colors hover:border-red/30" data-in>
+        <h3 class="mb-1.5 font-heading text-[15px] font-semibold text-ink">Glossário</h3>
+        <p class="flex-1 text-[13.5px] leading-relaxed text-mid">Os termos técnicos de growth e SEO/GEO, sem jargão.</p>
+        <span class="mt-3 font-heading text-[13px] font-semibold text-red-hi">Consultar →</span>
+      </a>
     </div>
   </section>
 
