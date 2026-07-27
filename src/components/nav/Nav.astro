@@ -19,17 +19,23 @@ const serviceLinks: NavLink[] = [
 // (já dessincronizou duas vezes quando cada lugar tinha a própria lista).
 const toolLinks: NavLink[] = FERRAMENTAS.map((f) => ({ label: f.nome, href: `/ferramentas/${f.slug}` }));
 
-// Grouped once and reused for both the desktop dropdowns and the mobile
-// menu, so adding/removing a link never needs to happen in two places
-// (a "Ferramentas" category was missing from the menu for a while because
-// the mobile/desktop lists had drifted apart).
+// Conteúdo/transparência — mesmo grupo do "Prova, não promessa" da Home
+// (CONTENT-META-011). Antes só existia no rodapé; menu principal era o
+// único jeito de alguém nunca achar essas 3 páginas navegando pelo topo.
+const contentLinks: NavLink[] = [
+  { label: "Blog", href: "/blog" },
+  { label: "Glossário", href: "/glossario" },
+  { label: "Nossa Metodologia", href: "/metodologia" },
+  { label: "Placar", href: "/placar" },
+];
+
 const menuGroups = [
   { title: "Serviços", links: serviceLinks },
   { title: "Ferramentas", links: toolLinks },
+  { title: "Conteúdo", links: contentLinks },
 ];
 
 const flatLinks: NavLink[] = [
-  { label: "Blog", href: "/blog" },
   { label: "Quem Atendemos", href: "/segmentos" },
   { label: "Mentoria", href: "/mentoria" },
   { label: "O Manifesto", href: "/manifesto" },

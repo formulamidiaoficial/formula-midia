@@ -1,0 +1,364 @@
+---
+// Link-in-bio pública (formulamidia.com.br/links). Reconstruída como página
+// Astro (27/07) — a versão anterior era um HTML estático solto em public/,
+// por isso dessincronizou da Home (números de stats diferentes, só 4 das
+// 21 ferramentas listadas, ainda apontando pras rotas antigas). Agora só
+// tem UMA fonte de dado pra tudo: FERRAMENTAS (ferramentas.ts) e os mesmos
+// números que a Home usa — nunca mais tem como as duas divergirem.
+import AnimatedLogo from "../components/sections/AnimatedLogo.astro";
+import { waLink, SITE_URL, BRAND_NAME } from "../data/schema";
+import { FERRAMENTAS } from "../data/ferramentas";
+
+const servicos = [
+  { icon: "📈", href: "/servicos", nome: "Tráfego Pago e Performance", desc: "Meta Ads · Google Ads · Estratégia integrada" },
+  { icon: "🚀", href: "/growth", nome: "Gestão de Growth & Performance", desc: "Todos os números do seu funil, em um só lugar" },
+  { icon: "🖥️", href: "/criacao-de-sites", nome: "Criação de Sites & Landing Pages", desc: "Stack moderna · IA · Lighthouse 90+" },
+  { icon: "🔎", href: "/seo", nome: "SEO & GEO", desc: "SEO técnico · GEO (SEO para IA) · Autoridade orgânica" },
+  { icon: "🎓", href: "/mentoria", nome: "Mentoria Fórmula Mídia", desc: "Aprenda tráfego pago e growth na prática" },
+];
+
+const conteudo = [
+  { icon: "📰", href: "/blog", nome: "Blog", desc: "Guias completos, conectados às ferramentas" },
+  { icon: "📖", href: "/glossario", nome: "Glossário", desc: "Termos técnicos de growth e SEO/GEO, sem jargão" },
+  { icon: "🧭", href: "/metodologia", nome: "Nossa Metodologia", desc: "As fontes e fórmulas por trás de cada número" },
+];
+
+const iconePorTag: Record<string, string> = {
+  "Financeiro": "💰",
+  "Jurídico": "⚖️",
+  "Conversão": "🎯",
+  "Criação de sites": "🖥️",
+  "Growth": "🚀",
+  "Medição · IA": "🤖",
+  "Presença local": "📍",
+  "SEO & GEO": "🔎",
+  "SEO / GEO": "🔎",
+  "SEO / IA": "🤖",
+  "SEO / avançado": "🧠",
+  "SEO / técnico": "⚙️",
+  "Site / técnico": "⚡",
+  "Tráfego pago": "📈",
+};
+
+const stats = [
+  { count: 100, pre: "+", suf: "", label: "Clientes" },
+  { count: 10, pre: "+", suf: " anos", label: "Mercado" },
+  { count: 20, pre: "+", suf: "", label: "Ferramentas" },
+];
+
+const title = `${BRAND_NAME} | Tráfego Pago, SEO & GEO`;
+const description = "Agência de performance: tráfego pago (Google Ads e Meta Ads), SEO técnico, GEO e sites de alta performance. Fale com a gente no WhatsApp.";
+---
+
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={`${SITE_URL}/links`} />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={`${SITE_URL}/links`} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={`${SITE_URL}/assets/og-image.png`} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:site_name" content={BRAND_NAME} />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={`${SITE_URL}/assets/og-image.png`} />
+
+  <link rel="icon" href="/assets/logo.png" type="image/png" />
+  <link rel="apple-touch-icon" href="/assets/logo.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+</head>
+<body class="bg-[#09090B] font-body text-[#F4F4F5] antialiased">
+  <div class="progress fixed left-0 top-0 z-[999] h-[2px] w-0 bg-gradient-to-r from-red-lo via-red to-red-bright shadow-[0_0_10px_rgba(228,41,41,.3)] transition-[width] duration-75" id="prog"></div>
+
+  <div class="mx-auto flex min-h-screen w-full max-w-[430px] flex-col overflow-x-hidden">
+    <!-- HERO -->
+    <header class="relative flex min-h-[420px] shrink-0 flex-col items-center justify-center overflow-hidden px-6 pb-12 pt-14">
+      <div class="pointer-events-none absolute -left-10 -top-20 h-[300px] w-[300px] rounded-full bg-[radial-gradient(circle,rgba(228,41,41,.22),transparent_70%)] blur-[56px]"></div>
+      <div class="pointer-events-none absolute -bottom-16 -right-8 h-[240px] w-[240px] rounded-full bg-[radial-gradient(circle,rgba(180,20,20,.18),transparent_70%)] blur-[56px]"></div>
+      <div class="pointer-events-none absolute inset-0 [background-image:radial-gradient(circle,rgba(228,41,41,.16)_1px,transparent_1px)] [background-size:24px_24px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,black_30%,transparent_75%)]"></div>
+
+      <div class="relative z-[2] flex w-full flex-col items-center text-center" id="heroContent">
+        <div class="mb-7">
+          <AnimatedLogo size={108} />
+        </div>
+        <h1 class="mb-3 font-heading text-[28px] font-bold leading-[1.1] tracking-tight opacity-0 [animation:fadeUp_.6s_cubic-bezier(.22,1,.36,1)_1.5s_forwards]">
+          <span id="n1">FÓRMULA </span><span class="text-red" id="n2">MÍDIA IA</span>
+        </h1>
+        <div class="mb-3.5 inline-flex items-center gap-1.5 rounded-full border border-red/22 bg-red/8 px-3 py-[5px] font-heading text-[10px] font-semibold uppercase tracking-[.12em] text-red-bright opacity-0 [animation:fadeUp_.5s_cubic-bezier(.22,1,.36,1)_1.75s_forwards]">
+          <span class="h-[5px] w-[5px] animate-pulse rounded-full bg-red-bright shadow-[0_0_8px_var(--color-red-bright)]"></span>
+          Agência · Inteligência Artificial
+        </div>
+        <p class="max-w-[280px] text-[13.5px] leading-relaxed text-white/50 opacity-0 [animation:fadeUp_.5s_cubic-bezier(.22,1,.36,1)_2s_forwards]">
+          Estratégia, conteúdo e performance com IA.<br />Resultados reais para o seu negócio.
+        </p>
+      </div>
+
+      <div class="absolute bottom-3 left-1/2 flex -translate-x-1/2 flex-col items-center gap-1.5 font-heading text-[10px] uppercase tracking-[.12em] text-white/24 opacity-0 [animation:fadeUp_.5s_ease_2.5s_forwards]">
+        <span>scroll</span>
+        <div class="h-3.5 w-3.5 animate-bounce border-b-[1.5px] border-r-[1.5px] border-white/24 [transform:rotate(45deg)]"></div>
+      </div>
+    </header>
+
+    <!-- CONTENT -->
+    <div class="flex flex-1 flex-col px-3 pb-16 pt-1">
+      <p class="reveal mb-2.5 ml-1 mt-5 flex items-center gap-2.5 font-heading text-[10px] font-semibold uppercase tracking-[.14em] text-white/24">
+        Fale Conosco
+        <span class="h-px flex-1 bg-white/8"></span>
+      </p>
+      <div class="mb-2.5 rounded-[15px] bg-gradient-to-br from-red-lo via-red to-red-bright bg-[length:300%_300%] p-[1.5px] [animation:borderFlow_4s_ease_infinite]">
+        <a
+          href={waLink("Olá, quero saber mais sobre os serviços Fórmula Mídia")}
+          target="_blank"
+          rel="noopener"
+          class="tilt flex items-center gap-3 rounded-[13px] bg-gradient-to-br from-red/16 to-red-lo/9 p-4 no-underline transition-transform"
+        >
+          <span class="ico flex h-[42px] w-[42px] shrink-0 items-center justify-center rounded-[11px] bg-[#25D366]/12">
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg>
+          </span>
+          <span class="min-w-0 flex-1">
+            <strong class="block truncate font-heading text-[14px] font-semibold text-white">Fale com a equipe agora</strong>
+            <small class="block truncate text-[11.5px] font-normal text-white/50">Estratégia · Orçamento · Dúvidas</small>
+          </span>
+          <span class="arr flex h-[26px] w-[26px] shrink-0 items-center justify-center rounded-full bg-white/6 text-[15px] text-white/24 transition-colors">›</span>
+        </a>
+      </div>
+
+      <p class="reveal mb-2.5 ml-1 mt-5 flex items-center gap-2.5 font-heading text-[10px] font-semibold uppercase tracking-[.14em] text-white/24">
+        Nossas Redes
+        <span class="h-px flex-1 bg-white/8"></span>
+      </p>
+      <a href="https://instagram.com/formulamidia" target="_blank" rel="noopener" class="tilt linkbtn">
+        <span class="ico bg-[#c83c8c]/12">
+          <svg width="21" height="21" viewBox="0 0 24 24"><defs><linearGradient id="ig" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#F58529"></stop><stop offset="50%" stop-color="#DD2A7B"></stop><stop offset="100%" stop-color="#8134AF"></stop></linearGradient></defs><path fill="url(#ig)" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
+        </span>
+        <span class="min-w-0 flex-1">
+          <strong class="block truncate font-heading text-[14px] font-semibold text-white">Instagram</strong>
+          <small class="block truncate text-[11.5px] font-normal text-white/50">@formulamidia · Conteúdo e bastidores</small>
+        </span>
+        <span class="arr">›</span>
+      </a>
+      <a href="/" class="tilt linkbtn">
+        <span class="ico bg-blue-500/12">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+        </span>
+        <span class="min-w-0 flex-1">
+          <strong class="block truncate font-heading text-[14px] font-semibold text-white">Site Oficial</strong>
+          <small class="block truncate text-[11.5px] font-normal text-white/50">formulamidia.com.br</small>
+        </span>
+        <span class="arr">›</span>
+      </a>
+
+      <p class="reveal mb-2.5 ml-1 mt-5 flex items-center gap-2.5 font-heading text-[10px] font-semibold uppercase tracking-[.14em] text-white/24">
+        Nossos Serviços
+        <span class="h-px flex-1 bg-white/8"></span>
+      </p>
+      {servicos.map((s) => (
+        <a href={s.href} class="tilt linkbtn">
+          <span class="ico bg-red/11">{s.icon}</span>
+          <span class="min-w-0 flex-1">
+            <strong class="block truncate font-heading text-[14px] font-semibold text-white">{s.nome}</strong>
+            <small class="block truncate text-[11.5px] font-normal text-white/50">{s.desc}</small>
+          </span>
+          <span class="arr">›</span>
+        </a>
+      ))}
+
+      <p class="reveal mb-2.5 ml-1 mt-5 flex items-center gap-2.5 font-heading text-[10px] font-semibold uppercase tracking-[.14em] text-white/24">
+        Ferramentas Gratuitas
+        <span class="h-px flex-1 bg-white/8"></span>
+      </p>
+      {FERRAMENTAS.map((f) => (
+        <a href={`/ferramentas/${f.slug}`} class="tilt linkbtn">
+          <span class="ico bg-red/11">{iconePorTag[f.tag] ?? "🧮"}</span>
+          <span class="min-w-0 flex-1">
+            <strong class="block truncate font-heading text-[14px] font-semibold text-white">{f.nomeCurto}</strong>
+            <small class="block truncate text-[11.5px] font-normal text-white/50">{f.tag}</small>
+          </span>
+          <span class="arr">›</span>
+        </a>
+      ))}
+
+      <p class="reveal mb-2.5 ml-1 mt-5 flex items-center gap-2.5 font-heading text-[10px] font-semibold uppercase tracking-[.14em] text-white/24">
+        Conteúdo & Transparência
+        <span class="h-px flex-1 bg-white/8"></span>
+      </p>
+      {conteudo.map((c) => (
+        <a href={c.href} class="tilt linkbtn">
+          <span class="ico bg-red/11">{c.icon}</span>
+          <span class="min-w-0 flex-1">
+            <strong class="block truncate font-heading text-[14px] font-semibold text-white">{c.nome}</strong>
+            <small class="block truncate text-[11.5px] font-normal text-white/50">{c.desc}</small>
+          </span>
+          <span class="arr">›</span>
+        </a>
+      ))}
+
+      <p class="reveal mb-1 ml-1 mt-5 flex items-center gap-2.5 font-heading text-[10px] font-semibold uppercase tracking-[.14em] text-white/24">
+        Em Números
+        <span class="h-px flex-1 bg-white/8"></span>
+      </p>
+      <div class="reveal mb-1 grid grid-cols-3 gap-2" id="statsBox">
+        {stats.map((s) => (
+          <div class="rounded-[13px] border border-white/8 bg-white/[.045] p-4 text-center">
+            <div class="stat-n mb-1 font-heading text-[22px] font-bold leading-none tracking-tight text-red-bright" data-count={s.count} data-pre={s.pre} data-suf={s.suf}>0</div>
+            <div class="text-[10px] font-medium uppercase tracking-[.07em] text-white/24">{s.label}</div>
+          </div>
+        ))}
+      </div>
+
+      <p class="reveal mb-2.5 ml-1 mt-5 flex items-center gap-2.5 font-heading text-[10px] font-semibold uppercase tracking-[.14em] text-white/24">
+        Redes Sociais
+        <span class="h-px flex-1 bg-white/8"></span>
+      </p>
+      <div class="reveal mb-1 flex justify-center gap-2.5">
+        <a href="https://instagram.com/formulamidia" target="_blank" rel="noopener" title="Instagram" class="tilt flex h-[52px] w-[52px] items-center justify-center rounded-[15px] border border-white/8 bg-white/[.045] no-underline transition-all hover:-translate-y-1 hover:scale-[1.07] hover:border-red/38 hover:bg-red/8">
+          <svg width="21" height="21" viewBox="0 0 24 24"><defs><linearGradient id="ig2" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#F58529"></stop><stop offset="50%" stop-color="#DD2A7B"></stop><stop offset="100%" stop-color="#8134AF"></stop></linearGradient></defs><path fill="url(#ig2)" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
+        </a>
+        <a href={waLink("Olá, quero saber mais sobre os serviços Fórmula Mídia")} target="_blank" rel="noopener" title="WhatsApp" class="tilt flex h-[52px] w-[52px] items-center justify-center rounded-[15px] border border-white/8 bg-white/[.045] no-underline transition-all hover:-translate-y-1 hover:scale-[1.07] hover:border-red/38 hover:bg-red/8">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg>
+        </a>
+        <a href="/" title="Site" class="tilt flex h-[52px] w-[52px] items-center justify-center rounded-[15px] border border-white/8 bg-white/[.045] no-underline transition-all hover:-translate-y-1 hover:scale-[1.07] hover:border-red/38 hover:bg-red/8">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+        </a>
+      </div>
+
+      <p class="mt-9 text-center text-[11px] tracking-[.05em] text-white/24">
+        © 2026 {BRAND_NAME} · <a href={waLink("Olá, quero saber mais sobre os serviços Fórmula Mídia")} class="text-red no-underline opacity-80">Contato</a>
+      </p>
+    </div>
+  </div>
+
+  <style>
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes borderFlow { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+    .linkbtn {
+      display: flex; align-items: center; gap: 13px;
+      padding: 13px 15px; margin-bottom: 9px;
+      background: rgba(255,255,255,.045); border: 1px solid rgba(255,255,255,.08);
+      border-radius: 13px; text-decoration: none; position: relative; overflow: hidden;
+      transition: border-color .22s, box-shadow .22s, background .22s, transform .15s;
+    }
+    .linkbtn:hover { border-color: rgba(228,41,41,.38); background: rgba(255,255,255,.075); box-shadow: 0 0 0 1px rgba(228,41,41,.12) inset, 0 8px 28px rgba(228,41,41,.10); transform: translateY(-2px); }
+    .linkbtn .ico { width: 42px; height: 42px; border-radius: 11px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 19px; transition: transform .2s; }
+    .linkbtn:hover .ico { transform: scale(1.1); }
+    .linkbtn .arr, .btn-cta .arr {
+      flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%;
+      background: rgba(255,255,255,.06); display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,.24); font-size: 15px; transition: background .2s, color .2s, transform .2s;
+    }
+    .linkbtn:hover .arr { background: var(--color-red); color: #fff; transform: translateX(2px); }
+    .reveal, #statsBox { opacity: 0; transform: translateY(18px); transition: opacity .5s cubic-bezier(.22,1,.36,1), transform .5s cubic-bezier(.22,1,.36,1); }
+    .reveal.in, #statsBox.in { opacity: 1; transform: translateY(0); }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal, #statsBox, h1, .badge-like { opacity: 1 !important; transform: none !important; animation: none !important; }
+    }
+  </style>
+
+  <script>
+    // Progress bar de scroll
+    const prog = document.getElementById("prog");
+    window.addEventListener("scroll", () => {
+      const max = document.body.scrollHeight - window.innerHeight;
+      if (prog) prog.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + "%";
+    }, { passive: true });
+
+    // Scramble no nome (mesma técnica de public/links original)
+    const CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#@$%";
+    function scramble(el: Element | null, final: string, duration: number, delay: number) {
+      if (!el) return;
+      setTimeout(() => {
+        const len = final.length;
+        const t0 = performance.now();
+        (function tick(now: number) {
+          const p = Math.min((now - t0) / duration, 1);
+          const resolved = Math.floor(p * len);
+          let out = "";
+          for (let i = 0; i < len; i++) {
+            out += final[i] === " " ? " " : i < resolved ? final[i] : CHARS[Math.floor(Math.random() * CHARS.length)];
+          }
+          el.textContent = out;
+          if (p < 1) requestAnimationFrame(tick);
+        })(performance.now());
+      }, delay);
+    }
+    scramble(document.getElementById("n1"), "FÓRMULA ", 900, 1500);
+    scramble(document.getElementById("n2"), "MÍDIA IA", 900, 1700);
+
+    // Entrada escalonada
+    const inObs = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (!e.isIntersecting) return;
+        setTimeout(() => e.target.classList.add("in"), i * 50);
+        inObs.unobserve(e.target);
+      });
+    }, { threshold: 0.08, rootMargin: "0px 0px -12px 0px" });
+    document.querySelectorAll(".reveal, #statsBox").forEach((el) => inObs.observe(el));
+
+    // Contador numérico
+    const cntObs = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        e.target.querySelectorAll("[data-count]").forEach((el) => {
+          const target = Number((el as HTMLElement).dataset.count);
+          const pre = (el as HTMLElement).dataset.pre || "";
+          const suf = (el as HTMLElement).dataset.suf || "";
+          const dur = 1400, t0 = performance.now();
+          (function tick(now: number) {
+            const p = Math.min((now - t0) / dur, 1);
+            const ease = 1 - Math.pow(1 - p, 3);
+            el.textContent = pre + Math.round(ease * target) + suf;
+            if (p < 1) requestAnimationFrame(tick);
+          })(performance.now());
+        });
+        cntObs.unobserve(e.target);
+      });
+    }, { threshold: 0.5 });
+    const sb = document.getElementById("statsBox");
+    if (sb) cntObs.observe(sb);
+
+    // Ripple ao clicar
+    document.querySelectorAll(".linkbtn, .btn-cta, [class*='rounded-[13px]']").forEach((btn) => {
+      btn.addEventListener("pointerdown", (e) => {
+        const evt = e as PointerEvent;
+        const r = document.createElement("span");
+        const rect = (btn as HTMLElement).getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height) * 1.4;
+        r.style.cssText = `position:absolute;border-radius:50%;transform:scale(0);background:rgba(228,41,41,.16);pointer-events:none;width:${size}px;height:${size}px;left:${evt.clientX - rect.left - size / 2}px;top:${evt.clientY - rect.top - size / 2}px;animation:rpl .55s linear`;
+        (btn as HTMLElement).style.position = (btn as HTMLElement).style.position || "relative";
+        (btn as HTMLElement).style.overflow = "hidden";
+        btn.appendChild(r);
+        r.addEventListener("animationend", () => r.remove());
+      });
+    });
+
+    // Tilt 3D no hover (desktop só)
+    if (!("ontouchstart" in window)) {
+      document.querySelectorAll(".tilt").forEach((btn) => {
+        btn.addEventListener("mousemove", (e) => {
+          const evt = e as MouseEvent;
+          const r = (btn as HTMLElement).getBoundingClientRect();
+          const x = (evt.clientX - r.left) / r.width - 0.5;
+          const y = (evt.clientY - r.top) / r.height - 0.5;
+          (btn as HTMLElement).style.transform = `perspective(700px) rotateY(${x * 7}deg) rotateX(${-y * 4}deg) translateY(-2px)`;
+        });
+        btn.addEventListener("mouseleave", () => { (btn as HTMLElement).style.transform = ""; });
+      });
+    }
+  </script>
+
+  <style is:global>
+    @keyframes rpl { to { transform: scale(4.5); opacity: 0; } }
+  </style>
+</body>
+</html>
