@@ -1,0 +1,90 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Badge from "../../components/ui/Badge.astro";
+import Breadcrumbs from "../../components/ui/Breadcrumbs.astro";
+import MedicaoIaGa4 from "../../components/islands/MedicaoIaGa4.tsx";
+import { breadcrumbSchema, faqPageSchema, SITE_URL, BRAND_NAME, type FaqItem } from "../../data/schema";
+
+const breadcrumbItems = [
+  { name: "Home", path: "/" },
+  { name: "Ferramentas", path: "/ferramentas" },
+  { name: "Medir Tráfego de IA no GA4", path: "/ferramentas/medir-trafego-de-ia" },
+];
+
+const faq: FaqItem[] = [
+  { question: "O GA4 não mede o tráfego de IA sozinho?", answer: "Desde maio de 2026 o GA4 tem um canal nativo 'AI Assistant', mas ele reconhece apenas ChatGPT, Gemini, Copilot, Grok e DeepSeek — não a Perplexity, o Claude nem a Meta AI. E, por padrão, perde de 35% a 70% do tráfego de IA, que cai em 'Referral' ou 'Direto'." },
+  { question: "Por que isso importa para o meu negócio?", answer: "Visitante vindo de IA converte cerca de 16% mais e passa 68% mais tempo no site. Se esse tráfego cai em 'Direto', você não sabe que a IA está te trazendo cliente — e não consegue investir onde funciona." },
+  { question: "Preciso de programador para aplicar?", answer: "Não. É uma configuração dentro do próprio GA4 (um grupo de canais). A ferramenta gera o regex pronto e mostra os 3 passos para colar. Leva cerca de 2 minutos." },
+  { question: "Essa configuração muda com o tempo?", answer: "Sim. Os domínios das IAs e o comportamento do GA4 mudam. Revalide o grupo de canais a cada trimestre para não perder motores novos." },
+];
+
+const appSchema = {
+  "@context": "https://schema.org", "@type": "WebApplication",
+  name: "Auditor de Medição de Tráfego de IA no GA4",
+  applicationCategory: "BusinessApplication", operatingSystem: "Web",
+  url: `${SITE_URL}/ferramentas/medir-trafego-de-ia`,
+  offers: { "@type": "Offer", price: "0", priceCurrency: "BRL" },
+  provider: { "@type": "Organization", name: BRAND_NAME },
+};
+
+const schema = [breadcrumbSchema(breadcrumbItems), faqPageSchema(faq), appSchema];
+---
+
+<BaseLayout
+  title="Medir Tráfego de IA no GA4 (ChatGPT, Perplexity) | Gerador Grátis | Fórmula Mídia"
+  description="O GA4 perde 35% a 70% do seu tráfego de IA e ignora a Perplexity. Gere de graça o grupo de canais que captura ChatGPT, Perplexity, Gemini, Claude e mais. Sem código."
+  path="/ferramentas/medir-trafego-de-ia"
+  schema={schema}
+>
+  <Breadcrumbs items={breadcrumbItems} />
+  <header class="relative overflow-hidden px-6 pb-6 pt-16 text-center">
+    <div class="pointer-events-none absolute -left-24 -top-44 h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,rgba(228,41,41,.22),transparent_70%)] blur-[80px]"></div>
+    <div class="pointer-events-none absolute -right-28 -top-24 h-[380px] w-[380px] rounded-full bg-[radial-gradient(circle,rgba(180,20,20,.18),transparent_70%)] blur-[80px]"></div>
+    <div class="relative z-[2] mx-auto max-w-[700px]">
+      <a href="/ferramentas" class="mb-6 inline-flex items-center gap-1.5 font-heading text-[13px] font-semibold text-mid no-underline hover:text-ink">← Todas as ferramentas</a>
+      <div class="mb-6"><Badge label="Tráfego de IA · GA4" /></div>
+      <h1 class="font-heading text-[clamp(28px,4.4vw,44px)] font-bold leading-[1.12] tracking-tight">
+        A IA já te traz cliente. O seu GA4 <span class="text-red-hi">não está contando.</span>
+      </h1>
+      <p class="mx-auto mt-4 max-w-[560px] text-base leading-relaxed text-mid">
+        O GA4 ignora a Perplexity e perde até 70% do tráfego de IA por padrão. Gere o grupo de canais
+        que captura tudo — ChatGPT, Perplexity, Gemini, Claude e mais — e veja quanto você está perdendo.
+      </p>
+    </div>
+  </header>
+
+  <div class="section-light px-6 pb-6 pt-8">
+    <div class="mx-auto max-w-[1140px]">
+      <MedicaoIaGa4 client:load />
+      <p class="mx-auto mt-6 max-w-[680px] text-center text-[11.5px] leading-relaxed text-dim">
+        Resultados anônimos e agregados podem ser usados em pesquisas públicas sobre o mercado
+        brasileiro. Veja a <a href="/privacidade" class="underline underline-offset-2 hover:text-ink">política de privacidade</a>.
+      </p>
+    </div>
+  </div>
+
+  <section class="px-6 pb-24 pt-10">
+    <div class="mx-auto max-w-[720px]">
+      <h2 class="font-heading text-[clamp(22px,3.2vw,30px)] font-bold leading-tight tracking-tight">
+        O canal de IA do GA4 existe — e ainda assim deixa dinheiro na mesa
+      </h2>
+      <div class="mt-6 flex flex-col gap-5 text-[15.5px] leading-relaxed text-mid">
+        <p>
+          Em maio de 2026 o GA4 ganhou o canal nativo <strong class="text-ink">"AI Assistant"</strong>. Foi
+          um avanço incompleto: reconhece ChatGPT, Gemini, Copilot, Grok e DeepSeek e
+          <strong class="text-ink">deixa de fora a Perplexity, o Claude e a Meta AI</strong>. Pior: perde de
+          <strong class="text-ink">35% a 70%</strong> do tráfego de IA, classificado como "Referral" ou "Direto".
+        </p>
+        <p>
+          Visita vinda de IA <strong class="text-ink">converte ~16% mais</strong> e fica 68% mais tempo no
+          site. Se cai em "Direto", você decide orçamento achando que a IA não traz nada — quando ela é, cada
+          vez mais, a sua melhor fonte.
+        </p>
+        <p class="rounded-card border border-border bg-glass p-5 text-[14px] text-dim">
+          <strong class="text-ink">Ressalva.</strong> Os domínios das IAs e o comportamento do GA4 mudam
+          rápido. Revalide o grupo de canais a cada trimestre. Última atualização desta ferramenta: julho de 2026.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

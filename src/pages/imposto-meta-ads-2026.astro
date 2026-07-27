@@ -1,0 +1,114 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Badge from "../components/ui/Badge.astro";
+import Breadcrumbs from "../components/ui/Breadcrumbs.astro";
+import { breadcrumbSchema, SITE_URL, BRAND_NAME } from "../data/schema";
+
+const breadcrumbItems = [
+  { name: "Home", path: "/" },
+  { name: "Tráfego Pago", path: "/servicos/gestao-anuncios-online" },
+  { name: "Imposto da Meta Ads 2026", path: "/imposto-meta-ads-2026" },
+];
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "Imposto da Meta Ads em 2026: por que seus anúncios ficaram ~12% mais caros",
+  description:
+    "Desde 1º de janeiro de 2026 a Meta repassa PIS/Cofins e ISS ao anunciante brasileiro — cerca de 12,15%. Entenda a mudança e calcule o custo real.",
+  datePublished: "2026-07-26",
+  dateModified: "2026-07-26",
+  author: { "@type": "Organization", name: BRAND_NAME },
+  publisher: { "@type": "Organization", name: BRAND_NAME, logo: { "@type": "ImageObject", url: `${SITE_URL}/assets/logo.png` } },
+  mainEntityOfPage: `${SITE_URL}/imposto-meta-ads-2026`,
+};
+
+const schema = [breadcrumbSchema(breadcrumbItems), articleSchema];
+---
+
+<BaseLayout
+  title="Imposto da Meta Ads 2026: por que os anúncios ficaram ~12% mais caros | Fórmula Mídia"
+  description="Desde janeiro de 2026 a Meta repassa PIS/Cofins e ISS ao anunciante brasileiro (~12,15%). Entenda a mudança, veja quem paga mais em dólar e calcule seu custo real."
+  path="/imposto-meta-ads-2026"
+  schema={schema}
+>
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="px-6 pb-24 pt-14">
+    <div class="mx-auto max-w-[720px]">
+      <div class="mb-6"><Badge label="Tráfego Pago · 2026" /></div>
+      <h1 class="font-heading text-[clamp(28px,4.6vw,42px)] font-bold leading-[1.12] tracking-tight">
+        Imposto da Meta Ads em 2026: por que seus anúncios ficaram <span class="text-red-hi">~12% mais caros</span>
+      </h1>
+      <p class="mt-5 text-[17px] leading-relaxed text-mid">
+        Se você anuncia no Facebook e no Instagram e não mexeu em nada, mesmo assim está pagando mais
+        desde janeiro. E o pior: o valor não aparece onde você olha. Veja o que mudou — e quanto isso
+        custa de verdade.
+      </p>
+
+      <div class="mt-10 flex flex-col gap-5 text-[15.5px] leading-relaxed text-mid">
+        <h2 class="font-heading text-[24px] font-bold leading-tight text-ink">O que mudou em 1º de janeiro de 2026</h2>
+        <p>
+          A Meta alterou a política de faturamento no Brasil e passou a <strong class="text-ink">repassar
+          ao anunciante</strong> tributos indiretos que antes absorvia: <strong class="text-ink">PIS/Cofins,
+          de 9,25%</strong>, e <strong class="text-ink">ISS, de cerca de 2,9%</strong>. Na média, o
+          custo dos anúncios subiu <strong class="text-ink">em torno de 12,15%</strong> — sem que a sua
+          estratégia, os seus criativos ou o seu público mudassem uma vírgula.
+        </p>
+
+        <h2 class="mt-4 font-heading text-[24px] font-bold leading-tight text-ink">Por que o Gerenciador esconde isso</h2>
+        <p>
+          O Gerenciador de Anúncios <strong class="text-ink">continua mostrando apenas a verba de
+          mídia</strong>. Os tributos entram só na fatura, destacados linha a linha. Resultado: o número
+          que você planeja no painel <strong class="text-ink">não é o número que sai da sua conta</strong>.
+          Quem não confere a fatura contra o painel toma decisão de orçamento com o dado errado o mês inteiro.
+        </p>
+
+        <h2 class="mt-4 font-heading text-[24px] font-bold leading-tight text-ink">Quem paga em dólar paga três vezes e só vê uma</h2>
+        <p>
+          Se o seu pagamento é por <strong class="text-ink">cartão internacional</strong>, além dos
+          tributos entram mais duas camadas: o <strong class="text-ink">IOF</strong> sobre a compra em
+          moeda estrangeira (cerca de 3,5% em julho de 2026) e o <strong class="text-ink">spread de
+          câmbio do cartão</strong> sobre o valor convertido. Somadas, essas três linhas transformam uma
+          verba de R$ 10 mil por mês numa despesa real bem acima de R$ 11 mil — e a diferença passa fácil
+          de <strong class="text-ink">R$ 20 mil por ano</strong>.
+        </p>
+
+        <!-- CTA para a ferramenta -->
+        <div class="my-6 rounded-card border border-red/28 bg-gradient-to-b from-red/8 to-glass p-7 text-center">
+          <div class="mb-1.5 text-[11px] uppercase tracking-[.1em] text-red-hi">Calculadora grátis</div>
+          <div class="mb-4 font-heading text-[20px] font-bold leading-snug text-ink">
+            Descubra em 30 segundos quanto a sua verba realmente custa
+          </div>
+          <a
+            href="/ferramentas/custo-real-da-midia"
+            class="inline-flex items-center justify-center gap-2.5 rounded-full bg-gradient-to-br from-red to-red-lo px-6 py-3.5 font-heading text-[14.5px] font-semibold text-white no-underline shadow-[0_10px_30px_rgba(228,41,41,0.30)] transition-transform hover:-translate-y-0.5"
+          >
+            Abrir a calculadora de custo real →
+          </a>
+        </div>
+
+        <h2 class="mt-4 font-heading text-[24px] font-bold leading-tight text-ink">O que fazer agora</h2>
+        <p>
+          Três passos práticos: <strong class="text-ink">(1)</strong> confira a fatura da Meta contra o
+          valor do painel para saber o seu acréscimo real; <strong class="text-ink">(2)</strong> se paga
+          em dólar, avalie migrar para faturamento em real quando possível, para eliminar IOF e spread;
+          <strong class="text-ink">(3)</strong> recalcule o seu ROAS e o seu CAC usando o custo real, não
+          o número do Gerenciador — senão você acha que está lucrando onde está no zero.
+        </p>
+        <p>
+          Refazer essa conta na mão, mês a mês, é trabalhoso e fácil de errar. Por isso montamos a
+          <a href="/ferramentas/custo-real-da-midia" class="font-semibold text-red-hi underline underline-offset-2">calculadora
+          de custo real da mídia</a> — de graça, sem cadastro.
+        </p>
+
+        <p class="mt-2 rounded-card border border-border bg-glass p-5 text-[14px] text-dim">
+          <strong class="text-ink">Fontes e ressalvas.</strong> Percentuais de PIS/Cofins, ISS e IOF
+          verificados em fontes públicas em julho de 2026. O ISS varia de 2% a 5% por município e as
+          regras tributárias mudam, inclusive com a reforma (CBS/IBS) em implantação. Este conteúdo é
+          informativo e não substitui a orientação do seu contador.
+        </p>
+      </div>
+    </div>
+  </article>
+</BaseLayout>

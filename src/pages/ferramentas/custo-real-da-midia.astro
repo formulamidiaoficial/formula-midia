@@ -1,0 +1,101 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Badge from "../../components/ui/Badge.astro";
+import Breadcrumbs from "../../components/ui/Breadcrumbs.astro";
+import CustoRealMidia from "../../components/islands/CustoRealMidia.tsx";
+import { breadcrumbSchema, faqPageSchema, SITE_URL, BRAND_NAME, type FaqItem } from "../../data/schema";
+
+const breadcrumbItems = [
+  { name: "Home", path: "/" },
+  { name: "Ferramentas", path: "/ferramentas" },
+  { name: "Custo Real da Mídia", path: "/ferramentas/custo-real-da-midia" },
+];
+
+const faq: FaqItem[] = [
+  { question: "Por que meu anúncio no Meta ficou mais caro em 2026?", answer: "A partir de 1º de janeiro de 2026, a Meta passou a repassar ao anunciante brasileiro tributos indiretos que antes absorvia — PIS/Cofins (9,25%) e ISS (cerca de 2,9%) —, um acréscimo médio em torno de 12,15% na fatura em real." },
+  { question: "O Gerenciador de Anúncios mostra esse valor a mais?", answer: "Não. O Ads Manager continua exibindo apenas a verba de mídia. Os tributos aparecem na fatura, destacados linha a linha, então o valor cobrado é maior do que o número do painel." },
+  { question: "E quem paga por cartão internacional?", answer: "É outro regime de cobrança: em vez do repasse de tributo da fatura em real, incidem o IOF sobre a compra (cerca de 3,5%) e o spread de câmbio do cartão. Se há repasse de tributo também nesse caso, confirme com seu contador." },
+  { question: "Esses números são exatos?", answer: "São uma estimativa com alíquotas verificadas em julho de 2026. O ISS varia de 2% a 5% por município e as regras tributárias mudam (inclusive a reforma CBS/IBS). Confirme com seu contador antes de decidir orçamento." },
+];
+
+const appSchema = {
+  "@context": "https://schema.org", "@type": "WebApplication",
+  name: "Calculadora de Custo Real da Mídia no Brasil",
+  applicationCategory: "BusinessApplication", operatingSystem: "Web",
+  url: `${SITE_URL}/ferramentas/custo-real-da-midia`,
+  offers: { "@type": "Offer", price: "0", priceCurrency: "BRL" },
+  provider: { "@type": "Organization", name: BRAND_NAME },
+};
+
+const schema = [breadcrumbSchema(breadcrumbItems), faqPageSchema(faq), appSchema];
+---
+
+<BaseLayout
+  title="Custo Real da Mídia no Brasil (2026) | Calculadora Grátis | Fórmula Mídia"
+  description="Desde 2026 a Meta repassa PIS/Cofins e ISS ao anunciante. O Gerenciador mostra a verba; a fatura mostra outra coisa. Calcule o custo real do seu anúncio — de graça."
+  path="/ferramentas/custo-real-da-midia"
+  schema={schema}
+>
+  <Breadcrumbs items={breadcrumbItems} />
+  <header class="relative overflow-hidden px-6 pb-6 pt-16 text-center">
+    <div class="pointer-events-none absolute -left-24 -top-44 h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,rgba(228,41,41,.22),transparent_70%)] blur-[80px]"></div>
+    <div class="pointer-events-none absolute -right-28 -top-24 h-[380px] w-[380px] rounded-full bg-[radial-gradient(circle,rgba(180,20,20,.18),transparent_70%)] blur-[80px]"></div>
+    <div class="relative z-[2] mx-auto max-w-[680px]">
+      <a href="/ferramentas" class="mb-6 inline-flex items-center gap-1.5 font-heading text-[13px] font-semibold text-mid no-underline hover:text-ink">← Todas as ferramentas</a>
+      <div class="mb-6"><Badge label="Custo Real da Mídia" /></div>
+      <h1 class="font-heading text-[clamp(28px,4.4vw,44px)] font-bold leading-[1.12] tracking-tight">
+        Quanto o seu anúncio <span class="text-red-hi">realmente custa</span> em 2026?
+      </h1>
+      <p class="mx-auto mt-4 max-w-[540px] text-base leading-relaxed text-mid">
+        Desde janeiro, a Meta repassa ao anunciante brasileiro tributos que antes absorvia. O
+        painel mostra a verba; a conta mostra outra coisa. Veja a diferença — e o que ela custa por ano.
+      </p>
+    </div>
+  </header>
+
+  <div class="section-light px-6 pb-6 pt-8">
+    <div class="mx-auto max-w-[1140px]">
+      <CustoRealMidia client:load />
+      <p class="mx-auto mt-6 max-w-[680px] text-center text-[11.5px] leading-relaxed text-dim">
+        Resultados anônimos e agregados podem ser usados em pesquisas públicas sobre o mercado
+        brasileiro. Veja a <a href="/privacidade" class="underline underline-offset-2 hover:text-ink">política de privacidade</a>.
+      </p>
+    </div>
+  </div>
+
+  <section class="px-6 pb-24 pt-10">
+    <div class="mx-auto max-w-[720px]">
+      <h2 class="font-heading text-[clamp(22px,3.2vw,30px)] font-bold leading-tight tracking-tight">
+        O número do Gerenciador não é mais o número que sai da conta
+      </h2>
+      <div class="mt-6 flex flex-col gap-5 text-[15.5px] leading-relaxed text-mid">
+        <p>
+          A partir de <strong class="text-ink">1º de janeiro de 2026</strong>, a Meta passou a
+          <strong class="text-ink">repassar ao anunciante</strong>, na fatura em real, tributos que antes
+          absorvia: <strong class="text-ink">PIS/Cofins (9,25%)</strong> e <strong class="text-ink">ISS
+          (cerca de 2,9%)</strong> — em média, <strong class="text-ink">~12,15%</strong> a mais.
+        </p>
+        <p>
+          O Gerenciador <strong class="text-ink">continua mostrando só a verba de mídia</strong>. Os
+          tributos aparecem na fatura, linha a linha. Quem não confere a fatura contra o painel não sabe
+          quanto está gastando de verdade.
+        </p>
+        <p>
+          <strong class="text-ink">Cartão internacional é outro regime.</strong> Em vez do repasse da fatura
+          em real, entram o <strong class="text-ink">IOF</strong> sobre a compra (cerca de 3,5%) e o
+          <strong class="text-ink">spread de câmbio</strong>. A ferramenta não soma os dois modelos — você
+          escolhe como a Meta te cobra, e a conta segue o regime certo.
+        </p>
+        <p class="rounded-card border border-border bg-glass p-5 text-[14px] text-dim">
+          <strong class="text-ink">Aviso.</strong> Não é orientação fiscal. As alíquotas foram verificadas
+          em julho de 2026 e mudam — o ISS varia de 2% a 5% por município e a reforma tributária (CBS/IBS)
+          está em implantação. Estimativa educativa; valide com seu contador antes de fechar orçamento.
+        </p>
+        <p class="text-[14.5px]">
+          Quer entender a mudança a fundo? Leia
+          <a href="/imposto-meta-ads-2026" class="font-semibold text-red-hi underline underline-offset-2">Imposto da Meta Ads em 2026</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

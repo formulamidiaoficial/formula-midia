@@ -87,7 +87,7 @@ export default function VelocidadeUsuarioReal() {
       const resp = await fetch(endpoint.toString());
       if (!resp.ok) {
         if (resp.status === 429) {
-          throw new Error("Muitas consultas agora — espere um minuto e tente de novo.");
+          throw new Error("A medição ao vivo está no limite agora. A gente pode medir pra você — é só chamar no WhatsApp abaixo.");
         }
         throw new Error("Não conseguimos analisar essa URL. Confirme se o site está no ar.");
       }
@@ -164,7 +164,20 @@ export default function VelocidadeUsuarioReal() {
           >
             {loading ? "Analisando (pode levar até 20s)…" : "Analisar velocidade →"}
           </button>
-          {erro && <p className="mt-3 text-[13px] text-red-hi">{erro}</p>}
+          {erro && (
+            <div className="mt-3">
+              <p className="text-[13px] text-red-hi">{erro}</p>
+              <a
+                href={waLink(`Olá! Quero saber a velocidade real do meu site${url ? ` (${url})` : ""} — a medição ao vivo não completou.\n— ref: ${REF}`)}
+                target="_blank"
+                rel="noopener"
+                onClick={() => trackEvent("cta_whatsapp", { tool: REF })}
+                className="mt-2 inline-block font-heading text-[13px] font-semibold text-red-hi underline underline-offset-2"
+              >
+                Prefere que a gente meça pra você? Fale no WhatsApp →
+              </a>
+            </div>
+          )}
           <p className="mt-4 text-[11.5px] leading-relaxed text-dim">
             Dado direto da API oficial do Google (PageSpeed Insights) — a mesma que roda em{" "}
             <span className="text-ink">pagespeed.web.dev</span>. Nada é armazenado pela Fórmula.
