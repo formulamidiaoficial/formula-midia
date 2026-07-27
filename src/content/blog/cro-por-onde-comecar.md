@@ -3,7 +3,7 @@ title: "CRO na prática: por onde começar quando você não sabe nada de otimiz
 description: "CRO parece disciplina de especialista. Não é — é um processo de 4 passos que qualquer negócio consegue rodar sozinho antes de contratar ajuda."
 pilar: "P3"
 ferramentasRelacionadas: ["simulador-de-funil", "valor-do-ganho-de-conversao"]
-artigosRelacionados: ["por-que-o-site-nao-converte"]
+artigosRelacionados: ["por-que-o-site-nao-converte", "campos-de-formulario-que-matam-conversao"]
 datePublished: 2026-09-28
 faq:
   - question: "Preciso de ferramenta paga de heatmap/gravação de sessão pra começar?"
@@ -11,7 +11,7 @@ faq:
   - question: "Quanto tempo leva pra ver resultado de CRO?"
     answer: "Depende do volume de tráfego — sites com mais visitas veem resultado estatisticamente confiável mais rápido. Como regra prática, meça por pelo menos 2-4 semanas antes de concluir algo."
   - question: "Quantas conversões preciso ter antes de confiar num teste?"
-    answer: "Como referência de mercado, um teste A/B costuma precisar de algo perto de 350-400 conversões por variante antes do resultado ser estatisticamente confiável. Com menos que isso, o \"vencedor\" aparente pode ser só ruído — sites com pouco tráfego devem rodar o teste por mais tempo, não encurtar o prazo pra forçar uma conclusão."
+    answer: "Segundo a CXL, referência em CRO, o recomendado é não confiar no resultado de um teste A/B antes de bater pelo menos 350 conversões por variante. Com menos que isso, o \"vencedor\" aparente pode ser só ruído — sites com pouco tráfego devem rodar o teste por mais tempo, não encurtar o prazo pra forçar uma conclusão."
 howTo:
   name: "Como começar CRO do zero, em 4 passos"
   steps:
@@ -46,6 +46,8 @@ Antes de dedicar semanas otimizando, vale saber se o retorno compensa o esforço
 ## Passo 4: teste uma mudança de cada vez
 
 O erro mais comum depois do diagnóstico é mudar tudo de uma vez (formulário, copy, design) e não saber depois o que causou a melhora (ou a piora). Mude uma variável, meça por algumas semanas, só então mude a próxima.
+
+Vale também respeitar o tamanho da amostra antes de declarar um vencedor: a [CXL recomenda não confiar no resultado de um teste A/B antes de acumular pelo menos 350 conversões por variante](https://cxl.com/blog/ab-testing-statistics/) — abaixo disso, a diferença observada tende a ser ruído estatístico, não um efeito real.
 
 ## O que CRO não é
 

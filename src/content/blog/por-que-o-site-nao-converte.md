@@ -3,7 +3,7 @@ title: "Por que o site não converte"
 description: "\"Muito tráfego, pouca venda\" não é um diagnóstico. Fricção do formulário, valor da conversão e o Simulador de Funil, juntos, mostram onde está o vazamento."
 pilar: "P3"
 ferramentasRelacionadas: ["friccao-do-formulario", "valor-do-ganho-de-conversao", "simulador-de-funil"]
-artigosRelacionados: ["seu-site-e-rapido-e-bem-visto-pelo-google"]
+artigosRelacionados: ["seu-site-e-rapido-e-bem-visto-pelo-google", "campos-de-formulario-que-matam-conversao", "cro-por-onde-comecar"]
 datePublished: 2026-08-10
 faq:
   - question: "Tirar campos do formulário não reduz a qualidade do lead?"
@@ -30,7 +30,7 @@ Todo campo a mais num formulário reduz a taxa de conclusão. É intuitivo, mas 
 
 ## Onde você está, na comparação com o mercado
 
-Levantamentos de landing page em diversos setores mostram uma distribuição bem desigual: a taxa de conversão **mediana** fica perto de 2,3%, o **top 25%** das páginas passa de 5%, e só o **top 10%** ultrapassa 11%. Isso muda a leitura do "meio ponto percentual": se você está perto da mediana, sair de 2% pra 2,5% te aproxima do quartil superior — um salto real, não cosmético. Se você já está acima de 8-9%, a mesma meia casa decimal é desproporcionalmente mais difícil de conquistar, porque já está competindo com a fatia mais otimizada do mercado.
+O levantamento da [WordStream sobre taxa de conversão de landing pages](https://www.wordstream.com/blog/ws/2014/03/17/what-is-a-good-conversion-rate) mostra uma distribuição bem desigual: a taxa de conversão **mediana** fica em 2,35%, o **top 25%** das páginas passa de 5,31%, e só o **top 10%** ultrapassa 11,45%. Isso muda a leitura do "meio ponto percentual": se você está perto da mediana, sair de 2% pra 2,5% te aproxima do quartil superior — um salto real, não cosmético. Se você já está acima de 8-9%, a mesma meia casa decimal é desproporcionalmente mais difícil de conquistar, porque já está competindo com a fatia mais otimizada do mercado.
 
 ## O Simulador de Funil: onde na jornada o vazamento realmente está
 
