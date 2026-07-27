@@ -31,11 +31,12 @@ para todo mundo. Ver `worker/README.md` para redeployar o Worker se precisar.
 
 ## Antes de começar
 
-- Pacote pronto: `Downloads/formula-midia-astro-deploy.zip` (regenerado em 26/07, ~2.65MB, 170
-  arquivos — inclui as 12 ferramentas em `/ferramentas/` (as 7 já publicadas + **velocidade-usuario-real**,
-  **analise-de-log**, **comparador-historico**, **friccao-do-formulario** e **sinais-de-confianca**,
-  ainda não publicadas) e o tema claro/nav corrigido. Fabiano decidiu esperar o lote completo de
-  ferramentas antes de publicar — este zip é atualizado a cada nova ferramenta pronta.
+- Pacote pronto: `Downloads/formula-midia-astro-deploy.zip` (regenerado em 27/07, ~3.2MB, 233
+  arquivos — inclui as **21 ferramentas** em `/ferramentas/`, o **blog** (`/blog`, 21 artigos + RSS),
+  o **glossário** (`/glossario`, 19 termos), `/metodologia`, `/placar`, a **Home reescrita** (novo
+  hero, logo animada, seção "Prova, não promessa") e os dois Workers de infraestrutura
+  (`PUBLIC_ROBOTS_PROXY_URL` e `PUBLIC_SITE_AUDIT_URL`) já publicados e embutidos no build.
+  Nada disso está no `public_html` ainda — este zip é o primeiro pacote com tudo junto.
 - Ele já contém tudo: HTML de todas as páginas, `/links`, `.htaccess`,
   `robots.txt`, `sitemap-index.xml`, `manifest.webmanifest`, favicon, imagens,
   CSS/JS.
