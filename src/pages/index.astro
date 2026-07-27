@@ -1,6 +1,9 @@
 ---
 import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import dashboardScreenshot from "../assets/screenshots/dashboard-google-ads.png";
+import relatorioScreenshot from "../assets/screenshots/relatorio-whatsapp.png";
 import Badge from "../components/ui/Badge.astro";
 import AnimatedLogo from "../components/sections/AnimatedLogo.astro";
 import BtnPrimary from "../components/ui/BtnPrimary.astro";
@@ -306,12 +309,14 @@ const comparisonRows = [
       <div class="mt-12 grid auto-rows-[minmax(190px,auto)] grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-4">
         <!-- Dashboards Profissionais: large cell with real product screenshot -->
         <div class="group relative col-span-1 overflow-hidden rounded-card border border-border sm:col-span-2 md:col-span-2 md:row-span-2" data-in>
-          <img
-            src="/assets/screenshots/dashboard-google-ads.png"
+          <Image
+            src={dashboardScreenshot}
             alt="Dashboard real de campanhas Google Ads usado pela Fórmula Mídia"
             class="absolute inset-0 h-full w-full object-cover object-top opacity-35 transition-opacity duration-300 group-hover:opacity-55"
             loading="lazy"
             decoding="async"
+            widths={[400, 800, 1200]}
+            sizes="(min-width: 768px) 50vw, 100vw"
           />
           <div class="absolute inset-0 bg-gradient-to-t from-bg via-bg/75 to-bg/10"></div>
           <div class="relative flex h-full flex-col justify-end p-6">
@@ -326,12 +331,13 @@ const comparisonRows = [
           <div class="mb-3 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-red/10 font-heading text-sm font-bold text-red-hi">{platformFeatures[4].n}</div>
           <h3 class="mb-1.5 font-heading text-[15.5px] font-semibold">{platformFeatures[4].title}</h3>
           <p class="mb-4 text-[13.5px] leading-relaxed text-mid">{platformFeatures[4].desc}</p>
-          <img
-            src="/assets/screenshots/relatorio-whatsapp.png"
+          <Image
+            src={relatorioScreenshot}
             alt="Exemplo real de relatório automático de campanhas enviado via WhatsApp"
             class="mt-auto max-h-56 w-full rounded-xl object-contain"
             loading="lazy"
             decoding="async"
+            width={520}
           />
         </div>
 
