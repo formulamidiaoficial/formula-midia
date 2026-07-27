@@ -1,4 +1,5 @@
 ---
+import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Badge from "../components/ui/Badge.astro";
 import BtnPrimary from "../components/ui/BtnPrimary.astro";
@@ -9,6 +10,10 @@ import { waLink, faqPageSchema } from "../data/schema";
 import { homeFaq } from "../data/faq/home";
 
 const schema = faqPageSchema(homeFaq);
+
+const ultimosPosts = (await getCollection("blog"))
+  .sort((a, b) => b.data.datePublished.valueOf() - a.data.datePublished.valueOf())
+  .slice(0, 3);
 
 const platformFeatures = [
   {
@@ -516,6 +521,28 @@ const comparisonRows = [
           <a href="#pacotes" class="text-mid no-underline hover:text-ink">→ Descubra por onde começar o seu crescimento</a>
           <a href="/growth" class="text-mid no-underline hover:text-ink">→ Entenda o motor de Growth & Performance</a>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOG -->
+  <section class="px-6 py-22">
+    <div class="mx-auto max-w-[1080px]">
+      <div class="mb-10 flex flex-wrap items-end justify-between gap-4" data-in>
+        <div>
+          <span class="mb-3.5 block font-heading text-xs font-semibold uppercase tracking-[.16em] text-red-hi">Do blog</span>
+          <h2 class="max-w-[680px] font-heading text-[clamp(26px,3.4vw,38px)] font-bold leading-[1.15] tracking-tight">Guias que ensinam o que as ferramentas calculam</h2>
+        </div>
+        <a href="/blog" class="font-heading text-[13.5px] font-semibold text-mid no-underline hover:text-ink">Ver todos os artigos →</a>
+      </div>
+      <div class="grid gap-5 sm:grid-cols-3">
+        {ultimosPosts.map((post) => (
+          <a href={`/blog/${post.id}`} class="rounded-card border border-border bg-glass p-6 no-underline transition-colors hover:border-border-hi" data-in>
+            <div class="mb-2 font-heading text-[11px] font-semibold uppercase tracking-[.08em] text-red-hi">Pilar {post.data.pilar}</div>
+            <div class="mb-2 font-heading text-[15.5px] font-semibold leading-snug text-ink">{post.data.title}</div>
+            <p class="text-[13px] leading-relaxed text-mid">{post.data.description}</p>
+          </a>
+        ))}
       </div>
     </div>
   </section>

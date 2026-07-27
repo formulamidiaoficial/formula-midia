@@ -6,6 +6,9 @@ interface Props {
   image?: string; // defaults to the site-wide OG banner
   imageAlt?: string;
   noindex?: boolean; // true for error pages, thank-you pages, etc.
+  type?: "website" | "article"; // "article" ativa og:article:* (blog)
+  publishedTime?: string; // ISO date — só faz sentido com type="article"
+  modifiedTime?: string;
 }
 
 const {
@@ -15,6 +18,9 @@ const {
   image = "/assets/og-image.png",
   imageAlt = "Fórmula Mídia: Tráfego Pago, SEO & GEO, Performance",
   noindex = false,
+  type = "website",
+  publishedTime,
+  modifiedTime,
 } = Astro.props;
 
 const canonicalURL = new URL(path, Astro.site);
@@ -26,7 +32,7 @@ const imageURL = new URL(image, Astro.site);
 <meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow"} />
 <link rel="canonical" href={canonicalURL} />
 
-<meta property="og:type" content="website" />
+<meta property="og:type" content={type} />
 <meta property="og:url" content={canonicalURL} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
@@ -36,6 +42,9 @@ const imageURL = new URL(image, Astro.site);
 <meta property="og:image:alt" content={imageAlt} />
 <meta property="og:locale" content="pt_BR" />
 <meta property="og:site_name" content="Fórmula Mídia" />
+{type === "article" && publishedTime && <meta property="article:published_time" content={publishedTime} />}
+{type === "article" && modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
+{type === "article" && <meta property="article:publisher" content="Fórmula Mídia" />}
 
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={title} />

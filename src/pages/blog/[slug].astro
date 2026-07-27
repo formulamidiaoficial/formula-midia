@@ -50,6 +50,9 @@ if (post.data.faq.length > 0) schema.push(faqPageSchema(post.data.faq));
   description={post.data.description}
   path={`/blog/${post.id}`}
   schema={schema}
+  type="article"
+  publishedTime={post.data.datePublished.toISOString()}
+  modifiedTime={(post.data.dateModified ?? post.data.datePublished).toISOString()}
 >
   <Breadcrumbs items={breadcrumbItems} />
 
