@@ -21,9 +21,11 @@ gerar o zip. `analise-de-log` não depende de nenhuma API — pode publicar sem 
 
 ## Antes de começar
 
-- Pacote pronto: `Downloads/formula-midia-astro-deploy.zip` (regenerado em 26/07, ~2.63MB, 166
-  arquivos — inclui as 10 ferramentas em `/ferramentas/` (as 7 já publicadas + **velocidade-usuario-real**,
-  **analise-de-log** e **comparador-historico**, ainda não publicadas) e o tema claro/nav corrigido.
+- Pacote pronto: `Downloads/formula-midia-astro-deploy.zip` (regenerado em 26/07, ~2.65MB, 170
+  arquivos — inclui as 12 ferramentas em `/ferramentas/` (as 7 já publicadas + **velocidade-usuario-real**,
+  **analise-de-log**, **comparador-historico**, **friccao-do-formulario** e **sinais-de-confianca**,
+  ainda não publicadas) e o tema claro/nav corrigido. Fabiano decidiu esperar o lote completo de
+  ferramentas antes de publicar — este zip é atualizado a cada nova ferramenta pronta.
 - Ele já contém tudo: HTML de todas as páginas, `/links`, `.htaccess`,
   `robots.txt`, `sitemap-index.xml`, `manifest.webmanifest`, favicon, imagens,
   CSS/JS.
