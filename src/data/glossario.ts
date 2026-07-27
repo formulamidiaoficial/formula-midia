@@ -199,4 +199,54 @@ export const GLOSSARIO: TermoGlossario[] = [
       "CPL (Custo Por Lead) é o investimento em mídia dividido pelo número de leads (contatos captados via formulário, WhatsApp etc.) gerados naquele período. É uma métrica intermediária: não diz se o lead vira cliente (isso depende da taxa de conversão lead→venda) nem quanto custou o cliente final (isso é o CAC). Usado principalmente em planejamento — para estimar quanta verba de mídia é necessária para atingir um número desejado de leads ou de vendas, partindo de trás para frente a partir de uma meta de faturamento.",
     ferramentasRelacionadas: ["meta-reversa", "custo-do-lead-perdido"],
   },
+  {
+    slug: "aeo",
+    termo: "AEO (Answer Engine Optimization)",
+    categoria: "SEO / IA",
+    definicaoCurta:
+      "AEO é a prática de estruturar conteúdo para ser citado diretamente dentro da resposta gerada por buscadores de IA e assistentes — a resposta em si, não só o link tradicional para a página.",
+    definicaoCompleta:
+      "AEO (Answer Engine Optimization, ou Otimização para Motores de Resposta) é o conjunto de práticas para que um conteúdo seja citado literalmente dentro de respostas geradas por sistemas de IA — AI Overviews, ChatGPT, assistentes de voz, caixas de resposta direta — em vez de aparecer só como um link na lista tradicional de resultados. É próximo de GEO (Generative Engine Optimization) e, no uso comum do mercado, os dois termos costumam se sobrepor; a distinção mais citada é que GEO foca especificamente em como IAs generativas como ChatGPT e Perplexity sintetizam e citam fontes, enquanto AEO é o guarda-chuva mais amplo, que também cobre trechos em destaque (featured snippets) e respostas de busca por voz. Na prática, boa parte das táticas é a mesma: definição direta e citável logo no início do conteúdo, estrutura clara em pergunta e resposta, e dados estruturados que reduzem a ambiguidade sobre do que trata a página.",
+    ferramentasRelacionadas: ["sinais-de-confianca", "calculadora", "medir-trafego-de-ia"],
+  },
+  {
+    slug: "ai-overviews-e-ai-mode",
+    termo: "AI Overviews e AI Mode",
+    categoria: "SEO / IA",
+    definicaoCurta:
+      "AI Overviews é o resumo gerado por IA que aparece embutido no topo dos resultados de busca do Google para certas pesquisas; AI Mode é uma aba separada, em formato de chat, para pesquisas mais longas e exploratórias com perguntas de acompanhamento.",
+    definicaoCompleta:
+      "AI Overviews e AI Mode são dois recursos distintos de busca com IA generativa do Google, frequentemente confundidos entre si. O AI Overviews aparece embutido na página de resultados tradicional, resumindo uma resposta a partir de várias fontes antes da lista de links — pensado pra não tirar quem pesquisa do fluxo normal de busca. O AI Mode é uma aba separada, num formato mais parecido com um chat, voltada a pesquisas mais complexas: permite perguntas de acompanhamento na mesma conversa e usa mais buscas internas pra montar uma resposta mais aprofundada (ver query fan-out). Para quem tem site, o efeito prático é parecido nos dois casos: se o conteúdo não é citado na resposta gerada, o clique pro site pode nem acontecer, mesmo que a página estivesse bem posicionada na busca tradicional.",
+    ferramentasRelacionadas: ["medir-trafego-de-ia", "verificador-acesso-ia", "calculadora"],
+  },
+  {
+    slug: "query-fan-out",
+    termo: "Query Fan-Out",
+    categoria: "SEO / IA",
+    definicaoCurta:
+      "Query fan-out é a técnica pela qual buscadores de IA (como o AI Mode do Google) quebram uma única pergunta em várias sub-perguntas relacionadas, buscam a resposta de cada uma separadamente e juntam tudo numa resposta só.",
+    definicaoCompleta:
+      "Query fan-out (também chamado de decomposição de consulta) é o processo pelo qual sistemas de busca com IA generativa — o AI Mode do Google, e de forma parecida ChatGPT e Perplexity — respondem perguntas complexas: em vez de rodar só a pesquisa original, o sistema gera várias sub-perguntas relacionadas (sinônimos, aspectos complementares, comparações implícitas na pergunta), busca resultado para cada uma e sintetiza tudo numa resposta única. Na prática, isso significa que uma página pode ser citada numa resposta de IA mesmo sem rankear bem pro termo de busca original, desde que responda bem a uma das sub-perguntas geradas no processo — o que muda a lógica de otimizar só pra uma palavra-chave isolada e reforça a importância de cobrir um tema com profundidade.",
+    ferramentasRelacionadas: ["calculadora", "medir-trafego-de-ia"],
+  },
+  {
+    slug: "dados-anonimizados",
+    termo: "Dados Anonimizados / Anonimização (LGPD)",
+    categoria: "Jurídico",
+    definicaoCurta:
+      "Dado anonimizado, pela LGPD, é aquele que não pode mais ser associado a uma pessoa identificável nem revertido a dado pessoal usando meios técnicos razoavelmente disponíveis — por isso a lei não se aplica a ele, diferente do dado pessoal.",
+    definicaoCompleta:
+      "O artigo 12 da LGPD (Lei nº 13.709/2018) estabelece que dados anonimizados não são considerados dados pessoais e, portanto, ficam fora do escopo da lei — desde que a anonimização seja irreversível com os meios técnicos razoavelmente disponíveis no momento do tratamento. É diferente de um dado apenas 'agregado' ou 'sem nome': se ainda for razoavelmente possível reverter o processo e reidentificar a pessoa (cruzando com outra base, por exemplo), a lei trata o dado como pessoal, mesmo que pareça anônimo à primeira vista. A distinção importa na prática para qualquer empresa que publique estatísticas ou benchmarks agregados a partir de dados de clientes: só é seguro tratar como anonimizado — e fora da LGPD — o que realmente não permite voltar a identificar ninguém.",
+    ferramentasRelacionadas: ["gerador-politica-privacidade-lgpd"],
+  },
+  {
+    slug: "rich-results",
+    termo: "Rich Results (Resultados Ricos)",
+    categoria: "SEO / IA",
+    definicaoCurta:
+      "Rich results (resultados ricos) são resultados de busca do Google com elementos visuais extras além do título e da descrição — como estrelas de avaliação, perguntas expansíveis ou preço — habilitados por dados estruturados (schema.org) no HTML da página.",
+    definicaoCompleta:
+      "Rich results, ou resultados ricos, são a forma como o Google exibe certos resultados de busca com elementos visuais adicionais ao título e à URL — estrelas de avaliação (Review), preço e disponibilidade (Product) ou perguntas expansíveis (FAQPage), por exemplo — quando a página tem dados estruturados (JSON-LD/schema.org) reconhecidos pelo Google para aquele tipo de conteúdo. Nem todo tipo de dado estruturado gera um resultado rico continuamente, e o Google pode descontinuar o suporte a um tipo específico mesmo que a marcação em si continue válida no schema.org: o rich result de FAQPage parou de aparecer na busca em 7 de maio de 2026, e o de HowTo teve a descontinuação registrada pela documentação do Google Search Central em 31 de julho de 2025. Nos dois casos, a marcação não ficou 'errada' — só deixou de gerar o elemento visual extra no resultado de busca. Por isso, dados estruturados continuam valendo pelo que ajudam buscadores e IAs a entender a página (ver GEO), mesmo quando não resultam mais num rich result visível.",
+    ferramentasRelacionadas: ["auditoria-tecnica-seo", "verificador-acesso-ia"],
+  },
 ];
