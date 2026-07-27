@@ -34,6 +34,10 @@ Cada categoria de negócio tem atributos próprios disponíveis (acessibilidade,
 
 Cinco dos vinte pontos de uma avaliação completa são relativos, não absolutos: não importa ter 40 avaliações se o concorrente ao lado tem 380. Não importa responder rápido se o concorrente responde mais rápido ainda. Esses pontos só revelam alguma coisa quando comparados a quem está competindo pela mesma busca.
 
+## Quanto cada categoria pesa de verdade
+
+Estudos de fatores de ranqueamento local (que cruzam dado de posição real no mapa com centenas de sinais) convergem numa hierarquia parecida: o próprio Perfil da Empresa (categoria, atributos, proximidade) responde por perto de um terço do peso total — a fatia isolada mais pesada. Sinais on-page do site vêm em seguida, avaliações depois disso, e por último os sinais de comportamento (cliques, ligações pelo perfil) e citações externas (nome/endereço/telefone consistentes em outros diretórios). Na prática: otimizar o próprio perfil ainda é a alavanca mais forte — mas citação externa consistente (inclusive menção em fóruns e comunidades, que o Google também rastreia como sinal informal de relevância local) fecha a lacuna que o perfil sozinho não cobre.
+
 ## Como ver isso com contexto competitivo real
 
 A maioria dos avaliadores gratuitos entrega uma nota solta, sem dizer o que falta pra passar o concorrente. Uma auditoria que já pede os números de 3 concorrentes devolve a linha que realmente move decisão: quantas avaliações faltam pra empatar, por exemplo.

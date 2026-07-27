@@ -27,6 +27,10 @@ Existem duas dores distintas, fáceis de confundir:
 
 São problemas diferentes com soluções diferentes: o primeiro se resolve com processo (SLA de resposta, automação de primeira mensagem); o segundo se resolve com gente ou com redução do volume que entra.
 
+## O mal-entendido mais comum: "é o vendedor que é lento"
+
+Quando a demora aparece, o primeiro instinto é olhar pra pessoa que responde — mas na maioria dos casos observados o gargalo real é anterior a isso: o lead demora porque ninguém definiu quem é o dono daquele contato assim que ele chega (fica esperando alguém "ver" a notificação), não porque o vendedor esteja devagar depois que já pegou o caso. É um problema de roteamento, não de disposição individual — e é comum demais: uma fatia relevante das empresas que recebem lead pelo site simplesmente **nunca responde**, não é só uma questão de velocidade. Corrigir isso é mudar o processo de recebimento (quem é notificado, quem assume, em quanto tempo), não cobrar mais rapidez de quem já está no limite.
+
 ## Capacidade Comercial: a conta que mostra o teto real do seu time
 
 A matemática é simples, throughput direto — não é uma fila complexa de call center, é uma aproximação prática pra diagnóstico rápido:

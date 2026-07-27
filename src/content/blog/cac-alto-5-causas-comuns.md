@@ -28,6 +28,10 @@ CAC alto é um sintoma, não um diagnóstico. Cinco causas diferentes produzem o
 
 **5. O cálculo do CAC está incompleto.** Contar só a verba de mídia, sem comissão de vendedor ou ferramenta de CRM, produz um número artificialmente baixo — e quando alguém finalmente calcula certo, "parece" que o CAC subiu, quando na verdade só ficou honesto.
 
+## O fator que piora todas as 5 ao mesmo tempo
+
+Depender de um único canal de mídia é o tipo de decisão que parece neutra até o leilão daquele canal ficar mais concorrido — e, à medida que mais negócios do seu setor entram na mesma plataforma, o custo por clique sobe pra todo mundo que está lá, mesmo sem nenhuma das 5 causas acima piorar isoladamente. Diversificar canal não resolve nenhuma causa específica, mas reduz o quanto qualquer uma delas consegue inflar o CAC de uma vez só — é proteção estrutural, não um sexto motivo isolado.
+
 ## Como descobrir qual é a sua
 
 Comece calculando o CAC completo (não só a mídia) e comparando com o LTV — se a razão já está abaixo de 3:1, o problema provavelmente está nas causas 1, 2 ou 3. Se a razão parece boa mas o caixa não reflete isso, a causa é a 4. Se você nunca tinha calculado CAC completo antes, comece pela causa 5.

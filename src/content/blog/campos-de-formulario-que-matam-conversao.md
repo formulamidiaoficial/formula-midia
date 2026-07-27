@@ -14,7 +14,7 @@ faq:
 
 Nem todo campo de formulário custa a mesma coisa em desistência. Estes sete costumam ser os que mais afastam gente que já estava disposta a converter.
 
-**1. Telefone com máscara rígida.** Formatos que exigem exatamente um padrão (DDD + 9 dígitos, sem espaço) rejeitam número digitado de forma natural e geram frustração silenciosa — a pessoa desiste antes de descobrir o que está errado.
+**1. Telefone com máscara rígida.** Formatos que exigem exatamente um padrão (DDD + 9 dígitos, sem espaço) rejeitam número digitado de forma natural e geram frustração silenciosa — a pessoa desiste antes de descobrir o que está errado. Casos documentados de teste A/B mostram esse campo específico custando até quase metade da conversão quando a máscara é rígida demais — e o oposto também já foi medido: tornar o campo de telefone opcional, num teste isolado, chegou a dobrar a taxa de conclusão do formulário. É o campo com maior variação de impacto entre os sete.
 
 **2. CPF ou CNPJ logo na entrada.** Pedir documento antes da primeira conversa cria desconfiança — parece contrato, não contato. Deixe para quando a relação já está mais avançada.
 

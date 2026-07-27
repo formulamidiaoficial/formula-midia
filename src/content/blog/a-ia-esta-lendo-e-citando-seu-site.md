@@ -33,6 +33,10 @@ Aqui está o problema real: como os dois robôs têm nomes parecidos e comportam
 
 → **Confira o seu robots.txt agora:** [Verificador de Acesso de IA](/ferramentas/verificador-acesso-ia)
 
+## O padrão que auditorias reais encontram
+
+Não é hipótese isolada: análises de robots.txt em amostras grandes de sites mostram exatamente esse padrão se repetindo — o site bloqueia corretamente os robôs de treino (decisão consciente, legítima) e, no mesmo movimento, bloqueia sem perceber os robôs de busca/citação, porque os dois entraram na mesma lista "bloquear IA" copiada pronta. O tamanho do problema cresce junto com a relevância: a fatia de buscas que passam por um assistente de IA em vez de busca tradicional só aumenta ano a ano, o que torna o custo de um bloqueio por engano cada vez maior — cada trimestre que passa sem revisar é mais tráfego potencial perdido, não menos.
+
 ## GA4 não conta a história toda
 
 Mesmo com o robots.txt correto, existe uma segunda lacuna: medir. Desde maio de 2026 o GA4 tem um canal nativo "AI Assistant" — mas ele só reconhece ChatGPT, Gemini, Copilot, Grok e DeepSeek, deixa de fora a Perplexity, o Claude e a Meta AI, e por padrão perde entre 35% e 70% do tráfego de IA (classificado erroneamente como "Referral" ou "Direto"). Isso importa porque visitante vindo de IA converte cerca de 16% mais e passa 68% mais tempo no site — se esse tráfego cai em "Direto", a empresa decide orçamento achando que a IA não traz resultado, quando na verdade só não está sendo contada.

@@ -28,6 +28,10 @@ Todo campo a mais num formulário reduz a taxa de conclusão. É intuitivo, mas 
 
 → **Calcule quanto vale a sua melhoria de conversão:** [Valor do Ganho de Conversão](/ferramentas/valor-do-ganho-de-conversao)
 
+## Onde você está, na comparação com o mercado
+
+Levantamentos de landing page em diversos setores mostram uma distribuição bem desigual: a taxa de conversão **mediana** fica perto de 2,3%, o **top 25%** das páginas passa de 5%, e só o **top 10%** ultrapassa 11%. Isso muda a leitura do "meio ponto percentual": se você está perto da mediana, sair de 2% pra 2,5% te aproxima do quartil superior — um salto real, não cosmético. Se você já está acima de 8-9%, a mesma meia casa decimal é desproporcionalmente mais difícil de conquistar, porque já está competindo com a fatia mais otimizada do mercado.
+
 ## O Simulador de Funil: onde na jornada o vazamento realmente está
 
 Se a Fricção do Formulário e o Ganho de Conversão olham peças específicas, o [Simulador de Funil](/ferramentas/simulador-de-funil) olha o funil inteiro — tráfego, conversão, ticket médio — e mostra em qual etapa está o maior vazamento. É o ponto de partida quando você ainda não sabe se o problema é o formulário, a página, ou a oferta.

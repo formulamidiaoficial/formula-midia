@@ -38,6 +38,8 @@ Mede quanto tempo a página demora pra reagir visualmente depois que alguém cli
 
 **Como melhorar:** carregar scripts de terceiros de forma assíncrona, adiar o que não é essencial pro primeiro clique, revisar plugins/scripts acumulados ao longo do tempo.
 
+Vale saber que essa é a métrica onde mais site brasileiro falha: medições de campo mostram algo perto de 40% das origens mobile não passando no limiar "bom" de INP — a métrica mais recente do trio, e a menos otimizada até agora. Boa parte da causa nem é código próprio: sites comerciais típicos carregam bem mais de uma dezena de scripts de terceiros (chat, pixel de anúncio, analytics, heatmap) antes mesmo do código do próprio site rodar — cada um concorrendo pela mesma thread principal no momento em que o visitante tenta clicar em algo.
+
 ## Como ver as três juntas no seu site
 
 Em vez de calcular cada uma manualmente, a ferramenta de Velocidade + Usuário Real já traz as três métricas, tanto em laboratório quanto com dado de usuário real (campo).

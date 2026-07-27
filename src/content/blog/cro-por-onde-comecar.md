@@ -10,6 +10,8 @@ faq:
     answer: "Não pra começar — o funil e o formulário já revelam a maior parte dos problemas comuns antes de precisar de ferramentas mais sofisticadas."
   - question: "Quanto tempo leva pra ver resultado de CRO?"
     answer: "Depende do volume de tráfego — sites com mais visitas veem resultado estatisticamente confiável mais rápido. Como regra prática, meça por pelo menos 2-4 semanas antes de concluir algo."
+  - question: "Quantas conversões preciso ter antes de confiar num teste?"
+    answer: "Como referência de mercado, um teste A/B costuma precisar de algo perto de 350-400 conversões por variante antes do resultado ser estatisticamente confiável. Com menos que isso, o \"vencedor\" aparente pode ser só ruído — sites com pouco tráfego devem rodar o teste por mais tempo, não encurtar o prazo pra forçar uma conclusão."
 ---
 
 [CRO](/glossario/cro) (Conversion Rate Optimization) soa como disciplina que exige especialista e ferramenta cara. Na prática, o começo é simples e qualquer negócio consegue rodar sozinho.

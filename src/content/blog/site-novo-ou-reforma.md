@@ -30,6 +30,10 @@ Esse é o motivo mais comum e o mais fácil de dimensionar: o site que existia p
 
 → **Dimensione o que falta:** [Simulador de Site](/ferramentas/simulador-de-site)
 
+## O erro que mais destrói valor num site novo
+
+Não é o design nem a plataforma escolhida — é perder o histórico de SEO que o site antigo já tinha construído. Trocar de site sem preservar as URLs antigas (ou sem redirecionar cada uma pra sua equivalente nova) é, de longe, o erro mais comum e mais caro numa reconstrução: o Google trata cada URL que sumiu sem redirecionamento como conteúdo perdido, e a autoridade acumulada naquela página desaparece junto. Um site novo tecnicamente melhor pode, ainda assim, sair pior no Google do que o antigo — não por causa da reconstrução em si, mas por causa da migração malfeita. Isso é 100% evitável: mapear cada URL antiga pra sua nova equivalente, com redirecionamento 301, antes de publicar.
+
 ## O critério prático
 
 Reforma pontual resolve o Motivo 2 na maioria dos casos. Site novo resolve os Motivos 1 e 3 — e, quando os dois acontecem juntos (plataforma velha **e** escopo que cresceu), reforçar o site antigo tende a custar quase o mesmo que reconstruir, sem entregar a mesma base sólida. Nesse caso, gastar uma vez no site novo custa menos, no total, do que gastar duas vezes tentando esticar o antigo.

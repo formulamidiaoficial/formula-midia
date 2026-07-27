@@ -23,7 +23,7 @@ Existem dois tipos de medição de performance, e confundir os dois é o erro ma
 - **Laboratório** — um teste controlado (o Lighthouse do Google roda num ambiente simulado, condições fixas). Bom pra diagnosticar problemas técnicos específicos.
 - **Campo (usuário real)** — dado agregado de visitantes reais, com a conexão e o aparelho reais deles. É o que realmente afeta a experiência — e o que o Google usa como sinal de ranking.
 
-Um site pode ter nota alta no laboratório e experiência ruim no campo (ou o contrário) — por isso vale ver os dois números lado a lado, não só um.
+Um site pode ter nota alta no laboratório e experiência ruim no campo (ou o contrário) — por isso vale ver os dois números lado a lado, não só um. A distância entre os dois é maior do que a maioria imagina: levantamentos que cruzam nota de laboratório com dado de campo mostram que cerca de metade dos sites com nota "perfeita" no teste de Lighthouse ainda falham nos Core Web Vitals reais, medidos com usuário de verdade. Nota alta no laboratório não é garantia nenhuma — só o dado de campo confirma a experiência que realmente aconteceu.
 
 → **Veja os dois números do seu site:** [Velocidade + Usuário Real](/ferramentas/velocidade-usuario-real)
 
