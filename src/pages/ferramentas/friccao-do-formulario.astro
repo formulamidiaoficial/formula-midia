@@ -2,6 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Badge from "../../components/ui/Badge.astro";
 import Breadcrumbs from "../../components/ui/Breadcrumbs.astro";
+import LeiaTambem from "../../components/ui/LeiaTambem.astro";
 import FriccaoFormulario from "../../components/islands/FriccaoFormulario.tsx";
 import { breadcrumbSchema, faqPageSchema, SITE_URL, BRAND_NAME, type FaqItem } from "../../data/schema";
 
@@ -72,4 +73,10 @@ const schema = [breadcrumbSchema(breadcrumbItems), faqPageSchema(faq), appSchema
       </div>
     </div>
   </section>
+
+  <LeiaTambem
+    href="/blog/por-que-o-site-nao-converte"
+    titulo="Por que o site não converte"
+    descricao="Fricção, valor da conversão e funil, juntos, mostram onde está o vazamento."
+  />
 </BaseLayout>

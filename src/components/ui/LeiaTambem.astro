@@ -1,0 +1,29 @@
+---
+// Fecha o link interno contextual que CONTENT-META-005 (formula-foundation)
+// já exige mas nenhuma ferramenta cumpria via corpo do texto (só via Nav/
+// Footer) — ver CONTENT-META-011 §2. Um artigo por ferramenta, no máximo.
+interface Props {
+  href: string;
+  titulo: string;
+  descricao: string;
+}
+const { href, titulo, descricao } = Astro.props;
+---
+
+<section class="px-6 pb-16">
+  <div class="mx-auto max-w-[720px]">
+    <a
+      href={href}
+      class="flex flex-col gap-1.5 rounded-card border border-border bg-glass p-6 no-underline transition-colors hover:border-border-hi sm:flex-row sm:items-center sm:justify-between sm:gap-4"
+    >
+      <div>
+        <div class="mb-1 font-heading text-[11px] font-semibold uppercase tracking-[.08em] text-red-hi">
+          Leia também
+        </div>
+        <div class="font-heading text-[15px] font-semibold text-ink">{titulo}</div>
+        <div class="mt-1 text-[13px] leading-relaxed text-mid">{descricao}</div>
+      </div>
+      <span class="shrink-0 font-heading text-[13px] font-semibold text-red-hi">Ler artigo →</span>
+    </a>
+  </div>
+</section>

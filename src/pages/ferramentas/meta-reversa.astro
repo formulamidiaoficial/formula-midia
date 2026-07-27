@@ -2,6 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Badge from "../../components/ui/Badge.astro";
 import Breadcrumbs from "../../components/ui/Breadcrumbs.astro";
+import LeiaTambem from "../../components/ui/LeiaTambem.astro";
 import MetaReversa from "../../components/islands/MetaReversa.tsx";
 import { breadcrumbSchema, faqPageSchema, SITE_URL, BRAND_NAME, type FaqItem } from "../../data/schema";
 
@@ -85,4 +86,10 @@ const schema = [breadcrumbSchema(breadcrumbItems), faqPageSchema(faq), appSchema
       </div>
     </div>
   </section>
+
+  <LeiaTambem
+    href="/blog/quanto-seu-cliente-custa-e-vale"
+    titulo="Quanto o seu cliente realmente custa (e quanto ele vale)"
+    descricao="CAC, LTV, MER e o resto da conta que decide se o investimento em mídia se paga."
+  />
 </BaseLayout>

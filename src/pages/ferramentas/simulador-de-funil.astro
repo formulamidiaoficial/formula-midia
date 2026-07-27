@@ -2,6 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Badge from "../../components/ui/Badge.astro";
 import Breadcrumbs from "../../components/ui/Breadcrumbs.astro";
+import LeiaTambem from "../../components/ui/LeiaTambem.astro";
 import FunnelSimulator from "../../components/islands/FunnelSimulator.tsx";
 import { breadcrumbSchema } from "../../data/schema";
 
@@ -41,4 +42,10 @@ const schema = breadcrumbSchema(breadcrumbItems);
       <FunnelSimulator client:load />
     </div>
   </div>
+
+  <LeiaTambem
+    href="/blog/por-que-o-site-nao-converte"
+    titulo="Por que o site não converte"
+    descricao="Fricção, valor da conversão e funil, juntos, mostram onde está o vazamento."
+  />
 </BaseLayout>

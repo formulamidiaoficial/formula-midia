@@ -2,6 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Badge from "../../components/ui/Badge.astro";
 import Breadcrumbs from "../../components/ui/Breadcrumbs.astro";
+import LeiaTambem from "../../components/ui/LeiaTambem.astro";
 import AuditorPerfil from "../../components/islands/AuditorPerfil.tsx";
 import { breadcrumbSchema, faqPageSchema, SITE_URL, BRAND_NAME, type FaqItem } from "../../data/schema";
 
@@ -88,4 +89,10 @@ const schema = [breadcrumbSchema(breadcrumbItems), faqPageSchema(faq), appSchema
       </div>
     </div>
   </section>
+
+  <LeiaTambem
+    href="/blog/presenca-local-e-conformidade"
+    titulo="Presença local e conformidade"
+    descricao="O básico que decide se você aparece no mapa e se o seu site tem risco jurídico."
+  />
 </BaseLayout>
