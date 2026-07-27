@@ -1,0 +1,84 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/ui/Breadcrumbs.astro";
+import { breadcrumbSchema, definedTermSchema, SITE_URL } from "../../data/schema";
+import { GLOSSARIO } from "../../data/glossario";
+import { FERRAMENTAS } from "../../data/ferramentas";
+
+export function getStaticPaths() {
+  return GLOSSARIO.map((termo) => ({
+    params: { slug: termo.slug },
+    props: { termo },
+  }));
+}
+
+const { termo } = Astro.props;
+
+const breadcrumbItems = [
+  { name: "Home", path: "/" },
+  { name: "Glossário", path: "/glossario" },
+  { name: termo.termo, path: `/glossario/${termo.slug}` },
+];
+
+const ferramentas = FERRAMENTAS.filter((f) => termo.ferramentasRelacionadas.includes(f.slug));
+
+const schema = [
+  breadcrumbSchema(breadcrumbItems),
+  definedTermSchema({
+    termo: termo.termo,
+    definicao: termo.definicaoCurta,
+    url: `${SITE_URL}/glossario/${termo.slug}`,
+  }),
+];
+---
+
+<BaseLayout
+  title={`${termo.termo} — o que é | Glossário Fórmula Mídia`}
+  description={termo.definicaoCurta}
+  path={`/glossario/${termo.slug}`}
+  schema={schema}
+>
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="px-6 pb-24 pt-14">
+    <div class="mx-auto max-w-[720px]">
+      <div class="mb-4 font-heading text-xs font-semibold uppercase tracking-[.1em] text-red-hi">
+        {termo.categoria}
+      </div>
+      <h1 class="font-heading text-[clamp(26px,4vw,38px)] font-bold leading-[1.15] tracking-tight">
+        {termo.termo}
+      </h1>
+
+      <p class="mt-6 rounded-card border border-border bg-glass p-6 text-[17px] leading-relaxed text-ink">
+        {termo.definicaoCurta}
+      </p>
+
+      <div class="mt-8 flex flex-col gap-5 text-[15.5px] leading-relaxed text-mid">
+        <p>{termo.definicaoCompleta}</p>
+      </div>
+
+      {ferramentas.length > 0 && (
+        <div class="mt-12">
+          <h2 class="mb-4 font-heading text-[13px] font-semibold uppercase tracking-[.08em] text-dim">
+            Calcule ou verifique isso agora
+          </h2>
+          <div class="grid gap-3 sm:grid-cols-2">
+            {ferramentas.map((f) => (
+              <a
+                href={`/ferramentas/${f.slug}`}
+                class="rounded-card border border-red/28 bg-gradient-to-b from-red/8 to-glass p-5 no-underline transition-colors hover:border-red/50"
+              >
+                <div class="font-heading text-[14.5px] font-semibold text-ink">{f.nome} →</div>
+                <div class="mt-1 text-[12.5px] leading-relaxed text-mid">{f.desc}</div>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <a href="/glossario" class="mt-12 inline-flex items-center gap-1.5 font-heading text-[13px] font-semibold text-mid no-underline hover:text-ink">
+        ← Todos os termos do glossário
+      </a>
+    </div>
+  </article>
+</BaseLayout>

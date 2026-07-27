@@ -60,6 +60,17 @@ export function faqPageSchema(items: FaqItem[]) {
   };
 }
 
+export function definedTermSchema(opts: { termo: string; definicao: string; url: string }) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "DefinedTerm",
+    name: opts.termo,
+    description: opts.definicao,
+    url: opts.url,
+    inDefinedTermSet: `${SITE_URL}/glossario`,
+  };
+}
+
 export interface BreadcrumbItem {
   name: string;
   path: string;
