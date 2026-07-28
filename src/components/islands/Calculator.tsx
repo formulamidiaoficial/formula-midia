@@ -72,6 +72,7 @@ export default function Calculator() {
         >
           <input
             type="range"
+            aria-label="Quantas landing pages ou páginas você precisa"
             className="range-slider"
             min={1}
             max={20}
@@ -88,6 +89,7 @@ export default function Calculator() {
         >
           <input
             type="range"
+            aria-label="Quantas cidades ou regiões você quer alcançar"
             className="range-slider"
             min={0}
             max={30}

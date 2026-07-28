@@ -1,0 +1,98 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Badge from "../../components/ui/Badge.astro";
+import Breadcrumbs from "../../components/ui/Breadcrumbs.astro";
+import LeiaTambem from "../../components/ui/LeiaTambem.astro";
+import AuditorPerfil from "../../components/islands/AuditorPerfil.tsx";
+import { breadcrumbSchema, faqPageSchema, SITE_URL, BRAND_NAME, type FaqItem } from "../../data/schema";
+
+const breadcrumbItems = [
+  { name: "Home", path: "/" },
+  { name: "Ferramentas", path: "/ferramentas" },
+  { name: "Auditor de Perfil", path: "/ferramentas/auditor-de-perfil" },
+];
+
+const faq: FaqItem[] = [
+  { question: "O que este auditor avalia?", answer: "Os 20 pontos do seu Perfil da Empresa no Google que mais decidem se você aparece e converte: categoria, completude, prova social (avaliações), conteúdo visual e caminho de contato." },
+  { question: "Por que ele compara com concorrentes?", answer: "Porque nota sem contexto não decide nada. Cinco dos vinte pontos são relativos aos três concorrentes que aparecem antes de você — o que importa é a distância para quem está na frente." },
+  { question: "Preciso conectar minha conta do Google?", answer: "Não. É uma autoavaliação guiada: você abre o seu perfil e o dos concorrentes, a ferramenta diz o que olhar e faz a conta. Sem login, sem cadastro e sem custo." },
+  { question: "O que faço com a nota?", answer: "A tela mostra, de graça, o seu bloco mais fraco e as três ações prioritárias por ordem de impacto. Para o plano completo e a execução, é só falar com a gente pelo WhatsApp." },
+];
+
+const appSchema = {
+  "@context": "https://schema.org", "@type": "WebApplication",
+  name: "Auditor de Perfil da Empresa no Google",
+  applicationCategory: "BusinessApplication", operatingSystem: "Web",
+  url: `${SITE_URL}/ferramentas/auditor-de-perfil`,
+  offers: { "@type": "Offer", price: "0", priceCurrency: "BRL" },
+  provider: { "@type": "Organization", name: BRAND_NAME },
+};
+
+const schema = [breadcrumbSchema(breadcrumbItems), faqPageSchema(faq), appSchema];
+---
+
+<BaseLayout
+  title="Auditor de Perfil da Empresa no Google (grátis) | Fórmula Mídia"
+  description="Audite seu Perfil da Empresa no Google em 20 pontos e compare com 3 concorrentes. Descubra o que falta para passar quem está na sua frente no mapa. Grátis, sem login."
+  path="/ferramentas/auditor-de-perfil"
+  schema={schema}
+>
+  <Breadcrumbs items={breadcrumbItems} />
+  <header class="relative overflow-hidden px-6 pb-6 pt-16 text-center">
+    <div class="pointer-events-none absolute -left-24 -top-44 h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,rgba(228,41,41,.22),transparent_70%)] blur-[80px]"></div>
+    <div class="pointer-events-none absolute -right-28 -top-24 h-[380px] w-[380px] rounded-full bg-[radial-gradient(circle,rgba(180,20,20,.18),transparent_70%)] blur-[80px]"></div>
+    <div class="relative z-[2] mx-auto max-w-[700px]">
+      <a href="/ferramentas" class="mb-6 inline-flex items-center gap-1.5 font-heading text-[13px] font-semibold text-mid no-underline hover:text-ink">← Todas as ferramentas</a>
+      <div class="mb-6"><Badge label="Auditor de Perfil" /></div>
+      <h1 class="font-heading text-[clamp(28px,4.4vw,44px)] font-bold leading-[1.12] tracking-tight">
+        O que falta no seu perfil para <span class="text-red-hi">passar o concorrente</span> no mapa?
+      </h1>
+      <p class="mx-auto mt-4 max-w-[560px] text-base leading-relaxed text-mid">
+        20 pontos do seu Perfil da Empresa no Google, comparados com os 3 concorrentes que aparecem
+        antes de você. A nota você já sabe — o que falta para passar o vizinho, quase ninguém mostra.
+      </p>
+    </div>
+  </header>
+
+  <div class="section-light px-6 pb-6 pt-8">
+    <div class="mx-auto max-w-[1140px]">
+      <AuditorPerfil client:load />
+      <p class="mx-auto mt-6 max-w-[680px] text-center text-[11.5px] leading-relaxed text-dim">
+        Resultados anônimos e agregados podem ser usados em pesquisas públicas sobre o mercado
+        brasileiro. Veja a <a href="/privacidade" class="underline underline-offset-2 hover:text-ink">política de privacidade</a>.
+      </p>
+    </div>
+  </div>
+
+  <section class="px-6 pb-24 pt-10">
+    <div class="mx-auto max-w-[720px]">
+      <h2 class="font-heading text-[clamp(22px,3.2vw,30px)] font-bold leading-tight tracking-tight">
+        Nota sem contexto competitivo não decide nada
+      </h2>
+      <div class="mt-6 flex flex-col gap-5 text-[15.5px] leading-relaxed text-mid">
+        <p>
+          O <strong class="text-ink">Perfil da Empresa no Google</strong> é o que mais decide se um negócio
+          local aparece no mapa. A maioria dos avaliadores entrega uma nota solta: você descobre o seu
+          número, mas não sabe o que falta para <strong class="text-ink">passar o concorrente</strong>.
+        </p>
+        <p>
+          Aqui, cinco dos vinte pontos são <strong class="text-ink">relativos</strong>. Não importa ter 40
+          avaliações; importa ter 40 quando o vizinho tem 380. Por isso a ferramenta pede os números dos três
+          concorrentes e devolve a linha que move a decisão: <strong class="text-ink">"faltam X avaliações
+          para você empatar"</strong>.
+        </p>
+        <p class="rounded-card border border-border bg-glass p-5 text-[14px] text-dim">
+          <strong class="text-ink">Atenção ao nome do perfil.</strong> Colocar palavra-chave ou cidade no
+          nome viola as diretrizes do Google e é motivo de suspensão. As diretrizes mudam; use como guia. Se
+          a sua nota der alta, ela é sua: não escondemos pontos para criar proposta.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <LeiaTambem
+    href="/blog/presenca-local-e-conformidade"
+    titulo="Presença local e conformidade"
+    descricao="O básico que decide se você aparece no mapa e se o seu site tem risco jurídico."
+  />
+</BaseLayout>

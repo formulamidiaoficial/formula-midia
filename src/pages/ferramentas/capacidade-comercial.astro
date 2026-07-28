@@ -1,0 +1,95 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Badge from "../../components/ui/Badge.astro";
+import Breadcrumbs from "../../components/ui/Breadcrumbs.astro";
+import LeiaTambem from "../../components/ui/LeiaTambem.astro";
+import CapacidadeComercial from "../../components/islands/CapacidadeComercial.tsx";
+import { breadcrumbSchema, faqPageSchema, SITE_URL, BRAND_NAME, type FaqItem } from "../../data/schema";
+
+const breadcrumbItems = [
+  { name: "Home", path: "/" },
+  { name: "Ferramentas", path: "/ferramentas" },
+  { name: "Capacidade Comercial", path: "/ferramentas/capacidade-comercial" },
+];
+
+const faq: FaqItem[] = [
+  { question: "Por que aumentar tráfego pode não ser a solução?", answer: "Se o seu time comercial já está no limite da capacidade, leads a mais viram desperdício — não são atendidos a tempo, ou nem são atendidos. Escalar verba de mídia sem escalar atendimento amplia o problema, não resolve." },
+  { question: "Isso é um dimensionamento formal de equipe?", answer: "Não. É uma estimativa simplificada (throughput linear), útil para um diagnóstico rápido. Não considera picos por dia da semana, qualidade variável do atendimento nem follow-up múltiplo por lead." },
+  { question: "O que fazer se estiver acima da capacidade?", answer: "Duas saídas: reforçar o time de atendimento, ou reduzir o volume de leads (segmentar melhor o público, por exemplo) até a capacidade acompanhar. A ferramenta não recomenda qual — só mostra o tamanho do gap." },
+];
+
+const appSchema = {
+  "@context": "https://schema.org", "@type": "WebApplication",
+  name: "Calculadora de Capacidade Comercial",
+  applicationCategory: "BusinessApplication", operatingSystem: "Web",
+  url: `${SITE_URL}/ferramentas/capacidade-comercial`,
+  offers: { "@type": "Offer", price: "0", priceCurrency: "BRL" },
+  provider: { "@type": "Organization", name: BRAND_NAME },
+};
+
+const schema = [breadcrumbSchema(breadcrumbItems), faqPageSchema(faq), appSchema];
+---
+
+<BaseLayout
+  title="Calculadora de Capacidade Comercial | Grátis | Fórmula Mídia"
+  description="Seu time consegue atender os leads que já chegam? Calcule a capacidade real do seu comercial antes de escalar verba de tráfego. Sem código, sem e-mail."
+  path="/ferramentas/capacidade-comercial"
+  schema={schema}
+>
+  <Breadcrumbs items={breadcrumbItems} />
+  <header class="relative overflow-hidden px-6 pb-6 pt-16 text-center">
+    <div class="pointer-events-none absolute -left-24 -top-44 h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,rgba(228,41,41,.22),transparent_70%)] blur-[80px]"></div>
+    <div class="pointer-events-none absolute -right-28 -top-24 h-[380px] w-[380px] rounded-full bg-[radial-gradient(circle,rgba(180,20,20,.18),transparent_70%)] blur-[80px]"></div>
+    <div class="relative z-[2] mx-auto max-w-[700px]">
+      <a href="/ferramentas" class="mb-6 inline-flex items-center gap-1.5 font-heading text-[13px] font-semibold text-mid no-underline hover:text-ink">← Todas as ferramentas</a>
+      <div class="mb-6"><Badge label="Financeiro · Operação" /></div>
+      <h1 class="font-heading text-[clamp(28px,4.4vw,44px)] font-bold leading-[1.12] tracking-tight">
+        Mais tráfego só ajuda se o time <span class="text-red-hi">der conta.</span>
+      </h1>
+      <p class="mx-auto mt-4 max-w-[560px] text-base leading-relaxed text-mid">
+        Antes de aumentar a verba de mídia, descubra se o seu comercial consegue atender os leads
+        que já chegam hoje.
+      </p>
+    </div>
+  </header>
+
+  <div class="section-light px-6 pb-6 pt-8">
+    <div class="mx-auto max-w-[1140px]">
+      <CapacidadeComercial client:load />
+      <p class="mx-auto mt-6 max-w-[680px] text-center text-[11.5px] leading-relaxed text-dim">
+        Resultados anônimos e agregados podem ser usados em pesquisas públicas sobre o mercado
+        brasileiro. Veja a <a href="/privacidade" class="underline underline-offset-2 hover:text-ink">política de privacidade</a>.
+      </p>
+    </div>
+  </div>
+
+  <section class="px-6 pb-24 pt-10">
+    <div class="mx-auto max-w-[720px]">
+      <h2 class="font-heading text-[clamp(22px,3.2vw,30px)] font-bold leading-tight tracking-tight">
+        A mesma dor do lead perdido, olhada por outro ângulo
+      </h2>
+      <div class="mt-6 flex flex-col gap-5 text-[15.5px] leading-relaxed text-mid">
+        <p>
+          Leads acima da capacidade do time viram desperdício — não é diferente de leads perdidos por
+          demora de resposta, só que a causa é outra: não é velocidade, é volume que ninguém consegue
+          absorver.
+        </p>
+        <p>
+          Antes de decidir "vou colocar mais verba", vale saber se o gargalo já está no atendimento —
+          contratar ou reorganizar o processo pode valer mais que qualquer campanha nova.
+        </p>
+        <p class="rounded-card border border-border bg-glass p-5 text-[14px] text-dim">
+          <strong class="text-ink">Ressalva.</strong> É uma aproximação de capacidade operacional, não
+          um dimensionamento formal de equipe — não considera picos por dia da semana nem qualidade
+          variável do atendimento.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <LeiaTambem
+    href="/blog/sua-operacao-aguenta-crescer"
+    titulo="Sua operação aguenta crescer?"
+    descricao="Antes de aumentar a verba de tráfego, confirme se o time de atendimento aguenta o volume."
+  />
+</BaseLayout>

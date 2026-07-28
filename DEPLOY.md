@@ -8,9 +8,35 @@ compilada (sem código-fonte); o novo é 100% HTML/CSS estático gerado pelo
 Astro. Não é um ajuste incremental — é uma troca completa de arquitetura.
 Por isso o passo 1 (backup) não é opcional.
 
+## Aviso antes de publicar as 3 ferramentas novas
+
+`velocidade-usuario-real` e `comparador-historico` usam a API do Google (PageSpeed
+Insights / CrUX). Sem uma chave própria (`PUBLIC_PAGESPEED_API_KEY` configurada no build),
+a cota anônima do Google já está esgotada e a maioria dos visitantes vai ver erro de
+quota na `velocidade-usuario-real` (a `comparador-historico` testou sem esse problema, mas
+usa a mesma chave — pode esgotar com uso real). Antes de anunciar essas duas, crie uma
+chave gratuita em [console.cloud.google.com](https://console.cloud.google.com) (ativar
+"PageSpeed Insights API"), configure no `.env` e rode `npm run build` de novo antes de
+gerar o zip. `analise-de-log` não depende de nenhuma API — pode publicar sem essa etapa.
+
+`verificador-acesso-ia` depende do Worker do RUN-001 (`worker/`, já publicado em
+`https://formula-robots-proxy.formulamidia.workers.dev`). Sem `PUBLIC_ROBOTS_PROXY_URL`
+configurada no `.env` no momento do `npm run build`, a ferramenta mostra erro de conexão
+para todo mundo. Ver `worker/README.md` para redeployar o Worker se precisar.
+
+`auditoria-tecnica-seo` depende do Worker de crawl (`worker-site-audit/`, publicado em
+`https://formula-site-audit-crawler.formulamidia.workers.dev`, 27/07). Sem
+`PUBLIC_SITE_AUDIT_URL` configurada no `.env`, a ferramenta mostra erro de conexão. Ver
+`worker-site-audit/README.md` para redeployar.
+
 ## Antes de começar
 
-- Pacote pronto: `Downloads/formula-midia-astro-deploy.zip` (~1.99MB, 141 arquivos).
+- Pacote pronto: `Downloads/formula-midia-astro-deploy.zip` (regenerado em 27/07, ~3.2MB, 233
+  arquivos — inclui as **21 ferramentas** em `/ferramentas/`, o **blog** (`/blog`, 21 artigos + RSS),
+  o **glossário** (`/glossario`, 19 termos), `/metodologia`, `/placar`, a **Home reescrita** (novo
+  hero, logo animada, seção "Prova, não promessa") e os dois Workers de infraestrutura
+  (`PUBLIC_ROBOTS_PROXY_URL` e `PUBLIC_SITE_AUDIT_URL`) já publicados e embutidos no build.
+  Nada disso está no `public_html` ainda — este zip é o primeiro pacote com tudo junto.
 - Ele já contém tudo: HTML de todas as páginas, `/links`, `.htaccess`,
   `robots.txt`, `sitemap-index.xml`, `manifest.webmanifest`, favicon, imagens,
   CSS/JS.
@@ -49,10 +75,21 @@ dá pra restaurar o site antigo em minutos.
 3. Apagar o arquivo `.zip` depois de extrair (não precisa ficar publicado).
 4. Conferir que `public_html` agora tem, na raiz: `index.html`, `.htaccess`,
    `manifest.webmanifest`, `robots.txt`, `sitemap-index.xml`, `favicon.ico`,
-   `_astro/`, `assets/`, `links/`, `seo/`, `calculadora/`, `manifesto/`,
-   `servicos/`, `growth/`, `criacao-de-sites/`, `mentoria/`,
-   `simulador-de-site/`, `simulador-de-funil/`, `privacidade/`, `termos/`,
-   `404.html`, `scripts/`.
+   `_astro/`, `assets/`, `links/`, `seo/`, `manifesto/`,
+   `servicos/`, `segmentos/`, `growth/`, `criacao-de-sites/`, `mentoria/`,
+   `privacidade/`, `termos/`, `404.html`, `scripts/`, e a pasta `ferramentas/`
+   (contendo `calculadora/`, `diagnostico/`, `simulador-de-site/`,
+   `simulador-de-funil/`, `custo-real-da-midia/`, `auditor-de-perfil/`,
+   `medir-trafego-de-ia/`, `velocidade-usuario-real/`, `analise-de-log/`,
+   `comparador-historico/`, `friccao-do-formulario/`, `sinais-de-confianca/`,
+   `verificador-acesso-ia/`, `custo-do-lead-perdido/`, `cac-ltv-payback/`,
+   `meta-reversa/`, `mer-vs-roas/`, `capacidade-comercial/`,
+   `valor-do-ganho-de-conversao/`, **`gerador-politica-privacidade-lgpd/`** —
+   **26/07: as 4 primeiras foram movidas da raiz pra cá, com 301 real no
+   `.htaccess`; não devem mais existir soltas na raiz. `verificador-acesso-ia`
+   depende do Worker do RUN-001 — ver aviso acima. As 7 calculadoras
+   financeiras/jurídica (27/07, cluster Financeiro + Jurídico da Onda 1) são
+   100% client-side, sem dependência nenhuma.**).
 
    Se o Gerenciador de Arquivos não mostrar arquivos começando com `.`
    (como `.htaccess`) por padrão, ativar "Mostrar arquivos ocultos" nas
@@ -66,8 +103,11 @@ Depois do upload, testar (idealmente em uma aba anônima, pra evitar cache):
 1. `https://formulamidia.com.br/` — carrega a Home, sem erros visuais.
 2. `https://formulamidia.com.br/links/` — abre a página de links (nota a
    barra `/` no final).
-3. `https://formulamidia.com.br/calculadora/` — a calculadora abre e calcula
-   (é a única página com JavaScript de verdade).
+3. `https://formulamidia.com.br/ferramentas/calculadora/` — a calculadora abre e calcula
+   (uma das páginas com JavaScript real: `/ferramentas/diagnostico`, `/ferramentas/simulador-de-site`
+   e `/ferramentas/simulador-de-funil` também são islands React). Testar também que as URLs antigas
+   (`/calculadora`, `/diagnostico`, `/simulador-de-site`, `/simulador-de-funil`, sem `/ferramentas/`)
+   redirecionam com **301** para a nova URL — não devem dar 404 nem 200 direto.
 4. Testar 2-3 links de WhatsApp — devem abrir com o número certo
    (5548991826577) e mensagem pré-preenchida.
 5. `https://formulamidia.com.br/sitemap-index.xml` — deve abrir um XML válido.

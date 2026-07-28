@@ -1,0 +1,160 @@
+---
+// Marca animada da Fórmula — portada de public/links/index.html (a versão
+// mobile "link in bio" já tinha essa animação; a Home nunca teve). CSS/SVG
+// puro, sem dependência — desenha o asterisco de 6 pontas (getTotalLength +
+// stroke-dashoffset), depois gira devagar com anéis pulsantes, órbitas e um
+// radar pingando 2x. Usa os tokens de cor do tema (--color-red etc.), não
+// hexadecimal fixo, pra herdar automaticamente se a paleta mudar.
+interface Props {
+  size?: number; // px, no maior breakpoint — escala pra baixo em mobile via clamp
+}
+const { size = 132 } = Astro.props;
+---
+
+<div class="logo-wrap" style={`--size:${size}px`}>
+  <div class="ring ring-1"></div>
+  <div class="ring ring-2"></div>
+  <div class="ring ring-3"></div>
+  <div class="orbit orbit-1"></div>
+  <div class="orbit orbit-2"></div>
+  <div class="radar"></div>
+
+  <svg class="ast" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="formulaLogoArmGrad" gradientUnits="userSpaceOnUse" x1="10" y1="10" x2="90" y2="90">
+        <stop offset="0%" stop-color="var(--color-red-bright, #FF6060)"></stop>
+        <stop offset="45%" stop-color="var(--color-red)"></stop>
+        <stop offset="100%" stop-color="var(--color-red-lo)"></stop>
+      </linearGradient>
+    </defs>
+    <path class="ast-arm" d="M50,13 L50,87"></path>
+    <path class="ast-arm" d="M82,31.5 L18,68.5"></path>
+    <path class="ast-arm" d="M82,68.5 L18,31.5"></path>
+  </svg>
+</div>
+
+<style>
+  .logo-wrap {
+    position: relative;
+    width: clamp(96px, 22vw, var(--size));
+    height: clamp(96px, 22vw, var(--size));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-inline: auto;
+    animation: logoBreath 5s ease-in-out infinite;
+  }
+  @keyframes logoBreath {
+    0%, 100% { filter: drop-shadow(0 0 0px rgba(228, 41, 41, 0)); }
+    50%      { filter: drop-shadow(0 0 20px rgba(228, 41, 41, .28)); }
+  }
+
+  .ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(228, 41, 41, .28);
+    animation: ringPulse 3s ease-in-out infinite;
+  }
+  .ring-1 { inset: -10px; animation-delay: 0s; }
+  .ring-2 { inset: -22px; animation-delay: .6s; }
+  .ring-3 { inset: -36px; animation-delay: 1.2s; }
+  @keyframes ringPulse {
+    0%, 100% { opacity: .5; transform: scale(1); }
+    50%      { opacity: 1;  transform: scale(1.03); }
+  }
+
+  .orbit {
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 7px; height: 7px;
+    margin: -3.5px;
+    border-radius: 50%;
+    background: var(--color-red);
+    box-shadow: 0 0 10px var(--color-red), 0 0 20px rgba(228, 41, 41, .35);
+    opacity: 0;
+  }
+  .orbit-1 { animation: orb1 5s linear infinite 1.8s, orbitIn .4s ease 1.8s forwards; }
+  .orbit-2 {
+    width: 4.5px; height: 4.5px;
+    margin: -2.25px;
+    background: var(--color-red-bright, var(--color-red));
+    box-shadow: 0 0 6px var(--color-red-bright, var(--color-red));
+    animation: orb2 3.5s linear infinite 2.2s, orbitIn .4s ease 2.2s forwards;
+  }
+  @keyframes orbitIn { to { opacity: 1; } }
+  @keyframes orb1 { from { transform: rotate(0deg) translateX(52%); } to { transform: rotate(360deg) translateX(52%); } }
+  @keyframes orb2 { from { transform: rotate(180deg) translateX(40%); } to { transform: rotate(540deg) translateX(40%); } }
+
+  .ast {
+    width: 68%; height: 68%;
+    position: relative; z-index: 2;
+    overflow: visible;
+    filter: drop-shadow(0 0 12px rgba(228, 41, 41, .5)) drop-shadow(0 0 32px rgba(228, 41, 41, .18));
+    animation: astSpin 26s linear infinite;
+    animation-play-state: paused;
+    transform-origin: center center;
+  }
+  @keyframes astSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  .ast-arm { stroke-linecap: round; stroke-width: 14; fill: none; stroke: url(#formulaLogoArmGrad); }
+
+  .radar {
+    position: absolute;
+    width: 68%; height: 68%;
+    border-radius: 50%;
+    border: 1.5px solid rgba(228, 41, 41, .7);
+    top: 50%; left: 50%;
+    translate: -50% -50%;
+    pointer-events: none;
+    opacity: 0;
+  }
+  @keyframes radarPing {
+    0%   { transform: scale(.85); opacity: .7; }
+    100% { transform: scale(2.4); opacity: 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .logo-wrap, .ring, .orbit, .ast { animation: none !important; }
+    .ast-arm { stroke-dashoffset: 0 !important; }
+    .orbit { opacity: 1; }
+  }
+</style>
+
+<script>
+  // Roda uma vez por instância do componente na página (a Home só usa 1).
+  function initFormulaLogo(root: ParentNode) {
+    const arms = root.querySelectorAll<SVGPathElement>(".ast-arm");
+    if (!arms.length) return;
+
+    arms.forEach((arm) => {
+      const len = arm.getTotalLength();
+      arm.style.strokeDasharray = String(len);
+      arm.style.strokeDashoffset = String(len);
+    });
+
+    requestAnimationFrame(() =>
+      requestAnimationFrame(() => {
+        arms.forEach((arm, i) => {
+          arm.style.transition = `stroke-dashoffset 0.6s cubic-bezier(0,0,.2,1) ${200 + i * 320}ms`;
+          arm.style.strokeDashoffset = "0";
+        });
+
+        setTimeout(() => {
+          const ast = root.querySelector<SVGSVGElement>(".ast");
+          if (ast) ast.style.animationPlayState = "running";
+
+          function ping() {
+            const r = root.querySelector<HTMLElement>(".radar");
+            if (!r) return;
+            r.style.animation = "none";
+            void r.offsetHeight;
+            r.style.animation = "radarPing 1.1s cubic-bezier(.2,.8,.4,1) forwards";
+          }
+          ping();
+          setTimeout(ping, 700);
+        }, 1500);
+      })
+    );
+  }
+
+  document.querySelectorAll(".logo-wrap").forEach((el) => initFormulaLogo(el.parentElement ?? el));
+</script>

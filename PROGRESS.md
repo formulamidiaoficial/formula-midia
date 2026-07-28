@@ -1,7 +1,7 @@
 # PROGRESS.md
 
 ## Status (atualizar a cada sessão)
-**PIVOT ESTRATÉGICO EM CURSO (2026-07-22):** o site deixou de ser "agência de tráfego pago" e passou a **"parceira de crescimento dos negócios de alto padrão da cidade"** — foco por TIPO DE CLIENTE (premium local: clínicas, imóveis, hotelaria, urgência, alto valor), com **growth como espinha**. Home reposicionada (commit 6d11591) e **/growth transformada em página flagship** (commit e7a7e91). Pricing premium definido (preço na proposta, piso R$1.8k como critério de seleção — ver decisão abaixo). Em construção agora: páginas por segmento (ímã de nicho). Roadmap completo de expansão documentado na seção "ROADMAP DE EXPANSÃO DO SITE" abaixo. Base técnica (Fase 0-3) 100% pronta; pacote de deploy em `Downloads/formula-midia-astro-deploy.zip`. **O site reposicionado só vai ao ar quando o cliente re-subir o zip no Hostinger.**
+**PIVOT ESTRATÉGICO EM CURSO (2026-07-22):** o site deixou de ser "agência de tráfego pago" e passou a **"parceira de crescimento dos negócios de alto padrão da cidade"** — foco por TIPO DE CLIENTE (premium local: clínicas, imóveis, hotelaria, urgência, alto valor), com **growth como espinha**. Home reposicionada (commit 6d11591) e **/growth transformada em página flagship** (commit e7a7e91). Pricing premium definido (preço na proposta, piso R$1.8k como critério de seleção — ver decisão abaixo). Páginas por segmento (5 + hub), /diagnostico e reposicionamento de /servicos, /criacao-de-sites e /seo já concluídos e commitados (até o commit 47a1817). Próximo bloco ainda não iniciado: Central de Recursos (moat de autoridade). Roadmap completo de expansão documentado na seção "ROADMAP DE EXPANSÃO DO SITE" abaixo. Base técnica (Fase 0-3) 100% pronta; pacote de deploy em `Downloads/formula-midia-astro-deploy.zip`. **O site reposicionado só vai ao ar quando o cliente re-subir o zip no Hostinger.**
 
 > **Para retomar em qualquer sessão futura:** leia (1) esta seção Status, (2) a seção "ROADMAP DE EXPANSÃO DO SITE" no fim deste arquivo, e (3) a memória `project_business_strategy` (posicionamento, decisão de vertical, regra do oftalmo). A regra inviolável: **oftalmo NUNCA aparece no site** (é a vantagem interna confidencial; protege o cliente atual de oftalmo). Saúde só genérica ("clínicas de alto padrão").
 
@@ -119,7 +119,7 @@ Os 16 FAQs originais (schema JSON-LD do site antigo) já estão salvos em `src/d
 - Bug encontrado e corrigido na Fase 1: blobs decorativos (absolute, blur) sem `overflow-hidden` no container pai causavam overflow horizontal no mobile em `/seo` (seção de CTA final) — checar isso em qualquer nova seção com blobs decorativos nas próximas fases.
 
 ## Próxima tarefa concreta
-Cliente precisa re-subir `formula-midia-astro-deploy.zip` no Hostinger pra o site reposicionado ir ao ar (instruções em `DEPLOY.md`). Em paralelo, seguir o ROADMAP DE EXPANSÃO abaixo.
+Cliente precisa re-subir `formula-midia-astro-deploy.zip` no Hostinger pra o site reposicionado ir ao ar (instruções em `DEPLOY.md`). Em paralelo, o próximo item não-feito do ROADMAP DE EXPANSÃO é a **Central de Recursos + 1º material** (itens 1, 2, 4 e 6 da ordem de execução já concluídos).
 
 ---
 
@@ -135,7 +135,11 @@ Contexto: após a série de 5 documentos de estratégia (publicados como artifac
 
 ### Já feito nesta rodada
 - [x] Home reposicionada em torno do mote (commit 6d11591)
+- [x] Pricing premium: preços fixos removidos, piso R$1.8k como critério de seleção (commit 4303868)
 - [x] /growth virou página flagship — 9 seções (commit e7a7e91)
+- [x] Páginas por segmento: sistema data-driven + 5 páginas + hub (commit a424801)
+- [x] Diagnóstico de Crescimento: quiz de 6 perguntas, resultado e link de WhatsApp (commit d9ef669)
+- [x] Reposicionamento de /servicos, /criacao-de-sites e /seo como peças do Motor de Crescimento (commit 47a1817)
 
 ### Roadmap por categoria (ganchos pro nicho)
 
@@ -147,9 +151,9 @@ Contexto: após a série de 5 documentos de estratégia (publicados como artifac
 - [ ] Calculadora de CAC/LTV
 - (já existem: /calculadora, /simulador-de-site, /simulador-de-funil)
 
-**2. Páginas por segmento (ímã de busca do nicho) — EM CONSTRUÇÃO AGORA:**
-- [ ] Sistema data-driven: `src/data/segments.ts` + `/segmentos/[slug].astro` + `/segmentos` (hub)
-- [ ] Clínicas de alto padrão (genérico, nunca oftalmo) · Imobiliárias · Hotelaria premium · Serviços de urgência · Controle de pragas
+**2. Páginas por segmento (ímã de busca do nicho) — ✅ CONCLUÍDO (commit a424801):**
+- [x] Sistema data-driven: `src/data/segments.ts` + `/segmentos/[slug].astro` + `/segmentos` (hub)
+- [x] Clínicas de alto padrão (genérico, nunca oftalmo) · Imobiliárias · Hotelaria premium · Serviços de urgência · Controle de pragas
 
 **3. Hub de autoridade / mídia própria (moat de longo prazo):**
 - [ ] Central de Recursos (e-books/checklists/templates gateados) · Conteúdo pilar ("Guia de aquisição de clientes para negócios de alto padrão") · Newsletter · Glossário/central de conhecimento (GEO)
@@ -164,15 +168,20 @@ Contexto: após a série de 5 documentos de estratégia (publicados como artifac
 - [ ] Página de Diagnóstico/Agendamento (funil principal) · Analytics Plausible · Captura de lead nas ferramentas (mostrar resultado → gatear)
 
 ### Ordem recomendada de execução
-1. Páginas por segmento (buildável a excelência agora, estático, SEO, reforça posicionamento) ← COMEÇANDO POR AQUI
-2. Diagnóstico guiado (o gancho interativo mais forte que dá pra fazer sem backend)
-3. Central de Recursos + 1º material (início do moat de autoridade)
-4. Reposicionar /servicos, /criacao-de-sites, /seo como peças do growth
+1. ~~Páginas por segmento~~ ✅ feito (commit a424801)
+2. ~~Diagnóstico guiado~~ ✅ feito (commit d9ef669)
+3. Central de Recursos + 1º material (início do moat de autoridade) ← PRÓXIMO
+4. ~~Reposicionar /servicos, /criacao-de-sites, /seo como peças do growth~~ ✅ feito (commit 47a1817)
 5. Portfólio (quando cliente enviar links)
-6. Pricing premium na home (tirar cards de preço fixo)
+6. ~~Pricing premium na home (tirar cards de preço fixo)~~ ✅ feito (commit 4303868)
 
 ### Pendências que dependem do cliente
 - Re-subir o zip no Hostinger (site reposicionado no ar)
 - Enviar links dos sites/cases já criados (pro portfólio)
 - Conta Plausible + confirmar números do hero
 - Detalhes do case EMOPS (Fase 4) / decisão URL do conteúdo pilar (Fase 5)
+
+---
+
+## Log de manutenção
+- 2026-07-25 — Documentação sincronizada com o código/git (working tree limpo, HEAD `47a1817`). O PROGRESS estava ~3 commits atrás do código: segmentos (`a424801`) e reposicionamento de /servicos, /criacao-de-sites e /seo (`47a1817`) apareciam como pendentes/em construção, mas já estavam feitos. Corrigidos: Status, "Já feito nesta rodada", roadmap de segmentos, ordem de execução e próxima tarefa. `DEPLOY.md` atualizado (151 arquivos / 2,54 MB; `segmentos/` e `diagnostico/` no checklist; removida a frase de que a calculadora é a única página com JS). Criada a convenção de docs de ferramentas em `docs/` (`docs/README.md`, `docs/ferramentas/_TEMPLATE.md`, 1 arquivo por ferramenta); as 4 ferramentas atuais foram documentadas.

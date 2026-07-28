@@ -1,0 +1,263 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "../components/ui/Breadcrumbs.astro";
+import { breadcrumbSchema, SITE_URL, BRAND_NAME } from "../data/schema";
+import { FERRAMENTAS } from "../data/ferramentas";
+
+const breadcrumbItems = [
+  { name: "Home", path: "/" },
+  { name: "Metodologia das Ferramentas", path: "/metodologia" },
+];
+
+const fontes = [
+  { fonte: "Oldroyd, McElheran & Elkington — \"The Short Life of Online Sales Leads\" (HBR/MIT, 2011)", uso: "Multiplicadores de qualificação por tempo de resposta", ferramenta: "custo-do-lead-perdido" },
+  { fonte: "David Skok — \"SaaS Metrics 2.0\" (forEntrepreneurs.com)", uso: "Benchmark LTV:CAC de 3:1", ferramenta: "cac-ltv-payback" },
+  { fonte: "HubSpot — \"Form Conversion Rate Statistics\" (2024)", uso: "Conversão por número de campos do formulário", ferramenta: "friccao-do-formulario" },
+  { fonte: "Google Search Central — documentação pública de E-E-A-T", uso: "Os 7 sinais de confiança avaliados", ferramenta: "sinais-de-confianca" },
+  { fonte: "RFC 9309 — Robots Exclusion Protocol", uso: "Leitura e parsing de robots.txt", ferramenta: "verificador-acesso-ia" },
+  { fonte: "Lei nº 13.709/2018 — LGPD", uso: "Estrutura do documento de política de privacidade", ferramenta: "gerador-politica-privacidade-lgpd" },
+  { fonte: "Google PageSpeed Insights API + Chrome UX Report (CrUX)", uso: "Notas de performance em laboratório e campo", ferramenta: "velocidade-usuario-real" },
+  { fonte: "Prática de mercado e-commerce/DTC (MER como conceito consolidado)", uso: "Comparação entre eficiência de mídia e ROAS de plataforma", ferramenta: "mer-vs-roas" },
+];
+
+// Critérios nomeados por categoria — o núcleo desta página. Cada linha é um
+// critério específico e verificável (o valor exato, de onde vem, e o limite
+// conhecido), não um adjetivo genérico como "rigoroso" ou "completo". Padrão
+// inspirado na Consumer Reports (data.consumerreports.org/rating-methods):
+// critério nomeado por categoria, não "caixa-preta" de nota única.
+const criterios = [
+  {
+    categoria: "Unit economics",
+    ferramentas: ["cac-ltv-payback", "meta-reversa", "valor-do-ganho-de-conversao", "capacidade-comercial"],
+    criterio: "Razão LTV:CAC saudável = 3:1 ou mais",
+    detalhe: "Abaixo de 1:1 a leitura é \"Crítico\" (o cliente custa mais do que devolve); entre 1:1 e 3:1 é \"Atenção\"; a partir de 3:1, \"Saudável\".",
+    fonte: "David Skok, \"SaaS Metrics 2.0\" (forEntrepreneurs.com) — benchmark consolidado para negócios de recorrência.",
+    limite: "É um benchmark de SaaS/recorrência amplamente replicado, não uma lei matemática. Para ticket único ou ciclo de venda muito longo (imóveis, B2B enterprise), use como referência de saúde geral — não como veredito automático.",
+  },
+  {
+    categoria: "Tempo de resposta a leads",
+    ferramentas: ["custo-do-lead-perdido"],
+    criterio: "Curva de decaimento de qualificação por faixa de tempo",
+    detalhe: "Até 5 min = referência (1,0×) · 5–30 min = 0,048× · 30 min–1h = 0,03× · 1–24h = 0,007× · mais de 24h = 0,0007×.",
+    fonte: "Oldroyd, McElheran & Elkington, \"The Short Life of Online Sales Leads\" (HBR/MIT, 2011), com dados replicados por InsideSales.com/Velocify.",
+    limite: "É hipótese com fonte, não medição direta do seu negócio — a ferramenta avisa isso na tela antes do cálculo. Os 6 valores são uma curva de decaimento consistente com as 3 âncoras do estudo original, não 6 números medidos separadamente.",
+  },
+  {
+    categoria: "Fricção de formulário",
+    ferramentas: ["friccao-do-formulario"],
+    criterio: "Faixa ideal: 3 a 6 campos",
+    detalhe: "Conversão medida por nº de campos: 1 campo ≈ 18,2% · 2 campos ≈ 13,0% · 3 campos ≈ 11,5% · 4 campos ≈ 9,9% · 7+ campos chegam a 67,8% de abandono.",
+    fonte: "HubSpot, \"Form Conversion Rate Statistics\" (2024).",
+    limite: "Poucos campos não é punido como \"fricção alta\" na nota — é avisado como \"capta menos dado de qualificação\". É um trade-off, não um erro.",
+  },
+  {
+    categoria: "Sinais de confiança (E-E-A-T)",
+    ferramentas: ["sinais-de-confianca"],
+    criterio: "7 sinais nomeados, não uma nota vaga de \"confiabilidade\"",
+    detalhe: "Página \"Sobre\" · contato com endereço/telefone (NAP) · política de privacidade visível · depoimentos/avaliações · autor identificado nos textos · CNPJ visível · certificações do setor.",
+    fonte: "Google Search Central — documentação pública de E-E-A-T (Experience, Expertise, Authoritativeness, Trustworthiness), usada tanto para Search quanto para AI Overviews.",
+    limite: "É uma ferramenta declarativa: você marca o que o site tem, não fazemos crawl para conferir. Ter o sinal não garante que o Google ou uma IA generativa de fato o usa para o seu site específico — é aproximação de boas práticas documentadas, não medição direta.",
+  },
+  {
+    categoria: "Acesso de robôs de IA",
+    ferramentas: ["verificador-acesso-ia"],
+    criterio: "6 robôs nomeados, separados por função",
+    detalhe: "Treino: GPTBot, ClaudeBot, Google-Extended. Busca ao vivo (podem citar sua marca): OAI-SearchBot, Claude-SearchBot, PerplexityBot.",
+    fonte: "RFC 9309 (Robots Exclusion Protocol) para leitura do robots.txt; lista de robôs travada em ADR-0006/TOOL-014.",
+    limite: "Nomes e comportamento de robôs de IA mudam rápido — por isso a lista é revalidada a cada trimestre, e pode ficar desatualizada entre uma revisão e outra.",
+  },
+  {
+    categoria: "Velocidade e experiência real",
+    ferramentas: ["velocidade-usuario-real", "comparador-historico"],
+    criterio: "Nota de laboratório e dado de campo lado a lado, nunca fundidos num só número",
+    detalhe: "Laboratório (Lighthouse, ambiente controlado) e campo (CrUX, usuários reais que visitaram o site) aparecem separados — porque medem coisas diferentes.",
+    fonte: "Google PageSpeed Insights API + Chrome UX Report (CrUX).",
+    limite: "Nem todo site tem dado de campo: o CrUX exige um volume mínimo de tráfego real. Quando não existe, a ferramenta mostra só o laboratório e avisa — não estima o campo.",
+  },
+  {
+    categoria: "Diagnóstico de maturidade de growth",
+    ferramentas: ["diagnostico"],
+    criterio: "6 dimensões nomeadas, pontuadas de 0 a 3 cada, score final de 0 a 100",
+    detalhe: "Aquisição, Conversão, Mensuração, Previsibilidade, Presença digital e Relacionamento. A dimensão com menor pontuação é apontada como \"maior gargalo\".",
+    fonte: "Framework próprio da Fórmula Mídia — não replica um benchmark externo específico, é uma estrutura de diagnóstico guiado.",
+    limite: "É autoavaliação: as respostas são suas, não auditadas. O resultado é educativo e indicativo — a própria ferramenta avisa isso na tela — e não substitui uma análise completa do negócio.",
+  },
+  {
+    categoria: "Política de privacidade (LGPD)",
+    ferramentas: ["gerador-politica-privacidade-lgpd"],
+    criterio: "Estrutura do documento segue os artigos da Lei nº 13.709/2018 aplicáveis ao que você declarou coletar",
+    detalhe: "O modelo gerado reflete só as respostas que você dá sobre coleta de dados no seu site — não infere nada além disso.",
+    fonte: "Lei nº 13.709/2018 (LGPD).",
+    limite: "É um modelo de ponto de partida, não uma peça jurídica pronta. Recomendamos revisão de um advogado antes de publicar, especialmente se o site processa dado sensível.",
+  },
+];
+
+const changelog = [
+  {
+    data: "2026-07-27",
+    titulo: "Página reestruturada no padrão de transparência total",
+    desc: "Trocamos linguagem genérica (\"rigoroso\", \"completo\") por critérios nomeados por categoria — o valor exato usado, a fonte e o limite conhecido de cada um — e criamos esta seção de histórico, para registrar publicamente toda mudança de metodologia a partir de hoje. Padrão de referência: Consumer Reports (data.consumerreports.org/rating-methods).",
+  },
+];
+
+const schema = [breadcrumbSchema(breadcrumbItems)];
+---
+
+<BaseLayout
+  title="Metodologia das Ferramentas | Fórmula Mídia"
+  description="Critério nomeado, fonte citada e limite assumido — categoria por categoria, com histórico público de mudanças. A metodologia completa por trás de cada ferramenta gratuita da Fórmula Mídia."
+  path="/metodologia"
+  schema={schema}
+>
+  <Breadcrumbs items={breadcrumbItems} />
+  <header class="relative overflow-hidden px-6 pb-6 pt-16 text-center">
+    <div class="pointer-events-none absolute -left-24 -top-44 h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,rgba(228,41,41,.22),transparent_70%)] blur-[80px]"></div>
+    <div class="relative z-[2] mx-auto max-w-[700px]">
+      <h1 class="font-heading text-[clamp(28px,4.4vw,44px)] font-bold leading-[1.12] tracking-tight">
+        Como a gente <span class="text-red-hi">calcula, mede e cita.</span>
+      </h1>
+      <p class="mx-auto mt-4 max-w-[560px] text-base leading-relaxed text-mid">
+        Mostrar o trabalho, não só o resultado. Nada de "critério rigoroso" sem dizer qual é o
+        critério: cada categoria abaixo tem o valor exato usado, de onde ele vem, e o limite honesto
+        de quando ele não se aplica — mais um histórico público de toda mudança de metodologia.
+      </p>
+    </div>
+  </header>
+
+  <section class="px-6 pb-16 pt-6">
+    <div class="mx-auto max-w-[760px]">
+      <h2 class="font-heading text-[24px] font-bold leading-tight text-ink">Três princípios, sem exceção</h2>
+      <div class="mt-6 grid gap-4 sm:grid-cols-3">
+        <div class="rounded-card border border-border bg-glass p-6">
+          <div class="mb-2 font-heading text-[14.5px] font-semibold text-ink">1. Fonte sempre citada</div>
+          <p class="text-[13px] leading-relaxed text-mid">Todo número externo (benchmark, estudo, lei) tem fonte e data de consulta visíveis na própria ferramenta — não só nesta página.</p>
+        </div>
+        <div class="rounded-card border border-border bg-glass p-6">
+          <div class="mb-2 font-heading text-[14.5px] font-semibold text-ink">2. Hipótese ≠ fato</div>
+          <p class="text-[13px] leading-relaxed text-mid">Fórmula matemática padrão (CAC, LTV) é marcada como definição. Estudo comportamental (tempo de resposta) é marcado como hipótese com fonte, nunca apresentado como certeza.</p>
+        </div>
+        <div class="rounded-card border border-border bg-glass p-6">
+          <div class="mb-2 font-heading text-[14.5px] font-semibold text-ink">3. Nada armazenado à toa</div>
+          <p class="text-[13px] leading-relaxed text-mid">Cálculo acontece no seu navegador. Nenhum número que você digita é salvo pela Fórmula, em nenhuma ferramenta.</p>
+        </div>
+      </div>
+
+      <h2 class="mt-14 font-heading text-[24px] font-bold leading-tight text-ink">Critérios nomeados, por categoria</h2>
+      <p class="mt-4 text-[15.5px] leading-relaxed text-mid">
+        Cada ferramenta gratuita segue a mesma estrutura interna: entradas claras, processamento
+        explicado (a fórmula ou a metodologia, nunca uma "caixa-preta"), e um limite escrito na tela
+        — não escondido em rodapé. Abaixo está o critério específico de cada categoria: o número
+        exato usado, a fonte e onde ele deixa de valer.
+      </p>
+
+      <div class="mt-6 flex flex-col gap-4">
+        {criterios.map((c) => (
+          <div class="rounded-card border border-border bg-glass p-7">
+            <div class="mb-3 flex flex-wrap items-center gap-2">
+              <span class="rounded-full border border-red/28 bg-red/8 px-3 py-1 font-heading text-[10.5px] font-semibold uppercase tracking-[.08em] text-red-hi">
+                {c.categoria}
+              </span>
+              {c.ferramentas.map((slug) => (
+                <a href={`/ferramentas/${slug}`} class="rounded-full border border-border px-3 py-1 text-[11.5px] text-mid underline-offset-2 hover:text-ink hover:underline">
+                  {FERRAMENTAS.find((t) => t.slug === slug)?.nomeCurto ?? slug}
+                </a>
+              ))}
+            </div>
+            <div class="font-heading text-[16px] font-semibold leading-snug text-ink">{c.criterio}</div>
+            <p class="mt-2 text-[13.5px] leading-relaxed text-mid">{c.detalhe}</p>
+            <p class="mt-3 text-[12.5px] leading-relaxed text-dim">
+              <strong class="text-mid">Fonte:</strong> {c.fonte}
+            </p>
+            <div class="mt-3 border-l-2 border-red/30 pl-3 text-[12.5px] leading-relaxed text-dim">
+              <strong class="text-mid">Limite:</strong> {c.limite}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <h2 class="mt-14 font-heading text-[24px] font-bold leading-tight text-ink">Fontes externas em uso</h2>
+      <div class="mt-6 overflow-x-auto rounded-card border border-border">
+        <table class="w-full min-w-[600px] border-collapse text-left text-[13px]">
+          <thead>
+            <tr class="border-b border-border bg-glass">
+              <th class="px-4 py-3 font-heading text-[11px] font-semibold uppercase tracking-[.06em] text-dim">Fonte</th>
+              <th class="px-4 py-3 font-heading text-[11px] font-semibold uppercase tracking-[.06em] text-dim">Usada para</th>
+              <th class="px-4 py-3 font-heading text-[11px] font-semibold uppercase tracking-[.06em] text-dim">Ferramenta</th>
+            </tr>
+          </thead>
+          <tbody>
+            {fontes.map((f) => (
+              <tr class="border-b border-border last:border-0">
+                <td class="px-4 py-3 text-mid">{f.fonte}</td>
+                <td class="px-4 py-3 text-mid">{f.uso}</td>
+                <td class="px-4 py-3">
+                  <a href={`/ferramentas/${f.ferramenta}`} class="text-red-hi underline underline-offset-2">
+                    {FERRAMENTAS.find((t) => t.slug === f.ferramenta)?.nomeCurto ?? f.ferramenta}
+                  </a>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="mt-14 font-heading text-[24px] font-bold leading-tight text-ink">Histórico de mudanças da metodologia</h2>
+      <p class="mt-4 text-[15.5px] leading-relaxed text-mid">
+        Toda mudança relevante de critério, fonte ou benchmark — não só de texto — fica registrada
+        aqui, com data. Sem edição silenciosa.
+      </p>
+      <div class="mt-6 rounded-card border border-border bg-glass p-2">
+        <ol class="flex flex-col">
+          {changelog.map((item, i) => (
+            <li class={`relative flex gap-5 px-5 py-5 ${i !== changelog.length - 1 ? "border-b border-border" : ""}`}>
+              <div class="flex shrink-0 flex-col items-center pt-1">
+                <span class="h-2.5 w-2.5 rounded-full bg-red-hi"></span>
+              </div>
+              <div>
+                <div class="font-heading text-[12px] font-semibold uppercase tracking-[.06em] text-red-hi">{item.data}</div>
+                <div class="mt-1.5 font-heading text-[15px] font-semibold text-ink">{item.titulo}</div>
+                <p class="mt-1.5 text-[13.5px] leading-relaxed text-mid">{item.desc}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+
+      <h2 class="mt-14 font-heading text-[24px] font-bold leading-tight text-ink">Limites gerais, sem rodeio</h2>
+      <p class="mt-4 text-[15.5px] leading-relaxed text-mid">
+        Além do limite específico de cada categoria acima, valem estes limites gerais para o
+        conjunto das ferramentas:
+      </p>
+      <ul class="mt-4 flex flex-col gap-3 text-[15px] leading-relaxed text-mid">
+        <li>— Ferramentas declarativas (Sinais de Confiança, Fricção do Formulário, Diagnóstico de Crescimento) dependem do que você digita. Não fazemos crawl nem auditoria para conferir se a resposta é verdadeira.</li>
+        <li>— Benchmarks externos (LTV:CAC 3:1, curva de tempo de resposta, conversão por campo) vêm de estudos majoritariamente internacionais e de recorrência/e-commerce. Nem sempre traduzem 1:1 para todo segmento ou porte de negócio brasileiro.</li>
+        <li>— Nenhuma ferramenta audita o seu negócio de verdade. Toda leitura é um ponto de partida para conversa com um especialista — não um laudo.</li>
+        <li>— Onde o dado real é insuficiente para calcular algo (ex.: CrUX sem tráfego mínimo), a ferramenta avisa em vez de estimar um número que pareça preciso e não seja.</li>
+      </ul>
+
+      <h2 class="mt-14 font-heading text-[24px] font-bold leading-tight text-ink">Revalidação</h2>
+      <p class="mt-4 text-[15.5px] leading-relaxed text-mid">
+        Fontes sobre comportamento de robôs de IA (quem treina, quem busca, o que o GA4 captura)
+        mudam rápido — revisadas a cada trimestre. Fórmulas de unit economics e legislação mudam
+        devagar — revisadas anualmente, ou quando houver mudança pública relevante (nova lei, novo
+        benchmark amplamente adotado).
+      </p>
+
+      <h2 class="mt-14 font-heading text-[24px] font-bold leading-tight text-ink">Errata</h2>
+      <p class="mt-4 text-[15.5px] leading-relaxed text-mid">
+        Se uma fórmula, fonte ou dado estiver errado, corrigimos e registramos a mudança no
+        histórico acima — sem esconder que existiu um erro. Encontrou algo que parece errado? Avise
+        pelo WhatsApp; toda correção é bem-vinda.
+      </p>
+
+      <div class="mt-14 rounded-card border border-border bg-glass p-7">
+        <p class="text-[14px] leading-relaxed text-mid">
+          Cada termo técnico citado nesta página e nas ferramentas está explicado no
+          <a href="/glossario" class="text-ink underline underline-offset-2">Glossário</a>. Os
+          artigos completos, conectando cada ferramenta ao contexto por trás dela, estão no
+          <a href="/blog" class="text-ink underline underline-offset-2">Blog</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

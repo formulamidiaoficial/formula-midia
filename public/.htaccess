@@ -14,6 +14,16 @@
   RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
   # ============================================================
+  # 1b. FERRAMENTAS MOVIDAS PARA /ferramentas/ (301 real, 2026-07-26)
+  # calculadora, simulador-de-funil, simulador-de-site e diagnostico
+  # viviam na raiz; consolidadas em /ferramentas/ por consistência (C2).
+  # ============================================================
+  RewriteRule ^calculadora/?$ /ferramentas/calculadora [R=301,L]
+  RewriteRule ^simulador-de-funil/?$ /ferramentas/simulador-de-funil [R=301,L]
+  RewriteRule ^simulador-de-site/?$ /ferramentas/simulador-de-site [R=301,L]
+  RewriteRule ^diagnostico/?$ /ferramentas/diagnostico [R=301,L]
+
+  # ============================================================
   # 2. BLOQUEAR ACESSO A ARQUIVOS SENSÍVEIS
   # ============================================================
   RewriteRule ^\.(env|git|htaccess|htpasswd)$ - [F]
@@ -104,13 +114,35 @@ ErrorDocument 404 /404.html
   # simuladores quebram em produção. Ao adicionar pixels de rastreamento
   # (Meta/GTM/GA4/LinkedIn) no futuro, adicionar os domínios exatos aqui —
   # nunca reabrir com um wildcard https:.
-  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; base-uri 'self'; frame-ancestors 'self';"
+  #
+  # connect-src (27/07): 4 ferramentas fazem fetch() para fora do próprio
+  # domínio e ficaram quebradas em produção até este ajuste (bug real,
+  # reportado pelo Fabiano ao testar ao vivo) — connect-src 'self' bloqueava
+  # TODA chamada externa, silenciosamente (sem erro visível na tela, só
+  # "Failed to fetch" no console). Domínios liberados, um por um, nunca
+  # wildcard:
+  #   - formula-robots-proxy.formulamidia.workers.dev   (RUN-001, Verificador de Acesso de IA)
+  #   - formula-site-audit-crawler.formulamidia.workers.dev (RUN-002, Auditoria Técnica de SEO)
+  #   - www.googleapis.com                               (PageSpeed Insights, Velocidade + Usuário Real)
+  #   - chromeuxreport.googleapis.com                     (CrUX History API, Comparador Histórico)
+  #   - formula-concierge.formulamidia.workers.dev        (RUN-CONCIERGE, widget de chat do cabeçalho)
+  #   - formula-placar-stats.formulamidia.workers.dev     (RUN-006, opt-in anônimo do /placar)
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://formula-robots-proxy.formulamidia.workers.dev https://formula-site-audit-crawler.formulamidia.workers.dev https://www.googleapis.com https://chromeuxreport.googleapis.com https://formula-concierge.formulamidia.workers.dev https://formula-placar-stats.formulamidia.workers.dev; base-uri 'self'; frame-ancestors 'self';"
 
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
   Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
   Header unset X-Powered-By
   Header always unset X-Powered-By
   Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+
+  # Cache imutável pros assets buildados pelo Astro (27/07, achado de auditoria técnica: os
+  # arquivos em /_astro/ já têm hash no nome — ex. BaseLayout.DncavFGa.css — então mudam de
+  # nome a cada novo conteúdo. Não precisam do teto de 1 mês que o ExpiresByType text/css/js
+  # aplica pro resto do site (ex. /scripts/counter.js, que não tem hash e precisa continuar
+  # curto). Regex casa só nomes com hash de 6-10 caracteres antes da extensão.
+  <FilesMatch "\.[\w-]{6,10}\.(css|js)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
 </IfModule>
 
 # ============================================================

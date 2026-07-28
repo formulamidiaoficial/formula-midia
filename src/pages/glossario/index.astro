@@ -1,0 +1,59 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/ui/Breadcrumbs.astro";
+import { breadcrumbSchema, itemListSchema, SITE_URL } from "../../data/schema";
+import { GLOSSARIO } from "../../data/glossario";
+
+const breadcrumbItems = [
+  { name: "Home", path: "/" },
+  { name: "Glossário", path: "/glossario" },
+];
+
+const categorias = [...new Set(GLOSSARIO.map((t) => t.categoria))];
+const listSchema = itemListSchema(
+  GLOSSARIO.map((t) => ({ name: t.termo, url: `${SITE_URL}/glossario/${t.slug}` }))
+);
+const schema = [breadcrumbSchema(breadcrumbItems), listSchema];
+---
+
+<BaseLayout
+  title="Glossário de Growth, Tráfego Pago e SEO/GEO | Fórmula Mídia"
+  description="Os termos de growth, tráfego pago, SEO e GEO (busca por IA) explicados em português claro — CAC, LTV, MER, ROAS, Core Web Vitals, LGPD e mais."
+  path="/glossario"
+  schema={schema}
+>
+  <Breadcrumbs items={breadcrumbItems} />
+  <header class="relative overflow-hidden px-6 pb-6 pt-16 text-center">
+    <div class="pointer-events-none absolute -left-24 -top-44 h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,rgba(228,41,41,.22),transparent_70%)] blur-[80px]"></div>
+    <div class="relative z-[2] mx-auto max-w-[700px]">
+      <h1 class="font-heading text-[clamp(28px,4.4vw,44px)] font-bold leading-[1.12] tracking-tight">
+        Glossário de <span class="text-red-hi">Growth, Tráfego e SEO/GEO</span>
+      </h1>
+      <p class="mx-auto mt-4 max-w-[560px] text-base leading-relaxed text-mid">
+        Os termos técnicos que aparecem nas nossas ferramentas, explicados em português claro — sem
+        jargão que só faz sentido pra quem já sabe do assunto.
+      </p>
+    </div>
+  </header>
+
+  <section class="px-6 pb-24 pt-6">
+    <div class="mx-auto max-w-[860px]">
+      {categorias.map((cat) => (
+        <div class="mb-10">
+          <h2 class="mb-4 font-heading text-xs font-semibold uppercase tracking-[.1em] text-red-hi">{cat}</h2>
+          <div class="grid gap-3 sm:grid-cols-2">
+            {GLOSSARIO.filter((t) => t.categoria === cat).map((t) => (
+              <a
+                href={`/glossario/${t.slug}`}
+                class="rounded-card border border-border bg-glass p-5 no-underline transition-colors hover:border-border-hi"
+              >
+                <div class="mb-1.5 font-heading text-[15px] font-semibold text-ink">{t.termo}</div>
+                <div class="text-[13px] leading-relaxed text-mid line-clamp-2">{t.definicaoCurta}</div>
+              </a>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,18 @@
+---
+// GA4 (gtag). Carrega SÓ quando PUBLIC_GA4_ID existe no .env — sem o ID, nada é
+// injetado e os eventos do track.ts continuam no-op (seguro em dev/preview).
+// O ID (formato G-XXXXXXXXXX) vem do Google Analytics → Admin → Fluxos de dados.
+// Assim que o ID entra no .env e o site é rebuildado, os 4 eventos das 12
+// ferramentas (tool_started/completed, cta_whatsapp, email_captured) passam a
+// ser capturados — é aqui que a camada de "observar uso" ganha vida.
+const GA_ID = import.meta.env.PUBLIC_GA4_ID as string | undefined;
+const gaInit = GA_ID
+  ? `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}window.gtag=gtag;gtag('js',new Date());gtag('config','${GA_ID}');`
+  : "";
+---
+{GA_ID && (
+  <Fragment>
+    <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}></script>
+    <script is:inline set:html={gaInit}></script>
+  </Fragment>
+)}

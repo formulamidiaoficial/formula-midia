@@ -1,0 +1,99 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "../components/ui/Breadcrumbs.astro";
+import { breadcrumbSchema, waLink } from "../data/schema";
+
+const breadcrumbItems = [
+  { name: "Home", path: "/" },
+  { name: "Placar", path: "/placar" },
+];
+
+const schema = [breadcrumbSchema(breadcrumbItems)];
+---
+
+<BaseLayout
+  title="Placar — Benchmark Público de Growth & Performance | Fórmula Mídia (em construção)"
+  description="Um benchmark público brasileiro de CAC, LTV, tempo de resposta e mais, construído a partir do uso agregado e anônimo das nossas ferramentas gratuitas. Em construção."
+  path="/placar"
+  schema={schema}
+>
+  <Breadcrumbs items={breadcrumbItems} />
+  <header class="relative overflow-hidden px-6 pb-6 pt-16 text-center">
+    <div class="pointer-events-none absolute -left-24 -top-44 h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,rgba(228,41,41,.22),transparent_70%)] blur-[80px]"></div>
+    <div class="relative z-[2] mx-auto max-w-[700px]">
+      <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-glass px-4 py-1.5 font-heading text-[12px] font-semibold text-dim">
+        Em construção
+      </div>
+      <h1 class="font-heading text-[clamp(28px,4.4vw,44px)] font-bold leading-[1.12] tracking-tight">
+        Um benchmark público de growth, <span class="text-red-hi">feito de dado real brasileiro.</span>
+      </h1>
+      <p class="mx-auto mt-4 max-w-[560px] text-base leading-relaxed text-mid">
+        Nenhum benchmark de mercado brasileiro hoje mostra o CAC médio, o gap de MER×ROAS ou o tempo
+        de resposta comum por segmento — porque ninguém publica isso de graça. Estamos construindo
+        essa referência a partir do uso agregado e anônimo das nossas ferramentas.
+      </p>
+    </div>
+  </header>
+
+  <section class="px-6 pb-16 pt-6">
+    <div class="mx-auto max-w-[760px]">
+      <div class="rounded-card border border-red/28 bg-gradient-to-b from-red/8 to-glass p-7">
+        <h2 class="mb-3 font-heading text-[15px] font-semibold text-ink">Por que isto ainda não tem número</h2>
+        <p class="text-[14px] leading-relaxed text-mid">
+          Todo cálculo nas nossas ferramentas continua acontecendo só no seu navegador — nada é
+          enviado nem guardado, a menos que você marque, ativamente, a caixa de
+          <span class="text-ink">"contribuir anonimamente"</span> que já existe em algumas
+          ferramentas (CAC·LTV·Payback, MER×ROAS, Custo do Lead Perdido, Verificador de Acesso de
+          IA — as próximas entram aos poucos). Quando marcada, só um número numa faixa fixa é
+          enviado — nunca domínio, nome ou e-mail (ver <a href="/metodologia" class="text-ink underline underline-offset-2">nossa metodologia</a>).
+        </p>
+        <p class="mt-3 text-[14px] leading-relaxed text-mid">
+          O mecanismo existe agora, mas os números públicos só aparecem aqui quando cada faixa
+          juntar pelo menos 100 contribuições — nossa própria regra contra publicar estatística de
+          amostra pequena demais pra significar algo. Até lá, é honesto dizer: <span class="text-ink">estamos coletando, ainda não dá pra mostrar</span>.
+        </p>
+      </div>
+
+      <h2 class="mt-14 font-heading text-[24px] font-bold leading-tight text-ink">O que o Placar vai mostrar, quando estiver no ar</h2>
+      <div class="mt-6 grid gap-4 sm:grid-cols-2">
+        <div class="rounded-card border border-border bg-glass p-6">
+          <div class="mb-1.5 font-heading text-[14px] font-semibold text-ink">CAC e LTV médios por segmento</div>
+          <p class="text-[13px] leading-relaxed text-mid">A partir do uso agregado da calculadora de CAC/LTV/Payback.</p>
+        </div>
+        <div class="rounded-card border border-border bg-glass p-6">
+          <div class="mb-1.5 font-heading text-[14px] font-semibold text-ink">Gap típico entre MER e ROAS reportado</div>
+          <p class="text-[13px] leading-relaxed text-mid">Um retrato de quão comum é o problema de rastreio no mercado brasileiro.</p>
+        </div>
+        <div class="rounded-card border border-border bg-glass p-6">
+          <div class="mb-1.5 font-heading text-[14px] font-semibold text-ink">Faixa de tempo de resposta mais comum</div>
+          <p class="text-[13px] leading-relaxed text-mid">Quantos negócios respondem em minutos vs. horas — e o que isso custa em média.</p>
+        </div>
+        <div class="rounded-card border border-border bg-glass p-6">
+          <div class="mb-1.5 font-heading text-[14px] font-semibold text-ink">Achados de acesso de IA (robots.txt)</div>
+          <p class="text-[13px] leading-relaxed text-mid">Quantos sites brasileiros bloqueiam sem querer um robô de busca de IA.</p>
+        </div>
+      </div>
+
+      <h2 class="mt-14 font-heading text-[24px] font-bold leading-tight text-ink">O compromisso, desde já</h2>
+      <ul class="mt-4 flex flex-col gap-3 text-[15px] leading-relaxed text-mid">
+        <li>— Nunca dado identificável: nem domínio, nem nome de empresa, nem e-mail.</li>
+        <li>— Sempre opt-in: você decide, ferramenta por uso, se aquele número entra na estatística.</li>
+        <li>— Metodologia pública, do mesmo jeito que cada ferramenta já expõe a própria fórmula.</li>
+      </ul>
+
+      <div class="mt-14 rounded-card border border-border bg-glass p-7 text-center">
+        <p class="mb-4 text-[15px] leading-relaxed text-mid">
+          Quer ser avisado quando o Placar for ao ar, ou tem uma sugestão do que ele deveria medir?
+        </p>
+        <a
+          href={waLink("Olá! Vi a página do Placar (benchmark público) e quero saber mais / dar uma sugestão.")}
+          target="_blank"
+          rel="noopener"
+          class="inline-flex items-center gap-2.5 rounded-full bg-gradient-to-br from-red to-red-lo px-6 py-3.5 font-heading text-[14px] font-semibold text-white no-underline shadow-[0_10px_30px_rgba(228,41,41,0.30)] transition-transform hover:-translate-y-0.5"
+        >
+          Falar com a Fórmula →
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,10 +1,12 @@
 ---
 import { waLink } from "../../data/schema";
+import { FERRAMENTAS } from "../../data/ferramentas";
 
 const columns = [
   {
     title: "Serviços",
     links: [
+      { label: "Soluções · escopo e preço", href: "/solucoes" },
       { label: "Tráfego Pago", href: "/servicos" },
       { label: "Growth & Performance", href: "/growth" },
       { label: "Criação de Sites", href: "/criacao-de-sites" },
@@ -13,13 +15,9 @@ const columns = [
     ],
   },
   {
+    // Fonte única em src/data/ferramentas.ts — não listar ferramenta aqui direto.
     title: "Ferramentas gratuitas",
-    links: [
-      { label: "Diagnóstico de crescimento", href: "/diagnostico" },
-      { label: "Calculadora de escopo", href: "/calculadora" },
-      { label: "Simulador de site", href: "/simulador-de-site" },
-      { label: "Simulador de funil", href: "/simulador-de-funil" },
-    ],
+    links: FERRAMENTAS.map((f) => ({ label: f.nomeCurto, href: `/ferramentas/${f.slug}` })),
   },
   {
     title: "Quem atendemos",
@@ -35,6 +33,10 @@ const columns = [
     title: "Empresa",
     links: [
       { label: "O Manifesto", href: "/manifesto" },
+      { label: "Blog", href: "/blog" },
+      { label: "Glossário", href: "/glossario" },
+      { label: "Metodologia das Ferramentas", href: "/metodologia" },
+      { label: "Placar", href: "/placar" },
       { label: "Todos os links", href: "/links" },
       { label: "Política de Privacidade", href: "/privacidade" },
       { label: "Termos de Uso", href: "/termos" },

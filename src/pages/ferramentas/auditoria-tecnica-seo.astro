@@ -1,0 +1,99 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Badge from "../../components/ui/Badge.astro";
+import Breadcrumbs from "../../components/ui/Breadcrumbs.astro";
+import LeiaTambem from "../../components/ui/LeiaTambem.astro";
+import AuditoriaTecnicaSeo from "../../components/islands/AuditoriaTecnicaSeo.tsx";
+import { breadcrumbSchema, faqPageSchema, SITE_URL, BRAND_NAME, type FaqItem } from "../../data/schema";
+
+const breadcrumbItems = [
+  { name: "Home", path: "/" },
+  { name: "Ferramentas", path: "/ferramentas" },
+  { name: "Auditoria Técnica de SEO", path: "/ferramentas/auditoria-tecnica-seo" },
+];
+
+const faq: FaqItem[] = [
+  { question: "Quantas páginas a auditoria verifica?", answer: "Até 20 páginas do seu site: a home e os links diretos que saem dela (2 níveis). É um limite de negócio, não técnico — protege a infraestrutura gratuita que roda todas as ferramentas da Fórmula ao mesmo tempo." },
+  { question: "O que a auditoria verifica em cada página?", answer: "Presença de robots.txt e sitemap.xml, links internos quebrados, hierarquia de heading (H1), tag canonical, dados estruturados (JSON-LD), meta description e cobertura de atributo alt em imagens." },
+  { question: "Por que os achados vêm separados em crítico/importante/secundário?", answer: "Pra você saber o que resolver primeiro. Crítico é o que pode estar te tirando de indexação ou navegação (robots bloqueando tudo, links quebrados). Secundário é boa prática, não urgência." },
+  { question: "Isso substitui uma auditoria completa de SEO?", answer: "Não — cobre verificações técnicas padrão (estrutura, não conteúdo). Não avalia palavra-chave, qualidade de texto, backlinks nem concorrência. É o primeiro filtro, não o diagnóstico inteiro." },
+];
+
+const appSchema = {
+  "@context": "https://schema.org", "@type": "WebApplication",
+  name: "Auditoria Técnica de SEO",
+  applicationCategory: "BusinessApplication", operatingSystem: "Web",
+  url: `${SITE_URL}/ferramentas/auditoria-tecnica-seo`,
+  offers: { "@type": "Offer", price: "0", priceCurrency: "BRL" },
+  provider: { "@type": "Organization", name: BRAND_NAME },
+};
+
+const schema = [breadcrumbSchema(breadcrumbItems), faqPageSchema(faq), appSchema];
+---
+
+<BaseLayout
+  title="Auditoria Técnica de SEO Grátis | Fórmula Mídia"
+  description="Audite até 20 páginas do seu site: robots.txt, sitemap, links quebrados, heading, canonical e dados estruturados — num relatório priorizado por severidade. Sem código."
+  path="/ferramentas/auditoria-tecnica-seo"
+  schema={schema}
+>
+  <Breadcrumbs items={breadcrumbItems} />
+  <header class="relative overflow-hidden px-6 pb-6 pt-16 text-center">
+    <div class="pointer-events-none absolute -left-24 -top-44 h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,rgba(228,41,41,.22),transparent_70%)] blur-[80px]"></div>
+    <div class="pointer-events-none absolute -right-28 -top-24 h-[380px] w-[380px] rounded-full bg-[radial-gradient(circle,rgba(180,20,20,.18),transparent_70%)] blur-[80px]"></div>
+    <div class="relative z-[2] mx-auto max-w-[700px]">
+      <a href="/ferramentas" class="mb-6 inline-flex items-center gap-1.5 font-heading text-[13px] font-semibold text-mid no-underline hover:text-ink">← Todas as ferramentas</a>
+      <div class="mb-6"><Badge label="SEO · Auditoria técnica" /></div>
+      <h1 class="font-heading text-[clamp(28px,4.4vw,44px)] font-bold leading-[1.12] tracking-tight">
+        7 verificações técnicas, <span class="text-red-hi">1 relatório priorizado.</span>
+      </h1>
+      <p class="mx-auto mt-4 max-w-[560px] text-base leading-relaxed text-mid">
+        Nada de sete notas soltas. Rastreamos até 20 páginas do seu site e devolvemos os problemas
+        organizados por severidade — o que resolver primeiro, não uma lista sem prioridade.
+      </p>
+    </div>
+  </header>
+
+  <div class="section-light px-6 pb-6 pt-8">
+    <div class="mx-auto max-w-[1140px]">
+      <AuditoriaTecnicaSeo client:load />
+      <p class="mx-auto mt-6 max-w-[680px] text-center text-[11.5px] leading-relaxed text-dim">
+        Resultados anônimos e agregados podem ser usados em pesquisas públicas sobre o mercado
+        brasileiro. Veja a <a href="/privacidade" class="underline underline-offset-2 hover:text-ink">política de privacidade</a>.
+      </p>
+    </div>
+  </div>
+
+  <section class="px-6 pb-24 pt-10">
+    <div class="mx-auto max-w-[720px]">
+      <h2 class="font-heading text-[clamp(22px,3.2vw,30px)] font-bold leading-tight tracking-tight">
+        Sete verificações, consolidadas — não sete telas separadas
+      </h2>
+      <div class="mt-6 flex flex-col gap-5 text-[15.5px] leading-relaxed text-mid">
+        <p>
+          A maioria dos "auditores de SEO" grátis devolve uma nota isolada por critério — indexação,
+          dados estruturados, links quebrados, imagens, estrutura, canonical, sitemap — sem dizer
+          qual deles resolver primeiro. Esta ferramenta consolida os sete numa leitura só, priorizada
+          por severidade: <strong class="text-ink">crítico</strong> (pode estar te tirando de
+          indexação ou navegação), <strong class="text-ink">importante</strong> (vale corrigir logo)
+          e <strong class="text-ink">secundário</strong> (boa prática, não urgência).
+        </p>
+        <p>
+          A auditoria rastreia até 20 páginas — a home e os links diretos que saem dela — sempre
+          dentro do próprio domínio auditado, nunca seguindo link externo.
+        </p>
+        <p class="rounded-card border border-border bg-glass p-5 text-[14px] text-dim">
+          <strong class="text-ink">Limitação.</strong> Cobre verificações técnicas de estrutura, não
+          conteúdo — não avalia palavra-chave, qualidade de texto, backlinks nem concorrência direta.
+          Última atualização desta ferramenta: julho de 2026.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <LeiaTambem
+    href="/blog/seu-site-e-rapido-e-bem-visto-pelo-google"
+    titulo="Seu site é rápido e bem visto pelo Google?"
+    descricao="Laboratório, histórico e log: o diagnóstico técnico completo do seu site."
+  />
+</BaseLayout>

@@ -1,0 +1,160 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/ui/Breadcrumbs.astro";
+import FaqAccordion from "../../components/ui/FaqAccordion.astro";
+import { breadcrumbSchema, faqPageSchema, howToSchema, SITE_URL, BRAND_NAME } from "../../data/schema";
+import { FERRAMENTAS } from "../../data/ferramentas";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content, headings } = await render(post);
+
+// CONTENT-META-014 (Constituição Editorial, 27/07): sumário navegável gerado a
+// partir dos H2 reais do artigo — nunca digitado à mão, nunca dessincroniza.
+const sumario = headings.filter((h) => h.depth === 2);
+
+const allPosts = await getCollection("blog");
+const artigosRelacionados = allPosts.filter((p) => post.data.artigosRelacionados.includes(p.id));
+const ferramentasRelacionadas = FERRAMENTAS.filter((f) =>
+  post.data.ferramentasRelacionadas.includes(f.slug)
+);
+
+const breadcrumbItems = [
+  { name: "Home", path: "/" },
+  { name: "Blog", path: "/blog" },
+  { name: post.data.title, path: `/blog/${post.id}` },
+];
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: post.data.title,
+  description: post.data.description,
+  datePublished: post.data.datePublished.toISOString(),
+  dateModified: (post.data.dateModified ?? post.data.datePublished).toISOString(),
+  author: { "@type": "Organization", name: BRAND_NAME },
+  publisher: { "@type": "Organization", name: BRAND_NAME, logo: { "@type": "ImageObject", url: `${SITE_URL}/assets/logo.png` } },
+  mainEntityOfPage: `${SITE_URL}/blog/${post.id}`,
+};
+
+const schema = [breadcrumbSchema(breadcrumbItems), articleSchema];
+if (post.data.faq.length > 0) schema.push(faqPageSchema(post.data.faq));
+if (post.data.howTo) {
+  schema.push(
+    howToSchema({ name: post.data.howTo.name, description: post.data.description, steps: post.data.howTo.steps })
+  );
+}
+---
+
+<BaseLayout
+  title={`${post.data.title} | Fórmula Mídia`}
+  description={post.data.description}
+  path={`/blog/${post.id}`}
+  schema={schema}
+  type="article"
+  publishedTime={post.data.datePublished.toISOString()}
+  modifiedTime={(post.data.dateModified ?? post.data.datePublished).toISOString()}
+>
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="px-6 pb-16 pt-14">
+    <div class="mx-auto max-w-[720px]">
+      <div class="mb-4 font-heading text-xs font-semibold uppercase tracking-[.1em] text-red-hi">
+        Pilar {post.data.pilar}
+      </div>
+      <h1 class="font-heading text-[clamp(28px,4.6vw,42px)] font-bold leading-[1.12] tracking-tight">
+        {post.data.title}
+      </h1>
+      <p class="mt-5 text-[17px] leading-relaxed text-mid">{post.data.description}</p>
+
+      {post.data.resumoExecutivo && post.data.resumoExecutivo.length > 0 && (
+        <div class="mt-8 rounded-card border border-red/28 bg-gradient-to-b from-red/8 to-glass p-6">
+          <h2 class="mb-3 font-heading text-xs font-semibold uppercase tracking-[.1em] text-red-hi">
+            Resumo executivo
+          </h2>
+          <ul class="flex flex-col gap-2 text-[14.5px] leading-relaxed text-mid [&_li]:pl-4 [&_li]:relative before:content-['']">
+            {post.data.resumoExecutivo.map((item) => (
+              <li class="relative pl-4 before:absolute before:left-0 before:top-[.65em] before:h-1 before:w-1 before:rounded-full before:bg-red-hi">
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {sumario.length >= 2 && (
+        <nav aria-label="Sumário do artigo" class="mt-8 rounded-card border border-border bg-glass p-5">
+          <div class="mb-2.5 font-heading text-[11px] font-semibold uppercase tracking-[.08em] text-dim">
+            Neste artigo
+          </div>
+          <ol class="flex flex-col gap-1.5 text-[13.5px]">
+            {sumario.map((h) => (
+              <li>
+                <a href={`#${h.slug}`} class="text-mid no-underline hover:text-ink hover:underline">
+                  {h.text}
+                </a>
+              </li>
+            ))}
+          </ol>
+        </nav>
+      )}
+
+      <div class="prose-article mt-10 flex flex-col gap-5 text-[15.5px] leading-relaxed text-mid [&_h2]:mt-4 [&_h2]:font-heading [&_h2]:text-[24px] [&_h2]:font-bold [&_h2]:leading-tight [&_h2]:text-ink [&_a]:text-ink [&_a]:underline [&_a]:underline-offset-2 [&_code]:text-[13px] [&_pre]:overflow-x-auto [&_pre]:rounded-2xl [&_pre]:border [&_pre]:border-border [&_pre]:bg-glass [&_pre]:p-5 [&_pre]:text-[13px] [&_strong]:text-ink">
+        <Content />
+      </div>
+
+      {post.data.faq.length > 0 && (
+        <div class="mt-14">
+          <h2 class="mb-2 font-heading text-[22px] font-bold text-ink">Perguntas frequentes</h2>
+          <FaqAccordion items={post.data.faq} />
+        </div>
+      )}
+
+      {ferramentasRelacionadas.length > 0 && (
+        <div class="mt-14 rounded-card border border-red/28 bg-gradient-to-b from-red/8 to-glass p-7">
+          <h2 class="mb-4 font-heading text-xs font-semibold uppercase tracking-[.1em] text-red-hi">
+            Calcule ou verifique isso agora
+          </h2>
+          <div class="grid gap-3 sm:grid-cols-2">
+            {ferramentasRelacionadas.map((f) => (
+              <a
+                href={`/ferramentas/${f.slug}`}
+                class="rounded-2xl border border-border bg-glass p-5 no-underline transition-colors hover:border-border-hi"
+              >
+                <div class="font-heading text-[14.5px] font-semibold text-ink">{f.nome} →</div>
+                <div class="mt-1 text-[12.5px] leading-relaxed text-mid">{f.desc}</div>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {artigosRelacionados.length > 0 && (
+        <div class="mt-10">
+          <h2 class="mb-4 font-heading text-[13px] font-semibold uppercase tracking-[.08em] text-dim">
+            Leia também
+          </h2>
+          <div class="grid gap-3 sm:grid-cols-2">
+            {artigosRelacionados.map((p) => (
+              <a href={`/blog/${p.id}`} class="rounded-card border border-border bg-glass p-5 no-underline transition-colors hover:border-border-hi">
+                <div class="font-heading text-[14px] font-semibold text-ink">{p.data.title}</div>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <a href="/blog" class="mt-12 inline-flex items-center gap-1.5 font-heading text-[13px] font-semibold text-mid no-underline hover:text-ink">
+        ← Todos os artigos
+      </a>
+    </div>
+  </article>
+</BaseLayout>

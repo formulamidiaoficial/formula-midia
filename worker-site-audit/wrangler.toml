@@ -1,0 +1,12 @@
+# Cloudflare Worker — TOOL-015 (crawler de auditoria técnica de SEO).
+# Deploy:  cd worker-site-audit  →  npx wrangler deploy
+# (wrangler login já foi feito na conta da Fórmula durante o RUN-001 —
+# não precisa repetir, a menos que a sessão tenha expirado.)
+name = "formula-site-audit-crawler"
+main = "site-audit-crawler.js"
+compatibility_date = "2026-01-01"
+
+# Guardrail opcional — rate limit por IP. O Worker funciona SEM isto (os
+# guardrails de origem/tamanho/teto de páginas já protegem). Para ligar,
+# crie um binding de rate limit no painel do Cloudflare (Workers → este
+# worker → Settings → Bindings) com o nome "RATE_LIMITER".

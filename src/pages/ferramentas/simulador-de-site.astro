@@ -1,14 +1,14 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import Badge from "../components/ui/Badge.astro";
-import Breadcrumbs from "../components/ui/Breadcrumbs.astro";
-import SiteSimulator from "../components/islands/SiteSimulator.tsx";
-import { breadcrumbSchema } from "../data/schema";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Badge from "../../components/ui/Badge.astro";
+import Breadcrumbs from "../../components/ui/Breadcrumbs.astro";
+import SiteSimulator from "../../components/islands/SiteSimulator.tsx";
+import { breadcrumbSchema } from "../../data/schema";
 
 const breadcrumbItems = [
   { name: "Home", path: "/" },
   { name: "Criação de Sites", path: "/criacao-de-sites" },
-  { name: "Simulador", path: "/simulador-de-site" },
+  { name: "Simulador", path: "/ferramentas/simulador-de-site" },
 ];
 const schema = breadcrumbSchema(breadcrumbItems);
 ---
@@ -16,7 +16,7 @@ const schema = breadcrumbSchema(breadcrumbItems);
 <BaseLayout
   title="Simulador de Site | Fórmula Mídia"
   description="Simule seu site: escolha quantas páginas, se precisa de loja virtual e blog, e receba um resumo pronto para conversar com a gente."
-  path="/simulador-de-site"
+  path="/ferramentas/simulador-de-site"
   schema={schema}
 >
   <Breadcrumbs items={breadcrumbItems} />

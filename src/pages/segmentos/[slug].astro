@@ -8,6 +8,7 @@ import FinalCta from "../../components/sections/FinalCta.astro";
 import Breadcrumbs from "../../components/ui/Breadcrumbs.astro";
 import { waLink, breadcrumbSchema } from "../../data/schema";
 import { segments } from "../../data/segments";
+import { SERVICOS } from "../../data/servicos";
 
 export function getStaticPaths() {
   return segments.map((segment) => ({
@@ -26,6 +27,9 @@ const breadcrumbItems = [
 const schema = breadcrumbSchema(breadcrumbItems);
 
 const ctaMsg = `Olá, quero um diagnóstico de crescimento para meu negócio (${segment.navTitle})`;
+
+// CONTENT-META-017 — diagnóstico de escopo fixo específico deste segmento, se existir.
+const diagnosticoDoSegmento = SERVICOS.find((s) => s.segmentoSlug === segment.slug);
 ---
 
 <BaseLayout title={segment.metaTitle} description={segment.metaDesc} path={`/segmentos/${segment.slug}`} schema={schema}>
@@ -85,6 +89,40 @@ const ctaMsg = `Olá, quero um diagnóstico de crescimento para meu negócio (${
     href="/growth"
     ctaLabel="Ver o Motor de Crescimento →"
   />
+
+  {diagnosticoDoSegmento && (
+    <section class="section-light px-6 py-20">
+      <div class="mx-auto max-w-[640px]">
+        <SectionHeading eyebrow="Escopo fechado, preço fixo" title="Um diagnóstico feito pro seu segmento, não genérico" />
+        <div class="mt-9 flex flex-col rounded-card border border-red/28 bg-gradient-to-b from-red/8 to-glass p-7">
+          <span class="mb-2 font-heading text-[10.5px] font-semibold uppercase tracking-[.11em] text-red-hi">
+            {diagnosticoDoSegmento.tag}
+          </span>
+          <h3 class="mb-2 font-heading text-[20px] font-bold leading-snug text-ink">{diagnosticoDoSegmento.nome}</h3>
+          <p class="mb-4 text-[13.8px] leading-relaxed text-mid">{diagnosticoDoSegmento.conserta}</p>
+          <div class="mb-5 flex flex-col gap-2">
+            {diagnosticoDoSegmento.incluso.map((item) => (
+              <div class="flex gap-2.5 text-[13.5px] leading-snug text-mid">
+                <span class="font-bold text-red-hi">✓</span><span>{item}</span>
+              </div>
+            ))}
+          </div>
+          <div class="mb-4 flex items-baseline justify-between gap-3 border-t border-border pt-4">
+            <span class="text-[12px] uppercase tracking-[.06em] text-dim">{diagnosticoDoSegmento.prazo}</span>
+            <span class="font-heading text-[24px] font-bold text-ink">{diagnosticoDoSegmento.preco}</span>
+          </div>
+          <a
+            href={waLink(diagnosticoDoSegmento.waMsg + " [ref: segmento]")}
+            target="_blank"
+            rel="noopener"
+            class="flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-br from-red to-red-lo px-4 py-3.5 font-heading text-[14px] font-semibold text-white no-underline shadow-[0_10px_30px_rgba(228,41,41,0.30)] transition-transform hover:-translate-y-0.5"
+          >
+            Quero este diagnóstico →
+          </a>
+        </div>
+      </div>
+    </section>
+  )}
 
   <FinalCta title={segment.ctaTitle} desc={segment.ctaDesc} message={ctaMsg} ctaLabel="Quero um diagnóstico →" />
 </BaseLayout>

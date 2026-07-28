@@ -1,0 +1,33 @@
+import { defineCollection, z } from "astro:content";
+import { glob } from "astro/loaders";
+
+// Content-as-Code (ADR-0018, formula-foundation): cada artigo é um .md
+// versionado. O planejamento (briefing, outline, fontes) mora no
+// formula-foundation; o que está aqui é só o texto final publicável.
+const blog = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/blog" }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    // CONTENT-META-014 (Constituição Editorial, 27/07): 3-5 bullets, cada um
+    // respondendo uma dúvida — opcional porque é conteúdo real a escrever por
+    // artigo, não algo que dá pra gerar automaticamente do resto do front matter.
+    resumoExecutivo: z.array(z.string()).min(3).max(5).optional(),
+    pilar: z.string(), // ex.: "P1" — referência ao pilar em CONTENT-META-011
+    ferramentasRelacionadas: z.array(z.string()), // slugs de src/data/ferramentas.ts
+    artigosRelacionados: z.array(z.string()).default([]), // slugs de outros posts do blog
+    faq: z.array(z.object({ question: z.string(), answer: z.string() })).default([]),
+    // HowTo schema (GEO — CONTENT-META-011 §3) só faz sentido quando o
+    // artigo ensina um processo em passos de verdade — opcional, não forçado.
+    howTo: z
+      .object({
+        name: z.string(),
+        steps: z.array(z.object({ name: z.string(), text: z.string() })),
+      })
+      .optional(),
+    datePublished: z.coerce.date(),
+    dateModified: z.coerce.date().optional(),
+  }),
+});
+
+export const collections = { blog };

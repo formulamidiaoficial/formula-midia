@@ -1,14 +1,14 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import Badge from "../components/ui/Badge.astro";
-import Breadcrumbs from "../components/ui/Breadcrumbs.astro";
-import Calculator from "../components/islands/Calculator.tsx";
-import { breadcrumbSchema } from "../data/schema";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Badge from "../../components/ui/Badge.astro";
+import Breadcrumbs from "../../components/ui/Breadcrumbs.astro";
+import Calculator from "../../components/islands/Calculator.tsx";
+import { breadcrumbSchema } from "../../data/schema";
 
 const breadcrumbItems = [
   { name: "Home", path: "/" },
   { name: "SEO & GEO", path: "/seo" },
-  { name: "Calculadora", path: "/calculadora" },
+  { name: "Calculadora", path: "/ferramentas/calculadora" },
 ];
 const schema = breadcrumbSchema(breadcrumbItems);
 ---
@@ -16,7 +16,7 @@ const schema = breadcrumbSchema(breadcrumbItems);
 <BaseLayout
   title="Calculadora de Projeto SEO & GEO | Fórmula Mídia"
   description="Simule seu projeto de SEO e GEO: escolha landing pages, páginas de cidade e objetivo de ranking, e receba um resumo pronto para conversar com a gente."
-  path="/calculadora"
+  path="/ferramentas/calculadora"
   schema={schema}
 >
   <Breadcrumbs items={breadcrumbItems} />

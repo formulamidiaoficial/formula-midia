@@ -1,0 +1,14 @@
+# Cloudflare Worker — RUN-CONCIERGE (concierge de IA embutido no site).
+# Deploy:  cd worker-concierge  →  npx wrangler login  →  npx wrangler deploy
+# Depois do deploy, configurar a chave (OBRIGATÓRIO, sem isso o Worker responde 503):
+#   npx wrangler secret put ANTHROPIC_API_KEY
+# (cola a chave da Anthropic quando pedir — crie uma em console.anthropic.com,
+# com billing configurado; o Worker chama claude-haiku-4-5, custo baixo por conversa)
+name = "formula-concierge"
+main = "concierge.js"
+compatibility_date = "2026-01-01"
+
+# Guardrail 4 (OPCIONAL) — rate limit por IP. Mesmo padrão do RUN-001/RUN-002:
+# o Worker funciona sem isto, os outros guardrails já protegem. Pra ligar, crie
+# um binding de rate limit no painel (Workers → este worker → Settings → Bindings)
+# com o nome "RATE_LIMITER" — o código já checa `if (env.RATE_LIMITER)`.

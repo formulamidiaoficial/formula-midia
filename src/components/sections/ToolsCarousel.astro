@@ -1,0 +1,53 @@
+---
+// Carrossel zero-JS (mesmo padrão do LogoCarousel.astro): a lista de
+// ferramentas é duplicada uma vez no markup pra animação CSS fazer o loop
+// de -50% a 0% sem costura. Cards continuam clicáveis normalmente — só a
+// faixa inteira desliza via transform.
+import { FERRAMENTAS } from "../../data/ferramentas";
+---
+
+<div class="group relative overflow-hidden py-2 [mask-image:linear-gradient(90deg,transparent,black_4%,black_96%,transparent)]">
+  <div class="flex w-max animate-[toolsMarquee_58s_linear_infinite] gap-4 group-hover:[animation-play-state:paused]" role="list" aria-label="Ferramentas gratuitas">
+    {/* Passada 1 — a única exposta a leitor de tela / navegação por teclado. */}
+    {FERRAMENTAS.map((f) => (
+      <a
+        href={`/ferramentas/${f.slug}`}
+        role="listitem"
+        class="js-tilt flex w-[240px] shrink-0 flex-col rounded-card border border-border bg-glass p-5 no-underline transition-colors hover:border-red/30"
+      >
+        <span class="mb-2.5 self-start rounded-full border border-red/22 bg-red/8 px-2.5 py-1 font-heading text-[10px] font-semibold uppercase tracking-[.05em] text-red-hi">
+          {f.tag}
+        </span>
+        <h3 class="mb-1.5 font-heading text-[14px] font-semibold leading-snug text-ink">{f.nome}</h3>
+        <p class="line-clamp-3 text-[12px] leading-relaxed text-mid">{f.desc}</p>
+      </a>
+    ))}
+    {/* Passada 2 — puramente visual (completa o loop do CSS); escondida de
+        leitor de tela e fora da navegação por Tab, senão duplicaria os
+        mesmos 20+ links no teclado. */}
+    {FERRAMENTAS.map((f) => (
+      <a
+        href={`/ferramentas/${f.slug}`}
+        aria-hidden="true"
+        tabindex="-1"
+        class="js-tilt flex w-[240px] shrink-0 flex-col rounded-card border border-border bg-glass p-5 no-underline transition-colors hover:border-red/30"
+      >
+        <span class="mb-2.5 self-start rounded-full border border-red/22 bg-red/8 px-2.5 py-1 font-heading text-[10px] font-semibold uppercase tracking-[.05em] text-red-hi">
+          {f.tag}
+        </span>
+        <h3 class="mb-1.5 font-heading text-[14px] font-semibold leading-snug text-ink">{f.nome}</h3>
+        <p class="line-clamp-3 text-[12px] leading-relaxed text-mid">{f.desc}</p>
+      </a>
+    ))}
+  </div>
+</div>
+
+<style>
+  @keyframes toolsMarquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .animate-\[toolsMarquee_58s_linear_infinite\] { animation: none; }
+  }
+</style>

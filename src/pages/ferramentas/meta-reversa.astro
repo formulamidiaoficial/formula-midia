@@ -1,0 +1,95 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Badge from "../../components/ui/Badge.astro";
+import Breadcrumbs from "../../components/ui/Breadcrumbs.astro";
+import LeiaTambem from "../../components/ui/LeiaTambem.astro";
+import MetaReversa from "../../components/islands/MetaReversa.tsx";
+import { breadcrumbSchema, faqPageSchema, SITE_URL, BRAND_NAME, type FaqItem } from "../../data/schema";
+
+const breadcrumbItems = [
+  { name: "Home", path: "/" },
+  { name: "Ferramentas", path: "/ferramentas" },
+  { name: "Meta Reversa", path: "/ferramentas/meta-reversa" },
+];
+
+const faq: FaqItem[] = [
+  { question: "Qual a diferença entre a Meta Reversa e o Simulador de Funil?", answer: "O Simulador de Funil parte do que você já tem hoje (tráfego, conversão) e mostra onde está o vazamento. A Meta Reversa parte do faturamento que você quer alcançar e calcula de trás pra frente quantos leads e quanta verba isso exige." },
+  { question: "De onde vem o benchmark de conversão de 25%?", answer: "É uma hipótese de mercado (não medição própria), usada só quando você não informa a sua própria taxa de conversão lead → venda. Sempre que possível, use o seu número real." },
+  { question: "A verba calculada é garantia de resultado?", answer: "Não. É uma estimativa que assume taxa de conversão e custo por lead constantes — na prática, escalar verba pode mudar esses números (saturação de mercado, mais concorrência pelo mesmo público)." },
+];
+
+const appSchema = {
+  "@context": "https://schema.org", "@type": "WebApplication",
+  name: "Calculadora de Meta Reversa",
+  applicationCategory: "BusinessApplication", operatingSystem: "Web",
+  url: `${SITE_URL}/ferramentas/meta-reversa`,
+  offers: { "@type": "Offer", price: "0", priceCurrency: "BRL" },
+  provider: { "@type": "Organization", name: BRAND_NAME },
+};
+
+const schema = [breadcrumbSchema(breadcrumbItems), faqPageSchema(faq), appSchema];
+---
+
+<BaseLayout
+  title="Calculadora de Meta Reversa | Grátis | Fórmula Mídia"
+  description="Defina quanto quer faturar e descubra quantos leads e quanta verba de mídia isso exige. Sem código, sem e-mail."
+  path="/ferramentas/meta-reversa"
+  schema={schema}
+>
+  <Breadcrumbs items={breadcrumbItems} />
+  <header class="relative overflow-hidden px-6 pb-6 pt-16 text-center">
+    <div class="pointer-events-none absolute -left-24 -top-44 h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,rgba(228,41,41,.22),transparent_70%)] blur-[80px]"></div>
+    <div class="pointer-events-none absolute -right-28 -top-24 h-[380px] w-[380px] rounded-full bg-[radial-gradient(circle,rgba(180,20,20,.18),transparent_70%)] blur-[80px]"></div>
+    <div class="relative z-[2] mx-auto max-w-[700px]">
+      <a href="/ferramentas" class="mb-6 inline-flex items-center gap-1.5 font-heading text-[13px] font-semibold text-mid no-underline hover:text-ink">← Todas as ferramentas</a>
+      <div class="mb-6"><Badge label="Financeiro · Planejamento" /></div>
+      <h1 class="font-heading text-[clamp(28px,4.4vw,44px)] font-bold leading-[1.12] tracking-tight">
+        Comece pela meta. <span class="text-red-hi">A verba vem depois.</span>
+      </h1>
+      <p class="mx-auto mt-4 max-w-[560px] text-base leading-relaxed text-mid">
+        Diga quanto quer faturar e a ferramenta calcula, de trás pra frente, quantos leads e quanta
+        verba de mídia isso exige.
+      </p>
+    </div>
+  </header>
+
+  <div class="section-light px-6 pb-6 pt-8">
+    <div class="mx-auto max-w-[1140px]">
+      <MetaReversa client:load />
+      <p class="mx-auto mt-6 max-w-[680px] text-center text-[11.5px] leading-relaxed text-dim">
+        Resultados anônimos e agregados podem ser usados em pesquisas públicas sobre o mercado
+        brasileiro. Veja a <a href="/privacidade" class="underline underline-offset-2 hover:text-ink">política de privacidade</a>.
+      </p>
+    </div>
+  </div>
+
+  <section class="px-6 pb-24 pt-10">
+    <div class="mx-auto max-w-[720px]">
+      <h2 class="font-heading text-[clamp(22px,3.2vw,30px)] font-bold leading-tight tracking-tight">
+        Planejar verba não é chutar um número
+      </h2>
+      <div class="mt-6 flex flex-col gap-5 text-[15.5px] leading-relaxed text-mid">
+        <p>
+          A maioria dos negócios define orçamento de mídia por "quanto sobrou no caixa", não por
+          "quanto preciso pra bater a meta". A Meta Reversa inverte essa lógica: parte do
+          faturamento desejado e traduz em vendas, leads e verba necessários.
+        </p>
+        <p>
+          Se você já sabe quanto tem disponível hoje, a ferramenta mostra o gap — quanto falta (ou
+          sobra) pra bater a meta com a verba atual.
+        </p>
+        <p class="rounded-card border border-border bg-glass p-5 text-[14px] text-dim">
+          <strong class="text-ink">Ressalva.</strong> O cálculo assume taxa de conversão e custo por
+          lead constantes — escalar verba de verdade pode mudar esses números. Use como ponto de
+          partida do planejamento, não como número final.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <LeiaTambem
+    href="/blog/quanto-seu-cliente-custa-e-vale"
+    titulo="Quanto o seu cliente realmente custa (e quanto ele vale)"
+    descricao="CAC, LTV, MER e o resto da conta que decide se o investimento em mídia se paga."
+  />
+</BaseLayout>

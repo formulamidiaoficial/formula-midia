@@ -1,22 +1,22 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import Badge from "../components/ui/Badge.astro";
-import Breadcrumbs from "../components/ui/Breadcrumbs.astro";
-import FunnelSimulator from "../components/islands/FunnelSimulator.tsx";
-import { breadcrumbSchema } from "../data/schema";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Badge from "../../components/ui/Badge.astro";
+import Breadcrumbs from "../../components/ui/Breadcrumbs.astro";
+import GrowthDiagnosis from "../../components/islands/GrowthDiagnosis.tsx";
+import { breadcrumbSchema } from "../../data/schema";
 
 const breadcrumbItems = [
   { name: "Home", path: "/" },
   { name: "Growth & Performance", path: "/growth" },
-  { name: "Simulador de Funil", path: "/simulador-de-funil" },
+  { name: "Diagnóstico de Crescimento", path: "/ferramentas/diagnostico" },
 ];
 const schema = breadcrumbSchema(breadcrumbItems);
 ---
 
 <BaseLayout
-  title="Simulador de Funil de Growth | Fórmula Mídia"
-  description="Simule seu funil: tráfego, conversão e ticket médio, e descubra onde está o maior vazamento, no topo ou no fundo do funil."
-  path="/simulador-de-funil"
+  title="Diagnóstico de Crescimento | Fórmula Mídia"
+  description="Descubra em 2 minutos o nível de maturidade de crescimento do seu negócio, qual é o seu maior gargalo e o próximo passo mais importante. Grátis."
+  path="/ferramentas/diagnostico"
   schema={schema}
 >
   <Breadcrumbs items={breadcrumbItems} />
@@ -26,19 +26,19 @@ const schema = breadcrumbSchema(breadcrumbItems);
 
     <div class="relative z-[2] mx-auto max-w-[680px]">
       <a href="/growth" class="mb-6 inline-flex items-center gap-1.5 font-heading text-[13px] font-semibold text-mid no-underline hover:text-ink">← Voltar para Growth &amp; Performance</a>
-      <div class="mb-6"><Badge label="Simulador de Funil" /></div>
+      <div class="mb-6"><Badge label="Diagnóstico de Crescimento" /></div>
       <h1 class="font-heading text-[clamp(28px,4.4vw,44px)] font-bold leading-[1.12] tracking-tight">
-        Onde está o <span class="text-red-hi">maior vazamento</span> do seu funil?
+        Qual é o nível de <span class="text-red-hi">crescimento do seu negócio?</span>
       </h1>
       <p class="mx-auto mt-4 max-w-[520px] text-base leading-relaxed text-mid">
-        Informe seus números e veja, em tempo real, se o problema está no topo ou no fundo do funil.
+        Responda 6 perguntas rápidas e descubra a maturidade de crescimento do seu negócio, o seu maior gargalo e o próximo passo mais importante. Leva 2 minutos.
       </p>
     </div>
   </header>
 
   <div class="section-light px-6 pb-24 pt-8">
     <div class="mx-auto max-w-[1140px]">
-      <FunnelSimulator client:load />
+      <GrowthDiagnosis client:load />
     </div>
   </div>
 </BaseLayout>

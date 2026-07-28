@@ -1,5 +1,7 @@
 ---
 import { waLink } from "../../data/schema";
+import { FERRAMENTAS } from "../../data/ferramentas";
+import ConciergeChat from "../islands/ConciergeChat.tsx";
 
 interface NavLink {
   label: string;
@@ -7,26 +9,31 @@ interface NavLink {
 }
 
 const serviceLinks: NavLink[] = [
+  { label: "Soluções · escopo e preço", href: "/solucoes" },
   { label: "Tráfego Pago", href: "/servicos" },
   { label: "Growth & Performance", href: "/growth" },
   { label: "Criação de Sites", href: "/criacao-de-sites" },
   { label: "SEO & GEO", href: "/seo" },
 ];
 
-const toolLinks: NavLink[] = [
-  { label: "Diagnóstico de Crescimento", href: "/diagnostico" },
-  { label: "Calculadora de SEO & GEO", href: "/calculadora" },
-  { label: "Simulador de Site", href: "/simulador-de-site" },
-  { label: "Simulador de Funil", href: "/simulador-de-funil" },
+// Fonte única em src/data/ferramentas.ts — nunca listar ferramenta aqui direto
+// (já dessincronizou duas vezes quando cada lugar tinha a própria lista).
+const toolLinks: NavLink[] = FERRAMENTAS.map((f) => ({ label: f.nome, href: `/ferramentas/${f.slug}` }));
+
+// Conteúdo/transparência — mesmo grupo do "Prova, não promessa" da Home
+// (CONTENT-META-011). Antes só existia no rodapé; menu principal era o
+// único jeito de alguém nunca achar essas 3 páginas navegando pelo topo.
+const contentLinks: NavLink[] = [
+  { label: "Blog", href: "/blog" },
+  { label: "Glossário", href: "/glossario" },
+  { label: "Nossa Metodologia", href: "/metodologia" },
+  { label: "Placar", href: "/placar" },
 ];
 
-// Grouped once and reused for both the desktop dropdowns and the mobile
-// menu, so adding/removing a link never needs to happen in two places
-// (a "Ferramentas" category was missing from the menu for a while because
-// the mobile/desktop lists had drifted apart).
 const menuGroups = [
   { title: "Serviços", links: serviceLinks },
   { title: "Ferramentas", links: toolLinks },
+  { title: "Conteúdo", links: contentLinks },
 ];
 
 const flatLinks: NavLink[] = [
@@ -45,7 +52,7 @@ function isActive(href: string): boolean {
 <nav class="sticky top-0 z-50 border-b border-border bg-bg/75 backdrop-blur-md">
   <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
     <a href="/" class="flex items-center gap-2.5 text-ink no-underline">
-      <img src="/assets/logo.png" alt="Fórmula Mídia" class="h-[26px] w-[26px]" />
+      <img src="/assets/logo.png" alt="Fórmula Mídia" width="26" height="26" class="h-[26px] w-[26px]" />
       <span class="font-heading text-[15px] font-bold tracking-tight">FÓRMULA MÍDIA</span>
     </a>
 
@@ -101,6 +108,8 @@ function isActive(href: string): boolean {
     </div>
 
     <div class="flex items-center gap-3">
+      <ConciergeChat client:idle />
+
       <a
         href={waLink("Olá, quero saber mais sobre os serviços Fórmula Mídia")}
         target="_blank"

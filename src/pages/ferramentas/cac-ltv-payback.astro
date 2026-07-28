@@ -1,0 +1,98 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Badge from "../../components/ui/Badge.astro";
+import Breadcrumbs from "../../components/ui/Breadcrumbs.astro";
+import LeiaTambem from "../../components/ui/LeiaTambem.astro";
+import CacLtvPayback from "../../components/islands/CacLtvPayback.tsx";
+import { breadcrumbSchema, faqPageSchema, SITE_URL, BRAND_NAME, type FaqItem } from "../../data/schema";
+
+const breadcrumbItems = [
+  { name: "Home", path: "/" },
+  { name: "Ferramentas", path: "/ferramentas" },
+  { name: "CAC · LTV · Payback", path: "/ferramentas/cac-ltv-payback" },
+];
+
+const faq: FaqItem[] = [
+  { question: "O que é CAC, LTV e Payback?", answer: "CAC é o custo pra conquistar um cliente novo. LTV é o lucro total que esse cliente gera enquanto fica com você. Payback é quantos meses leva até o lucro do cliente cobrir o que você gastou pra conquistá-lo." },
+  { question: "De onde vem o benchmark 3:1?", answer: "É um benchmark popularizado por David Skok ('SaaS Metrics 2.0'), amplamente replicado em unit economics de negócios recorrentes: LTV pelo menos 3x maior que o CAC costuma indicar operação saudável." },
+  { question: "Essas fórmulas são hipótese, como a de outra ferramenta daqui?", answer: "Não — CAC, LTV e Payback são definição matemática padrão de unit economics, não hipótese comportamental. Só o benchmark 3:1 é uma referência de mercado, citada com fonte." },
+  { question: "O que a ferramenta não considera?", answer: "Não considera custo de servir além da margem informada, nem churn variável mês a mês — assume ticket e margem constantes ao longo da retenção." },
+];
+
+const appSchema = {
+  "@context": "https://schema.org", "@type": "WebApplication",
+  name: "Calculadora de CAC, LTV e Payback",
+  applicationCategory: "BusinessApplication", operatingSystem: "Web",
+  url: `${SITE_URL}/ferramentas/cac-ltv-payback`,
+  offers: { "@type": "Offer", price: "0", priceCurrency: "BRL" },
+  provider: { "@type": "Organization", name: BRAND_NAME },
+};
+
+const schema = [breadcrumbSchema(breadcrumbItems), faqPageSchema(faq), appSchema];
+---
+
+<BaseLayout
+  title="Calculadora de CAC, LTV e Payback | Grátis | Fórmula Mídia"
+  description="O cliente que você conquista se paga? Calcule CAC, LTV e Payback em meses, e compare com o benchmark de mercado 3:1. Sem código, sem e-mail."
+  path="/ferramentas/cac-ltv-payback"
+  schema={schema}
+>
+  <Breadcrumbs items={breadcrumbItems} />
+  <header class="relative overflow-hidden px-6 pb-6 pt-16 text-center">
+    <div class="pointer-events-none absolute -left-24 -top-44 h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,rgba(228,41,41,.22),transparent_70%)] blur-[80px]"></div>
+    <div class="pointer-events-none absolute -right-28 -top-24 h-[380px] w-[380px] rounded-full bg-[radial-gradient(circle,rgba(180,20,20,.18),transparent_70%)] blur-[80px]"></div>
+    <div class="relative z-[2] mx-auto max-w-[700px]">
+      <a href="/ferramentas" class="mb-6 inline-flex items-center gap-1.5 font-heading text-[13px] font-semibold text-mid no-underline hover:text-ink">← Todas as ferramentas</a>
+      <div class="mb-6"><Badge label="Financeiro · Unit economics" /></div>
+      <h1 class="font-heading text-[clamp(28px,4.4vw,44px)] font-bold leading-[1.12] tracking-tight">
+        O cliente que você conquista <span class="text-red-hi">se paga?</span>
+      </h1>
+      <p class="mx-auto mt-4 max-w-[560px] text-base leading-relaxed text-mid">
+        Gastar em mídia não é o problema. Não saber se o cliente adquirido se paga — e em quanto
+        tempo — é. Calcule CAC, LTV e Payback em 1 minuto.
+      </p>
+    </div>
+  </header>
+
+  <div class="section-light px-6 pb-6 pt-8">
+    <div class="mx-auto max-w-[1140px]">
+      <CacLtvPayback client:load />
+      <p class="mx-auto mt-6 max-w-[680px] text-center text-[11.5px] leading-relaxed text-dim">
+        Resultados anônimos e agregados podem ser usados em pesquisas públicas sobre o mercado
+        brasileiro. Veja a <a href="/privacidade" class="underline underline-offset-2 hover:text-ink">política de privacidade</a>.
+      </p>
+    </div>
+  </div>
+
+  <section class="px-6 pb-24 pt-10">
+    <div class="mx-auto max-w-[720px]">
+      <h2 class="font-heading text-[clamp(22px,3.2vw,30px)] font-bold leading-tight tracking-tight">
+        Unit economics, não achismo
+      </h2>
+      <div class="mt-6 flex flex-col gap-5 text-[15.5px] leading-relaxed text-mid">
+        <p>
+          CAC, LTV e Payback não são hipótese — são definição matemática padrão de unit economics.
+          O único ponto de referência externa aqui é o benchmark <strong class="text-ink">3:1</strong>
+          entre LTV e CAC, citado com fonte, usado no mercado inteiro como sinal rápido de saúde do
+          investimento em aquisição.
+        </p>
+        <p>
+          Se a sua razão está abaixo de 1:1, cada cliente novo está custando mais do que gera de
+          lucro — um problema que verba extra em mídia só piora. Se está acima de 3:1, provavelmente
+          há espaço pra escalar investimento com segurança.
+        </p>
+        <p class="rounded-card border border-border bg-glass p-5 text-[14px] text-dim">
+          <strong class="text-ink">Ressalva.</strong> O cálculo assume ticket e margem constantes ao
+          longo da retenção — na prática, isso varia. Use como ponto de partida, não como número
+          final.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <LeiaTambem
+    href="/blog/quanto-seu-cliente-custa-e-vale"
+    titulo="Quanto o seu cliente realmente custa (e quanto ele vale)"
+    descricao="CAC, LTV, MER e o resto da conta que decide se o investimento em mídia se paga."
+  />
+</BaseLayout>

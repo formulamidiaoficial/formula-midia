@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import Meta from "../components/seo/Meta.astro";
 import Schema from "../components/seo/Schema.astro";
+import Analytics from "../components/seo/Analytics.astro";
 import Nav from "../components/nav/Nav.astro";
 import Footer from "../components/nav/Footer.astro";
 import WhatsAppFloat from "../components/ui/WhatsAppFloat.astro";
@@ -17,6 +18,10 @@ interface Props {
   /** Set true only on the homepage — avoids duplicating the Organization
    * schema on every single page. */
   includeOrganizationSchema?: boolean;
+  /** "article" ativa og:type=article + article:published_time (posts do blog). */
+  type?: "website" | "article";
+  publishedTime?: string;
+  modifiedTime?: string;
 }
 
 const {
@@ -27,6 +32,9 @@ const {
   noindex = false,
   schema,
   includeOrganizationSchema = false,
+  type = "website",
+  publishedTime,
+  modifiedTime,
 } = Astro.props;
 
 const schemaItems = [
@@ -39,6 +47,7 @@ const schemaItems = [
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
+    <Analytics />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="theme-color" content="#E42929" />
@@ -49,14 +58,26 @@ const schemaItems = [
     <meta name="format-detection" content="telephone=no" />
     <meta name="format-detection" content="email=no" />
 
-    <Meta title={title} description={description} path={path} image={image} noindex={noindex} />
+    <Meta
+      title={title}
+      description={description}
+      path={path}
+      image={image}
+      noindex={noindex}
+      type={type}
+      publishedTime={publishedTime}
+      modifiedTime={modifiedTime}
+    />
     {schemaItems.length > 0 && <Schema data={schemaItems} />}
 
+    <link rel="alternate" type="application/rss+xml" title="Fórmula Mídia — Blog" href="/blog/rss.xml" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" href="/assets/logo.png" type="image/png" />
     <link rel="apple-touch-icon" href="/assets/logo.png" />
     <link rel="manifest" href="/manifest.webmanifest" />
   </head>
   <body>
+    <div id="siteProgress" class="fixed left-0 top-0 z-[999] h-[2px] w-0 bg-gradient-to-r from-red-lo via-red to-red-bright shadow-[0_0_10px_rgba(228,41,41,.3)] transition-[width] duration-75"></div>
     <a href="#conteudo-principal" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-red focus:px-4 focus:py-2.5 focus:font-heading focus:text-sm focus:font-semibold focus:text-white">
       Pular para o conteúdo
     </a>
@@ -67,5 +88,57 @@ const schemaItems = [
     <Footer />
     <WhatsAppFloat />
     <script src="/scripts/counter.js" is:inline defer></script>
+    <script>
+      // Micro-interações site-wide (mesma técnica já provada em /links):
+      // barra de progresso de scroll, ripple em botão, tilt 3D em card —
+      // via delegação de evento, então cobre qualquer .js-ripple/.js-tilt
+      // adicionado em qualquer página, sem precisar reinicializar por rota.
+      const prog = document.getElementById("siteProgress");
+      window.addEventListener(
+        "scroll",
+        () => {
+          const max = document.body.scrollHeight - window.innerHeight;
+          if (prog) prog.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + "%";
+        },
+        { passive: true }
+      );
+
+      document.addEventListener("pointerdown", (e) => {
+        const btn = (e.target as HTMLElement)?.closest<HTMLElement>(".js-ripple");
+        if (!btn) return;
+        const evt = e as PointerEvent;
+        const rect = btn.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height) * 1.4;
+        const r = document.createElement("span");
+        r.style.cssText = `position:absolute;border-radius:50%;transform:scale(0);background:rgba(255,255,255,.25);pointer-events:none;width:${size}px;height:${size}px;left:${evt.clientX - rect.left - size / 2}px;top:${evt.clientY - rect.top - size / 2}px;animation:site-rpl .55s linear`;
+        btn.appendChild(r);
+        r.addEventListener("animationend", () => r.remove());
+      });
+
+      if (!("ontouchstart" in window)) {
+        document.addEventListener("mousemove", (e) => {
+          const card = (e.target as HTMLElement)?.closest<HTMLElement>(".js-tilt");
+          if (!card) return;
+          const rect = card.getBoundingClientRect();
+          const x = (e.clientX - rect.left) / rect.width - 0.5;
+          const y = (e.clientY - rect.top) / rect.height - 0.5;
+          card.style.transform = `perspective(700px) rotateY(${x * 6}deg) rotateX(${-y * 3.5}deg) translateY(-2px)`;
+        });
+        document.addEventListener(
+          "mouseout",
+          (e) => {
+            const card = (e.target as HTMLElement)?.closest<HTMLElement>(".js-tilt");
+            const to = (e as MouseEvent).relatedTarget as HTMLElement | null;
+            if (card && !card.contains(to)) card.style.transform = "";
+          },
+          true
+        );
+      }
+    </script>
+    <style is:global>
+      @keyframes site-rpl {
+        to { transform: scale(4.5); opacity: 0; }
+      }
+    </style>
   </body>
 </html>
