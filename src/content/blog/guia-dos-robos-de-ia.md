@@ -3,7 +3,7 @@ title: "GPTBot, ClaudeBot, PerplexityBot: guia rápido de quem é quem entre os 
 description: "Seis robôs, dois grupos, um erro fácil de cometer. Um guia de referência rápida pra não bloquear o robô errado sem perceber."
 pilar: "P4"
 ferramentasRelacionadas: ["verificador-acesso-ia"]
-artigosRelacionados: ["a-ia-esta-lendo-e-citando-seu-site"]
+artigosRelacionados: ["a-ia-esta-lendo-e-citando-seu-site", "por-que-o-chatgpt-nao-me-cita"]
 datePublished: 2026-10-05
 faq:
   - question: "Essa lista de robôs é definitiva?"
@@ -36,7 +36,7 @@ Copiar um robots.txt "de proteção contra IA" encontrado pronto na internet, se
 
 ## O erro técnico que quase ninguém avisa
 
-Existe uma armadilha mais sutil que o erro de copiar regra pronta: ao criar um bloco específico para `User-agent: GPTBot`, algumas implementações de robots.txt **param de aplicar a regra geral (`User-agent: *`)** para esse robô especificamente — o oposto do que a maioria espera. O resultado prático: alguém tenta reforçar o bloqueio a um robô específico e, sem perceber, libera caminhos que a regra geral bloqueava para todo mundo. Depois de editar o robots.txt pra tratar um robô de IA à parte, vale reconferir se as regras gerais continuam valendo pros outros caminhos do site.
+Existe uma armadilha mais sutil que o erro de copiar regra pronta: ao criar um bloco específico para `User-agent: GPTBot`, o rastreador **para de aplicar a regra geral (`User-agent: *`)** pra esse robô especificamente — o oposto do que a maioria espera. Não é bug de implementação: é o comportamento padrão definido pelo próprio protocolo. A especificação oficial do Robots Exclusion Protocol determina que um rastreador siga só o grupo de regras mais específico que casar com o seu nome, recorrendo ao grupo `*` apenas quando nenhum grupo específico existe pra ele. [Fonte: RFC 9309, seção 2.2.1](https://datatracker.ietf.org/doc/html/rfc9309#section-2.2.1). O resultado prático: alguém tenta reforçar o bloqueio a um robô específico e, sem perceber, libera caminhos que a regra geral bloqueava para todo mundo. Depois de editar o robots.txt pra tratar um robô de IA à parte, vale reconferir se as regras gerais continuam valendo pros outros caminhos do site.
 
 Há ainda um terceiro problema, fora do robots.txt: alguns sites bloqueiam o GPTBot sem querer através de regras de firewall (WAF) ou limite de requisições — o robô é classificado como tráfego suspeito e descartado com erro 429, mesmo com o robots.txt liberando o acesso. Se o robots.txt está correto e o bloqueio persiste, vale checar o WAF também.
 

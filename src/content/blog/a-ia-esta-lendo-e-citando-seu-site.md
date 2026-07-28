@@ -3,7 +3,7 @@ title: "A IA está lendo (e citando) o seu site?"
 description: "Robôs de treino e robôs de busca não são a mesma coisa. GEO explicado: acesso técnico, sinais de confiança e medição de tráfego de IA, num só ciclo."
 pilar: "P4"
 ferramentasRelacionadas: ["verificador-acesso-ia", "medir-trafego-de-ia", "sinais-de-confianca"]
-artigosRelacionados: ["seu-site-e-rapido-e-bem-visto-pelo-google"]
+artigosRelacionados: ["seu-site-e-rapido-e-bem-visto-pelo-google", "guia-dos-robos-de-ia", "por-que-o-chatgpt-nao-me-cita"]
 datePublished: 2026-08-17
 faq:
   - question: "GEO é a mesma coisa que SEO?"
@@ -35,11 +35,11 @@ Aqui está o problema real: como os dois robôs têm nomes parecidos e comportam
 
 ## O padrão que auditorias reais encontram
 
-Não é hipótese isolada: análises de robots.txt em amostras grandes de sites mostram exatamente esse padrão se repetindo — o site bloqueia corretamente os robôs de treino (decisão consciente, legítima) e, no mesmo movimento, bloqueia sem perceber os robôs de busca/citação, porque os dois entraram na mesma lista "bloquear IA" copiada pronta. O tamanho do problema cresce junto com a relevância: a fatia de buscas que passam por um assistente de IA em vez de busca tradicional só aumenta ano a ano, o que torna o custo de um bloqueio por engano cada vez maior — cada trimestre que passa sem revisar é mais tráfego potencial perdido, não menos.
+Não é hipótese isolada: um levantamento da BuzzStream sobre o robots.txt dos 100 maiores portais de notícia dos EUA e do Reino Unido (abril/2026) encontrou exatamente essa sobreposição — 79% dos sites bloqueiam ao menos um robô de treino de IA, e 71% bloqueiam também ao menos um robô de busca/citação, muitas vezes porque os dois entraram na mesma lista "bloquear IA" copiada pronta da internet. [Fonte: BuzzStream, "Which News Sites Block AI Crawlers in 2025?"](https://www.buzzstream.com/blog/publishers-block-ai-study/). O tamanho do problema cresce junto com a relevância: a fatia de buscas que passam por um assistente de IA em vez de busca tradicional só aumenta ano a ano, o que torna o custo de um bloqueio por engano cada vez maior — cada trimestre que passa sem revisar é mais tráfego potencial perdido, não menos.
 
 ## GA4 não conta a história toda
 
-Mesmo com o robots.txt correto, existe uma segunda lacuna: medir. Desde maio de 2026 o GA4 tem um canal nativo "AI Assistant" — mas ele só reconhece ChatGPT, Gemini, Copilot, Grok e DeepSeek, deixa de fora a Perplexity, o Claude e a Meta AI, e por padrão perde entre 35% e 70% do tráfego de IA (classificado erroneamente como "Referral" ou "Direto"). Isso importa porque visitante vindo de IA converte cerca de 16% mais e passa 68% mais tempo no site — se esse tráfego cai em "Direto", a empresa decide orçamento achando que a IA não traz resultado, quando na verdade só não está sendo contada.
+Mesmo com o robots.txt correto, existe uma segunda lacuna: medir. Desde maio de 2026 o GA4 tem um canal nativo "AI Assistant" — mas ele só reconhece ChatGPT, Gemini, Copilot, Grok e DeepSeek, deixa de fora a Perplexity, o Claude e a Meta AI, e mesmo dentro dessa lista reconhecida depende do navegador ou app de IA enviar o cabeçalho de referrer, o que nem sempre acontece: um levantamento da Loamly com 446.405 visitas (nov/2025, atualizado fev/2026) encontrou 70,6% do tráfego de IA chegando sem esse cabeçalho e caindo em "Direto" no GA4. [Fonte: Loamly, "The AI Traffic Attribution Crisis"](https://www.loamly.ai/blog/ai-traffic-attribution-crisis). Isso importa porque visitante vindo de IA converte, em média, 42% melhor e passa 48% mais tempo na página do que o tráfego não-IA, segundo o relatório trimestral da Adobe Digital Insights com dados de março/2026. [Fonte: Adobe Digital Insights, 2026 Q2 AI Traffic Report](https://business.adobe.com/resources/sdk/2026-q2-ai-traffic-report.html). Se esse tráfego cai em "Direto", a empresa decide orçamento achando que a IA não traz resultado, quando na verdade só não está sendo contada.
 
 → **Configure a medição correta:** [Medir Tráfego de IA no GA4](/ferramentas/medir-trafego-de-ia)
 
